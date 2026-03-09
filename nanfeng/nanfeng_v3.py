@@ -30,7 +30,10 @@ WORKSPACE = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng")
 DATA_DIR = WORKSPACE / "data"
 LOG_DIR = WORKSPACE / "logs"
 SIGNAL_DIR = WORKSPACE / "signals"
-BEIFENG_DB = Path("/Users/roberto/.openclaw/agents/beifeng/data/stocks.db")
+BEIFENG_DB = Path("/Users/roberto/.openclaw/agents/beifeng/data/stocks_v2.db")
+
+# 添加北风路径
+sys.path.insert(0, str(Path("/Users/roberto/.openclaw/agents/beifeng")))
 
 for d in [DATA_DIR, LOG_DIR, SIGNAL_DIR]:
     d.mkdir(parents=True, exist_ok=True)
@@ -334,26 +337,33 @@ class NanFengV3:
     def __init__(self):
         self.strategy = QuantStrategy()
         self.beifeng_db = BEIFENG_DB
-    
-    def get_minute_data(self, stock_code: str, days: int = 5) -> pd.DataFrame:
-        """获取分钟数据"""
-        conn = sqlite3.connect(self.beifeng_db)
+        self.realtime_manager = None
         
-        query = f"""
-        SELECT timestamp, open, high, low, close, volume, amount
-        FROM kline_data
-        WHERE stock_code = '{stock_code}' AND data_type = '1min'
-        AND timestamp >= datetime('now', '-{days} days')
-        ORDER BY timestamp
-        """
-        
-        df = pd.read_sql_query(query, conn)
-        conn.close()
-        
-        return df
+        # 尝试初始化准实时数据管理器
+        try:
+            from beifeng_realtime import RealtimeDataManager
+            self.realtime_manager = RealtimeDataManager()
+            logger.info("✅ 准实时数据管理器已初始化")
+        except Exception as e:
+            logger.warning(f"⚠️ 准实时数据管理器初始化失败: {e}")
     
     def get_daily_data(self, stock_code: str, days: int = 60) -> pd.DataFrame:
-        """获取日线数据"""
+        """
+        获取日线数据（支持准实时）
+        
+        优先使用准实时数据管理器，确保交易时段能获取当日最新数据
+        """
+        # 优先使用准实时接口
+        if self.realtime_manager is not None:
+            try:
+                df = self.realtime_manager.get_data_for_analysis(stock_code, days)
+                if df is not None and len(df) > 0:
+                    logger.debug(f"{stock_code} 使用准实时数据: {len(df)}条")
+                    return df
+            except Exception as e:
+                logger.warning(f"准实时数据获取失败: {e}")
+        
+        # 回退到传统查询
         conn = sqlite3.connect(self.beifeng_db)
         
         query = f"""
