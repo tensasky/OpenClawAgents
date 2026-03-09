@@ -16,8 +16,8 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Optional, Tuple
 from pathlib import Path
 
-# 导入真实新闻抓取器
-from real_news_fetcher import fetch_real_news
+# 导入多源新闻抓取器
+from multi_source_fetcher import fetch_multi_source_news
 from stock_sector_map import get_leading_stocks
 
 # 配置路径
@@ -271,20 +271,36 @@ class HeatCalculator:
         conn.commit()
         conn.close()
     
-    def save_news(self, news: Dict, analysis: Dict):
-        """保存新闻"""
+    def is_news_exists(self, title: str) -> bool:
+        """检查新闻是否已存在"""
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.execute(
+            "SELECT 1 FROM news WHERE title = ? LIMIT 1",
+            (title,)
+        )
+        exists = cursor.fetchone() is not None
+        conn.close()
+        return exists
+    
+    def save_news(self, news: Dict, analysis: Dict) -> bool:
+        """保存新闻，返回是否是新新闻"""
+        # 检查是否已存在（增量）
+        if self.is_news_exists(news['title']):
+            return False
+        
         conn = sqlite3.connect(self.db_path)
         
         conn.execute(
             """INSERT INTO news (title, sector, keywords, sentiment, time)
                VALUES (?, ?, ?, ?, ?)""",
-            (news['title'], analysis['sector'], 
+            (news['title'], analysis['sector'],
              json.dumps(analysis['keywords'], ensure_ascii=False),
              analysis['sentiment'], news.get('time', datetime.now().isoformat()))
         )
         
         conn.commit()
         conn.close()
+        return True
     
     def get_historical_count(self, sector: str, days: int = 15) -> float:
         """获取历史平均提及次数"""
@@ -302,6 +318,24 @@ class HeatCalculator:
         conn.close()
         
         return result or 1.0
+    
+    def get_today_stats(self, date: str) -> dict:
+        """获取今日已统计的数据"""
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.execute(
+            """SELECT sector, count, avg_sentiment FROM sector_daily WHERE date = ?""",
+            (date,)
+        )
+        
+        stats = {}
+        for row in cursor.fetchall():
+            stats[row[0]] = {
+                'count': row[1],
+                'sentiment_sum': row[2] * row[1]  # 反推总和
+            }
+        
+        conn.close()
+        return stats
     
     def update_daily_stats(self, sector: str, count: int, sentiment: float):
         """更新每日统计"""
@@ -375,6 +409,40 @@ class XiFengSkill:
         self.analyzer = LLMAnalyzer()
         self.calculator = HeatCalculator()
     
+    def _is_similar_title(self, title1: str, title2: str, threshold: float = 0.8) -> bool:
+        """判断两个标题是否相似"""
+        # 简单实现：如果一个是另一个的子串，或共同部分超过阈值
+        t1 = title1.lower().strip()
+        t2 = title2.lower().strip()
+        
+        # 完全相同
+        if t1 == t2:
+            return True
+        
+        # 互相包含
+        if t1 in t2 or t2 in t1:
+            return True
+        
+        # 计算相似度（基于共同字符比例）
+        # 提取关键词（去除常见停用词）
+        stop_words = {'的', '了', '在', '是', '我', '有', '和', '就', '不', '人', '都', '一', '一个', '上', '也', '很', '到', '说', '要', '去', '你', '会', '着', '没有', '看', '好', '自己', '这'}
+        
+        words1 = set(t1) - stop_words
+        words2 = set(t2) - stop_words
+        
+        if not words1 or not words2:
+            return False
+        
+        # Jaccard 相似度
+        intersection = len(words1 & words2)
+        union = len(words1 | words2)
+        
+        if union == 0:
+            return False
+        
+        similarity = intersection / union
+        return similarity >= threshold
+    
     def analyze(self):
         """执行完整分析流程"""
         print("=" * 60)
@@ -383,33 +451,65 @@ class XiFengSkill:
         print(f"⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print()
         
-        # 1. 抓取新闻
-        print("📰 Step 1: 抓取财联社快讯...")
-        news_list = self.fetcher.fetch_all()
+        # 1. 抓取新闻（多源）
+        print("📰 Step 1: 抓取多源财经新闻...")
+        news_list = fetch_multi_source_news()
         print(f"   获取 {len(news_list)} 条新闻\n")
         
-        # 2. LLM分析
-        print("🧠 Step 2: LLM语义分析...")
+        # 2. LLM分析（全量+去重）
+        print("🧠 Step 2: LLM语义分析（全量+去重）...")
+        
+        # 去重：基于标题相似度
+        unique_news = []
+        seen_titles = []
+        duplicate_count = 0
+        
+        for news in news_list:
+            title = news['title']
+            
+            # 检查是否与已处理的标题相同或高度相似
+            is_duplicate = False
+            for seen in seen_titles:
+                # 完全相同的标题认为是重复
+                if title == seen:
+                    is_duplicate = True
+                    break
+                # 或者相似度超过90%
+                if self._is_similar_title(title, seen, threshold=0.9):
+                    is_duplicate = True
+                    break
+            
+            if not is_duplicate:
+                seen_titles.append(title)
+                unique_news.append(news)
+            else:
+                duplicate_count += 1
+        
+        print(f"   原始新闻: {len(news_list)} 条")
+        print(f"   去重后: {len(unique_news)} 条")
+        print(f"   重复: {duplicate_count} 条")
+        
+        # 分析去重后的新闻
         analyzed_news = []
-        for i, news in enumerate(news_list, 1):
+        for i, news in enumerate(unique_news, 1):
             analysis = self.analyzer.analyze_news(news['title'], news.get('content', ''))
             analyzed_news.append({
                 'news': news,
                 'analysis': analysis
             })
             
-            # 保存到数据库
+            # 保存到数据库（用于历史记录）
             self.calculator.save_news(news, analysis)
             
             if i <= 5:  # 只显示前5条
                 print(f"   [{analysis['sector']}] {news['title'][:40]}...")
         
-        if len(news_list) > 5:
-            print(f"   ... 还有 {len(news_list)-5} 条")
+        if len(unique_news) > 5:
+            print(f"   ... 还有 {len(unique_news)-5} 条")
         print()
         
-        # 3. 统计板块
-        print("📊 Step 3: 统计板块词频...")
+        # 3. 统计板块（全量：重新统计所有抓取的新闻）
+        print("📊 Step 3: 统计板块词频（全量）...")
         sector_stats = {}
         for item in analyzed_news:
             sector = item['analysis']['sector']

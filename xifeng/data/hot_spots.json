@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-09T08:47:40.170339",
-  "total_sectors": 3,
+  "generated_at": "2026-03-09T09:17:01.372409",
+  "total_sectors": 1,
   "summary": [
     {
       "sector": "房地产",
-      "heat_score": 50.0,
+      "heat_score": 44.1,
       "level": "Medium",
-      "today_count": 94,
-      "sentiment": 0.0,
+      "today_count": 40,
+      "sentiment": 0.01,
       "top_news": [
         {
           "title": "来伊份：控股股东爱屋企管质押910万股，占总股本的2.72%",
@@ -42,114 +42,17 @@
           "weight": 8
         }
       ]
-    },
-    {
-      "sector": "人工智能",
-      "heat_score": 28.4,
-      "level": "Low",
-      "today_count": 14,
-      "sentiment": 0.0,
-      "top_news": [
-        {
-          "title": "",
-          "source": "财联社",
-          "sentiment": "➡️"
-        },
-        {
-          "title": "",
-          "source": "财联社",
-          "sentiment": "➡️"
-        },
-        {
-          "title": "",
-          "source": "财联社",
-          "sentiment": "➡️"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "300033",
-          "name": "同花顺",
-          "weight": 10
-        },
-        {
-          "code": "002230",
-          "name": "科大讯飞",
-          "weight": 9
-        },
-        {
-          "code": "603019",
-          "name": "中科曙光",
-          "weight": 8
-        }
-      ]
-    },
-    {
-      "sector": "新能源",
-      "heat_score": 22.7,
-      "level": "Low",
-      "today_count": 2,
-      "sentiment": 0.15,
-      "top_news": [
-        {
-          "title": "",
-          "source": "财联社",
-          "sentiment": "➡️"
-        },
-        {
-          "title": "",
-          "source": "财联社",
-          "sentiment": "📈"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "300750",
-          "name": "宁德时代",
-          "weight": 10
-        },
-        {
-          "code": "002594",
-          "name": "比亚迪",
-          "weight": 9
-        },
-        {
-          "code": "601012",
-          "name": "隆基绿能",
-          "weight": 8
-        }
-      ]
     }
   ],
   "hot_spots": [
     {
       "sector": "房地产",
-      "heat_score": 50.0,
+      "heat_score": 44.1,
       "level": "Medium",
-      "today_count": 94,
-      "avg_count": 94.0,
+      "today_count": 40,
+      "avg_count": 40.0,
       "momentum": 1.0,
-      "sentiment": 0.0,
-      "breakout_coefficient": 1.0
-    },
-    {
-      "sector": "人工智能",
-      "heat_score": 28.4,
-      "level": "Low",
-      "today_count": 14,
-      "avg_count": 14.0,
-      "momentum": 1.0,
-      "sentiment": 0.0,
-      "breakout_coefficient": 1.0
-    },
-    {
-      "sector": "新能源",
-      "heat_score": 22.7,
-      "level": "Low",
-      "today_count": 2,
-      "avg_count": 2.0,
-      "momentum": 1.0,
-      "sentiment": 0.15,
+      "sentiment": 0.01,
       "breakout_coefficient": 1.0
     }
   ]
