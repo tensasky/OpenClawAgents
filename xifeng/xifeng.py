@@ -18,6 +18,7 @@ from pathlib import Path
 
 # 导入真实新闻抓取器
 from real_news_fetcher import fetch_real_news
+from stock_sector_map import get_leading_stocks
 
 # 配置路径
 SKILL_DIR = Path(__file__).parent
@@ -447,11 +448,58 @@ class XiFengSkill:
             print(f"      今日{spot['today_count']}次 | 爆发系数{spot['momentum']}x | 情感{spot['sentiment']:+.1f}")
         print()
         
-        # 5. 导出结果
-        print("💾 Step 5: 导出 hot_spots.json...")
+        # 5. 生成核心汇总
+        print("📋 Step 5: 生成核心汇总...")
+        
+        # 获取热门新闻（按板块分组）
+        sector_news = {}
+        for item in analyzed_news:
+            sector = item['analysis']['sector']
+            if sector not in sector_news:
+                sector_news[sector] = []
+            sector_news[sector].append(item['news'])
+        
+        # 为每个热点板块生成汇总
+        summary = []
+        for spot in hot_spots[:5]:  # 前5个板块
+            sector = spot['sector']
+            news_list_sector = sector_news.get(sector, [])
+            
+            # 获取该板块热门新闻（前3条）
+            top_news = news_list_sector[:3] if news_list_sector else []
+            
+            # 获取龙头股
+            leading_stocks = get_leading_stocks(sector, 3)
+            
+            summary_item = {
+                "sector": sector,
+                "heat_score": spot['heat_score'],
+                "level": spot['level'],
+                "today_count": spot['today_count'],
+                "sentiment": spot['sentiment'],
+                "top_news": [
+                    {
+                        "title": n['title'][:80],
+                        "source": n.get('source', '未知'),
+                        "sentiment": "📈" if n.get('sentiment', 0) > 0.2 else "📉" if n.get('sentiment', 0) < -0.2 else "➡️"
+                    } for n in top_news
+                ],
+                "leading_stocks": [
+                    {
+                        "code": s['code'],
+                        "name": s['name'],
+                        "weight": s['weight']
+                    } for s in leading_stocks
+                ]
+            }
+            summary.append(summary_item)
+        
+        # 6. 导出结果
+        print("💾 Step 6: 导出结果...")
         output = {
             "generated_at": datetime.now().isoformat(),
             "total_sectors": len(hot_spots),
+            "summary": summary,
             "hot_spots": hot_spots
         }
         
@@ -463,12 +511,30 @@ class XiFengSkill:
         print(f"   板块数: {len(hot_spots)}")
         print()
         
+        # 显示核心汇总
+        print("=" * 60)
+        print("📊 核心汇总")
+        print("=" * 60)
+        for item in summary:
+            icon = "🔥" if item['level'] == "High" else "📈" if item['level'] == "Medium" else "📉"
+            print(f"\n{icon} {item['sector']} (热度: {item['heat_score']})")
+            print(f"   提及: {item['today_count']}次 | 情感: {item['sentiment']:+.2f}")
+            
+            print(f"   热门新闻:")
+            for news in item['top_news']:
+                print(f"     {news['sentiment']} {news['title']}... ({news['source']})")
+            
+            print(f"   影响股票:")
+            for stock in item['leading_stocks']:
+                print(f"     • {stock['code']} {stock['name']} (权重{stock['weight']})")
+        
+        print("\n" + "=" * 60)
+        
         # 总结
         high_count = sum(1 for s in hot_spots if s['level'] == "High")
         medium_count = sum(1 for s in hot_spots if s['level'] == "Medium")
         
-        print("=" * 60)
-        print("📋 分析完成")
+        print("📋 统计")
         print("=" * 60)
         print(f"   新闻总数: {len(news_list)}")
         print(f"   热点板块: {high_count} 个 🔥")

@@ -1,6 +1,126 @@
 {
-  "generated_at": "2026-03-09T08:12:27.245370",
+  "generated_at": "2026-03-09T08:47:40.170339",
   "total_sectors": 3,
+  "summary": [
+    {
+      "sector": "房地产",
+      "heat_score": 50.0,
+      "level": "Medium",
+      "today_count": 94,
+      "sentiment": 0.0,
+      "top_news": [
+        {
+          "title": "来伊份：控股股东爱屋企管质押910万股，占总股本的2.72%",
+          "source": "东方财富",
+          "sentiment": "➡️"
+        },
+        {
+          "title": "今日38只个股突破年线",
+          "source": "东方财富",
+          "sentiment": "📈"
+        },
+        {
+          "title": "【盘中播报】44只股长线走稳 站上年线",
+          "source": "东方财富",
+          "sentiment": "➡️"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "000002",
+          "name": "万科A",
+          "weight": 10
+        },
+        {
+          "code": "600048",
+          "name": "保利发展",
+          "weight": 9
+        },
+        {
+          "code": "001979",
+          "name": "招商蛇口",
+          "weight": 8
+        }
+      ]
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 28.4,
+      "level": "Low",
+      "today_count": 14,
+      "sentiment": 0.0,
+      "top_news": [
+        {
+          "title": "",
+          "source": "财联社",
+          "sentiment": "➡️"
+        },
+        {
+          "title": "",
+          "source": "财联社",
+          "sentiment": "➡️"
+        },
+        {
+          "title": "",
+          "source": "财联社",
+          "sentiment": "➡️"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300033",
+          "name": "同花顺",
+          "weight": 10
+        },
+        {
+          "code": "002230",
+          "name": "科大讯飞",
+          "weight": 9
+        },
+        {
+          "code": "603019",
+          "name": "中科曙光",
+          "weight": 8
+        }
+      ]
+    },
+    {
+      "sector": "新能源",
+      "heat_score": 22.7,
+      "level": "Low",
+      "today_count": 2,
+      "sentiment": 0.15,
+      "top_news": [
+        {
+          "title": "",
+          "source": "财联社",
+          "sentiment": "➡️"
+        },
+        {
+          "title": "",
+          "source": "财联社",
+          "sentiment": "📈"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300750",
+          "name": "宁德时代",
+          "weight": 10
+        },
+        {
+          "code": "002594",
+          "name": "比亚迪",
+          "weight": 9
+        },
+        {
+          "code": "601012",
+          "name": "隆基绿能",
+          "weight": 8
+        }
+      ]
+    }
+  ],
   "hot_spots": [
     {
       "sector": "房地产",
