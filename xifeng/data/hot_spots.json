@@ -1,75 +1,35 @@
 {
-  "generated_at": "2026-03-09T06:25:13.221086",
-  "total_sectors": 7,
+  "generated_at": "2026-03-09T08:12:27.245370",
+  "total_sectors": 3,
   "hot_spots": [
     {
       "sector": "房地产",
-      "heat_score": 50.6,
+      "heat_score": 50.0,
       "level": "Medium",
-      "today_count": 59,
-      "avg_count": 59.0,
+      "today_count": 94,
+      "avg_count": 94.0,
       "momentum": 1.0,
-      "sentiment": 0.06,
+      "sentiment": 0.0,
       "breakout_coefficient": 1.0
     },
     {
       "sector": "人工智能",
-      "heat_score": 27.1,
+      "heat_score": 28.4,
       "level": "Low",
-      "today_count": 11,
-      "avg_count": 11.0,
+      "today_count": 14,
+      "avg_count": 14.0,
       "momentum": 1.0,
-      "sentiment": 0.05,
-      "breakout_coefficient": 1.0
-    },
-    {
-      "sector": "医药",
-      "heat_score": 25.2,
-      "level": "Low",
-      "today_count": 8,
-      "avg_count": 8.0,
-      "momentum": 1.0,
-      "sentiment": 0.04,
-      "breakout_coefficient": 1.0
-    },
-    {
-      "sector": "半导体",
-      "heat_score": 24.6,
-      "level": "Low",
-      "today_count": 7,
-      "avg_count": 7.0,
-      "momentum": 1.0,
-      "sentiment": 0.04,
-      "breakout_coefficient": 1.0
-    },
-    {
-      "sector": "机器人",
-      "heat_score": 24.6,
-      "level": "Low",
-      "today_count": 7,
-      "avg_count": 7.0,
-      "momentum": 1.0,
-      "sentiment": 0.04,
-      "breakout_coefficient": 1.0
-    },
-    {
-      "sector": "汽车",
-      "heat_score": 23.1,
-      "level": "Low",
-      "today_count": 4,
-      "avg_count": 4.0,
-      "momentum": 1.0,
-      "sentiment": 0.07,
+      "sentiment": 0.0,
       "breakout_coefficient": 1.0
     },
     {
       "sector": "新能源",
-      "heat_score": 22.4,
+      "heat_score": 22.7,
       "level": "Low",
-      "today_count": 4,
-      "avg_count": 4.0,
+      "today_count": 2,
+      "avg_count": 2.0,
       "momentum": 1.0,
-      "sentiment": 0.0,
+      "sentiment": 0.15,
       "breakout_coefficient": 1.0
     }
   ]

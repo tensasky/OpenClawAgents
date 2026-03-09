@@ -16,8 +16,8 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Optional, Tuple
 from pathlib import Path
 
-# 导入真实感新闻生成器
-from realistic_news import fetch_realistic_news
+# 导入真实新闻抓取器
+from real_news_fetcher import fetch_real_news
 
 # 配置路径
 SKILL_DIR = Path(__file__).parent
@@ -27,7 +27,10 @@ DATA_DIR.mkdir(exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
 
 # 加载配置
-with open(SKILL_DIR / "config.json") as f:
+CONFIG_PATH = SKILL_DIR / "config" / "config.json"
+if not CONFIG_PATH.exists():
+    CONFIG_PATH = SKILL_DIR / "config.json"
+with open(CONFIG_PATH) as f:
     CONFIG = json.load(f)
 
 
@@ -225,9 +228,9 @@ class RSSFetcher:
     
     def fetch_all(self) -> List[Dict]:
         """抓取所有源"""
-        # 使用真实感新闻生成器
-        all_news = fetch_realistic_news(100)
-        print(f"  财经快讯: {len(all_news)} 条")
+        # 使用真实新闻抓取器
+        all_news = fetch_real_news()
+        print(f"  真实财经新闻: {len(all_news)} 条")
         return all_news
 
 
