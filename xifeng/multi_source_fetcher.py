@@ -140,6 +140,76 @@ class MultiSourceFetcher:
         
         return news_list
     
+    def fetch_xueqiu(self) -> List[Dict]:
+        """雪球热帖"""
+        news_list = []
+        
+        try:
+            self._rate_limit(1.0)
+            
+            # 雪球热帖API
+            url = "https://xueqiu.com/statuses/hot.json"
+            
+            response = self.session.get(url, timeout=10)
+            data = response.json()
+            
+            if 'statuses' in data:
+                for item in data['statuses'][:20]:
+                    title = item.get('title', '') or item.get('description', '')[:50]
+                    if title and self._add_news(title, "", "雪球"):
+                        news_list.append({
+                            'title': title,
+                            'content': item.get('description', ''),
+                            'source': '雪球',
+                            'url': f"https://xueqiu.com{item.get('target', '')}",
+                            'time': item.get('created_at', '')
+                        })
+            
+            print(f"  雪球: {len(news_list)} 条")
+            
+        except Exception as e:
+            print(f"  雪球失败: {e}")
+        
+        return news_list
+    
+    def fetch_tencent(self) -> List[Dict]:
+        """腾讯财经"""
+        news_list = []
+        
+        try:
+            self._rate_limit(1.0)
+            
+            # 腾讯财经新闻
+            url = "https://i.news.qq.com/trpc.qqnews_web.kv_srv.kv_srv_http_proxy/list"
+            params = {
+                'sub_srv_id': '24hours',
+                'srv_id': 'pc',
+                'limit': 30,
+                'page': 1
+            }
+            
+            response = self.session.get(url, params=params, timeout=10)
+            data = response.json()
+            
+            if data and 'data' in data and isinstance(data['data'], dict) and 'list' in data['data']:
+                for item in data['data']['list']:
+                    title = item.get('title', '')
+                    if title and self._add_news(title, "", "腾讯财经"):
+                        news_list.append({
+                            'title': title,
+                            'content': item.get('abstract', ''),
+                            'source': '腾讯财经',
+                            'url': item.get('url', ''),
+                            'time': item.get('publish_time', '')
+                        })
+            
+            print(f"  腾讯财经: {len(news_list)} 条")
+            
+        except Exception as e:
+            print(f"  腾讯财经失败: {e}")
+        
+        return news_list
+    
     def fetch_10jqka(self) -> List[Dict]:
         """同花顺财经"""
         news_list = []
@@ -147,13 +217,25 @@ class MultiSourceFetcher:
         try:
             self._rate_limit(1.0)
             
-            # 同花顺财经新闻
-            url = "http://basic.10jqka.com.cn/api/stockph/"
+            # 同花顺7x24快讯
+            url = "http://news.10jqka.com.cn/tapp/news/push/stock/"
             
             response = self.session.get(url, timeout=10)
-            # 解析返回数据
+            data = response.json()
             
-            print(f"  同花顺: 0 条 (接口需调整)")
+            if 'data' in data and 'list' in data['data']:
+                for item in data['data']['list']:
+                    title = item.get('title', '')
+                    if title and self._add_news(title, "", "同花顺"):
+                        news_list.append({
+                            'title': title,
+                            'content': item.get('content', ''),
+                            'source': '同花顺',
+                            'url': item.get('url', ''),
+                            'time': item.get('time', '')
+                        })
+            
+            print(f"  同花顺: {len(news_list)} 条")
             
         except Exception as e:
             print(f"  同花顺失败: {e}")
@@ -176,8 +258,14 @@ class MultiSourceFetcher:
         # 数据源3: 新浪财经
         all_news.extend(self.fetch_sina_finance())
         
-        # 数据源4: 同花顺（待完善）
-        # all_news.extend(self.fetch_10jqka())
+        # 数据源4: 雪球
+        all_news.extend(self.fetch_xueqiu())
+        
+        # 数据源5: 腾讯财经
+        all_news.extend(self.fetch_tencent())
+        
+        # 数据源6: 同花顺
+        all_news.extend(self.fetch_10jqka())
         
         print("-" * 60)
         print(f"📊 总计: {len(all_news)} 条（已去重）")

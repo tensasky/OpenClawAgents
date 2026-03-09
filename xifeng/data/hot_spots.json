@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-09T09:17:01.372409",
+  "generated_at": "2026-03-09T11:59:52.658859",
   "total_sectors": 1,
   "summary": [
     {
       "sector": "房地产",
-      "heat_score": 44.1,
+      "heat_score": 50.2,
       "level": "Medium",
-      "today_count": 40,
-      "sentiment": 0.01,
+      "today_count": 60,
+      "sentiment": 0.03,
       "top_news": [
         {
           "title": "来伊份：控股股东爱屋企管质押910万股，占总股本的2.72%",
@@ -47,12 +47,12 @@
   "hot_spots": [
     {
       "sector": "房地产",
-      "heat_score": 44.1,
+      "heat_score": 50.2,
       "level": "Medium",
-      "today_count": 40,
-      "avg_count": 40.0,
+      "today_count": 60,
+      "avg_count": 60.0,
       "momentum": 1.0,
-      "sentiment": 0.01,
+      "sentiment": 0.03,
       "breakout_coefficient": 1.0
     }
   ]
