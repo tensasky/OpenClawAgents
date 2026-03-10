@@ -1,14 +1,128 @@
 {
-  "generated_at": "2026-03-10T17:36:58.285625",
+  "generated_at": "2026-03-11T00:08:14.366324",
   "total_news": 60,
-  "total_sectors": 9,
+  "total_sectors": 10,
   "summary": [
     {
-      "sector": "医药",
+      "sector": "金融",
       "heat_score": 70,
       "level": "High",
       "news_count": 6,
       "today_count": 6,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "2月房屋销售有所改善，但抵押贷款利率上升或威胁这一进展",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnue6110726.shtml",
+          "time": "1773155063"
+        },
+        {
+          "title": "德意志银行上调欧美科技板块评级，将软件板块评为“超配”",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnui9896161.shtml",
+          "time": "1773153214"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 70,
+      "level": "High",
+      "news_count": 6,
+      "today_count": 6,
+      "top_news": [
+        {
+          "title": "亚马逊计划召开内部“深度剖析”会议，以解决与人工智能相关的宕机问题",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqptaf9801137.shtml",
+          "time": "1773158515"
+        },
+        {
+          "title": "Meta收购AI智能体社交平台Moltbook",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnum6115753.shtml",
+          "time": "1773154806"
+        },
+        {
+          "title": "Meta收购人工智能代理社交网络Moltbook",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnue6105676.shtml",
+          "time": "1773154354"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300033",
+          "name": "同花顺",
+          "weight": 10
+        },
+        {
+          "code": "002230",
+          "name": "科大讯飞",
+          "weight": 9
+        },
+        {
+          "code": "603019",
+          "name": "中科曙光",
+          "weight": 8
+        },
+        {
+          "code": "000938",
+          "name": "中芯国际",
+          "weight": 8
+        },
+        {
+          "code": "300474",
+          "name": "景嘉微",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "医药",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -56,120 +170,6 @@
         {
           "code": "000538",
           "name": "云南白药",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "人工智能",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
-      "top_news": [
-        {
-          "title": "英伟达将推出类OpenClaw AI智能体平台",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpaer6203539.shtml",
-          "time": "1773134589"
-        },
-        {
-          "title": "OpenAI放弃甲骨文阿比林星门项目扩建的真实原因",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpaen3225069.shtml",
-          "time": "1773134074"
-        },
-        {
-          "title": "OpenAI的IPO愿景遭遇投资者质疑",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqnvwt6321657.shtml",
-          "time": "1773133778"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "300033",
-          "name": "同花顺",
-          "weight": 10
-        },
-        {
-          "code": "002230",
-          "name": "科大讯飞",
-          "weight": 9
-        },
-        {
-          "code": "603019",
-          "name": "中科曙光",
-          "weight": 8
-        },
-        {
-          "code": "000938",
-          "name": "中芯国际",
-          "weight": 8
-        },
-        {
-          "code": "300474",
-          "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "金融",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "华源证券：维持和黄医药“买入”评级 ATTC平台管线潜力可期",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-10/doc-inhqpaen3233390.shtml",
-          "time": "1773134705"
-        },
-        {
-          "title": "花旗：降六福集团目标价至32.8港元 毛利率展望或转弱",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-10/doc-inhqpaen3230212.shtml",
-          "time": "1773134441"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -232,58 +232,51 @@
       ]
     },
     {
-      "sector": "汽车",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "sector": "新能源",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "大众汽车下调利润预期，同时对地缘政治不确定性发出预警",
+          "title": "荣耀Magic V6发布：折叠屏进入7000+mAh大电池时代，售价8999元起",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqnvwq3346084.shtml",
-          "time": "1773133169"
+          "url": "https://finance.sina.com.cn/tech/2026-03-11/doc-inhqptaa6001129.shtml",
+          "time": "1773158673"
         },
         {
-          "title": "分析：大众汽车的预期反映了地缘政治的不确定性",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqnvwt6312468.shtml",
-          "time": "1773133045"
-        },
-        {
-          "title": "安凯客车：2月产量671辆、销量598辆",
+          "title": "博雷顿与广州发展新能源集团签约，将合作矿山光储一体化、海外新能源开发",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260310/c675193460.shtml",
+          "url": "https://news.10jqka.com.cn/20260311/c675202006.shtml",
           "time": ""
         }
       ],
       "leading_stocks": [
         {
-          "code": "002594",
-          "name": "比亚迪",
+          "code": "300750",
+          "name": "宁德时代",
           "weight": 10
         },
         {
-          "code": "601127",
-          "name": "赛力斯",
+          "code": "002594",
+          "name": "比亚迪",
+          "weight": 9
+        },
+        {
+          "code": "601012",
+          "name": "隆基绿能",
           "weight": 8
         },
         {
-          "code": "000625",
-          "name": "长安汽车",
+          "code": "300014",
+          "name": "亿纬锂能",
           "weight": 7
         },
         {
-          "code": "600104",
-          "name": "上汽集团",
-          "weight": 7
-        },
-        {
-          "code": "601633",
-          "name": "长城汽车",
+          "code": "002459",
+          "name": "晶澳科技",
           "weight": 7
         }
       ]
@@ -291,11 +284,125 @@
   ],
   "hot_spots": [
     {
-      "sector": "医药",
+      "sector": "金融",
       "heat_score": 70,
       "level": "High",
       "news_count": 6,
       "today_count": 6,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "2月房屋销售有所改善，但抵押贷款利率上升或威胁这一进展",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnue6110726.shtml",
+          "time": "1773155063"
+        },
+        {
+          "title": "德意志银行上调欧美科技板块评级，将软件板块评为“超配”",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnui9896161.shtml",
+          "time": "1773153214"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 70,
+      "level": "High",
+      "news_count": 6,
+      "today_count": 6,
+      "top_news": [
+        {
+          "title": "亚马逊计划召开内部“深度剖析”会议，以解决与人工智能相关的宕机问题",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqptaf9801137.shtml",
+          "time": "1773158515"
+        },
+        {
+          "title": "Meta收购AI智能体社交平台Moltbook",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnum6115753.shtml",
+          "time": "1773154806"
+        },
+        {
+          "title": "Meta收购人工智能代理社交网络Moltbook",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnue6105676.shtml",
+          "time": "1773154354"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300033",
+          "name": "同花顺",
+          "weight": 10
+        },
+        {
+          "code": "002230",
+          "name": "科大讯飞",
+          "weight": 9
+        },
+        {
+          "code": "603019",
+          "name": "中科曙光",
+          "weight": 8
+        },
+        {
+          "code": "000938",
+          "name": "中芯国际",
+          "weight": 8
+        },
+        {
+          "code": "300474",
+          "name": "景嘉微",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "医药",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -343,120 +450,6 @@
         {
           "code": "000538",
           "name": "云南白药",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "人工智能",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
-      "top_news": [
-        {
-          "title": "英伟达将推出类OpenClaw AI智能体平台",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpaer6203539.shtml",
-          "time": "1773134589"
-        },
-        {
-          "title": "OpenAI放弃甲骨文阿比林星门项目扩建的真实原因",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpaen3225069.shtml",
-          "time": "1773134074"
-        },
-        {
-          "title": "OpenAI的IPO愿景遭遇投资者质疑",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqnvwt6321657.shtml",
-          "time": "1773133778"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "300033",
-          "name": "同花顺",
-          "weight": 10
-        },
-        {
-          "code": "002230",
-          "name": "科大讯飞",
-          "weight": 9
-        },
-        {
-          "code": "603019",
-          "name": "中科曙光",
-          "weight": 8
-        },
-        {
-          "code": "000938",
-          "name": "中芯国际",
-          "weight": 8
-        },
-        {
-          "code": "300474",
-          "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "金融",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "华源证券：维持和黄医药“买入”评级 ATTC平台管线潜力可期",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-10/doc-inhqpaen3233390.shtml",
-          "time": "1773134705"
-        },
-        {
-          "title": "花旗：降六福集团目标价至32.8港元 毛利率展望或转弱",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-10/doc-inhqpaen3230212.shtml",
-          "time": "1773134441"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -519,32 +512,125 @@
       ]
     },
     {
-      "sector": "汽车",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "sector": "新能源",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "大众汽车下调利润预期，同时对地缘政治不确定性发出预警",
+          "title": "荣耀Magic V6发布：折叠屏进入7000+mAh大电池时代，售价8999元起",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqnvwq3346084.shtml",
-          "time": "1773133169"
+          "url": "https://finance.sina.com.cn/tech/2026-03-11/doc-inhqptaa6001129.shtml",
+          "time": "1773158673"
         },
         {
-          "title": "分析：大众汽车的预期反映了地缘政治的不确定性",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqnvwt6312468.shtml",
-          "time": "1773133045"
-        },
-        {
-          "title": "安凯客车：2月产量671辆、销量598辆",
+          "title": "博雷顿与广州发展新能源集团签约，将合作矿山光储一体化、海外新能源开发",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260310/c675193460.shtml",
+          "url": "https://news.10jqka.com.cn/20260311/c675202006.shtml",
           "time": ""
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300750",
+          "name": "宁德时代",
+          "weight": 10
+        },
+        {
+          "code": "002594",
+          "name": "比亚迪",
+          "weight": 9
+        },
+        {
+          "code": "601012",
+          "name": "隆基绿能",
+          "weight": 8
+        },
+        {
+          "code": "300014",
+          "name": "亿纬锂能",
+          "weight": 7
+        },
+        {
+          "code": "002459",
+          "name": "晶澳科技",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "半导体",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "马斯克称X Money将于下月开启早期公开测试",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnue6129727.shtml",
+          "time": "1773158348"
+        },
+        {
+          "title": "金价在5200美元关口测试阻力",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnuh3115412.shtml",
+          "time": "1773152673"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "688981",
+          "name": "中芯国际",
+          "weight": 10
+        },
+        {
+          "code": "603501",
+          "name": "韦尔股份",
+          "weight": 8
+        },
+        {
+          "code": "002371",
+          "name": "北方华创",
+          "weight": 8
+        },
+        {
+          "code": "688012",
+          "name": "中微公司",
+          "weight": 7
+        },
+        {
+          "code": "300782",
+          "name": "卓胜微",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "美国二手房销量增长 负担能力改善",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-10/doc-inhqpnue6123643.shtml",
+          "time": "1773157200"
+        },
+        {
+          "title": "美国2月份成屋销量意外上升",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnum6097248.shtml",
+          "time": "1773152360"
         }
       ],
       "leading_stocks": [
@@ -583,18 +669,18 @@
       "today_count": 2,
       "top_news": [
         {
-          "title": "乐高销售额超越全球玩具市场，创下历史新高",
+          "title": "2月房屋销售有所改善，但抵押贷款利率上升或威胁这一进展",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpaek6198340.shtml",
-          "time": "1773134747"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnue6110726.shtml",
+          "time": "1773155063"
         },
         {
-          "title": "受AI需求持续拉动 台积电今年前两个月销售额增长30%",
+          "title": "美国2月二手房销售意外增长",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqnvwt6314406.shtml",
-          "time": "1773133212"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-10/doc-inhqpnui9902001.shtml",
+          "time": "1773154013"
         }
       ],
       "leading_stocks": [
@@ -622,56 +708,6 @@
           "code": "000069",
           "name": "华侨城A",
           "weight": 6
-        }
-      ]
-    },
-    {
-      "sector": "有色",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "光大期货0310热点追踪：油价暴跌，黄金却反弹了？市场在交易什么新逻辑？",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/nmetal/hjzx/2026-03-10/doc-inhqpaer6196846.shtml",
-          "time": "1773134127"
-        },
-        {
-          "title": "美原油回落，黄金反弹受限，谨防地缘局势反复",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/nmetal/hjzx/2026-03-10/doc-inhqnvwt6313660.shtml",
-          "time": "1773133020"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601899",
-          "name": "紫金矿业",
-          "weight": 10
-        },
-        {
-          "code": "603993",
-          "name": "洛阳钼业",
-          "weight": 8
-        },
-        {
-          "code": "600362",
-          "name": "江西铜业",
-          "weight": 7
-        },
-        {
-          "code": "002460",
-          "name": "赣锋锂业",
-          "weight": 8
-        },
-        {
-          "code": "600111",
-          "name": "北方稀土",
-          "weight": 7
         }
       ]
     }

@@ -46,6 +46,33 @@ logger = logging.getLogger("发财")
 # 初始资金
 INITIAL_CAPITAL = 100000.00
 MAX_POSITION_PCT = 0.50  # 单只股票最大50%
+SELL_FEE_RATE = 0.0003  # 卖出手续费万分之三
+
+
+def is_trading_time() -> bool:
+    """检查当前是否为可交易时间（排除集合竞价 9:15-9:25）"""
+    now = datetime.now()
+    hour = now.hour
+    minute = now.minute
+    time_val = hour * 100 + minute
+    
+    # 上午交易时间：9:30-11:30
+    # 下午交易时间：13:00-15:00
+    # 排除集合竞价：9:15-9:25
+    if 930 <= time_val <= 1130:
+        return True
+    if 1300 <= time_val <= 1500:
+        return True
+    return False
+
+
+def is_auction_time() -> bool:
+    """检查是否为集合竞价时间（9:15-9:25）"""
+    now = datetime.now()
+    hour = now.hour
+    minute = now.minute
+    time_val = hour * 100 + minute
+    return 915 <= time_val <= 925
 
 
 @dataclass
@@ -105,6 +132,7 @@ class PortfolioManager:
                 price REAL,
                 quantity INTEGER,
                 total_amount REAL,
+                fee REAL DEFAULT 0,
                 logic TEXT,
                 total_assets REAL,
                 cash_balance REAL
@@ -181,6 +209,15 @@ class PortfolioManager:
     def buy(self, symbol: str, name: str, price: float, score: float, 
             sector: str, sector_heat: str, signals: List[str]) -> bool:
         """执行买入"""
+        # 检查交易时间
+        if is_auction_time():
+            logger.warning(f"集合竞价时间(9:15-9:25)不能买入 {symbol}")
+            return False
+        
+        if not is_trading_time():
+            logger.warning(f"非交易时间不能买入 {symbol}")
+            return False
+        
         conn = sqlite3.connect(PORTFOLIO_DB)
         cursor = conn.cursor()
         
@@ -252,7 +289,16 @@ class PortfolioManager:
             conn.close()
     
     def sell(self, symbol: str, price: float, reason: str) -> bool:
-        """执行卖出"""
+        """执行卖出（含手续费）"""
+        # 检查交易时间
+        if is_auction_time():
+            logger.warning(f"集合竞价时间(9:15-9:25)不能卖出 {symbol}")
+            return False
+        
+        if not is_trading_time():
+            logger.warning(f"非交易时间不能卖出 {symbol}")
+            return False
+        
         conn = sqlite3.connect(PORTFOLIO_DB)
         cursor = conn.cursor()
         
@@ -263,18 +309,27 @@ class PortfolioManager:
                 return False
             
             quantity = position.quantity
-            total_amount = quantity * price
-            profit = (price - position.avg_price) * quantity
-            profit_pct = (price / position.avg_price - 1) * 100
+            gross_amount = quantity * price
+            
+            # 计算手续费（万分之三）
+            fee = gross_amount * SELL_FEE_RATE
+            net_amount = gross_amount - fee
+            
+            # 计算盈亏（扣除手续费）
+            cost = position.avg_price * quantity
+            gross_profit = gross_amount - cost
+            net_profit = net_amount - cost
+            profit_pct = (net_amount / cost - 1) * 100
             
             # 删除持仓
             cursor.execute("DELETE FROM positions WHERE symbol = ?", (symbol,))
             
             # 更新资金
             account = self.get_account()
-            new_cash = account['cash_balance'] + total_amount
-            new_assets = new_cash  # 卖出后总资产=现金+持仓市值（持仓已清）
+            new_cash = account['cash_balance'] + net_amount
             
+            # 计算新总资产
+            new_assets = new_cash
             for pos in self.get_positions():
                 if pos.symbol != symbol:
                     new_assets += pos.quantity * pos.current_price
@@ -282,15 +337,16 @@ class PortfolioManager:
             cursor.execute("UPDATE account SET cash_balance = ?, total_assets = ?, updated_at = ? WHERE id = 1",
                           (new_cash, new_assets, datetime.now().isoformat()))
             
-            # 记录交易
+            # 记录交易（包含手续费）
             cursor.execute("""
-                INSERT INTO trades (action, symbol, name, price, quantity, total_amount, logic, total_assets, cash_balance)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """, ('SELL', symbol, position.name, price, quantity, total_amount,
-                  reason, new_assets, new_cash))
+                INSERT INTO trades (action, symbol, name, price, quantity, total_amount, fee, logic, total_assets, cash_balance)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, ('SELL', symbol, position.name, price, quantity, net_amount, fee,
+                  f"{reason}，手续费¥{fee:.2f}", new_assets, new_cash))
             
             conn.commit()
-            logger.info(f"💰 卖出成功: {symbol}({position.name}) {quantity}股 @ ¥{price}，盈亏{profit:+.2f}({profit_pct:+.2f}%)，原因:{reason}")
+            logger.info(f"💰 卖出成功: {symbol}({position.name}) {quantity}股 @ ¥{price}，"
+                       f"毛盈亏{gross_profit:+.2f}，手续费¥{fee:.2f}，净盈亏{net_profit:+.2f}({profit_pct:+.2f}%)，原因:{reason}")
             return True
             
         except Exception as e:

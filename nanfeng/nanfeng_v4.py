@@ -22,13 +22,30 @@ from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass
 
-sys.path.insert(0, '/Users/roberto/.openclaw/agents/beifeng')
-from storage_v2 import StorageV2
+# 移除对 storage_v2 的依赖，直接使用 SQLite
+BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("南风V4")
 
 BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
+
+
+class StorageV2:
+    """简化版存储接口"""
+    def __init__(self):
+        self.db_path = BEIFENG_DB
+    
+    def initialize(self):
+        pass
+    
+    def get_all_stocks(self):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        cursor.execute("SELECT code, name FROM stocks")
+        stocks = cursor.fetchall()
+        conn.close()
+        return [{'code': row[0], 'name': row[1]} for row in stocks]
 
 
 @dataclass
