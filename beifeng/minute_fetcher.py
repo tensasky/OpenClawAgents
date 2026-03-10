@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 from pathlib import Path
 
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
 
 class MinuteDataFetcher:

@@ -9,7 +9,7 @@ import json
 import re
 from pathlib import Path
 
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
 def fetch_all_stocks():
     """从腾讯财经获取全部 A 股"""

@@ -28,7 +28,7 @@ from storage_v2 import StorageV2
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("南风V4")
 
-BEIFENG_DB = Path("/Users/roberto/.openclaw/agents/beifeng/data/stocks_v2.db")
+BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
 
 
 @dataclass

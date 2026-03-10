@@ -20,7 +20,7 @@ from typing import List, Dict, Optional
 import subprocess
 
 # 配置
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 DATA_DIR = WORKSPACE / "data"
 LOG_DIR = WORKSPACE / "logs"
 STATE_FILE = WORKSPACE / ".monitor_state.json"

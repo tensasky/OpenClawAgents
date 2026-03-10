@@ -6,7 +6,7 @@
 import json
 from pathlib import Path
 
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
 def get_top100_stocks():
     """核心100只：指数+蓝筹+热门"""

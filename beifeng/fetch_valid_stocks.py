@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 from typing import List, Set
 
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
 def verify_stock_batch(codes: List[str]) -> List[dict]:
     """验证一批股票代码是否有效"""

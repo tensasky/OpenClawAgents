@@ -7,7 +7,7 @@
 import json
 from pathlib import Path
 
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
 def get_extended_stocks():
     """获取扩展股票列表"""

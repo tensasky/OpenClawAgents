@@ -30,7 +30,7 @@ WORKSPACE = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng")
 DATA_DIR = WORKSPACE / "data"
 LOG_DIR = WORKSPACE / "logs"
 SIGNAL_DIR = WORKSPACE / "signals"
-BEIFENG_DB = Path("/Users/roberto/.openclaw/agents/beifeng/data/stocks_v2.db")
+BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
 
 # 添加北风路径
 sys.path.insert(0, str(Path("/Users/roberto/.openclaw/agents/beifeng")))

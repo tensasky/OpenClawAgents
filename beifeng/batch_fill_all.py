@@ -11,7 +11,7 @@ import sqlite3
 from datetime import datetime
 from pathlib import Path
 
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 BATCH_SIZE = 3  # 每批3只，避免请求过快
 DELAY_BETWEEN_BATCHES = 5  # 批次间隔5秒
 

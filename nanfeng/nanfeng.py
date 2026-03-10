@@ -20,7 +20,7 @@ from dataclasses import dataclass
 WORKSPACE = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng")
 DATA_DIR = WORKSPACE / "data"
 LOG_DIR = WORKSPACE / "logs"
-BEIFENG_DB = Path("/Users/roberto/.openclaw/agents/beifeng/data/stocks.db")
+BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
 
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 LOG_DIR.mkdir(parents=True, exist_ok=True)

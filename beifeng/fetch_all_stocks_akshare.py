@@ -7,7 +7,7 @@ import akshare as ak
 import json
 from pathlib import Path
 
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
 def fetch_all_stocks():
     """使用 akshare 获取全部 A 股"""

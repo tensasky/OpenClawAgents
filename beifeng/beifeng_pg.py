@@ -18,7 +18,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 
 # 配置
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 DATA_DIR = WORKSPACE / "data"
 LOG_DIR = WORKSPACE / "logs"
 

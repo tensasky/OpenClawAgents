@@ -8,7 +8,7 @@
 import json
 from pathlib import Path
 
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
 def generate_core_stocks():
     """生成核心 A 股列表"""

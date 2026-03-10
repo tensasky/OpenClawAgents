@@ -55,7 +55,7 @@ def fetch_all_stocks():
             break
     
     # 保存到文件
-    output = Path.home() / ".openclaw/agents/beifeng/data/all_stocks.json"
+    output = Path.home() / "Documents/OpenClawAgents/beifeng/data/all_stocks.json"
     with open(output, 'w', encoding='utf-8') as f:
         json.dump(all_stocks, f, ensure_ascii=False, indent=2)
     

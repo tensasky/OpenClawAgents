@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 import time
 
-WORKSPACE = Path.home() / ".openclaw/agents/beifeng"
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 BATCH_SIZE = 5  # 每批处理5只，避免请求过快
 
 def load_stocks():

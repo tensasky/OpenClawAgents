@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 import psycopg2
 
-sys.path.insert(0, str(Path.home() / ".openclaw/agents/beifeng"))
+sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents/beifeng"))
 from beifeng_pg import BeiFengAgent, Database
 
 def import_stocks():
@@ -15,7 +15,7 @@ def import_stocks():
     db = Database()
     
     # 读取股票列表
-    stocks_file = Path.home() / ".openclaw/agents/beifeng/data/all_stocks.json"
+    stocks_file = Path.home() / "Documents/OpenClawAgents/beifeng/data/all_stocks.json"
     with open(stocks_file, 'r', encoding='utf-8') as f:
         stocks = json.load(f)
     
