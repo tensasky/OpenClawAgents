@@ -460,7 +460,7 @@ class HongzhongAlert:
         """生成预警消息"""
         time_str = datetime.now().strftime('%H:%M')
         
-        message = f"""🔔 [雀神量化预警] 收盘前决策建议 #{rank}
+        message = f"""🔔 [财神爷量化预警] 收盘前决策建议 #{rank}
 
 ● 推荐标的：{stock.name} ({stock.code})
 ● 综合评分：{stock.score}/10
