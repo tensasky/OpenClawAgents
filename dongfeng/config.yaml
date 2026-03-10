@@ -1,0 +1,39 @@
+# 东风 Agent 配置文件
+
+# 筛选参数
+screening:
+  # 最小振幅 (%)
+  min_amplitude: 3.0
+  
+  # 温和放量范围 (%)
+  volume_ratio:
+    min: 20
+    max: 100
+  
+  # 检查的历史天数
+  lookback_days: 10
+
+# 数据源
+data_source:
+  # 北风数据库路径
+  beifeng_db: "~/Documents/OpenClawAgents/beifeng/data/stocks.db"
+
+# 输出
+output:
+  # 股票池数据库路径
+  pool_db: "./data/stock_pool.db"
+  
+  # 日志目录
+  log_dir: "./logs"
+
+# 调度
+schedule:
+  # 每日扫描时间
+  scan_time: "15:30"  # 收盘后
+  
+# 通知
+notification:
+  # 发现新活跃股票时通知
+  on_new_active: true
+  # 股票移出池时通知
+  on_exit: true
