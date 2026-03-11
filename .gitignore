@@ -34,3 +34,6 @@ credentials.json
 
 # 但保留示例配置
 !config.example.ini
+*.db-shm
+*.db-wal
+*.backup.*
