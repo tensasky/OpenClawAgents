@@ -179,12 +179,14 @@ class NanfengV51API:
 
 
 class Notifier:
-    """多渠道通知器 - 30s超时，3次重试"""
+    """多渠道通知器 - Discord + QQ邮箱"""
     
     def __init__(self):
-        # 从环境变量或配置文件读取
+        # 从配置文件读取
         self.discord_webhook = self._load_config('discord_webhook', '')
-        self.feishu_webhook = self._load_config('feishu_webhook', '')
+        self.qq_email = self._load_config('qq_email', '')
+        self.qq_auth_code = self._load_config('qq_auth_code', '')
+        self.sender_name = self._load_config('sender_name', '财神爷')
     
     def _load_config(self, key: str, default: str) -> str:
         """从配置文件加载"""
@@ -226,50 +228,53 @@ class Notifier:
         logger.error("❌ Discord推送失败，已重试3次")
         return False
     
-    async def send_feishu(self, message: str) -> bool:
-        """飞书Webhook推送 - 30s超时，3次重试"""
-        if not self.feishu_webhook:
-            logger.warning("飞书webhook未配置，跳过")
+    async def send_email(self, message: str, subject: str = "量化预警") -> bool:
+        """QQ邮箱推送 - 30s超时，3次重试"""
+        if not self.qq_email or not self.qq_auth_code:
+            logger.warning("QQ邮箱未配置，跳过")
             return False
         
         for attempt in range(3):
             try:
-                timeout = aiohttp.ClientTimeout(total=30)
-                async with aiohttp.ClientSession(timeout=timeout) as session:
-                    payload = {
-                        "msg_type": "text",
-                        "content": {"text": message}
-                    }
-                    async with session.post(self.feishu_webhook, json=payload) as resp:
-                        result = await resp.json()
-                        if result.get('code') == 0:
-                            logger.info("✅ 飞书推送成功")
-                            return True
-                        else:
-                            logger.warning(f"飞书返回错误: {result}")
-            except asyncio.TimeoutError:
-                logger.warning(f"飞书超时 (尝试{attempt+1}/3)")
+                import smtplib
+                from email.mime.text import MIMEText
+                from email.header import Header
+                
+                # 创建邮件
+                msg = MIMEText(message, 'plain', 'utf-8')
+                msg['From'] = Header(self.sender_name, 'utf-8')
+                msg['To'] = Header(self.qq_email, 'utf-8')
+                msg['Subject'] = Header(subject, 'utf-8')
+                
+                # 发送邮件
+                server = smtplib.SMTP_SSL('smtp.qq.com', 465, timeout=30)
+                server.login(self.qq_email, self.qq_auth_code)
+                server.sendmail(self.qq_email, [self.qq_email], msg.as_string())
+                server.quit()
+                
+                logger.info("✅ 邮件推送成功")
+                return True
+                
             except Exception as e:
-                logger.warning(f"飞书失败 (尝试{attempt+1}/3): {e}")
-            
-            if attempt < 2:
-                await asyncio.sleep(1)
+                logger.warning(f"邮件发送失败 (尝试{attempt+1}/3): {e}")
+                if attempt < 2:
+                    await asyncio.sleep(1)
         
-        logger.error("❌ 飞书推送失败，已重试3次")
+        logger.error("❌ 邮件推送失败，已重试3次")
         return False
     
-    async def send_all(self, message: str):
-        """并发发送到所有渠道"""
+    async def send_all(self, message: str, subject: str = "量化预警"):
+        """并发发送到所有渠道 (Discord + QQ邮箱)"""
         tasks = [
             self.send_discord(message),
-            self.send_feishu(message)
+            self.send_email(message, subject)
         ]
         results = await asyncio.gather(*tasks, return_exceptions=True)
         
         discord_ok = results[0] if not isinstance(results[0], Exception) else False
-        feishu_ok = results[1] if not isinstance(results[1], Exception) else False
+        email_ok = results[1] if not isinstance(results[1], Exception) else False
         
-        return {'discord': discord_ok, 'feishu': feishu_ok}
+        return {'discord': discord_ok, 'email': email_ok}
 
 
 class HongzhongV2:
