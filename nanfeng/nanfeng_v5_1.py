@@ -541,14 +541,19 @@ class NanFengV5_1:
         signal.quality_score = quality_score
         
         # ========== 综合评分 ==========
-        total_score = (
+        # 原始加权分数 (0-100)
+        raw_score = (
             trend_score * self.weights['trend'] +
             momentum_score * self.weights['momentum'] +
             volume_score * self.weights['volume'] +
             quality_score * self.weights['quality']
         )
         
-        signal.total_score = round(total_score, 1)
+        # 转换为10分制
+        signal.total_score = round(raw_score / 10, 1)
+        
+        # 保存原始分数用于详细展示
+        signal.raw_score = round(raw_score, 1)
         signal.signals = signals
         signal.warnings = warnings
         

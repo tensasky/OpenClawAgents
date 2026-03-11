@@ -249,8 +249,8 @@ class Notifier:
         logger.error("❌ Discord推送失败，已重试3次")
         return False
     
-    async def send_email(self, message: str, subject: str = "量化预警") -> bool:
-        """QQ邮箱推送 - 支持多收件人"""
+    async def send_email(self, message: str, subject: str = "量化预警", html_content: str = None) -> bool:
+        """QQ邮箱推送 - 支持HTML格式和多收件人"""
         if not self.qq_email or not self.qq_auth_code:
             logger.warning("QQ邮箱未配置，跳过")
             return False
@@ -262,14 +262,21 @@ class Notifier:
             try:
                 import smtplib
                 from email.mime.text import MIMEText
+                from email.mime.multipart import MIMEMultipart
                 from email.header import Header
                 
                 # 创建邮件
-                msg = MIMEText(message, 'plain', 'utf-8')
-                # QQ邮箱SMTP要求From必须是纯邮箱地址
+                msg = MIMEMultipart('alternative')
                 msg['From'] = self.qq_email
                 msg['To'] = ', '.join(recipients)
                 msg['Subject'] = Header(subject, 'utf-8')
+                
+                # 添加纯文本内容
+                msg.attach(MIMEText(message, 'plain', 'utf-8'))
+                
+                # 如果有HTML内容，添加HTML版本
+                if html_content:
+                    msg.attach(MIMEText(html_content, 'html', 'utf-8'))
                 
                 # 发送邮件
                 server = smtplib.SMTP_SSL('smtp.qq.com', 465, timeout=30)
@@ -361,7 +368,7 @@ class HongzhongV2:
 ⏰ {time_str} | 红中🀄 | 策略:{strategy}
 """
     
-    async def run(self):
+    async def run(self, send_html_report: bool = False):
         """14:45 执行：获取精选信号并推送"""
         logger.info("=" * 60)
         logger.info("🀄 红中V2启动 - 14:45 预警 (集成南风V5.1)")
@@ -395,6 +402,75 @@ class HongzhongV2:
         logger.info("=" * 60)
         logger.info(f"🀄 预警完成: 推送 {len(signals)} 只股票")
         logger.info("=" * 60)
+    
+    async def run_multi_strategy(self, strategy_names: List[str] = None):
+        """多策略综合报告模式"""
+        if strategy_names is None:
+            strategy_names = ['趋势跟踪', '均值回归', '突破策略', '稳健增长', '热点追击']
+        
+        logger.info("=" * 60)
+        logger.info("🀄 红中V2 - 多策略综合报告")
+        logger.info("=" * 60)
+        
+        all_signals = []
+        market_msg = ""
+        
+        for strategy_name in strategy_names:
+            logger.info(f"\n🎯 运行策略: {strategy_name}")
+            
+            # 临时切换策略
+            self.nanfeng = NanfengV51API(strategy_name=strategy_name)
+            
+            signals = self.nanfeng.get_top_signals(max_signals=3)
+            if signals:
+                all_signals.append({
+                    'strategy_name': strategy_name,
+                    'strategy_config': signals[0].get('strategy_config', {}),
+                    'signals': signals
+                })
+                if not market_msg:
+                    market_msg = signals[0].get('market_msg', '')
+        
+        if not all_signals:
+            logger.warning("所有策略均无信号")
+            return
+        
+        # 生成HTML报告
+        try:
+            sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents/nanfeng"))
+            from html_report import generate_html_report
+            
+            html_content = generate_html_report(all_signals, market_msg)
+            
+            # 发送HTML邮件
+            subject = f"🎯 多策略量化选股报告 - {datetime.now().strftime('%m月%d日')}"
+            text_content = self._format_multi_strategy_text(all_signals)
+            
+            await self.notifier.send_email(text_content, subject, html_content)
+            logger.info("✅ HTML综合报告已发送")
+            
+        except Exception as e:
+            logger.error(f"发送HTML报告失败: {e}")
+    
+    def _format_multi_strategy_text(self, all_signals: List[Dict]) -> str:
+        """格式化多策略文本报告"""
+        text = f"""🎯 多策略量化选股报告
+{'='*60}
+生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M')}
+
+"""
+        for data in all_signals:
+            config = data['strategy_config']
+            text += f"\n【{data['strategy_name']}】{config.get('risk_level', '中等')}风险\n"
+            text += f"持有周期: {config.get('holding_period', '5-10天')}\n"
+            
+            for i, stock in enumerate(data['signals'], 1):
+                text += f"  {i}. {stock['code']} ({stock.get('name', '-')}) - {stock['score']:.1f}分\n"
+            
+            text += f"交易建议: {config.get('entry_timing', '')}\n"
+            text += "-" * 40 + "\n"
+        
+        return text
     
     async def _send_empty_alert(self):
         """发送空仓提醒"""
@@ -447,27 +523,32 @@ def main():
     parser.add_argument('--run', action='store_true', help='立即执行一次')
     parser.add_argument('--history', action='store_true', help='查看历史')
     parser.add_argument('--test', action='store_true', help='测试模式(不发送通知)')
-    parser.add_argument('--strategy', type=str, default='趋势跟踪', 
+    parser.add_argument('--strategy', type=str, default='趋势跟踪',
                        choices=['趋势跟踪', '均值回归', '突破策略', '稳健增长', '热点追击'],
                        help='选择量化策略')
     parser.add_argument('--list-strategies', action='store_true', help='列出所有策略')
-    
+    parser.add_argument('--multi-strategy', action='store_true', help='多策略综合HTML报告')
+
     args = parser.parse_args()
-    
+
     if args.list_strategies:
         print("\n📊 可用策略列表:")
         from strategy_config import list_strategies, format_strategy_info, STRATEGIES
         for name, desc in list_strategies().items():
             print(f"\n  • {name}: {desc}")
-        print("\n使用 --strategy 策略名 选择策略\n")
+        print("\n使用 --strategy 策略名 选择策略")
+        print("使用 --multi-strategy 发送多策略综合报告\n")
         return
-    
-    # 使用指定策略
+
     hongzhong = HongzhongV2()
-    hongzhong.nanfeng = NanfengV51API(strategy_name=args.strategy)
-    
-    if args.test:
+
+    if args.multi_strategy:
+        # 多策略综合报告模式
+        asyncio.run(hongzhong.run_multi_strategy())
+
+    elif args.test:
         # 测试模式：只获取信号，不发送通知
+        hongzhong.nanfeng = NanfengV51API(strategy_name=args.strategy)
         logger.info(f"🧪 测试模式 - 策略: {args.strategy}")
         signals = hongzhong.nanfeng.get_top_signals(max_signals=3)
         print(f"\n获取到 {len(signals)} 个信号:")
@@ -476,7 +557,7 @@ def main():
             print(f"  {s['code']}: {s['score']:.1f}分 {hot_tag}")
             print(f"    信号: {', '.join(s['signals'][:3])}")
             print(f"    警告: {', '.join(s['warnings'][:2])}")
-    
+
     elif args.history:
         if ALERT_LOG.exists():
             with open(ALERT_LOG, 'r', encoding='utf-8') as f:
