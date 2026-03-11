@@ -246,8 +246,9 @@ class Notifier:
                 
                 # 创建邮件
                 msg = MIMEText(message, 'plain', 'utf-8')
-                msg['From'] = Header(self.sender_name, 'utf-8')
-                msg['To'] = Header(', '.join(recipients), 'utf-8')
+                # QQ邮箱SMTP要求From必须是纯邮箱地址
+                msg['From'] = self.qq_email
+                msg['To'] = ', '.join(recipients)
                 msg['Subject'] = Header(subject, 'utf-8')
                 
                 # 发送邮件
