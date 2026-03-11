@@ -1,0 +1,1039 @@
+{
+  "backtest_date": "2026-03-11T07:52:13.943846",
+  "period": "30d",
+  "total_stocks": 100,
+  "results": [
+    {
+      "code": "sh000001",
+      "score": 10,
+      "signals": [],
+      "return": 0.5877631087764401,
+      "selected": true
+    },
+    {
+      "code": "sh000002",
+      "score": 10,
+      "signals": [],
+      "return": 0.5893713062496975,
+      "selected": true
+    },
+    {
+      "code": "sh000003",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(34)"
+      ],
+      "return": -0.6568822491648252,
+      "selected": true
+    },
+    {
+      "code": "sh000016",
+      "score": 10,
+      "signals": [],
+      "return": 1.3602033747839526,
+      "selected": true
+    },
+    {
+      "code": "sh000300",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(35)"
+      ],
+      "return": 0.1529430238836227,
+      "selected": true
+    },
+    {
+      "code": "sh000688",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(36)"
+      ],
+      "return": -2.035618023510144,
+      "selected": true
+    },
+    {
+      "code": "sh000905",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "MACD正值"
+      ],
+      "return": -0.7136914138834549,
+      "selected": true
+    },
+    {
+      "code": "sh600000",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上"
+      ],
+      "return": -2.309236947791171,
+      "selected": true
+    },
+    {
+      "code": "sh600004",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(38)"
+      ],
+      "return": 0.10952902519167917,
+      "selected": true
+    },
+    {
+      "code": "sh600006",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "RSI强势(54)",
+        "量能配合(1.2倍)"
+      ],
+      "return": -2.761627906976738,
+      "selected": true
+    },
+    {
+      "code": "sh600007",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(35)"
+      ],
+      "return": 0.7035175879396949,
+      "selected": true
+    },
+    {
+      "code": "sh600008",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(43)"
+      ],
+      "return": -0.31645569620254443,
+      "selected": true
+    },
+    {
+      "code": "sh600009",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(35)"
+      ],
+      "return": 1.7687074829932037,
+      "selected": true
+    },
+    {
+      "code": "sh600010",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值"
+      ],
+      "return": -0.660066006600657,
+      "selected": true
+    },
+    {
+      "code": "sh600011",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI强势(66)"
+      ],
+      "return": -1.196808510638292,
+      "selected": true
+    },
+    {
+      "code": "sh600012",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(44)",
+        "温和放量(1.2倍)"
+      ],
+      "return": 1.5950069348127593,
+      "selected": true
+    },
+    {
+      "code": "sh600015",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值"
+      ],
+      "return": -1.8786127167630062,
+      "selected": true
+    },
+    {
+      "code": "sh600016",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(48)",
+        "量能配合(1.2倍)"
+      ],
+      "return": -0.5076142131979711,
+      "selected": true
+    },
+    {
+      "code": "sh600017",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(36)"
+      ],
+      "return": 1.5723270440251458,
+      "selected": true
+    },
+    {
+      "code": "sh600018",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "RSI中性(47)"
+      ],
+      "return": 1.5655577299412915,
+      "selected": true
+    },
+    {
+      "code": "sh600019",
+      "score": 10,
+      "signals": [
+        "量能配合(1.1倍)"
+      ],
+      "return": 2.571428571428558,
+      "selected": true
+    },
+    {
+      "code": "sh600020",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "RSI中性(39)"
+      ],
+      "return": 1.2224938875305513,
+      "selected": true
+    },
+    {
+      "code": "sh600021",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "RSI中性(48)"
+      ],
+      "return": -2.918017600741074,
+      "selected": true
+    },
+    {
+      "code": "sh600022",
+      "score": 10,
+      "signals": [
+        "MACD正值",
+        "量能配合(1.1倍)"
+      ],
+      "return": 2.39520958083832,
+      "selected": true
+    },
+    {
+      "code": "sh600023",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI强势(58)"
+      ],
+      "return": -1.098901098901095,
+      "selected": true
+    },
+    {
+      "code": "sh600025",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值"
+      ],
+      "return": -5.400192864030851,
+      "selected": true
+    },
+    {
+      "code": "sh600026",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI强势(54)"
+      ],
+      "return": 7.050730868443678,
+      "selected": true
+    },
+    {
+      "code": "sh600027",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(42)"
+      ],
+      "return": 0.19417475728154,
+      "selected": true
+    },
+    {
+      "code": "sh600028",
+      "score": 10,
+      "signals": [
+        "MACD正值",
+        "RSI中性(38)"
+      ],
+      "return": 19.20731707317074,
+      "selected": true
+    },
+    {
+      "code": "sh600029",
+      "score": 10,
+      "signals": [
+        "温和放量(1.4倍)"
+      ],
+      "return": 4.791344667697062,
+      "selected": true
+    },
+    {
+      "code": "sh600030",
+      "score": 10,
+      "signals": [],
+      "return": 2.564102564102577,
+      "selected": true
+    },
+    {
+      "code": "sh600031",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(33)",
+        "量能配合(1.1倍)"
+      ],
+      "return": 0.5893019038984759,
+      "selected": true
+    },
+    {
+      "code": "sh600032",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值",
+        "量能配合(1.1倍)"
+      ],
+      "return": -3.3720930232558066,
+      "selected": true
+    },
+    {
+      "code": "sh600033",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(48)"
+      ],
+      "return": 0.7957559681697646,
+      "selected": true
+    },
+    {
+      "code": "sh600035",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(38)"
+      ],
+      "return": 0.7537688442210921,
+      "selected": true
+    },
+    {
+      "code": "sh600036",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "RSI强势(61)"
+      ],
+      "return": -0.10198878123406363,
+      "selected": true
+    },
+    {
+      "code": "sh600037",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI强势(54)",
+        "温和放量(1.2倍)"
+      ],
+      "return": -4.287515762925597,
+      "selected": true
+    },
+    {
+      "code": "sh600038",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(35)"
+      ],
+      "return": -0.776231263383298,
+      "selected": true
+    },
+    {
+      "code": "sh600039",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(44)"
+      ],
+      "return": 0.5994005994006013,
+      "selected": true
+    },
+    {
+      "code": "sh600048",
+      "score": 10,
+      "signals": [],
+      "return": 5.1968503937007915,
+      "selected": true
+    },
+    {
+      "code": "sh600050",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "RSI强势(57)"
+      ],
+      "return": -1.4112903225806495,
+      "selected": true
+    },
+    {
+      "code": "sh600051",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI强势(65)",
+        "量能配合(1.1倍)"
+      ],
+      "return": -4.4740024183796745,
+      "selected": true
+    },
+    {
+      "code": "sh600052",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI强势(54)"
+      ],
+      "return": -2.2935779816513846,
+      "selected": true
+    },
+    {
+      "code": "sh600053",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(38)"
+      ],
+      "return": -1.253561253561264,
+      "selected": true
+    },
+    {
+      "code": "sh600054",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "MACD正值",
+        "量能配合(1.2倍)"
+      ],
+      "return": -2.7365129007036693,
+      "selected": true
+    },
+    {
+      "code": "sh600055",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(47)"
+      ],
+      "return": -2.458471760797354,
+      "selected": true
+    },
+    {
+      "code": "sh600056",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(49)"
+      ],
+      "return": -0.18939393939395588,
+      "selected": true
+    },
+    {
+      "code": "sh600057",
+      "score": 10,
+      "signals": [],
+      "return": 5.412054120541199,
+      "selected": true
+    },
+    {
+      "code": "sh600058",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(32)"
+      ],
+      "return": -2.9163468917881685,
+      "selected": true
+    },
+    {
+      "code": "sh600059",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(34)"
+      ],
+      "return": 0.31813361611878754,
+      "selected": true
+    },
+    {
+      "code": "sh600060",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(43)",
+        "量能配合(1.2倍)"
+      ],
+      "return": 0.17969451931716396,
+      "selected": true
+    },
+    {
+      "code": "sh600061",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(33)"
+      ],
+      "return": 1.6574585635359185,
+      "selected": true
+    },
+    {
+      "code": "sh600062",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(44)"
+      ],
+      "return": -0.1651073197578512,
+      "selected": true
+    },
+    {
+      "code": "sh600063",
+      "score": 10,
+      "signals": [
+        "MACD正值",
+        "量能配合(1.1倍)"
+      ],
+      "return": 0.43041606886657924,
+      "selected": true
+    },
+    {
+      "code": "sh600064",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(37)"
+      ],
+      "return": 0.9237875288683695,
+      "selected": true
+    },
+    {
+      "code": "sh600066",
+      "score": 10,
+      "signals": [
+        "RSI中性(46)"
+      ],
+      "return": -1.0030090270812475,
+      "selected": true
+    },
+    {
+      "code": "sh600067",
+      "score": 10,
+      "signals": [
+        "站上MA5"
+      ],
+      "return": -3.5799522673031103,
+      "selected": true
+    },
+    {
+      "code": "sh600068",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值",
+        "温和放量(2.3倍)"
+      ],
+      "return": -6.3444108761329225,
+      "selected": true
+    },
+    {
+      "code": "sh600070",
+      "score": 10,
+      "signals": [
+        "量能配合(6.6倍)"
+      ],
+      "return": 26.190476190476208,
+      "selected": true
+    },
+    {
+      "code": "sh600071",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(45)"
+      ],
+      "return": -2.667313288069839,
+      "selected": true
+    },
+    {
+      "code": "sh600072",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI强势(52)"
+      ],
+      "return": -2.577710386656562,
+      "selected": true
+    },
+    {
+      "code": "sh600073",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值"
+      ],
+      "return": 0.45317220543807935,
+      "selected": true
+    },
+    {
+      "code": "sh600075",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(44)",
+        "温和放量(1.2倍)"
+      ],
+      "return": -2.0618556701030855,
+      "selected": true
+    },
+    {
+      "code": "sh600076",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(36)"
+      ],
+      "return": -2.168021680216803,
+      "selected": true
+    },
+    {
+      "code": "sh600077",
+      "score": 10,
+      "signals": [
+        "量能配合(36.1倍)"
+      ],
+      "return": 26.82926829268293,
+      "selected": true
+    },
+    {
+      "code": "sh600078",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(40)"
+      ],
+      "return": -4.317111459968603,
+      "selected": true
+    },
+    {
+      "code": "sh600079",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(32)"
+      ],
+      "return": 0.0,
+      "selected": true
+    },
+    {
+      "code": "sh600080",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(49)"
+      ],
+      "return": -2.9579067121729197,
+      "selected": true
+    },
+    {
+      "code": "sh600081",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "RSI强势(64)",
+        "温和放量(2.1倍)"
+      ],
+      "return": -4.721753794266437,
+      "selected": true
+    },
+    {
+      "code": "sh600082",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(46)"
+      ],
+      "return": -8.483290488431884,
+      "selected": true
+    },
+    {
+      "code": "sh600083",
+      "score": 10,
+      "signals": [
+        "量能配合(10.0倍)"
+      ],
+      "return": 29.34782608695652,
+      "selected": true
+    },
+    {
+      "code": "sh600084",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值"
+      ],
+      "return": -3.5014005602240883,
+      "selected": true
+    },
+    {
+      "code": "sh600085",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(38)"
+      ],
+      "return": 1.0981697171380977,
+      "selected": true
+    },
+    {
+      "code": "sh600088",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(37)"
+      ],
+      "return": -1.2970168612191912,
+      "selected": true
+    },
+    {
+      "code": "sh600089",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI强势(53)"
+      ],
+      "return": -6.842435655994972,
+      "selected": true
+    },
+    {
+      "code": "sh600090",
+      "score": 10,
+      "signals": [
+        "温和放量(2.2倍)"
+      ],
+      "return": 11.111111111111093,
+      "selected": true
+    },
+    {
+      "code": "sh600091",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(42)",
+        "温和放量(2.4倍)"
+      ],
+      "return": 2.6315789473684292,
+      "selected": true
+    },
+    {
+      "code": "sh600093",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "温和放量(2.5倍)"
+      ],
+      "return": -19.999999999999996,
+      "selected": true
+    },
+    {
+      "code": "sh600094",
+      "score": 10,
+      "signals": [],
+      "return": 1.3274336283185972,
+      "selected": true
+    },
+    {
+      "code": "sh600095",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(37)"
+      ],
+      "return": 0.5853658536585371,
+      "selected": true
+    },
+    {
+      "code": "sh600096",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值"
+      ],
+      "return": -0.04854368932039055,
+      "selected": true
+    },
+    {
+      "code": "sh600097",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI强势(53)"
+      ],
+      "return": -2.0938023450586263,
+      "selected": true
+    },
+    {
+      "code": "sh600098",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(36)"
+      ],
+      "return": 0.0,
+      "selected": true
+    },
+    {
+      "code": "sh600099",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI强势(67)"
+      ],
+      "return": -5.989583333333326,
+      "selected": true
+    },
+    {
+      "code": "sh600100",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "RSI中性(45)"
+      ],
+      "return": -5.984766050054391,
+      "selected": true
+    },
+    {
+      "code": "sh600101",
+      "score": 10,
+      "signals": [
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI强势(67)"
+      ],
+      "return": -1.3404825737265424,
+      "selected": true
+    },
+    {
+      "code": "sh600103",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(41)"
+      ],
+      "return": -1.0752688172043001,
+      "selected": true
+    },
+    {
+      "code": "sh600104",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(41)"
+      ],
+      "return": 0.2135231316725994,
+      "selected": true
+    },
+    {
+      "code": "sh600105",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI中性(35)",
+        "量能配合(1.0倍)"
+      ],
+      "return": -2.238010657193601,
+      "selected": true
+    },
+    {
+      "code": "sh600106",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(49)"
+      ],
+      "return": -1.4754098360655665,
+      "selected": true
+    },
+    {
+      "code": "sh600107",
+      "score": 10,
+      "signals": [
+        "RSI中性(40)"
+      ],
+      "return": -0.6896551724137945,
+      "selected": true
+    },
+    {
+      "code": "sh600108",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值"
+      ],
+      "return": -19.430485762144055,
+      "selected": true
+    },
+    {
+      "code": "sh600109",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI中性(35)"
+      ],
+      "return": 0.567536889897835,
+      "selected": true
+    },
+    {
+      "code": "sh600110",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "价格在中轨之上",
+        "MACD正值"
+      ],
+      "return": 3.100775193798455,
+      "selected": true
+    },
+    {
+      "code": "sh600111",
+      "score": 10,
+      "signals": [
+        "MACD正值"
+      ],
+      "return": 3.057254030016665,
+      "selected": true
+    },
+    {
+      "code": "sh600113",
+      "score": 10,
+      "signals": [
+        "站上MA5",
+        "RSI强势(62)",
+        "温和放量(1.3倍)"
+      ],
+      "return": -1.278507256392536,
+      "selected": true
+    },
+    {
+      "code": "sh600114",
+      "score": 10,
+      "signals": [
+        "温和放量(1.5倍)"
+      ],
+      "return": 11.282051282051286,
+      "selected": true
+    },
+    {
+      "code": "sh600115",
+      "score": 10,
+      "signals": [
+        "温和放量(2.2倍)"
+      ],
+      "return": 14.90683229813663,
+      "selected": true
+    },
+    {
+      "code": "sh600116",
+      "score": 10,
+      "signals": [
+        "均线多头排列",
+        "价格在中轨之上",
+        "MACD正值",
+        "RSI强势(58)",
+        "量能配合(1.1倍)"
+      ],
+      "return": -0.575539568345329,
+      "selected": true
+    },
+    {
+      "code": "sh600112",
+      "score": 0,
+      "signals": [],
+      "return": 28.767123287671236,
+      "selected": false
+    }
+  ]
+}
