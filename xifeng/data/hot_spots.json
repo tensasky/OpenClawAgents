@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-11T17:11:30.267424",
+  "generated_at": "2026-03-11T21:42:17.770994",
   "total_news": 60,
   "total_sectors": 8,
   "summary": [
     {
       "sector": "医药",
-      "heat_score": 60,
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -75,18 +75,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "美银证券：升海丰国际目标价至37港元 上调每股盈利预测",
+          "title": "摩根大通减记软件贷款价值后，收紧对私人信贷公司的放贷",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-11/doc-inhqrfcp9356631.shtml",
-          "time": "1773220270"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5427777.shtml",
+          "time": "1773236345"
         },
         {
-          "title": "美银证券：华润啤酒商誉减值消除不明朗 目标价35.6港元",
+          "title": "事关超2亿人，灵活就业人员参加职工保险支持政策将出台",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-11/doc-inhqrfck5551483.shtml",
-          "time": "1773219520"
+          "url": "https://finance.sina.com.cn/roll/2026-03-11/doc-inhqrrtm5430034.shtml",
+          "time": "1773235750"
         }
       ],
       "leading_stocks": [
@@ -175,89 +175,75 @@
       ]
     },
     {
-      "sector": "房地产",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "莱茵金属下跌约4% 预计2026年销售额最高增长45%",
+          "title": "特斯拉中国产电动汽车2月销量猛增91%",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfck5553545.shtml",
-          "time": "1773219736"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5418455.shtml",
+          "time": "1773235349"
         },
         {
-          "title": "花旗：对置富产业信托超市外多数行业租户销售持积极观点 目标价上调至6港元",
+          "title": "中国出口超预期，美股中国汽车股吸引投资者目光",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-11/doc-inhqrfcn2573112.shtml",
-          "time": "1773219384"
-        },
-        {
-          "title": "花旗：九龙仓置业租户销售回暖 料股息稳步增长 目标价31.6港元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-11/doc-inhqrfck5547201.shtml",
-          "time": "1773219156"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrth2398829.shtml",
+          "time": "1773234234"
         }
       ],
       "leading_stocks": [
         {
-          "code": "000002",
-          "name": "万科A",
+          "code": "002594",
+          "name": "比亚迪",
           "weight": 10
         },
         {
-          "code": "600048",
-          "name": "保利发展",
-          "weight": 9
-        },
-        {
-          "code": "001979",
-          "name": "招商蛇口",
+          "code": "601127",
+          "name": "赛力斯",
           "weight": 8
         },
         {
-          "code": "600606",
-          "name": "绿地控股",
+          "code": "000625",
+          "name": "长安汽车",
           "weight": 7
         },
         {
-          "code": "000069",
-          "name": "华侨城A",
-          "weight": 6
+          "code": "600104",
+          "name": "上汽集团",
+          "weight": 7
+        },
+        {
+          "code": "601633",
+          "name": "长城汽车",
+          "weight": 7
         }
       ]
     },
     {
       "sector": "人工智能",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "为AI供电：欧洲首个微电网直连数据中心正式启用",
+          "title": "AI内存需求激增，AMD CEO将会晤三星掌门人",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfck5557423.shtml",
-          "time": "1773220089"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5417027.shtml",
+          "time": "1773235089"
         },
         {
-          "title": "游客开始借助AI规划旅行，但“幻觉”问题与信任缺口依然存在",
+          "title": "AI算力成为科技公司薪酬包的一部分",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfcn2569407.shtml",
-          "time": "1773219109"
-        },
-        {
-          "title": "法国Canal+集团采用谷歌人工智能技术用于视频制作与内容推荐",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfcn2558360.shtml",
-          "time": "1773218014"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrth2399977.shtml",
+          "time": "1773234428"
         }
       ],
       "leading_stocks": [
@@ -292,10 +278,10 @@
   "hot_spots": [
     {
       "sector": "医药",
-      "heat_score": 60,
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -362,18 +348,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "美银证券：升海丰国际目标价至37港元 上调每股盈利预测",
+          "title": "摩根大通减记软件贷款价值后，收紧对私人信贷公司的放贷",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-11/doc-inhqrfcp9356631.shtml",
-          "time": "1773220270"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5427777.shtml",
+          "time": "1773236345"
         },
         {
-          "title": "美银证券：华润啤酒商誉减值消除不明朗 目标价35.6港元",
+          "title": "事关超2亿人，灵活就业人员参加职工保险支持政策将出台",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-11/doc-inhqrfck5551483.shtml",
-          "time": "1773219520"
+          "url": "https://finance.sina.com.cn/roll/2026-03-11/doc-inhqrrtm5430034.shtml",
+          "time": "1773235750"
         }
       ],
       "leading_stocks": [
@@ -462,89 +448,75 @@
       ]
     },
     {
-      "sector": "房地产",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "莱茵金属下跌约4% 预计2026年销售额最高增长45%",
+          "title": "特斯拉中国产电动汽车2月销量猛增91%",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfck5553545.shtml",
-          "time": "1773219736"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5418455.shtml",
+          "time": "1773235349"
         },
         {
-          "title": "花旗：对置富产业信托超市外多数行业租户销售持积极观点 目标价上调至6港元",
+          "title": "中国出口超预期，美股中国汽车股吸引投资者目光",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-11/doc-inhqrfcn2573112.shtml",
-          "time": "1773219384"
-        },
-        {
-          "title": "花旗：九龙仓置业租户销售回暖 料股息稳步增长 目标价31.6港元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-11/doc-inhqrfck5547201.shtml",
-          "time": "1773219156"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrth2398829.shtml",
+          "time": "1773234234"
         }
       ],
       "leading_stocks": [
         {
-          "code": "000002",
-          "name": "万科A",
+          "code": "002594",
+          "name": "比亚迪",
           "weight": 10
         },
         {
-          "code": "600048",
-          "name": "保利发展",
-          "weight": 9
-        },
-        {
-          "code": "001979",
-          "name": "招商蛇口",
+          "code": "601127",
+          "name": "赛力斯",
           "weight": 8
         },
         {
-          "code": "600606",
-          "name": "绿地控股",
+          "code": "000625",
+          "name": "长安汽车",
           "weight": 7
         },
         {
-          "code": "000069",
-          "name": "华侨城A",
-          "weight": 6
+          "code": "600104",
+          "name": "上汽集团",
+          "weight": 7
+        },
+        {
+          "code": "601633",
+          "name": "长城汽车",
+          "weight": 7
         }
       ]
     },
     {
       "sector": "人工智能",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "为AI供电：欧洲首个微电网直连数据中心正式启用",
+          "title": "AI内存需求激增，AMD CEO将会晤三星掌门人",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfck5557423.shtml",
-          "time": "1773220089"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5417027.shtml",
+          "time": "1773235089"
         },
         {
-          "title": "游客开始借助AI规划旅行，但“幻觉”问题与信任缺口依然存在",
+          "title": "AI算力成为科技公司薪酬包的一部分",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfcn2569407.shtml",
-          "time": "1773219109"
-        },
-        {
-          "title": "法国Canal+集团采用谷歌人工智能技术用于视频制作与内容推荐",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfcn2558360.shtml",
-          "time": "1773218014"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrth2399977.shtml",
+          "time": "1773234428"
         }
       ],
       "leading_stocks": [
@@ -572,113 +544,6 @@
           "code": "300474",
           "name": "景嘉微",
           "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "有色",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
-      "top_news": [
-        {
-          "title": "莱茵金属下跌约4% 预计2026年销售额最高增长45%",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfck5553545.shtml",
-          "time": "1773219736"
-        },
-        {
-          "title": "尽管销售额飙升，莱茵金属的业绩仍不及预期",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfcr5541227.shtml",
-          "time": "1773218041"
-        },
-        {
-          "title": "影响产能或继续扩大！中东地缘扰动成铝价上涨催化剂？",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/future/2026-03-11/doc-inhqrfcn2566355.shtml",
-          "time": "1773217354"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601899",
-          "name": "紫金矿业",
-          "weight": 10
-        },
-        {
-          "code": "603993",
-          "name": "洛阳钼业",
-          "weight": 8
-        },
-        {
-          "code": "600362",
-          "name": "江西铜业",
-          "weight": 7
-        },
-        {
-          "code": "002460",
-          "name": "赣锋锂业",
-          "weight": 8
-        },
-        {
-          "code": "600111",
-          "name": "北方稀土",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "低空经济",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "小摩：预计国泰航空短期受惠于票价高企但被油价上升所抵消",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-11/doc-inhqrfcp9349191.shtml",
-          "time": "1773219312"
-        },
-        {
-          "title": "国泰航空利润增长，预计客运量将增加",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrfcn2556743.shtml",
-          "time": "1773217824"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "002050",
-          "name": "三花智控",
-          "weight": 8
-        },
-        {
-          "code": "002151",
-          "name": "北斗星通",
-          "weight": 7
-        },
-        {
-          "code": "300900",
-          "name": "广联航空",
-          "weight": 7
-        },
-        {
-          "code": "002097",
-          "name": "山河智能",
-          "weight": 6
-        },
-        {
-          "code": "300185",
-          "name": "通裕重工",
-          "weight": 6
         }
       ]
     }
