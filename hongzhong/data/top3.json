@@ -1,12 +1,12 @@
 {
-  "time": "2026-03-11T22:02:12.777824",
+  "time": "2026-03-11T22:26:29.481514",
   "version": "V5.1",
   "count": 3,
   "signals": [
     {
       "code": "sh600268",
       "name": "国电南自",
-      "score": 22.1,
+      "score": 24.0,
       "trend_score": 35,
       "momentum_score": 12,
       "volume_score": 20,
@@ -37,12 +37,21 @@
       "confidence": 0.8,
       "position_size": 0.2,
       "market_ok": true,
-      "market_msg": "[实时]大盘环境良好ADX=26.0，今日+1.45%"
+      "market_msg": "[实时]大盘环境良好ADX=26.0，今日+1.45%",
+      "strategy": "趋势跟踪",
+      "strategy_config": {
+        "holding_period": "5-10天",
+        "entry_timing": "收盘前30分钟或开盘30分钟",
+        "exit_strategy": "移动止损，趋势反转离场",
+        "max_holding": "25%",
+        "risk_level": "中等",
+        "suitable_for": "短线趋势交易者"
+      }
     },
     {
       "code": "sh600068",
       "name": "葛洲坝",
-      "score": 22.1,
+      "score": 24.0,
       "trend_score": 35,
       "momentum_score": 12,
       "volume_score": 20,
@@ -73,12 +82,21 @@
       "confidence": 0.8,
       "position_size": 0.2,
       "market_ok": true,
-      "market_msg": "[实时]大盘环境良好ADX=26.0，今日+1.45%"
+      "market_msg": "[实时]大盘环境良好ADX=26.0，今日+1.45%",
+      "strategy": "趋势跟踪",
+      "strategy_config": {
+        "holding_period": "5-10天",
+        "entry_timing": "收盘前30分钟或开盘30分钟",
+        "exit_strategy": "移动止损，趋势反转离场",
+        "max_holding": "25%",
+        "risk_level": "中等",
+        "suitable_for": "短线趋势交易者"
+      }
     },
     {
       "code": "sh600233",
       "name": "圆通速递",
-      "score": 21.6,
+      "score": 23.9,
       "trend_score": 35,
       "momentum_score": 23,
       "volume_score": 0,
@@ -110,7 +128,16 @@
       "confidence": 0.8,
       "position_size": 0.2,
       "market_ok": true,
-      "market_msg": "[实时]大盘环境良好ADX=26.0，今日+1.45%"
+      "market_msg": "[实时]大盘环境良好ADX=26.0，今日+1.45%",
+      "strategy": "趋势跟踪",
+      "strategy_config": {
+        "holding_period": "5-10天",
+        "entry_timing": "收盘前30分钟或开盘30分钟",
+        "exit_strategy": "移动止损，趋势反转离场",
+        "max_holding": "25%",
+        "risk_level": "中等",
+        "suitable_for": "短线趋势交易者"
+      }
     }
   ]
 }
