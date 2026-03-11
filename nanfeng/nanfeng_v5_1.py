@@ -146,6 +146,7 @@ class NanFengV5_1:
         self.hot_spots = self._load_hot_spots()
         self.realtime = RealtimeAggregator() if use_realtime else None
         self.use_realtime = use_realtime
+        self.stock_names = {}  # 缓存股票名称
         
         # V5.1 严格参数
         self.min_adx = 30              # 提高：强趋势要求
@@ -174,11 +175,39 @@ class NanFengV5_1:
                     level = spot.get('level', 'Low')
                     for stock in spot.get('leading_stocks', []):
                         code = stock.get('code', '')
+                        name = stock.get('name', '')
                         if code:
-                            hot_stocks[code] = {'sector': sector, 'level': level}
+                            hot_stocks[code] = {'sector': sector, 'level': level, 'name': name}
             except Exception as e:
                 logger.error(f"加载热点失败: {e}")
         return hot_stocks
+    
+    def get_stock_name(self, stock_code: str) -> str:
+        """获取股票名称"""
+        if stock_code in self.stock_names:
+            return self.stock_names[stock_code]
+        
+        # 从热点数据获取
+        if stock_code in self.hot_spots:
+            name = self.hot_spots[stock_code].get('name', '')
+            if name:
+                self.stock_names[stock_code] = name
+                return name
+        
+        # 从数据库获取
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            cursor.execute("SELECT name FROM stocks WHERE code=?", (stock_code,))
+            row = cursor.fetchone()
+            conn.close()
+            if row and row[0]:
+                self.stock_names[stock_code] = row[0]
+                return row[0]
+        except:
+            pass
+        
+        return stock_code
     
     def check_market_environment(self) -> Tuple[bool, str]:
         """检查市场环境 - 大盘趋势（使用实时数据）"""
@@ -308,6 +337,10 @@ class NanFengV5_1:
             return None
         
         signal = TradeSignal(stock_code=stock_code)
+        
+        # 获取股票名称
+        signal.stock_name = self.get_stock_name(stock_code)
+        
         close = df['close']
         high = df['high']
         low = df['low']
@@ -588,34 +621,57 @@ class NanFengV5_1:
         return selected
     
     def format_signal(self, signal: TradeSignal) -> str:
-        """格式化信号输出"""
-        hot_tag = "🔥热点" if signal.is_hot_sector else ""
+        """格式化信号输出 - 包含详细得分构成"""
+        hot_tag = "🔥热点 " if signal.is_hot_sector else ""
+        name_tag = f"({signal.stock_name}) " if signal.stock_name else ""
+        
         lines = [
-            f"\n{'='*60}",
-            f"📈 {signal.stock_code} {hot_tag} - {signal.total_score:.1f}分",
-            f"{'='*60}",
-            f"价格: {signal.current_price:.2f}",
-            f"止损: {signal.stop_loss:.2f} ({signal.stop_loss_pct:.1%})",
-            f"止盈: {signal.take_profit_1:.2f} / {signal.take_profit_2:.2f}",
+            f"\n{'='*70}",
+            f"📈 {signal.stock_code} {name_tag}{hot_tag}- {signal.total_score:.1f}分",
+            f"{'='*70}",
             f"",
-            f"【评分明细】",
-            f"  趋势: {signal.trend_score:.0f}/40 | 动量: {signal.momentum_score:.0f}/30",
-            f"  成交量: {signal.volume_score:.0f}/20 | 质量: {signal.quality_score:.0f}/10",
+            f"💰 价格信息",
+            f"  当前价格: ¥{signal.current_price:.2f}",
+            f"  止损价格: ¥{signal.stop_loss:.2f} (跌幅 {signal.stop_loss_pct:.1%})",
+            f"  目标价格: ¥{signal.take_profit_1:.2f} (+4%) / ¥{signal.take_profit_2:.2f} (+8%)",
             f"",
-            f"【技术指标】",
-            f"  ADX: {signal.adx:.1f} | RSI: {signal.rsi:.0f} | MACD: {signal.macd_dif:.3f}",
-            f"  MA20斜率: {signal.ma20_slope*100:.2f}% | 相对强度: {signal.relative_strength:.0%}",
+            f"📊 得分构成 (满分10分)",
+            f"  ├─ 趋势得分:    {signal.trend_score * 0.4:.1f}分 (权重40% × {signal.trend_score:.0f}/100)",
+            f"  ├─ 动量得分:    {signal.momentum_score * 0.3:.1f}分 (权重30% × {signal.momentum_score:.0f}/100)",
+            f"  ├─ 成交量得分:  {signal.volume_score * 0.2:.1f}分 (权重20% × {signal.volume_score:.0f}/100)",
+            f"  └─ 质量得分:    {signal.quality_score * 0.1:.1f}分 (权重10% × {signal.quality_score:.0f}/100)",
+            f"  ─────────────────────────",
+            f"  综合得分:       {signal.total_score:.1f}分",
             f"",
-            f"【信号】{' | '.join(signal.signals[:6])}",
+            f"📈 技术指标",
+            f"  ADX(趋势强度):  {signal.adx:.1f} (门槛≥30)",
+            f"  RSI(相对强弱):  {signal.rsi:.0f} (理想区间45-65)",
+            f"  MACD(DIF):      {signal.macd_dif:.3f}",
+            f"  MA20斜率:       {signal.ma20_slope*100:.2f}% (门槛≥0.2%)",
+            f"  相对强度排名:   前{signal.relative_strength:.0%}",
         ]
         
-        if signal.warnings:
-            lines.append(f"【警告】{' | '.join(signal.warnings[:3])}")
+        if signal.sector:
+            lines.append(f"  所属板块:       {signal.sector}")
         
         lines.extend([
             f"",
-            f"建议仓位: {signal.position_size:.0%} | 置信度: {signal.confidence:.0%}",
-            f"{'='*60}"
+            f"✅ 买入信号",
+            f"  " + " | ".join(signal.signals[:5]),
+        ])
+        
+        if signal.warnings:
+            lines.extend([
+                f"",
+                f"⚠️ 风险提示",
+                f"  " + " | ".join(signal.warnings[:3]),
+            ])
+        
+        lines.extend([
+            f"",
+            f"💡 交易建议",
+            f"  建议仓位: {signal.position_size:.0%} | 置信度: {signal.confidence:.0%}",
+            f"{'='*70}"
         ])
         
         return '\n'.join(lines)

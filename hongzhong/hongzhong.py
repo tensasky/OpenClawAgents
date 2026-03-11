@@ -22,6 +22,9 @@ import sys
 # 添加南风路径
 sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents/nanfeng"))
 
+# 导入股票名称查询
+from stock_names import get_stock_name, batch_get_stock_names
+
 # 配置路径
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
@@ -81,12 +84,20 @@ class NanfengV51API:
             # 取前N个
             top_signals = signals[:max_signals]
             
-            # 转换为标准格式
+            # 转换为标准格式，并查询股票名称
             result = []
             for s in top_signals:
+                # 获取股票中文名
+                stock_name = get_stock_name(s.stock_code)
+                
                 result.append({
                     'code': s.stock_code,
+                    'name': stock_name,
                     'score': s.total_score,
+                    'trend_score': s.trend_score,
+                    'momentum_score': s.momentum_score,
+                    'volume_score': s.volume_score,
+                    'quality_score': s.quality_score,
                     'price': round(s.current_price, 2),
                     'stop_loss': round(s.stop_loss, 2),
                     'take_profit_1': round(s.take_profit_1, 2),
@@ -97,6 +108,8 @@ class NanfengV51API:
                     'sector': s.sector,
                     'adx': round(s.adx, 1),
                     'rsi': round(s.rsi, 0),
+                    'ma20_slope': round(s.ma20_slope * 100, 2),
+                    'relative_strength': round(s.relative_strength * 100, 0),
                     'confidence': s.confidence,
                     'position_size': s.position_size,
                     'market_ok': market_ok,
@@ -267,22 +280,35 @@ class HongzhongV2:
         self.notifier = Notifier()
     
     def format_message(self, stock: Dict, rank: int, total: int) -> str:
-        """格式化预警消息"""
+        """格式化预警消息 - 包含详细得分构成和股票名称"""
         time_str = datetime.now().strftime('%H:%M')
         signals_str = ' | '.join(stock['signals'][:4])
         warnings_str = ' | '.join(stock['warnings'][:2]) if stock['warnings'] else '无'
         
         hot_tag = "🔥热点 " if stock['is_hot_sector'] else ""
+        name_tag = f"({stock['name']}) " if stock.get('name') else ""
         market_warning = ""
         if not stock.get('market_ok', True):
             market_warning = "⚠️ 市场环境一般，谨慎操作\n"
         
+        # 计算得分构成
+        trend_weighted = stock.get('trend_score', 0) * 0.4
+        momentum_weighted = stock.get('momentum_score', 0) * 0.3
+        volume_weighted = stock.get('volume_score', 0) * 0.2
+        quality_weighted = stock.get('quality_score', 0) * 0.1
+        
         return f"""🚨 [财神爷量化预警 V5.1] #{rank}/{total}
 
-📈 **{stock['code']}** {hot_tag}
+📈 **{stock['code']}** {name_tag}{hot_tag}
 ⭐ 综合评分: **{stock['score']:.1f}/10** | 置信度: {stock['confidence']:.0%}
 
-📊 技术信号:
+📊 得分构成:
+  ├─ 趋势: {trend_weighted:.1f}分 (40% × {stock.get('trend_score', 0):.0f})
+  ├─ 动量: {momentum_weighted:.1f}分 (30% × {stock.get('momentum_score', 0):.0f})
+  ├─ 成交量: {volume_weighted:.1f}分 (20% × {stock.get('volume_score', 0):.0f})
+  └─ 质量: {quality_weighted:.1f}分 (10% × {stock.get('quality_score', 0):.0f})
+
+✅ 买入信号:
 {signals_str}
 
 ⚠️ 风险提示:
@@ -293,7 +319,9 @@ class HongzhongV2:
 🎯 目标1: ¥{stock['take_profit_1']} (+4%)
 🎯 目标2: ¥{stock['take_profit_2']} (+8%)
 
-📈 指标: ADX={stock['adx']} | RSI={stock['rsi']}
+📈 技术指标:
+  ADX: {stock['adx']} | RSI: {stock['rsi']} | MA20斜率: {stock.get('ma20_slope', 0)}%
+  相对强度: 前{stock.get('relative_strength', 0):.0f}%
 💼 建议仓位: {stock['position_size']:.0%}
 {market_warning}
 ⏰ {time_str} | 红中🀄 | 南风V5.1
