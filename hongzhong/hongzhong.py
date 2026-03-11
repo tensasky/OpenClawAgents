@@ -187,6 +187,7 @@ class Notifier:
         self.qq_email = self._load_config('qq_email', '')
         self.qq_auth_code = self._load_config('qq_auth_code', '')
         self.sender_name = self._load_config('sender_name', '财神爷')
+        self.email_recipients = self._load_config('email_recipients', [self.qq_email])
     
     def _load_config(self, key: str, default: str) -> str:
         """从配置文件加载"""
@@ -229,10 +230,13 @@ class Notifier:
         return False
     
     async def send_email(self, message: str, subject: str = "量化预警") -> bool:
-        """QQ邮箱推送 - 30s超时，3次重试"""
+        """QQ邮箱推送 - 支持多收件人"""
         if not self.qq_email or not self.qq_auth_code:
             logger.warning("QQ邮箱未配置，跳过")
             return False
+        
+        # 获取收件人列表
+        recipients = self.email_recipients if self.email_recipients else [self.qq_email]
         
         for attempt in range(3):
             try:
@@ -243,16 +247,16 @@ class Notifier:
                 # 创建邮件
                 msg = MIMEText(message, 'plain', 'utf-8')
                 msg['From'] = Header(self.sender_name, 'utf-8')
-                msg['To'] = Header(self.qq_email, 'utf-8')
+                msg['To'] = Header(', '.join(recipients), 'utf-8')
                 msg['Subject'] = Header(subject, 'utf-8')
                 
                 # 发送邮件
                 server = smtplib.SMTP_SSL('smtp.qq.com', 465, timeout=30)
                 server.login(self.qq_email, self.qq_auth_code)
-                server.sendmail(self.qq_email, [self.qq_email], msg.as_string())
+                server.sendmail(self.qq_email, recipients, msg.as_string())
                 server.quit()
                 
-                logger.info("✅ 邮件推送成功")
+                logger.info(f"✅ 邮件推送成功 ({len(recipients)}个收件人)")
                 return True
                 
             except Exception as e:
