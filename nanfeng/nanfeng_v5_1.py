@@ -22,9 +22,10 @@ from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass, field
 
-# 导入实时数据聚合器
+# 导入实时数据聚合器和策略配置
 sys.path.insert(0, str(Path(__file__).parent))
 from realtime_aggregator import RealtimeAggregator
+from strategy_config import StrategyConfig, get_strategy, STRATEGIES
 
 # 配置
 BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
@@ -138,9 +139,9 @@ class TechnicalIndicators:
 
 
 class NanFengV5_1:
-    """南风V5.1 - 精选版"""
+    """南风V5.1 - 精选版 (支持多策略)"""
     
-    def __init__(self, use_realtime: bool = True):
+    def __init__(self, use_realtime: bool = True, strategy_name: str = "趋势跟踪"):
         self.db_path = BEIFENG_DB
         self.indicators = TechnicalIndicators()
         self.hot_spots = self._load_hot_spots()
@@ -148,19 +149,27 @@ class NanFengV5_1:
         self.use_realtime = use_realtime
         self.stock_names = {}  # 缓存股票名称
         
-        # V5.1 严格参数
-        self.min_adx = 30              # 提高：强趋势要求
-        self.min_ma20_slope = 0.002    # 提高：MA20日涨幅>0.2%
-        self.min_volume_ratio = 1.2    # 保持：温和放量
-        self.score_threshold = 8.5     # 提高：高分门槛
-        self.max_signals_per_day = 5   # 新增：每天最多5只
+        # 加载策略配置
+        self.strategy = get_strategy(strategy_name)
+        logger.info(f"🎯 加载策略: {self.strategy.name} - {self.strategy.description}")
+        
+        # 从策略配置加载参数
+        self.min_adx = self.strategy.min_adx
+        self.min_ma20_slope = self.strategy.min_ma20_slope
+        self.min_volume_ratio = self.strategy.min_volume_ratio
+        self.score_threshold = self.strategy.score_threshold
+        self.max_signals_per_day = 5
+        
+        # RSI区间
+        self.rsi_low = self.strategy.rsi_low
+        self.rsi_high = self.strategy.rsi_high
         
         # 权重
         self.weights = {
-            'trend': 0.40,
-            'momentum': 0.30,
-            'volume': 0.20,
-            'quality': 0.10
+            'trend': self.strategy.trend_weight,
+            'momentum': self.strategy.momentum_weight,
+            'volume': self.strategy.volume_weight,
+            'quality': self.strategy.quality_weight
         }
     
     def _load_hot_spots(self) -> Dict:

@@ -22,8 +22,9 @@ import sys
 # 添加南风路径
 sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents/nanfeng"))
 
-# 导入股票名称查询
+# 导入股票名称查询和策略配置
 from stock_names import get_stock_name, batch_get_stock_names
+from strategy_config import StrategyConfig, get_strategy, format_strategy_info
 
 # 配置路径
 BASE_DIR = Path(__file__).parent
@@ -53,12 +54,22 @@ logger = logging.getLogger("红中V2")
 class NanfengV51API:
     """调用南风V5.1精选策略"""
     
-    def __init__(self):
+    def __init__(self, strategy_name: str = "趋势跟踪"):
         self.db_path = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+        self.strategy_name = strategy_name
+        
+        # 加载策略配置
+        try:
+            self.strategy = get_strategy(strategy_name)
+            logger.info(f"🎯 使用策略: {self.strategy.name}")
+        except Exception as e:
+            logger.warning(f"加载策略失败: {e}，使用默认策略")
+            self.strategy = get_strategy("趋势跟踪")
+        
         # 动态导入V5.1
         try:
             from nanfeng_v5_1 import NanFengV5_1
-            self.v51 = NanFengV5_1()
+            self.v51 = NanFengV5_1(strategy_name=strategy_name)
             self.use_v51 = True
             logger.info("✅ 成功加载南风V5.1")
         except Exception as e:
@@ -113,7 +124,16 @@ class NanfengV51API:
                     'confidence': s.confidence,
                     'position_size': s.position_size,
                     'market_ok': market_ok,
-                    'market_msg': market_msg
+                    'market_msg': market_msg,
+                    'strategy': self.strategy_name,
+                    'strategy_config': {
+                        'holding_period': self.strategy.holding_period,
+                        'entry_timing': self.strategy.entry_timing,
+                        'exit_strategy': self.strategy.exit_strategy,
+                        'max_holding': self.strategy.max_holding,
+                        'risk_level': self.strategy.risk_level,
+                        'suitable_for': self.strategy.suitable_for
+                    }
                 })
             
             logger.info(f"南风V5.1精选完成: 从300只中精选出{len(signals)}只，取Top{len(result)}")
@@ -290,7 +310,7 @@ class HongzhongV2:
         self.notifier = Notifier()
     
     def format_message(self, stock: Dict, rank: int, total: int) -> str:
-        """格式化预警消息 - 包含详细得分构成和股票名称"""
+        """格式化预警消息 - 包含策略信息和交易建议"""
         time_str = datetime.now().strftime('%H:%M')
         signals_str = ' | '.join(stock['signals'][:4])
         warnings_str = ' | '.join(stock['warnings'][:2]) if stock['warnings'] else '无'
@@ -301,22 +321,21 @@ class HongzhongV2:
         if not stock.get('market_ok', True):
             market_warning = "⚠️ 市场环境一般，谨慎操作\n"
         
-        # 计算得分构成
-        trend_weighted = stock.get('trend_score', 0) * 0.4
-        momentum_weighted = stock.get('momentum_score', 0) * 0.3
-        volume_weighted = stock.get('volume_score', 0) * 0.2
-        quality_weighted = stock.get('quality_score', 0) * 0.1
+        # 获取策略配置
+        strategy = stock.get('strategy', '趋势跟踪')
+        config = stock.get('strategy_config', {})
         
-        return f"""🚨 [财神爷量化预警 V5.1] #{rank}/{total}
+        return f"""🚨 [财神爷量化预警] #{rank}/{total}
 
 📈 **{stock['code']}** {name_tag}{hot_tag}
 ⭐ 综合评分: **{stock['score']:.1f}/10** | 置信度: {stock['confidence']:.0%}
+🎯 策略: **{strategy}** | 风险等级: {config.get('risk_level', '中等')}
 
 📊 得分构成:
-  ├─ 趋势: {trend_weighted:.1f}分 (40% × {stock.get('trend_score', 0):.0f})
-  ├─ 动量: {momentum_weighted:.1f}分 (30% × {stock.get('momentum_score', 0):.0f})
-  ├─ 成交量: {volume_weighted:.1f}分 (20% × {stock.get('volume_score', 0):.0f})
-  └─ 质量: {quality_weighted:.1f}分 (10% × {stock.get('quality_score', 0):.0f})
+  ├─ 趋势: {stock.get('trend_score', 0) * 0.4:.1f}分
+  ├─ 动量: {stock.get('momentum_score', 0) * 0.3:.1f}分
+  ├─ 成交量: {stock.get('volume_score', 0) * 0.2:.1f}分
+  └─ 质量: {stock.get('quality_score', 0) * 0.1:.1f}分
 
 ✅ 买入信号:
 {signals_str}
@@ -324,17 +343,22 @@ class HongzhongV2:
 ⚠️ 风险提示:
 {warnings_str}
 
-💰 价格: ¥{stock['price']}
-🛑 止损: ¥{stock['stop_loss']} ({(stock['price']-stock['stop_loss'])/stock['price']:.1%})
-🎯 目标1: ¥{stock['take_profit_1']} (+4%)
-🎯 目标2: ¥{stock['take_profit_2']} (+8%)
+💰 价格信息:
+  当前: ¥{stock['price']} | 止损: ¥{stock['stop_loss']}
+  目标: ¥{stock['take_profit_1']} (+4%) / ¥{stock['take_profit_2']} (+8%)
 
 📈 技术指标:
-  ADX: {stock['adx']} | RSI: {stock['rsi']} | MA20斜率: {stock.get('ma20_slope', 0)}%
-  相对强度: 前{stock.get('relative_strength', 0):.0f}%
-💼 建议仓位: {stock['position_size']:.0%}
+  ADX: {stock['adx']} | RSI: {stock['rsi']} | 相对强度: 前{stock.get('relative_strength', 0):.0f}%
+
+💡 交易建议:
+  📅 持有周期: {config.get('holding_period', '5-10天')}
+  ⏰ 入场时机: {config.get('entry_timing', '收盘前30分钟')}
+  🚪 出场策略: {config.get('exit_strategy', '分批止盈')}
+  💼 最大仓位: {config.get('max_holding', '20%')}
+  👤 适合人群: {config.get('suitable_for', '短线交易者')}
+
 {market_warning}
-⏰ {time_str} | 红中🀄 | 南风V5.1
+⏰ {time_str} | 红中🀄 | 策略:{strategy}
 """
     
     async def run(self):
@@ -423,14 +447,28 @@ def main():
     parser.add_argument('--run', action='store_true', help='立即执行一次')
     parser.add_argument('--history', action='store_true', help='查看历史')
     parser.add_argument('--test', action='store_true', help='测试模式(不发送通知)')
+    parser.add_argument('--strategy', type=str, default='趋势跟踪', 
+                       choices=['趋势跟踪', '均值回归', '突破策略', '稳健增长', '热点追击'],
+                       help='选择量化策略')
+    parser.add_argument('--list-strategies', action='store_true', help='列出所有策略')
     
     args = parser.parse_args()
     
+    if args.list_strategies:
+        print("\n📊 可用策略列表:")
+        from strategy_config import list_strategies, format_strategy_info, STRATEGIES
+        for name, desc in list_strategies().items():
+            print(f"\n  • {name}: {desc}")
+        print("\n使用 --strategy 策略名 选择策略\n")
+        return
+    
+    # 使用指定策略
     hongzhong = HongzhongV2()
+    hongzhong.nanfeng = NanfengV51API(strategy_name=args.strategy)
     
     if args.test:
         # 测试模式：只获取信号，不发送通知
-        logger.info("🧪 测试模式 - 只获取信号")
+        logger.info(f"🧪 测试模式 - 策略: {args.strategy}")
         signals = hongzhong.nanfeng.get_top_signals(max_signals=3)
         print(f"\n获取到 {len(signals)} 个信号:")
         for s in signals:
@@ -446,9 +484,9 @@ def main():
             print(f"\n🀄 预警历史 (最近{len(logs)}次):\n")
             for log in logs[:10]:
                 time = log['time'][:16] if log['time'] else 'N/A'
-                version = log.get('version', 'V1')
+                strategy = log.get('strategy', '趋势跟踪')
                 signals = ', '.join([f"{s['code']}({s['score']:.1f}分)" for s in log['signals']])
-                print(f"  {time} [{version}]: {log['count']}只 - {signals}")
+                print(f"  {time} [{strategy}]: {log['count']}只 - {signals}")
             print()
         else:
             print("暂无历史记录")
