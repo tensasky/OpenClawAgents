@@ -22,6 +22,10 @@ from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass, field
 
+# 导入实时数据聚合器
+sys.path.insert(0, str(Path(__file__).parent))
+from realtime_aggregator import RealtimeAggregator
+
 # 配置
 BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
 XIFENG_HOTSPOTS = Path("/Users/roberto/Documents/OpenClawAgents/xifeng/data/hot_spots.json")
@@ -136,10 +140,12 @@ class TechnicalIndicators:
 class NanFengV5_1:
     """南风V5.1 - 精选版"""
     
-    def __init__(self):
+    def __init__(self, use_realtime: bool = True):
         self.db_path = BEIFENG_DB
         self.indicators = TechnicalIndicators()
         self.hot_spots = self._load_hot_spots()
+        self.realtime = RealtimeAggregator() if use_realtime else None
+        self.use_realtime = use_realtime
         
         # V5.1 严格参数
         self.min_adx = 30              # 提高：强趋势要求
@@ -175,24 +181,35 @@ class NanFengV5_1:
         return hot_stocks
     
     def check_market_environment(self) -> Tuple[bool, str]:
-        """检查市场环境 - 大盘趋势"""
+        """检查市场环境 - 大盘趋势（使用实时数据）"""
         try:
-            # 用上证指数判断市场环境
-            conn = sqlite3.connect(self.db_path)
-            query = """
-                SELECT timestamp, open, high, low, close, volume
-                FROM kline_data
-                WHERE stock_code = 'sh000001' AND data_type = 'daily'
-                ORDER BY timestamp DESC
-                LIMIT 30
-            """
-            df = pd.read_sql_query(query, conn)
-            conn.close()
-            
-            if len(df) < 20:
-                return True, "无法判断市场环境，默认允许"
-            
-            df = df.sort_values('timestamp').reset_index(drop=True)
+            # 优先使用实时聚合数据
+            if self.use_realtime and self.realtime:
+                df = self.realtime.get_stock_data_with_realtime('sh000001', days=30)
+                if df is not None and len(df) >= 20:
+                    # 检查是否有实时数据
+                    has_realtime = df['is_realtime'].iloc[-1] if 'is_realtime' in df.columns else False
+                    data_source = "实时" if has_realtime else "历史"
+                else:
+                    return True, "无法获取大盘数据，默认允许"
+            else:
+                # 回退到传统查询
+                conn = sqlite3.connect(self.db_path)
+                query = """
+                    SELECT timestamp, open, high, low, close, volume
+                    FROM kline_data
+                    WHERE stock_code = 'sh000001' AND data_type = 'daily'
+                    ORDER BY timestamp DESC
+                    LIMIT 30
+                """
+                df = pd.read_sql_query(query, conn)
+                conn.close()
+                data_source = "历史"
+                
+                if len(df) < 20:
+                    return True, "无法判断市场环境，默认允许"
+                
+                df = df.sort_values('timestamp').reset_index(drop=True)
             
             # 计算大盘ADX
             adx_series = self.indicators.adx(df['high'], df['low'], df['close'], 14)
@@ -202,19 +219,35 @@ class NanFengV5_1:
             ma20 = self.indicators.sma(df['close'], 20)
             ma20_slope = (ma20.iloc[-1] - ma20.iloc[-5]) / ma20.iloc[-5] if ma20.iloc[-5] > 0 else 0
             
+            # 获取当前价格
+            current_price = df['close'].iloc[-1]
+            open_price = df['open'].iloc[-1]
+            daily_change = (current_price / open_price - 1) * 100
+            
             if market_adx < 20:
-                return False, f"大盘无趋势ADX={market_adx:.1f}，建议观望"
+                return False, f"[{data_source}]大盘无趋势ADX={market_adx:.1f}，建议观望"
             elif ma20_slope < -0.001:
-                return False, f"大盘下跌MA20斜率={ma20_slope*100:.2f}%，建议观望"
+                return False, f"[{data_source}]大盘下跌MA20斜率={ma20_slope*100:.2f}%，建议观望"
             else:
-                return True, f"大盘环境良好ADX={market_adx:.1f}，MA20斜率={ma20_slope*100:.2f}%"
+                return True, f"[{data_source}]大盘环境良好ADX={market_adx:.1f}，今日{daily_change:+.2f}%"
                 
         except Exception as e:
             logger.error(f"市场环境检查失败: {e}")
             return True, "检查失败，默认允许"
     
     def get_stock_data(self, stock_code: str, days: int = 60) -> Optional[pd.DataFrame]:
-        """获取股票数据"""
+        """获取股票数据 - 优先使用实时聚合数据"""
+        # 1. 尝试获取实时聚合数据（包含今日实时）
+        if self.use_realtime and self.realtime:
+            df = self.realtime.get_stock_data_with_realtime(stock_code, days)
+            if df is not None and len(df) >= 30:
+                # 检查是否有实时数据
+                has_realtime = df['is_realtime'].iloc[-1] if 'is_realtime' in df.columns else False
+                if has_realtime:
+                    logger.debug(f"{stock_code}: 使用实时聚合数据")
+                    return df.drop(columns=['is_realtime']) if 'is_realtime' in df.columns else df
+        
+        # 2. 回退到传统日线数据
         try:
             conn = sqlite3.connect(self.db_path)
             query = """
