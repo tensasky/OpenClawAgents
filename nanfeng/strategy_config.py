@@ -29,11 +29,11 @@ class StrategyConfig:
     min_adx: float = 30
     min_ma20_slope: float = 0.002
     min_volume_ratio: float = 1.2
-    score_threshold: float = 20  # 改为100分制的20分
+    score_threshold: float = 40  # 合格线40分
     
-    # RSI区间 (放宽以适应更多股票)
-    rsi_low: float = 20
-    rsi_high: float = 95
+    # RSI区间
+    rsi_low: float = 30
+    rsi_high: float = 80
     
     # 交易建议
     holding_period: str = "5-10天"  # 建议持有周期
@@ -56,15 +56,15 @@ STRATEGIES = {
         rsi_period=6,
         ma_periods=[5, 10, 20, 60],
         
-        trend_weight=0.40,
+        trend_weight=0.45,
         momentum_weight=0.35,
-        volume_weight=0.15,
+        volume_weight=0.10,
         quality_weight=0.10,
         
-        min_adx=30,
-        min_ma20_slope=0.002,
-        rsi_low=20,
-        rsi_high=95,
+        min_adx=20,
+        min_ma20_slope=0.001,
+        rsi_low=30,
+        rsi_high=80,
         
         holding_period="5-10天",
         entry_timing="收盘前30分钟或开盘30分钟",

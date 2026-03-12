@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-12T18:15:56.097096",
+  "generated_at": "2026-03-12T18:46:01.386803",
   "total_news": 60,
-  "total_sectors": 9,
+  "total_sectors": 10,
   "summary": [
     {
       "sector": "有色",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "老铺黄金，业绩预增超200%！港股公司，密集发布",
@@ -62,10 +62,10 @@
     },
     {
       "sector": "医药",
-      "heat_score": 60,
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -118,11 +118,68 @@
       ]
     },
     {
-      "sector": "消费",
-      "heat_score": 60,
+      "sector": "金融",
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "news_count": 4,
+      "today_count": 4,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "美银证券：料国泰航空燃油成本飙升风险尚未反映 维持“跑输大市”评级",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtqkp4744649.shtml",
+          "time": "1773307218"
+        },
+        {
+          "title": "澳新银行策略师称金价近期下跌仅短暂 Fed年底利率降至3%支撑黄金多头",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/nmetal/roll/2026-03-12/doc-inhqtqkh4738152.shtml",
+          "time": "1773307080"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "消费",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "【盘中播报】43只个股跨越牛熊分界线",
@@ -182,24 +239,24 @@
       "today_count": 4,
       "top_news": [
         {
-          "title": "Atlassian裁员10%，CEO计划加大AI投入",
+          "title": "业绩超预期+AI驱动应用改版提振信心，Bumble盘前涨25%",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtqkp4739468.shtml",
-          "time": "1773306534"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtqkh4771209.shtml",
+          "time": "1773311278"
         },
         {
-          "title": "宁波建工：目前公司及中经云均不从事算力租赁业务",
+          "title": "重庆加快构建算力态势感知自动化监测体系",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675251618.shtml",
+          "url": "https://news.10jqka.com.cn/20260312/c675253337.shtml",
           "time": ""
         },
         {
-          "title": "周鸿祎：Anthropic公司很快市值和收入会超过Open AI",
+          "title": "奇点国峰：附属公司北京奇点国峰智算科技有限公司已与一名独立第三方订立一份有关销售AI服务器的销售合约，总代价为人民币2.78亿元",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675251447.shtml",
+          "url": "https://news.10jqka.com.cn/20260312/c675252985.shtml",
           "time": ""
         }
       ],
@@ -227,63 +284,6 @@
         {
           "code": "300474",
           "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "金融",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "美银证券：料国泰航空燃油成本飙升风险尚未反映 维持“跑输大市”评级",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtqkp4744649.shtml",
-          "time": "1773307218"
-        },
-        {
-          "title": "澳新银行策略师称金价近期下跌仅短暂 Fed年底利率降至3%支撑黄金多头",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/nmetal/roll/2026-03-12/doc-inhqtqkh4738152.shtml",
-          "time": "1773307080"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -292,10 +292,10 @@
   "hot_spots": [
     {
       "sector": "有色",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "老铺黄金，业绩预增超200%！港股公司，密集发布",
@@ -349,10 +349,10 @@
     },
     {
       "sector": "医药",
-      "heat_score": 60,
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -405,11 +405,68 @@
       ]
     },
     {
-      "sector": "消费",
-      "heat_score": 60,
+      "sector": "金融",
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "news_count": 4,
+      "today_count": 4,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "美银证券：料国泰航空燃油成本飙升风险尚未反映 维持“跑输大市”评级",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtqkp4744649.shtml",
+          "time": "1773307218"
+        },
+        {
+          "title": "澳新银行策略师称金价近期下跌仅短暂 Fed年底利率降至3%支撑黄金多头",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/nmetal/roll/2026-03-12/doc-inhqtqkh4738152.shtml",
+          "time": "1773307080"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "消费",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "【盘中播报】43只个股跨越牛熊分界线",
@@ -469,24 +526,24 @@
       "today_count": 4,
       "top_news": [
         {
-          "title": "Atlassian裁员10%，CEO计划加大AI投入",
+          "title": "业绩超预期+AI驱动应用改版提振信心，Bumble盘前涨25%",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtqkp4739468.shtml",
-          "time": "1773306534"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtqkh4771209.shtml",
+          "time": "1773311278"
         },
         {
-          "title": "宁波建工：目前公司及中经云均不从事算力租赁业务",
+          "title": "重庆加快构建算力态势感知自动化监测体系",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675251618.shtml",
+          "url": "https://news.10jqka.com.cn/20260312/c675253337.shtml",
           "time": ""
         },
         {
-          "title": "周鸿祎：Anthropic公司很快市值和收入会超过Open AI",
+          "title": "奇点国峰：附属公司北京奇点国峰智算科技有限公司已与一名独立第三方订立一份有关销售AI服务器的销售合约，总代价为人民币2.78亿元",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675251447.shtml",
+          "url": "https://news.10jqka.com.cn/20260312/c675252985.shtml",
           "time": ""
         }
       ],
@@ -514,63 +571,6 @@
         {
           "code": "300474",
           "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "金融",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "美银证券：料国泰航空燃油成本飙升风险尚未反映 维持“跑输大市”评级",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtqkp4744649.shtml",
-          "time": "1773307218"
-        },
-        {
-          "title": "澳新银行策略师称金价近期下跌仅短暂 Fed年底利率降至3%支撑黄金多头",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/nmetal/roll/2026-03-12/doc-inhqtqkh4738152.shtml",
-          "time": "1773307080"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -621,156 +621,6 @@
         {
           "code": "601633",
           "name": "长城汽车",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "低空经济",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "美银证券：料国泰航空燃油成本飙升风险尚未反映 维持“跑输大市”评级",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtqkp4744649.shtml",
-          "time": "1773307218"
-        },
-        {
-          "title": "恒天海龙：拟通过全资子公司收购群健航空不少于40%股权",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675252256.shtml",
-          "time": ""
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "002050",
-          "name": "三花智控",
-          "weight": 8
-        },
-        {
-          "code": "002151",
-          "name": "北斗星通",
-          "weight": 7
-        },
-        {
-          "code": "300900",
-          "name": "广联航空",
-          "weight": 7
-        },
-        {
-          "code": "002097",
-          "name": "山河智能",
-          "weight": 6
-        },
-        {
-          "code": "300185",
-          "name": "通裕重工",
-          "weight": 6
-        }
-      ]
-    },
-    {
-      "sector": "半导体",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "黄润秋部长现场展示了一块芯片",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/wm/2026-03-12/doc-inhqtqkm8493951.shtml",
-          "time": "1773306548"
-        },
-        {
-          "title": "沪电股份：AI芯片配套高端PCB项目2026年下半年试产，泰国工厂获全球头部客户认证",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675251217.shtml",
-          "time": ""
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "688981",
-          "name": "中芯国际",
-          "weight": 10
-        },
-        {
-          "code": "603501",
-          "name": "韦尔股份",
-          "weight": 8
-        },
-        {
-          "code": "002371",
-          "name": "北方华创",
-          "weight": 8
-        },
-        {
-          "code": "688012",
-          "name": "中微公司",
-          "weight": 7
-        },
-        {
-          "code": "300782",
-          "name": "卓胜微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "新能源",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "节能风电：公司股票连续3个交易日收盘价格涨幅偏离值累计达到20%",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675252494.shtml",
-          "time": ""
-        },
-        {
-          "title": "奥飞数据：控股子公司奥飞新能源股票公开转让并在全国股转系统挂牌",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675252117.shtml",
-          "time": ""
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "300750",
-          "name": "宁德时代",
-          "weight": 10
-        },
-        {
-          "code": "002594",
-          "name": "比亚迪",
-          "weight": 9
-        },
-        {
-          "code": "601012",
-          "name": "隆基绿能",
-          "weight": 8
-        },
-        {
-          "code": "300014",
-          "name": "亿纬锂能",
-          "weight": 7
-        },
-        {
-          "code": "002459",
-          "name": "晶澳科技",
           "weight": 7
         }
       ]
