@@ -1,71 +1,14 @@
 {
-  "generated_at": "2026-03-12T18:46:01.386803",
+  "generated_at": "2026-03-12T20:46:22.839507",
   "total_news": 60,
-  "total_sectors": 10,
+  "total_sectors": 8,
   "summary": [
     {
-      "sector": "有色",
+      "sector": "医药",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
-      "top_news": [
-        {
-          "title": "老铺黄金，业绩预增超200%！港股公司，密集发布",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/s/2026-03-12/doc-inhqtqkh4757452.shtml",
-          "time": "1773309129"
-        },
-        {
-          "title": "【建投说铝】氧化铝：地缘冲突难改过剩格局，风险或在政策端",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-12/doc-inhqtqkh4754268.shtml",
-          "time": "1773308815"
-        },
-        {
-          "title": "战火未平关税风波又起？强势美元令黄金承压",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/nmetal/hjzx/2026-03-12/doc-inhqtqkh4745164.shtml",
-          "time": "1773308137"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601899",
-          "name": "紫金矿业",
-          "weight": 10
-        },
-        {
-          "code": "603993",
-          "name": "洛阳钼业",
-          "weight": 8
-        },
-        {
-          "code": "600362",
-          "name": "江西铜业",
-          "weight": 7
-        },
-        {
-          "code": "002460",
-          "name": "赣锋锂业",
-          "weight": 8
-        },
-        {
-          "code": "600111",
-          "name": "北方稀土",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "医药",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -118,68 +61,11 @@
       ]
     },
     {
-      "sector": "金融",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "美银证券：料国泰航空燃油成本飙升风险尚未反映 维持“跑输大市”评级",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtqkp4744649.shtml",
-          "time": "1773307218"
-        },
-        {
-          "title": "澳新银行策略师称金价近期下跌仅短暂 Fed年底利率降至3%支撑黄金多头",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/nmetal/roll/2026-03-12/doc-inhqtqkh4738152.shtml",
-          "time": "1773307080"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
-          "weight": 7
-        }
-      ]
-    },
-    {
       "sector": "消费",
-      "heat_score": 50,
+      "heat_score": 60,
       "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "【盘中播报】43只个股跨越牛熊分界线",
@@ -232,58 +118,58 @@
       ]
     },
     {
-      "sector": "人工智能",
-      "heat_score": 50,
+      "sector": "金融",
+      "heat_score": 40,
       "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "news_count": 3,
+      "today_count": 3,
       "top_news": [
         {
-          "title": "业绩超预期+AI驱动应用改版提振信心，Bumble盘前涨25%",
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "私人信贷赎回受限 摩根士丹利限制一只私人信贷基金的赎回",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtqkh4771209.shtml",
-          "time": "1773311278"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusi8441228.shtml",
+          "time": "1773319207"
         },
         {
-          "title": "重庆加快构建算力态势感知自动化监测体系",
+          "title": "美国安达保险将为通过霍尔木兹海峡的船舶提供保险",
           "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675253337.shtml",
-          "time": ""
-        },
-        {
-          "title": "奇点国峰：附属公司北京奇点国峰智算科技有限公司已与一名独立第三方订立一份有关销售AI服务器的销售合约，总代价为人民币2.78亿元",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675252985.shtml",
-          "time": ""
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4703831.shtml",
+          "time": "1773319044"
         }
       ],
       "leading_stocks": [
         {
-          "code": "300033",
-          "name": "同花顺",
+          "code": "600036",
+          "name": "招商银行",
           "weight": 10
         },
         {
-          "code": "002230",
-          "name": "科大讯飞",
+          "code": "601318",
+          "name": "中国平安",
           "weight": 9
         },
         {
-          "code": "603019",
-          "name": "中科曙光",
+          "code": "601398",
+          "name": "工商银行",
           "weight": 8
         },
         {
-          "code": "000938",
-          "name": "中芯国际",
+          "code": "600030",
+          "name": "中信证券",
           "weight": 8
         },
         {
-          "code": "300474",
-          "name": "景嘉微",
+          "code": "601688",
+          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -291,68 +177,11 @@
   ],
   "hot_spots": [
     {
-      "sector": "有色",
+      "sector": "医药",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
-      "top_news": [
-        {
-          "title": "老铺黄金，业绩预增超200%！港股公司，密集发布",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/s/2026-03-12/doc-inhqtqkh4757452.shtml",
-          "time": "1773309129"
-        },
-        {
-          "title": "【建投说铝】氧化铝：地缘冲突难改过剩格局，风险或在政策端",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-12/doc-inhqtqkh4754268.shtml",
-          "time": "1773308815"
-        },
-        {
-          "title": "战火未平关税风波又起？强势美元令黄金承压",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/nmetal/hjzx/2026-03-12/doc-inhqtqkh4745164.shtml",
-          "time": "1773308137"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601899",
-          "name": "紫金矿业",
-          "weight": 10
-        },
-        {
-          "code": "603993",
-          "name": "洛阳钼业",
-          "weight": 8
-        },
-        {
-          "code": "600362",
-          "name": "江西铜业",
-          "weight": 7
-        },
-        {
-          "code": "002460",
-          "name": "赣锋锂业",
-          "weight": 8
-        },
-        {
-          "code": "600111",
-          "name": "北方稀土",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "医药",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -405,68 +234,11 @@
       ]
     },
     {
-      "sector": "金融",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "美银证券：料国泰航空燃油成本飙升风险尚未反映 维持“跑输大市”评级",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtqkp4744649.shtml",
-          "time": "1773307218"
-        },
-        {
-          "title": "澳新银行策略师称金价近期下跌仅短暂 Fed年底利率降至3%支撑黄金多头",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/nmetal/roll/2026-03-12/doc-inhqtqkh4738152.shtml",
-          "time": "1773307080"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
-          "weight": 7
-        }
-      ]
-    },
-    {
       "sector": "消费",
-      "heat_score": 50,
+      "heat_score": 60,
       "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "【盘中播报】43只个股跨越牛熊分界线",
@@ -519,108 +291,58 @@
       ]
     },
     {
-      "sector": "人工智能",
-      "heat_score": 50,
+      "sector": "金融",
+      "heat_score": 40,
       "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "news_count": 3,
+      "today_count": 3,
       "top_news": [
         {
-          "title": "业绩超预期+AI驱动应用改版提振信心，Bumble盘前涨25%",
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "私人信贷赎回受限 摩根士丹利限制一只私人信贷基金的赎回",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtqkh4771209.shtml",
-          "time": "1773311278"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusi8441228.shtml",
+          "time": "1773319207"
         },
         {
-          "title": "重庆加快构建算力态势感知自动化监测体系",
+          "title": "美国安达保险将为通过霍尔木兹海峡的船舶提供保险",
           "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675253337.shtml",
-          "time": ""
-        },
-        {
-          "title": "奇点国峰：附属公司北京奇点国峰智算科技有限公司已与一名独立第三方订立一份有关销售AI服务器的销售合约，总代价为人民币2.78亿元",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675252985.shtml",
-          "time": ""
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4703831.shtml",
+          "time": "1773319044"
         }
       ],
       "leading_stocks": [
         {
-          "code": "300033",
-          "name": "同花顺",
+          "code": "600036",
+          "name": "招商银行",
           "weight": 10
         },
         {
-          "code": "002230",
-          "name": "科大讯飞",
+          "code": "601318",
+          "name": "中国平安",
           "weight": 9
         },
         {
-          "code": "603019",
-          "name": "中科曙光",
+          "code": "601398",
+          "name": "工商银行",
           "weight": 8
         },
         {
-          "code": "000938",
-          "name": "中芯国际",
+          "code": "600030",
+          "name": "中信证券",
           "weight": 8
         },
         {
-          "code": "300474",
-          "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "汽车",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "突发爆雷！刚刚，万亿巨头本田汽车“崩了” 取消部分纯电动车型 预计产生巨额损失",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/chanjing/gsnews/2026-03-12/doc-inhqtqkp4756935.shtml",
-          "time": "1773308228"
-        },
-        {
-          "title": "本田因重新评估电动汽车战略，预计损失最高达157亿美元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtqkp4747263.shtml",
-          "time": "1773307580"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "002594",
-          "name": "比亚迪",
-          "weight": 10
-        },
-        {
-          "code": "601127",
-          "name": "赛力斯",
-          "weight": 8
-        },
-        {
-          "code": "000625",
-          "name": "长安汽车",
-          "weight": 7
-        },
-        {
-          "code": "600104",
-          "name": "上汽集团",
-          "weight": 7
-        },
-        {
-          "code": "601633",
-          "name": "长城汽车",
+          "code": "601688",
+          "name": "华泰证券",
           "weight": 7
         }
       ]
