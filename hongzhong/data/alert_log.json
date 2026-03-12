@@ -1,5 +1,295 @@
 [
   {
+    "time": "2026-03-12T21:15:11.793232",
+    "version": "V5.1",
+    "count": 3,
+    "signals": [
+      {
+        "code": "sh600025",
+        "name": "华能水电",
+        "score": 21.5,
+        "trend_score": 35,
+        "momentum_score": 18,
+        "volume_score": 5,
+        "quality_score": 7,
+        "price": 10.58,
+        "stop_loss": 10.11,
+        "take_profit_1": 11.0,
+        "take_profit_2": 11.43,
+        "signals": [
+          "多头排列",
+          "MA20强势向上",
+          "强趋势ADX=46.7",
+          "MACD水上",
+          "5日涨幅适中(4.8%)",
+          "20日强势(16.0%)",
+          "相对强度前20%",
+          "波动率适中"
+        ],
+        "warnings": [
+          "RSI不适(100)",
+          "放量过大(66.4倍)"
+        ],
+        "is_hot_sector": false,
+        "sector": "",
+        "adx": 46.7,
+        "rsi": 100.0,
+        "ma20_slope": 2.95,
+        "relative_strength": 93.0,
+        "confidence": 0.8,
+        "position_size": 0.2,
+        "market_ok": true,
+        "market_msg": "[历史]大盘环境良好ADX=27.5，今日+0.00%",
+        "strategy": "稳健增长",
+        "strategy_config": {
+          "holding_period": "2-4周",
+          "entry_timing": "回调至支撑位，企稳后买入",
+          "exit_strategy": "基本面恶化或趋势反转",
+          "max_holding": "30%",
+          "risk_level": "低",
+          "suitable_for": "中长线投资者，上班族"
+        }
+      },
+      {
+        "code": "sh600011",
+        "name": "华能国际",
+        "score": 21.5,
+        "trend_score": 35,
+        "momentum_score": 18,
+        "volume_score": 5,
+        "quality_score": 7,
+        "price": 7.88,
+        "stop_loss": 7.45,
+        "take_profit_1": 8.2,
+        "take_profit_2": 8.51,
+        "signals": [
+          "多头排列",
+          "MA20强势向上",
+          "强趋势ADX=41.5",
+          "MACD水上",
+          "5日涨幅适中(5.3%)",
+          "20日强势(13.2%)",
+          "相对强度前20%",
+          "波动率适中"
+        ],
+        "warnings": [
+          "RSI不适(82)",
+          "放量过大(123.0倍)"
+        ],
+        "is_hot_sector": false,
+        "sector": "",
+        "adx": 41.5,
+        "rsi": 82.0,
+        "ma20_slope": 1.95,
+        "relative_strength": 89.0,
+        "confidence": 0.8,
+        "position_size": 0.2,
+        "market_ok": true,
+        "market_msg": "[历史]大盘环境良好ADX=27.5，今日+0.00%",
+        "strategy": "稳健增长",
+        "strategy_config": {
+          "holding_period": "2-4周",
+          "entry_timing": "回调至支撑位，企稳后买入",
+          "exit_strategy": "基本面恶化或趋势反转",
+          "max_holding": "30%",
+          "risk_level": "低",
+          "suitable_for": "中长线投资者，上班族"
+        }
+      },
+      {
+        "code": "sh600233",
+        "name": "圆通速递",
+        "score": 21.5,
+        "trend_score": 35,
+        "momentum_score": 18,
+        "volume_score": 5,
+        "quality_score": 7,
+        "price": 19.71,
+        "stop_loss": 18.22,
+        "take_profit_1": 20.5,
+        "take_profit_2": 21.29,
+        "signals": [
+          "多头排列",
+          "MA20强势向上",
+          "强趋势ADX=41.4",
+          "MACD水上",
+          "5日涨幅适中(3.8%)",
+          "20日强势(11.4%)",
+          "相对强度前20%",
+          "波动率适中"
+        ],
+        "warnings": [
+          "RSI不适(79)",
+          "放量过大(55.0倍)"
+        ],
+        "is_hot_sector": false,
+        "sector": "",
+        "adx": 41.4,
+        "rsi": 79.0,
+        "ma20_slope": 2.78,
+        "relative_strength": 85.0,
+        "confidence": 0.8,
+        "position_size": 0.2,
+        "market_ok": true,
+        "market_msg": "[历史]大盘环境良好ADX=27.5，今日+0.00%",
+        "strategy": "稳健增长",
+        "strategy_config": {
+          "holding_period": "2-4周",
+          "entry_timing": "回调至支撑位，企稳后买入",
+          "exit_strategy": "基本面恶化或趋势反转",
+          "max_holding": "30%",
+          "risk_level": "低",
+          "suitable_for": "中长线投资者，上班族"
+        }
+      }
+    ]
+  },
+  {
+    "time": "2026-03-12T21:14:52.136937",
+    "version": "V5.1",
+    "count": 3,
+    "signals": [
+      {
+        "code": "sh600025",
+        "name": "华能水电",
+        "score": 23.4,
+        "trend_score": 35,
+        "momentum_score": 18,
+        "volume_score": 5,
+        "quality_score": 7,
+        "price": 10.58,
+        "stop_loss": 10.11,
+        "take_profit_1": 11.0,
+        "take_profit_2": 11.43,
+        "signals": [
+          "多头排列",
+          "MA20强势向上",
+          "强趋势ADX=46.7",
+          "MACD水上",
+          "5日涨幅适中(4.8%)",
+          "20日强势(16.0%)",
+          "相对强度前20%",
+          "波动率适中"
+        ],
+        "warnings": [
+          "RSI不适(100)",
+          "放量过大(66.4倍)"
+        ],
+        "is_hot_sector": false,
+        "sector": "",
+        "adx": 46.7,
+        "rsi": 100.0,
+        "ma20_slope": 2.95,
+        "relative_strength": 93.0,
+        "confidence": 0.8,
+        "position_size": 0.2,
+        "market_ok": true,
+        "market_msg": "[历史]大盘环境良好ADX=27.5，今日+0.00%",
+        "strategy": "趋势跟踪",
+        "strategy_config": {
+          "holding_period": "5-10天",
+          "entry_timing": "收盘前30分钟或开盘30分钟",
+          "exit_strategy": "移动止损，趋势反转离场",
+          "max_holding": "25%",
+          "risk_level": "中等",
+          "suitable_for": "短线趋势交易者"
+        }
+      },
+      {
+        "code": "sh600011",
+        "name": "华能国际",
+        "score": 23.4,
+        "trend_score": 35,
+        "momentum_score": 18,
+        "volume_score": 5,
+        "quality_score": 7,
+        "price": 7.88,
+        "stop_loss": 7.45,
+        "take_profit_1": 8.2,
+        "take_profit_2": 8.51,
+        "signals": [
+          "多头排列",
+          "MA20强势向上",
+          "强趋势ADX=41.5",
+          "MACD水上",
+          "5日涨幅适中(5.3%)",
+          "20日强势(13.2%)",
+          "相对强度前20%",
+          "波动率适中"
+        ],
+        "warnings": [
+          "RSI不适(82)",
+          "放量过大(123.0倍)"
+        ],
+        "is_hot_sector": false,
+        "sector": "",
+        "adx": 41.5,
+        "rsi": 82.0,
+        "ma20_slope": 1.95,
+        "relative_strength": 89.0,
+        "confidence": 0.8,
+        "position_size": 0.2,
+        "market_ok": true,
+        "market_msg": "[历史]大盘环境良好ADX=27.5，今日+0.00%",
+        "strategy": "趋势跟踪",
+        "strategy_config": {
+          "holding_period": "5-10天",
+          "entry_timing": "收盘前30分钟或开盘30分钟",
+          "exit_strategy": "移动止损，趋势反转离场",
+          "max_holding": "25%",
+          "risk_level": "中等",
+          "suitable_for": "短线趋势交易者"
+        }
+      },
+      {
+        "code": "sh600233",
+        "name": "圆通速递",
+        "score": 23.4,
+        "trend_score": 35,
+        "momentum_score": 18,
+        "volume_score": 5,
+        "quality_score": 7,
+        "price": 19.71,
+        "stop_loss": 18.22,
+        "take_profit_1": 20.5,
+        "take_profit_2": 21.29,
+        "signals": [
+          "多头排列",
+          "MA20强势向上",
+          "强趋势ADX=41.4",
+          "MACD水上",
+          "5日涨幅适中(3.8%)",
+          "20日强势(11.4%)",
+          "相对强度前20%",
+          "波动率适中"
+        ],
+        "warnings": [
+          "RSI不适(79)",
+          "放量过大(55.0倍)"
+        ],
+        "is_hot_sector": false,
+        "sector": "",
+        "adx": 41.4,
+        "rsi": 79.0,
+        "ma20_slope": 2.78,
+        "relative_strength": 85.0,
+        "confidence": 0.8,
+        "position_size": 0.2,
+        "market_ok": true,
+        "market_msg": "[历史]大盘环境良好ADX=27.5，今日+0.00%",
+        "strategy": "趋势跟踪",
+        "strategy_config": {
+          "holding_period": "5-10天",
+          "entry_timing": "收盘前30分钟或开盘30分钟",
+          "exit_strategy": "移动止损，趋势反转离场",
+          "max_holding": "25%",
+          "risk_level": "中等",
+          "suitable_for": "短线趋势交易者"
+        }
+      }
+    ]
+  },
+  {
     "time": "2026-03-11T22:02:12.777824",
     "version": "V5.1",
     "count": 3,
