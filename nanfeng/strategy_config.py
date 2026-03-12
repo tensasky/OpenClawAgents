@@ -25,11 +25,11 @@ class StrategyConfig:
     volume_weight: float = 0.20
     quality_weight: float = 0.10
     
-    # 门槛值
+    # 门槛值 (100分制)
     min_adx: float = 30
     min_ma20_slope: float = 0.002
     min_volume_ratio: float = 1.2
-    score_threshold: float = 8.5
+    score_threshold: float = 20  # 改为100分制的20分
     
     # RSI区间 (放宽以适应更多股票)
     rsi_low: float = 20
@@ -56,9 +56,9 @@ STRATEGIES = {
         rsi_period=6,
         ma_periods=[5, 10, 20, 60],
         
-        trend_weight=0.35,
-        momentum_weight=0.30,
-        volume_weight=0.25,
+        trend_weight=0.40,
+        momentum_weight=0.35,
+        volume_weight=0.15,
         quality_weight=0.10,
         
         min_adx=30,
@@ -149,7 +149,7 @@ STRATEGIES = {
         min_volume_ratio=1.0,
         rsi_low=45,
         rsi_high=55,  # RSI区间更严格
-        score_threshold=9.0,  # 分数门槛更高
+        score_threshold=25,  # 100分制，门槛更高
         
         holding_period="2-4周",
         entry_timing="回调至支撑位，企稳后买入",
