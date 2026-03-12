@@ -148,6 +148,7 @@ class NanFengV5_1:
         self.realtime = RealtimeAggregator() if use_realtime else None
         self.use_realtime = use_realtime
         self.stock_names = {}  # 缓存股票名称
+        self.strategy_name = strategy_name  # 保存策略名称
         
         # 加载策略配置
         self.strategy = get_strategy(strategy_name)
