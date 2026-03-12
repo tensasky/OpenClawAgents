@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-12T21:16:28.125847",
+  "generated_at": "2026-03-12T21:46:33.302006",
   "total_news": 60,
   "total_sectors": 8,
   "summary": [
     {
       "sector": "医药",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -56,63 +56,6 @@
         {
           "code": "000538",
           "name": "云南白药",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "人工智能",
-      "heat_score": 60,
-      "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
-      "top_news": [
-        {
-          "title": "Atlassian为转向AI裁员1600人 ，优先发展AI和企业销售",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtuse4712949.shtml",
-          "time": "1773320651"
-        },
-        {
-          "title": "英伟达瞄准智能体平台 推介开源人工智能智能体框架“NemoClaw”",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4707879.shtml",
-          "time": "1773319563"
-        },
-        {
-          "title": "Atlassian裁员10%为AI转型提供资金",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtush1663381.shtml",
-          "time": "1773319138"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "300033",
-          "name": "同花顺",
-          "weight": 10
-        },
-        {
-          "code": "002230",
-          "name": "科大讯飞",
-          "weight": 9
-        },
-        {
-          "code": "603019",
-          "name": "中科曙光",
-          "weight": 8
-        },
-        {
-          "code": "000938",
-          "name": "中芯国际",
-          "weight": 8
-        },
-        {
-          "code": "300474",
-          "name": "景嘉微",
           "weight": 7
         }
       ]
@@ -175,58 +118,101 @@
       ]
     },
     {
-      "sector": "金融",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "私人信贷赎回受限 摩根士丹利限制一只私人信贷基金的赎回",
+          "title": "宝可梦新作意外爆火提振Switch 2销量预期，任天堂本周股价大涨18%",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusi8441228.shtml",
-          "time": "1773319207"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4726580.shtml",
+          "time": "1773321557"
         },
         {
-          "title": "美国安达保险将为通过霍尔木兹海峡的船舶提供保险",
+          "title": "理想汽车季报图解：营收288亿同比降35% 运营亏损4亿 股价承压",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4703831.shtml",
-          "time": "1773319044"
+          "url": "https://finance.sina.com.cn/stock/s/2026-03-12/doc-inhqtush1685681.shtml",
+          "time": "1773320787"
         }
       ],
       "leading_stocks": [
         {
-          "code": "600036",
-          "name": "招商银行",
+          "code": "002594",
+          "name": "比亚迪",
           "weight": 10
         },
         {
-          "code": "601318",
-          "name": "中国平安",
+          "code": "601127",
+          "name": "赛力斯",
+          "weight": 8
+        },
+        {
+          "code": "000625",
+          "name": "长安汽车",
+          "weight": 7
+        },
+        {
+          "code": "600104",
+          "name": "上汽集团",
+          "weight": 7
+        },
+        {
+          "code": "601633",
+          "name": "长城汽车",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "Atlassian为转向AI裁员1600人 ，优先发展AI和企业销售",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtuse4712949.shtml",
+          "time": "1773320651"
+        },
+        {
+          "title": "英伟达瞄准智能体平台 推介开源人工智能智能体框架“NemoClaw”",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4707879.shtml",
+          "time": "1773319563"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300033",
+          "name": "同花顺",
+          "weight": 10
+        },
+        {
+          "code": "002230",
+          "name": "科大讯飞",
           "weight": 9
         },
         {
-          "code": "601398",
-          "name": "工商银行",
+          "code": "603019",
+          "name": "中科曙光",
           "weight": 8
         },
         {
-          "code": "600030",
-          "name": "中信证券",
+          "code": "000938",
+          "name": "中芯国际",
           "weight": 8
         },
         {
-          "code": "601688",
-          "name": "华泰证券",
+          "code": "300474",
+          "name": "景嘉微",
           "weight": 7
         }
       ]
@@ -285,10 +271,10 @@
   "hot_spots": [
     {
       "sector": "医药",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -336,63 +322,6 @@
         {
           "code": "000538",
           "name": "云南白药",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "人工智能",
-      "heat_score": 60,
-      "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
-      "top_news": [
-        {
-          "title": "Atlassian为转向AI裁员1600人 ，优先发展AI和企业销售",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtuse4712949.shtml",
-          "time": "1773320651"
-        },
-        {
-          "title": "英伟达瞄准智能体平台 推介开源人工智能智能体框架“NemoClaw”",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4707879.shtml",
-          "time": "1773319563"
-        },
-        {
-          "title": "Atlassian裁员10%为AI转型提供资金",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtush1663381.shtml",
-          "time": "1773319138"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "300033",
-          "name": "同花顺",
-          "weight": 10
-        },
-        {
-          "code": "002230",
-          "name": "科大讯飞",
-          "weight": 9
-        },
-        {
-          "code": "603019",
-          "name": "中科曙光",
-          "weight": 8
-        },
-        {
-          "code": "000938",
-          "name": "中芯国际",
-          "weight": 8
-        },
-        {
-          "code": "300474",
-          "name": "景嘉微",
           "weight": 7
         }
       ]
@@ -455,58 +384,101 @@
       ]
     },
     {
-      "sector": "金融",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "私人信贷赎回受限 摩根士丹利限制一只私人信贷基金的赎回",
+          "title": "宝可梦新作意外爆火提振Switch 2销量预期，任天堂本周股价大涨18%",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusi8441228.shtml",
-          "time": "1773319207"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4726580.shtml",
+          "time": "1773321557"
         },
         {
-          "title": "美国安达保险将为通过霍尔木兹海峡的船舶提供保险",
+          "title": "理想汽车季报图解：营收288亿同比降35% 运营亏损4亿 股价承压",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4703831.shtml",
-          "time": "1773319044"
+          "url": "https://finance.sina.com.cn/stock/s/2026-03-12/doc-inhqtush1685681.shtml",
+          "time": "1773320787"
         }
       ],
       "leading_stocks": [
         {
-          "code": "600036",
-          "name": "招商银行",
+          "code": "002594",
+          "name": "比亚迪",
           "weight": 10
         },
         {
-          "code": "601318",
-          "name": "中国平安",
+          "code": "601127",
+          "name": "赛力斯",
+          "weight": 8
+        },
+        {
+          "code": "000625",
+          "name": "长安汽车",
+          "weight": 7
+        },
+        {
+          "code": "600104",
+          "name": "上汽集团",
+          "weight": 7
+        },
+        {
+          "code": "601633",
+          "name": "长城汽车",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "Atlassian为转向AI裁员1600人 ，优先发展AI和企业销售",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtuse4712949.shtml",
+          "time": "1773320651"
+        },
+        {
+          "title": "英伟达瞄准智能体平台 推介开源人工智能智能体框架“NemoClaw”",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4707879.shtml",
+          "time": "1773319563"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300033",
+          "name": "同花顺",
+          "weight": 10
+        },
+        {
+          "code": "002230",
+          "name": "科大讯飞",
           "weight": 9
         },
         {
-          "code": "601398",
-          "name": "工商银行",
+          "code": "603019",
+          "name": "中科曙光",
           "weight": 8
         },
         {
-          "code": "600030",
-          "name": "中信证券",
+          "code": "000938",
+          "name": "中芯国际",
           "weight": 8
         },
         {
-          "code": "601688",
-          "name": "华泰证券",
+          "code": "300474",
+          "name": "景嘉微",
           "weight": 7
         }
       ]
@@ -558,6 +530,56 @@
           "code": "000069",
           "name": "华侨城A",
           "weight": 6
+        }
+      ]
+    },
+    {
+      "sector": "有色",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "现货黄金短线下挫12美元",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260312/c675257819.shtml",
+          "time": ""
+        },
+        {
+          "title": "现货黄金在伊朗新任最高领袖声明公布后短线跌幅一度扩大至25美元",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260312/c675257753.shtml",
+          "time": ""
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "601899",
+          "name": "紫金矿业",
+          "weight": 10
+        },
+        {
+          "code": "603993",
+          "name": "洛阳钼业",
+          "weight": 8
+        },
+        {
+          "code": "600362",
+          "name": "江西铜业",
+          "weight": 7
+        },
+        {
+          "code": "002460",
+          "name": "赣锋锂业",
+          "weight": 8
+        },
+        {
+          "code": "600111",
+          "name": "北方稀土",
+          "weight": 7
         }
       ]
     }
