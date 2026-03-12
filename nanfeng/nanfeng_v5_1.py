@@ -383,13 +383,11 @@ class NanFengV5_1:
         adx = adx_series.iloc[-1] if not adx_series.empty else 0
         signal.adx = adx
         
-        # 严格检查：ADX必须>=30
-        if adx < self.min_adx:
-            return None  # 直接淘汰
+        # 检查：ADX (不达标也继续，但扣分)
+        adx_ok = adx >= self.min_adx
         
-        # 严格检查：MA20必须强势向上
-        if ma20_slope < self.min_ma20_slope:
-            return None  # 直接淘汰
+        # 检查：MA20 (不达标也继续，但扣分)
+        ma20_ok = ma20_slope >= self.min_ma20_slope
         
         # 1.1 多头排列 (15分)
         if current_price > ma5 > ma10 > ma20:
@@ -470,13 +468,13 @@ class NanFengV5_1:
             change_5d = (close.iloc[-1] / close.iloc[-5] - 1) * 100
             change_20d = (close.iloc[-1] / close.iloc[-20] - 1) * 100 if len(close) >= 20 else 0
             
-            if 3 < change_5d < 8:  # 理想区间
+            if 3 < change_5d < 15:  # 放宽到15%
                 momentum_score += 8
                 signals.append(f"5日涨幅适中({change_5d:.1f}%)")
             elif 0 < change_5d <= 3:
                 momentum_score += 5
                 signals.append(f"5日微涨({change_5d:.1f}%)")
-            elif change_5d >= 8:
+            elif change_5d >= 15:
                 momentum_score += 2
                 warnings.append(f"5日涨幅过大({change_5d:.1f}%)")
             else:
@@ -541,24 +539,24 @@ class NanFengV5_1:
         signal.quality_score = quality_score
         
         # ========== 综合评分 ==========
-        # 原始加权分数 (0-100)
-        raw_score = (
+        # 加权分数 (0-100分制)
+        total_score = (
             trend_score * self.weights['trend'] +
             momentum_score * self.weights['momentum'] +
             volume_score * self.weights['volume'] +
             quality_score * self.weights['quality']
         )
         
-        # 转换为10分制
-        signal.total_score = round(raw_score / 10, 1)
-        
-        # 保存原始分数用于详细展示
-        signal.raw_score = round(raw_score, 1)
+        signal.total_score = round(total_score, 1)
+        signal.trend_score = trend_score
+        signal.momentum_score = momentum_score
+        signal.volume_score = volume_score
+        signal.quality_score = quality_score
         signal.signals = signals
         signal.warnings = warnings
         
-        # 严格门槛检查
-        if signal.total_score < self.score_threshold:
+        # 门槛检查 (满分100分制，门槛30分)
+        if signal.total_score < 30:
             return None
         
         # 计算止损止盈

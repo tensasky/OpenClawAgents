@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-11T22:12:22.956339",
+  "generated_at": "2026-03-12T14:45:19.095589",
   "total_news": 60,
-  "total_sectors": 9,
+  "total_sectors": 11,
   "summary": [
     {
       "sector": "金融",
-      "heat_score": 60,
-      "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "heat_score": 80,
+      "level": "High",
+      "news_count": 7,
+      "today_count": 7,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -18,18 +18,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "伊朗局势引发能源价格飙升，新兴市场降息空间收窄",
+          "title": "兴业证券：首予兆威机电“增持”评级 主业利润增长",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrth2423462.shtml",
-          "time": "1773237303"
+          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtkan1756042.shtml",
+          "time": "1773297814"
         },
         {
-          "title": "摩根大通减记软件贷款价值后，收紧对私人信贷公司的放贷",
+          "title": "华源证券：首予卧安机器人“买入”评级 AI具身家庭机器人龙头",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5427777.shtml",
-          "time": "1773236345"
+          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtkan1754806.shtml",
+          "time": "1773297694"
         }
       ],
       "leading_stocks": [
@@ -62,10 +62,10 @@
     },
     {
       "sector": "医药",
-      "heat_score": 50,
+      "heat_score": 60,
       "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -118,455 +118,89 @@
       ]
     },
     {
-      "sector": "消费",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
-      "top_news": [
-        {
-          "title": "【盘中播报】43只个股跨越牛熊分界线",
-          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
-          "time": "2026-02-05 10:47:48"
-        },
-        {
-          "title": "白酒概念下跌1.50%，6股主力资金净流出超5000万元",
-          "content": "1.29 -2566.87 603369 今世缘 -3.08 0.89 -2163.80 601579 会稽山 -1.86 3.38 -1738.19 002304 洋河股份 -0.97 0.54 -1598.62 600655 豫园股份 -0.19 0.68 -1457.91 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602063644184172.html",
-          "time": "2026-02-06 17:24:44"
-        },
-        {
-          "title": "16.93亿元主力资金今日抢筹食品饮料板块",
-          "content": "千禾味业 6.83 4.08 3092.24 000995 皇台酒业 5.96 37.51 2869.63 300997 欢乐家 5.85 6.09 2507.31 000848 承德露露 1.64 2.61 2398.67 002847 盐津铺子 2.92 2.17 2189.69 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849897.html",
-          "time": "2026-02-05 17:18:33"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600519",
-          "name": "贵州茅台",
-          "weight": 10
-        },
-        {
-          "code": "000858",
-          "name": "五粮液",
-          "weight": 9
-        },
-        {
-          "code": "603288",
-          "name": "海天味业",
-          "weight": 8
-        },
-        {
-          "code": "600887",
-          "name": "伊利股份",
-          "weight": 8
-        },
-        {
-          "code": "601888",
-          "name": "中国中免",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "汽车",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "对话创维集团创始人黄宏生：希望能做汽车行业的传音",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/tech/it/2026-03-11/doc-inhqrrtm5447214.shtml",
-          "time": "1773238032"
-        },
-        {
-          "title": "特斯拉中国产电动汽车2月销量猛增91%",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5418455.shtml",
-          "time": "1773235349"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "002594",
-          "name": "比亚迪",
-          "weight": 10
-        },
-        {
-          "code": "601127",
-          "name": "赛力斯",
-          "weight": 8
-        },
-        {
-          "code": "000625",
-          "name": "长安汽车",
-          "weight": 7
-        },
-        {
-          "code": "600104",
-          "name": "上汽集团",
-          "weight": 7
-        },
-        {
-          "code": "601633",
-          "name": "长城汽车",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "房地产",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "莱茵金属预计销售额140亿至145亿欧元，未达分析师150亿欧元预期",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrtm5424688.shtml",
-          "time": "1773235220"
-        },
-        {
-          "title": "体验经济大爆发 浪浪山IP带动终端销售额超25亿元",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260311/c675229683.shtml",
-          "time": ""
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "000002",
-          "name": "万科A",
-          "weight": 10
-        },
-        {
-          "code": "600048",
-          "name": "保利发展",
-          "weight": 9
-        },
-        {
-          "code": "001979",
-          "name": "招商蛇口",
-          "weight": 8
-        },
-        {
-          "code": "600606",
-          "name": "绿地控股",
-          "weight": 7
-        },
-        {
-          "code": "000069",
-          "name": "华侨城A",
-          "weight": 6
-        }
-      ]
-    }
-  ],
-  "hot_spots": [
-    {
-      "sector": "金融",
+      "sector": "人工智能",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
       "top_news": [
         {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "伊朗局势引发能源价格飙升，新兴市场降息空间收窄",
+          "title": "华源证券：首予卧安机器人“买入”评级 AI具身家庭机器人龙头",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrth2423462.shtml",
-          "time": "1773237303"
+          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtkan1754806.shtml",
+          "time": "1773297694"
         },
         {
-          "title": "摩根大通减记软件贷款价值后，收紧对私人信贷公司的放贷",
+          "title": "希捷高管称伊朗战事短期内不太可能影响AI供应链",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5427777.shtml",
-          "time": "1773236345"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtcun4871022.shtml",
+          "time": "1773294769"
         },
         {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "医药",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "今日盘中突破年线个股",
-          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
-          "time": "2026-02-05 13:10:20"
-        },
-        {
-          "title": "【盘中播报】43只个股跨越牛熊分界线",
-          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
-          "time": "2026-02-05 10:47:48"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600276",
-          "name": "恒瑞医药",
-          "weight": 10
-        },
-        {
-          "code": "300760",
-          "name": "迈瑞医疗",
-          "weight": 9
-        },
-        {
-          "code": "603259",
-          "name": "药明康德",
-          "weight": 8
-        },
-        {
-          "code": "300122",
-          "name": "智飞生物",
-          "weight": 7
-        },
-        {
-          "code": "000538",
-          "name": "云南白药",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "消费",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
-      "top_news": [
-        {
-          "title": "【盘中播报】43只个股跨越牛熊分界线",
-          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
-          "time": "2026-02-05 10:47:48"
-        },
-        {
-          "title": "白酒概念下跌1.50%，6股主力资金净流出超5000万元",
-          "content": "1.29 -2566.87 603369 今世缘 -3.08 0.89 -2163.80 601579 会稽山 -1.86 3.38 -1738.19 002304 洋河股份 -0.97 0.54 -1598.62 600655 豫园股份 -0.19 0.68 -1457.91 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602063644184172.html",
-          "time": "2026-02-06 17:24:44"
-        },
-        {
-          "title": "16.93亿元主力资金今日抢筹食品饮料板块",
-          "content": "千禾味业 6.83 4.08 3092.24 000995 皇台酒业 5.96 37.51 2869.63 300997 欢乐家 5.85 6.09 2507.31 000848 承德露露 1.64 2.61 2398.67 002847 盐津铺子 2.92 2.17 2189.69 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849897.html",
-          "time": "2026-02-05 17:18:33"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600519",
-          "name": "贵州茅台",
-          "weight": 10
-        },
-        {
-          "code": "000858",
-          "name": "五粮液",
-          "weight": 9
-        },
-        {
-          "code": "603288",
-          "name": "海天味业",
-          "weight": 8
-        },
-        {
-          "code": "600887",
-          "name": "伊利股份",
-          "weight": 8
-        },
-        {
-          "code": "601888",
-          "name": "中国中免",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "汽车",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "对话创维集团创始人黄宏生：希望能做汽车行业的传音",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/tech/it/2026-03-11/doc-inhqrrtm5447214.shtml",
-          "time": "1773238032"
-        },
-        {
-          "title": "特斯拉中国产电动汽车2月销量猛增91%",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5418455.shtml",
-          "time": "1773235349"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "002594",
-          "name": "比亚迪",
-          "weight": 10
-        },
-        {
-          "code": "601127",
-          "name": "赛力斯",
-          "weight": 8
-        },
-        {
-          "code": "000625",
-          "name": "长安汽车",
-          "weight": 7
-        },
-        {
-          "code": "600104",
-          "name": "上汽集团",
-          "weight": 7
-        },
-        {
-          "code": "601633",
-          "name": "长城汽车",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "房地产",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "莱茵金属预计销售额140亿至145亿欧元，未达分析师150亿欧元预期",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrtm5424688.shtml",
-          "time": "1773235220"
-        },
-        {
-          "title": "体验经济大爆发 浪浪山IP带动终端销售额超25亿元",
+          "title": "贾少谦代表：借助AI每20秒定制化生产一台大屏电视",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260311/c675229683.shtml",
+          "url": "https://news.10jqka.com.cn/20260312/c675244136.shtml",
           "time": ""
         }
       ],
       "leading_stocks": [
         {
-          "code": "000002",
-          "name": "万科A",
+          "code": "300033",
+          "name": "同花顺",
           "weight": 10
         },
         {
-          "code": "600048",
-          "name": "保利发展",
+          "code": "002230",
+          "name": "科大讯飞",
           "weight": 9
         },
         {
-          "code": "001979",
-          "name": "招商蛇口",
+          "code": "603019",
+          "name": "中科曙光",
           "weight": 8
         },
         {
-          "code": "600606",
-          "name": "绿地控股",
-          "weight": 7
+          "code": "000938",
+          "name": "中芯国际",
+          "weight": 8
         },
         {
-          "code": "000069",
-          "name": "华侨城A",
-          "weight": 6
+          "code": "300474",
+          "name": "景嘉微",
+          "weight": 7
         }
       ]
     },
     {
       "sector": "有色",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
-          "title": "莱茵金属预计销售额140亿至145亿欧元，未达分析师150亿欧元预期",
+          "title": "长安期货屈亚娟：压力有增 短期铜价或震荡略弱",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrtm5424688.shtml",
-          "time": "1773235220"
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-12/doc-inhqtcur8643027.shtml",
+          "time": "1773295181"
         },
         {
-          "title": "现货黄金失守5160美元/盎司",
+          "title": "2026炒黄金APP大比拼！新浪财经为何是投资者的最优选？",
           "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260311/c675229583.shtml",
-          "time": ""
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/nmetal/roll/2026-03-12/doc-inhqtcun4871649.shtml",
+          "time": "1773294855"
+        },
+        {
+          "title": "BMI预测2026白银均价飙升至93美元/盎司 投资需求强势抵消太阳能珠宝疲软",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/nmetal/hjzx/2026-03-12/doc-inhqtcut4867883.shtml",
+          "time": "1773293340"
         }
       ],
       "leading_stocks": [
@@ -598,24 +232,204 @@
       ]
     },
     {
-      "sector": "人工智能",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
+      "sector": "消费",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
-          "title": "AI内存需求激增，AMD CEO将会晤三星掌门人",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-11/doc-inhqrrte5417027.shtml",
-          "time": "1773235089"
+          "title": "【盘中播报】43只个股跨越牛熊分界线",
+          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
+          "time": "2026-02-05 10:47:48"
         },
         {
-          "title": "网易有道推出开源智能体“有道龙虾”",
+          "title": "白酒概念下跌1.50%，6股主力资金净流出超5000万元",
+          "content": "1.29 -2566.87 603369 今世缘 -3.08 0.89 -2163.80 601579 会稽山 -1.86 3.38 -1738.19 002304 洋河股份 -0.97 0.54 -1598.62 600655 豫园股份 -0.19 0.68 -1457.91 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602063644184172.html",
+          "time": "2026-02-06 17:24:44"
+        },
+        {
+          "title": "16.93亿元主力资金今日抢筹食品饮料板块",
+          "content": "千禾味业 6.83 4.08 3092.24 000995 皇台酒业 5.96 37.51 2869.63 300997 欢乐家 5.85 6.09 2507.31 000848 承德露露 1.64 2.61 2398.67 002847 盐津铺子 2.92 2.17 2189.69 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849897.html",
+          "time": "2026-02-05 17:18:33"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600519",
+          "name": "贵州茅台",
+          "weight": 10
+        },
+        {
+          "code": "000858",
+          "name": "五粮液",
+          "weight": 9
+        },
+        {
+          "code": "603288",
+          "name": "海天味业",
+          "weight": 8
+        },
+        {
+          "code": "600887",
+          "name": "伊利股份",
+          "weight": 8
+        },
+        {
+          "code": "601888",
+          "name": "中国中免",
+          "weight": 7
+        }
+      ]
+    }
+  ],
+  "hot_spots": [
+    {
+      "sector": "金融",
+      "heat_score": 80,
+      "level": "High",
+      "news_count": 7,
+      "today_count": 7,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "兴业证券：首予兆威机电“增持”评级 主业利润增长",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtkan1756042.shtml",
+          "time": "1773297814"
+        },
+        {
+          "title": "华源证券：首予卧安机器人“买入”评级 AI具身家庭机器人龙头",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtkan1754806.shtml",
+          "time": "1773297694"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "医药",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "今日盘中突破年线个股",
+          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
+          "time": "2026-02-05 13:10:20"
+        },
+        {
+          "title": "【盘中播报】43只个股跨越牛熊分界线",
+          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
+          "time": "2026-02-05 10:47:48"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600276",
+          "name": "恒瑞医药",
+          "weight": 10
+        },
+        {
+          "code": "300760",
+          "name": "迈瑞医疗",
+          "weight": 9
+        },
+        {
+          "code": "603259",
+          "name": "药明康德",
+          "weight": 8
+        },
+        {
+          "code": "300122",
+          "name": "智飞生物",
+          "weight": 7
+        },
+        {
+          "code": "000538",
+          "name": "云南白药",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
+      "top_news": [
+        {
+          "title": "华源证券：首予卧安机器人“买入”评级 AI具身家庭机器人龙头",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/hkgg/2026-03-12/doc-inhqtkan1754806.shtml",
+          "time": "1773297694"
+        },
+        {
+          "title": "希捷高管称伊朗战事短期内不太可能影响AI供应链",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtcun4871022.shtml",
+          "time": "1773294769"
+        },
+        {
+          "title": "贾少谦代表：借助AI每20秒定制化生产一台大屏电视",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260311/c675229582.shtml",
+          "url": "https://news.10jqka.com.cn/20260312/c675244136.shtml",
           "time": ""
         }
       ],
@@ -643,6 +457,120 @@
         {
           "code": "300474",
           "name": "景嘉微",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "有色",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
+      "top_news": [
+        {
+          "title": "长安期货屈亚娟：压力有增 短期铜价或震荡略弱",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-12/doc-inhqtcur8643027.shtml",
+          "time": "1773295181"
+        },
+        {
+          "title": "2026炒黄金APP大比拼！新浪财经为何是投资者的最优选？",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/nmetal/roll/2026-03-12/doc-inhqtcun4871649.shtml",
+          "time": "1773294855"
+        },
+        {
+          "title": "BMI预测2026白银均价飙升至93美元/盎司 投资需求强势抵消太阳能珠宝疲软",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/nmetal/hjzx/2026-03-12/doc-inhqtcut4867883.shtml",
+          "time": "1773293340"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "601899",
+          "name": "紫金矿业",
+          "weight": 10
+        },
+        {
+          "code": "603993",
+          "name": "洛阳钼业",
+          "weight": 8
+        },
+        {
+          "code": "600362",
+          "name": "江西铜业",
+          "weight": 7
+        },
+        {
+          "code": "002460",
+          "name": "赣锋锂业",
+          "weight": 8
+        },
+        {
+          "code": "600111",
+          "name": "北方稀土",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "消费",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
+      "top_news": [
+        {
+          "title": "【盘中播报】43只个股跨越牛熊分界线",
+          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
+          "time": "2026-02-05 10:47:48"
+        },
+        {
+          "title": "白酒概念下跌1.50%，6股主力资金净流出超5000万元",
+          "content": "1.29 -2566.87 603369 今世缘 -3.08 0.89 -2163.80 601579 会稽山 -1.86 3.38 -1738.19 002304 洋河股份 -0.97 0.54 -1598.62 600655 豫园股份 -0.19 0.68 -1457.91 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602063644184172.html",
+          "time": "2026-02-06 17:24:44"
+        },
+        {
+          "title": "16.93亿元主力资金今日抢筹食品饮料板块",
+          "content": "千禾味业 6.83 4.08 3092.24 000995 皇台酒业 5.96 37.51 2869.63 300997 欢乐家 5.85 6.09 2507.31 000848 承德露露 1.64 2.61 2398.67 002847 盐津铺子 2.92 2.17 2189.69 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849897.html",
+          "time": "2026-02-05 17:18:33"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600519",
+          "name": "贵州茅台",
+          "weight": 10
+        },
+        {
+          "code": "000858",
+          "name": "五粮液",
+          "weight": 9
+        },
+        {
+          "code": "603288",
+          "name": "海天味业",
+          "weight": 8
+        },
+        {
+          "code": "600887",
+          "name": "伊利股份",
+          "weight": 8
+        },
+        {
+          "code": "601888",
+          "name": "中国中免",
           "weight": 7
         }
       ]
