@@ -434,16 +434,19 @@ class NanFengV5_1:
         dif, dea, macd_hist = self.indicators.macd(close)
         signal.macd_dif = dif.iloc[-1] if not dif.empty else 0
         
-        # 2.1 RSI评分 (10分) - 严格区间 45-65
+        # 2.1 RSI评分 (10分) - 放宽区间 30-95
         if 45 < rsi < 55:
             momentum_score += 10
             signals.append(f"RSI健康({rsi:.0f})")
-        elif 55 <= rsi < 60:
+        elif 55 <= rsi < 65:
             momentum_score += 8
             signals.append(f"RSI良好({rsi:.0f})")
-        elif 60 <= rsi < 65:
+        elif 35 <= rsi < 45 or 65 <= rsi < 80:
             momentum_score += 5
-            warnings.append(f"RSI偏高({rsi:.0f})")
+            signals.append(f"RSI可用({rsi:.0f})")
+        elif 30 <= rsi < 35 or 80 <= rsi < 95:
+            momentum_score += 3
+            warnings.append(f"RSI极端({rsi:.0f})")
         else:
             warnings.append(f"RSI不适({rsi:.0f})")
         
@@ -555,8 +558,8 @@ class NanFengV5_1:
         signal.signals = signals
         signal.warnings = warnings
         
-        # 门槛检查 (满分100分制，门槛30分)
-        if signal.total_score < 30:
+        # 门槛检查 (满分100分制，门槛20分)
+        if signal.total_score < 20:
             return None
         
         # 计算止损止盈
@@ -568,16 +571,19 @@ class NanFengV5_1:
         signal.take_profit_1 = current_price * 1.04
         signal.take_profit_2 = current_price * 1.08
         
-        # 仓位建议
-        if signal.total_score >= 9.0 and signal.is_hot_sector:
+        # 仓位建议 (100分制)
+        if signal.total_score >= 90 and signal.is_hot_sector:
             signal.position_size = 0.25
             signal.confidence = 0.9
-        elif signal.total_score >= 8.5:
+        elif signal.total_score >= 85:
             signal.position_size = 0.20
             signal.confidence = 0.8
-        else:
+        elif signal.total_score >= 80:
             signal.position_size = 0.15
             signal.confidence = 0.7
+        else:
+            signal.position_size = 0.10
+            signal.confidence = 0.6
         
         return signal
     
