@@ -23,7 +23,7 @@ def get_pending_stocks():
         all_stocks = json.load(f)
     
     # 查询已完成的股票
-    conn = sqlite3.connect(WORKSPACE / "data" / "stocks.db")
+    conn = sqlite3.connect(WORKSPACE / "data" / "stocks_real.db")
     cursor = conn.execute(
         "SELECT DISTINCT stock_code FROM kline_data GROUP BY stock_code HAVING COUNT(*) >= 100"
     )

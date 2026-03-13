@@ -12,7 +12,7 @@ from pathlib import Path
 import time
 
 # 配置
-DB_PATH = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+DB_PATH = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 LOG_DIR = Path.home() / "Documents/OpenClawAgents/beifeng/logs"
 
 LOG_DIR.mkdir(exist_ok=True)

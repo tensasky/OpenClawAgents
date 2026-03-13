@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-13T20:50:53.463707",
+  "generated_at": "2026-03-13T21:20:58.850750",
   "total_news": 60,
-  "total_sectors": 7,
+  "total_sectors": 8,
   "summary": [
     {
       "sector": "金融",
-      "heat_score": 90,
+      "heat_score": 70,
       "level": "High",
-      "news_count": 8,
-      "today_count": 8,
+      "news_count": 6,
+      "today_count": 6,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -18,18 +18,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "美联储降息预期大幅降温",
+          "title": "美国国债上涨 数据支持美联储今年降息的预期",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7699181.shtml",
-          "time": "1773406156"
+          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwcxi3978232.shtml",
+          "time": "1773407053"
         },
         {
-          "title": "美国抵押贷款利率跳升 30年期抵押贷款利率升至6.11%",
+          "title": "中国信贷向科技行业倾斜",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7698838.shtml",
-          "time": "1773406119"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7701093.shtml",
+          "time": "1773406356"
         }
       ],
       "leading_stocks": [
@@ -61,11 +61,68 @@
       ]
     },
     {
-      "sector": "消费",
+      "sector": "医药",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "今日盘中突破年线个股",
+          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
+          "time": "2026-02-05 13:10:20"
+        },
+        {
+          "title": "【盘中播报】43只个股跨越牛熊分界线",
+          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
+          "time": "2026-02-05 10:47:48"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600276",
+          "name": "恒瑞医药",
+          "weight": 10
+        },
+        {
+          "code": "300760",
+          "name": "迈瑞医疗",
+          "weight": 9
+        },
+        {
+          "code": "603259",
+          "name": "药明康德",
+          "weight": 8
+        },
+        {
+          "code": "300122",
+          "name": "智飞生物",
+          "weight": 7
+        },
+        {
+          "code": "000538",
+          "name": "云南白药",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "消费",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -118,58 +175,101 @@
       ]
     },
     {
-      "sector": "医药",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
+          "title": "优步与Motional在拉斯维加斯推出商用自动驾驶出租车服务",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7704929.shtml",
+          "time": "1773406723"
         },
         {
-          "title": "今日盘中突破年线个股",
-          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
-          "time": "2026-02-05 13:10:20"
-        },
-        {
-          "title": "【盘中播报】43只个股跨越牛熊分界线",
-          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
-          "time": "2026-02-05 10:47:48"
+          "title": "本田暂停三款电动车、下调展望",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxe0925882.shtml",
+          "time": "1773406537"
         }
       ],
       "leading_stocks": [
         {
-          "code": "600276",
-          "name": "恒瑞医药",
+          "code": "002594",
+          "name": "比亚迪",
           "weight": 10
         },
         {
-          "code": "300760",
-          "name": "迈瑞医疗",
-          "weight": 9
-        },
-        {
-          "code": "603259",
-          "name": "药明康德",
+          "code": "601127",
+          "name": "赛力斯",
           "weight": 8
         },
         {
-          "code": "300122",
-          "name": "智飞生物",
+          "code": "000625",
+          "name": "长安汽车",
           "weight": 7
         },
         {
-          "code": "000538",
-          "name": "云南白药",
+          "code": "600104",
+          "name": "上汽集团",
+          "weight": 7
+        },
+        {
+          "code": "601633",
+          "name": "长城汽车",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "中字头",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "美国在喀麦隆会议前拒绝WTO改革提案",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7703297.shtml",
+          "time": "1773406561"
+        },
+        {
+          "title": "688588，重大资产重组终止",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/wm/2026-03-13/doc-inhqwcxa3964137.shtml",
+          "time": "1773406140"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "601988",
+          "name": "中国银行",
+          "weight": 9
+        },
+        {
+          "code": "601728",
+          "name": "中国电信",
+          "weight": 8
+        },
+        {
+          "code": "600028",
+          "name": "中国石化",
+          "weight": 8
+        },
+        {
+          "code": "601390",
+          "name": "中国中铁",
+          "weight": 7
+        },
+        {
+          "code": "601668",
+          "name": "中国建筑",
           "weight": 7
         }
       ]
@@ -178,10 +278,10 @@
   "hot_spots": [
     {
       "sector": "金融",
-      "heat_score": 90,
+      "heat_score": 70,
       "level": "High",
-      "news_count": 8,
-      "today_count": 8,
+      "news_count": 6,
+      "today_count": 6,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -191,18 +291,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "美联储降息预期大幅降温",
+          "title": "美国国债上涨 数据支持美联储今年降息的预期",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7699181.shtml",
-          "time": "1773406156"
+          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwcxi3978232.shtml",
+          "time": "1773407053"
         },
         {
-          "title": "美国抵押贷款利率跳升 30年期抵押贷款利率升至6.11%",
+          "title": "中国信贷向科技行业倾斜",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7698838.shtml",
-          "time": "1773406119"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7701093.shtml",
+          "time": "1773406356"
         }
       ],
       "leading_stocks": [
@@ -234,11 +334,68 @@
       ]
     },
     {
-      "sector": "消费",
+      "sector": "医药",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "今日盘中突破年线个股",
+          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
+          "time": "2026-02-05 13:10:20"
+        },
+        {
+          "title": "【盘中播报】43只个股跨越牛熊分界线",
+          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
+          "time": "2026-02-05 10:47:48"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600276",
+          "name": "恒瑞医药",
+          "weight": 10
+        },
+        {
+          "code": "300760",
+          "name": "迈瑞医疗",
+          "weight": 9
+        },
+        {
+          "code": "603259",
+          "name": "药明康德",
+          "weight": 8
+        },
+        {
+          "code": "300122",
+          "name": "智飞生物",
+          "weight": 7
+        },
+        {
+          "code": "000538",
+          "name": "云南白药",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "消费",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -291,58 +448,101 @@
       ]
     },
     {
-      "sector": "医药",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
+          "title": "优步与Motional在拉斯维加斯推出商用自动驾驶出租车服务",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7704929.shtml",
+          "time": "1773406723"
         },
         {
-          "title": "今日盘中突破年线个股",
-          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
-          "time": "2026-02-05 13:10:20"
-        },
-        {
-          "title": "【盘中播报】43只个股跨越牛熊分界线",
-          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
-          "time": "2026-02-05 10:47:48"
+          "title": "本田暂停三款电动车、下调展望",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxe0925882.shtml",
+          "time": "1773406537"
         }
       ],
       "leading_stocks": [
         {
-          "code": "600276",
-          "name": "恒瑞医药",
+          "code": "002594",
+          "name": "比亚迪",
           "weight": 10
         },
         {
-          "code": "300760",
-          "name": "迈瑞医疗",
-          "weight": 9
-        },
-        {
-          "code": "603259",
-          "name": "药明康德",
+          "code": "601127",
+          "name": "赛力斯",
           "weight": 8
         },
         {
-          "code": "300122",
-          "name": "智飞生物",
+          "code": "000625",
+          "name": "长安汽车",
           "weight": 7
         },
         {
-          "code": "000538",
-          "name": "云南白药",
+          "code": "600104",
+          "name": "上汽集团",
+          "weight": 7
+        },
+        {
+          "code": "601633",
+          "name": "长城汽车",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "中字头",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "美国在喀麦隆会议前拒绝WTO改革提案",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7703297.shtml",
+          "time": "1773406561"
+        },
+        {
+          "title": "688588，重大资产重组终止",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/wm/2026-03-13/doc-inhqwcxa3964137.shtml",
+          "time": "1773406140"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "601988",
+          "name": "中国银行",
+          "weight": 9
+        },
+        {
+          "code": "601728",
+          "name": "中国电信",
+          "weight": 8
+        },
+        {
+          "code": "600028",
+          "name": "中国石化",
+          "weight": 8
+        },
+        {
+          "code": "601390",
+          "name": "中国中铁",
+          "weight": 7
+        },
+        {
+          "code": "601668",
+          "name": "中国建筑",
           "weight": 7
         }
       ]

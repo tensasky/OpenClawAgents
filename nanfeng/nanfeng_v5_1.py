@@ -28,7 +28,7 @@ from realtime_aggregator import RealtimeAggregator
 from strategy_config import StrategyConfig, get_strategy, STRATEGIES
 
 # 配置
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
+BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db")
 XIFENG_HOTSPOTS = Path("/Users/roberto/Documents/OpenClawAgents/xifeng/data/hot_spots.json")
 LOG_DIR = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng/logs")
 LOG_DIR.mkdir(exist_ok=True)
@@ -236,7 +236,7 @@ class NanFengV5_1:
                 conn = sqlite3.connect(self.db_path)
                 query = """
                     SELECT timestamp, open, high, low, close, volume
-                    FROM kline_data
+                    FROM daily
                     WHERE stock_code = 'sh000001' AND data_type = 'daily'
                     ORDER BY timestamp DESC
                     LIMIT 30
@@ -291,7 +291,7 @@ class NanFengV5_1:
             conn = sqlite3.connect(self.db_path)
             query = """
                 SELECT timestamp, open, high, low, close, volume, amount
-                FROM kline_data
+                FROM daily
                 WHERE stock_code = ? AND data_type = 'daily'
                 ORDER BY timestamp DESC
                 LIMIT ?
@@ -312,7 +312,7 @@ class NanFengV5_1:
         cursor = conn.cursor()
         cursor.execute("""
             SELECT DISTINCT stock_code 
-            FROM kline_data 
+            FROM daily 
             WHERE data_type = 'daily'
             ORDER BY stock_code
             LIMIT ?

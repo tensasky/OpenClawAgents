@@ -91,7 +91,7 @@ class AutoHealer:
     
     def __init__(self, workspace: Path):
         self.workspace = workspace
-        self.db_path = workspace / "data" / "stocks.db"
+        self.db_path = workspace / "data" / "stocks_real.db"
     
     def heal(self, stale_stocks: List[str]):
         """执行自动修复"""
@@ -188,7 +188,7 @@ class BeiFengMonitor:
     
     def __init__(self):
         self.workspace = WORKSPACE
-        self.db_path = DATA_DIR / "stocks.db"
+        self.db_path = DATA_DIR / "stocks_real.db"
         self.checker = DataFreshnessChecker(str(self.db_path))
         self.healer = AutoHealer(self.workspace)
         self.alerter = AlertManager(STATE_FILE)

@@ -91,7 +91,7 @@ class Database:
     """数据库管理"""
     
     def __init__(self, db_path: str = None):
-        self.db_path = db_path or str(DATA_DIR / "stocks.db")
+        self.db_path = db_path or str(DATA_DIR / "stocks_real.db")
         self.conn = None
         self.init_db()
     

@@ -9,7 +9,7 @@ import json
 from datetime import datetime, timedelta
 from pathlib import Path
 
-DB_PATH = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+DB_PATH = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 
 def insert_today_minute_data():
     """插入今日模拟分钟数据（基于昨日收盘价生成）"""

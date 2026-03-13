@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
-DB_PATH = WORKSPACE / "data" / "stocks.db"
+DB_PATH = WORKSPACE / "data" / "stocks_real.db"
 
 def show_status():
     """显示北风状态"""
