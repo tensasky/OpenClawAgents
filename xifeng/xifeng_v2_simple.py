@@ -10,6 +10,7 @@ import requests
 import pandas as pd
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import List, Dict
 
 # 配置
 DATA_DIR = Path(__file__).parent / "data"
@@ -170,5 +171,4 @@ def main():
 
 
 if __name__ == '__main__':
-    from typing import List
     main()

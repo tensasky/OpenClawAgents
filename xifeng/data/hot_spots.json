@@ -1,71 +1,14 @@
 {
-  "generated_at": "2026-03-13T09:18:51.154943",
+  "generated_at": "2026-03-13T09:48:56.373586",
   "total_news": 60,
-  "total_sectors": 9,
+  "total_sectors": 8,
   "summary": [
     {
-      "sector": "金融",
+      "sector": "医药",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "光大期货：3月13日金融日报",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamt7895363.shtml",
-          "time": "1773364432"
-        },
-        {
-          "title": "广发证券拟向广发香港增资不超61.01亿港元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257519.shtml",
-          "time": "1773362605"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "医药",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -118,11 +61,68 @@
       ]
     },
     {
-      "sector": "消费",
-      "heat_score": 50,
+      "sector": "金融",
+      "heat_score": 60,
       "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "news_count": 5,
+      "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "中小银行再掀“降息潮”，部分五年期利率下调达30个基点",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/jjxw/2026-03-13/doc-inhqvams1130351.shtml",
+          "time": "1773365040"
+        },
+        {
+          "title": "光大期货：3月13日金融日报",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamt7895363.shtml",
+          "time": "1773364432"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "消费",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "【盘中播报】43只个股跨越牛熊分界线",
@@ -189,17 +189,17 @@
           "time": "1773364470"
         },
         {
-          "title": "现货黄金站上5120美元/盎司",
+          "title": "“复仇宣言”引爆市场：油价狂飙10%，美股崩跌，黄金跳水",
           "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675265334.shtml",
-          "time": ""
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/jjxw/2026-03-13/doc-inhqvamv4150830.shtml",
+          "time": "1773364173"
         },
         {
-          "title": "现货白银站上85美元/盎司",
+          "title": "中金财富期货：预计短期内黄金与美股走势同频的概率较大",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675264676.shtml",
+          "url": "https://news.10jqka.com.cn/20260313/c675268403.shtml",
           "time": ""
         }
       ],
@@ -234,68 +234,11 @@
   ],
   "hot_spots": [
     {
-      "sector": "金融",
+      "sector": "医药",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "光大期货：3月13日金融日报",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamt7895363.shtml",
-          "time": "1773364432"
-        },
-        {
-          "title": "广发证券拟向广发香港增资不超61.01亿港元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257519.shtml",
-          "time": "1773362605"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "医药",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -348,11 +291,68 @@
       ]
     },
     {
-      "sector": "消费",
-      "heat_score": 50,
+      "sector": "金融",
+      "heat_score": 60,
       "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "news_count": 5,
+      "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "中小银行再掀“降息潮”，部分五年期利率下调达30个基点",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/jjxw/2026-03-13/doc-inhqvams1130351.shtml",
+          "time": "1773365040"
+        },
+        {
+          "title": "光大期货：3月13日金融日报",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamt7895363.shtml",
+          "time": "1773364432"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "消费",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "【盘中播报】43只个股跨越牛熊分界线",
@@ -419,17 +419,17 @@
           "time": "1773364470"
         },
         {
-          "title": "现货黄金站上5120美元/盎司",
+          "title": "“复仇宣言”引爆市场：油价狂飙10%，美股崩跌，黄金跳水",
           "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675265334.shtml",
-          "time": ""
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/jjxw/2026-03-13/doc-inhqvamv4150830.shtml",
+          "time": "1773364173"
         },
         {
-          "title": "现货白银站上85美元/盎司",
+          "title": "中金财富期货：预计短期内黄金与美股走势同频的概率较大",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675264676.shtml",
+          "url": "https://news.10jqka.com.cn/20260313/c675268403.shtml",
           "time": ""
         }
       ],
