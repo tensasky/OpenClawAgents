@@ -1,14 +1,71 @@
 {
-  "generated_at": "2026-03-13T08:48:45.826699",
-  "total_news": 59,
-  "total_sectors": 8,
+  "generated_at": "2026-03-13T09:18:51.154943",
+  "total_news": 60,
+  "total_sectors": 9,
   "summary": [
     {
-      "sector": "医药",
+      "sector": "金融",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "光大期货：3月13日金融日报",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamt7895363.shtml",
+          "time": "1773364432"
+        },
+        {
+          "title": "广发证券拟向广发香港增资不超61.01亿港元",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257519.shtml",
+          "time": "1773362605"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "医药",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -56,63 +113,6 @@
         {
           "code": "000538",
           "name": "云南白药",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "金融",
-      "heat_score": 60,
-      "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "广发证券拟向广发香港增资不超61.01亿港元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257519.shtml",
-          "time": "1773362605"
-        },
-        {
-          "title": "广发证券完成发行70亿元短期公司债券",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257047.shtml",
-          "time": "1773362540"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -175,108 +175,58 @@
       ]
     },
     {
-      "sector": "人工智能",
-      "heat_score": 50,
+      "sector": "有色",
+      "heat_score": 40,
       "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "news_count": 3,
+      "today_count": 3,
       "top_news": [
         {
-          "title": "Meta据悉将新款AI模型的发布时间至少推迟至5月份",
+          "title": "光大期货：3月13日有色金属日报",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1230213.shtml",
-          "time": "1773362005"
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvams1118648.shtml",
+          "time": "1773364470"
         },
         {
-          "title": "黄河实业洽谈人工智能领域潜在投资",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcx4257638.shtml",
-          "time": "1773361661"
-        },
-        {
-          "title": "机构：关注AI算力产业链相关投资机遇",
+          "title": "现货黄金站上5120美元/盎司",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675264384.shtml",
+          "url": "https://news.10jqka.com.cn/20260313/c675265334.shtml",
+          "time": ""
+        },
+        {
+          "title": "现货白银站上85美元/盎司",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675264676.shtml",
           "time": ""
         }
       ],
       "leading_stocks": [
         {
-          "code": "300033",
-          "name": "同花顺",
+          "code": "601899",
+          "name": "紫金矿业",
           "weight": 10
         },
         {
-          "code": "002230",
-          "name": "科大讯飞",
-          "weight": 9
-        },
-        {
-          "code": "603019",
-          "name": "中科曙光",
+          "code": "603993",
+          "name": "洛阳钼业",
           "weight": 8
         },
         {
-          "code": "000938",
-          "name": "中芯国际",
-          "weight": 8
-        },
-        {
-          "code": "300474",
-          "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "中字头",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "金威医疗公布拟进行股份合并",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcx4264131.shtml",
-          "time": "1773362555"
-        },
-        {
-          "title": "韩国股民狂买中国资产",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675264242.shtml",
-          "time": ""
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601988",
-          "name": "中国银行",
-          "weight": 9
-        },
-        {
-          "code": "601728",
-          "name": "中国电信",
-          "weight": 8
-        },
-        {
-          "code": "600028",
-          "name": "中国石化",
-          "weight": 8
-        },
-        {
-          "code": "601390",
-          "name": "中国中铁",
+          "code": "600362",
+          "name": "江西铜业",
           "weight": 7
         },
         {
-          "code": "601668",
-          "name": "中国建筑",
+          "code": "002460",
+          "name": "赣锋锂业",
+          "weight": 8
+        },
+        {
+          "code": "600111",
+          "name": "北方稀土",
           "weight": 7
         }
       ]
@@ -284,11 +234,68 @@
   ],
   "hot_spots": [
     {
-      "sector": "医药",
+      "sector": "金融",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "光大期货：3月13日金融日报",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamt7895363.shtml",
+          "time": "1773364432"
+        },
+        {
+          "title": "广发证券拟向广发香港增资不超61.01亿港元",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257519.shtml",
+          "time": "1773362605"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "医药",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -336,63 +343,6 @@
         {
           "code": "000538",
           "name": "云南白药",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "金融",
-      "heat_score": 60,
-      "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "广发证券拟向广发香港增资不超61.01亿港元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257519.shtml",
-          "time": "1773362605"
-        },
-        {
-          "title": "广发证券完成发行70亿元短期公司债券",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257047.shtml",
-          "time": "1773362540"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -455,158 +405,58 @@
       ]
     },
     {
-      "sector": "人工智能",
-      "heat_score": 50,
+      "sector": "有色",
+      "heat_score": 40,
       "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
+      "news_count": 3,
+      "today_count": 3,
       "top_news": [
         {
-          "title": "Meta据悉将新款AI模型的发布时间至少推迟至5月份",
+          "title": "光大期货：3月13日有色金属日报",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1230213.shtml",
-          "time": "1773362005"
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvams1118648.shtml",
+          "time": "1773364470"
         },
         {
-          "title": "黄河实业洽谈人工智能领域潜在投资",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcx4257638.shtml",
-          "time": "1773361661"
-        },
-        {
-          "title": "机构：关注AI算力产业链相关投资机遇",
+          "title": "现货黄金站上5120美元/盎司",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675264384.shtml",
+          "url": "https://news.10jqka.com.cn/20260313/c675265334.shtml",
+          "time": ""
+        },
+        {
+          "title": "现货白银站上85美元/盎司",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675264676.shtml",
           "time": ""
         }
       ],
       "leading_stocks": [
         {
-          "code": "300033",
-          "name": "同花顺",
+          "code": "601899",
+          "name": "紫金矿业",
           "weight": 10
         },
         {
-          "code": "002230",
-          "name": "科大讯飞",
-          "weight": 9
-        },
-        {
-          "code": "603019",
-          "name": "中科曙光",
+          "code": "603993",
+          "name": "洛阳钼业",
           "weight": 8
         },
         {
-          "code": "000938",
-          "name": "中芯国际",
+          "code": "600362",
+          "name": "江西铜业",
+          "weight": 7
+        },
+        {
+          "code": "002460",
+          "name": "赣锋锂业",
           "weight": 8
         },
         {
-          "code": "300474",
-          "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "中字头",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "金威医疗公布拟进行股份合并",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcx4264131.shtml",
-          "time": "1773362555"
-        },
-        {
-          "title": "韩国股民狂买中国资产",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675264242.shtml",
-          "time": ""
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601988",
-          "name": "中国银行",
-          "weight": 9
-        },
-        {
-          "code": "601728",
-          "name": "中国电信",
-          "weight": 8
-        },
-        {
-          "code": "600028",
-          "name": "中国石化",
-          "weight": 8
-        },
-        {
-          "code": "601390",
-          "name": "中国中铁",
-          "weight": 7
-        },
-        {
-          "code": "601668",
-          "name": "中国建筑",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "汽车",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "机构：2月份全球纯电和插电式混动汽车销量同比下降11%",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcs4247541.shtml",
-          "time": "1773361212"
-        },
-        {
-          "title": "马斯克：“数字擎天柱”将应用于所有AI4汽车",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675263737.shtml",
-          "time": ""
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "002594",
-          "name": "比亚迪",
-          "weight": 10
-        },
-        {
-          "code": "601127",
-          "name": "赛力斯",
-          "weight": 8
-        },
-        {
-          "code": "000625",
-          "name": "长安汽车",
-          "weight": 7
-        },
-        {
-          "code": "600104",
-          "name": "上汽集团",
-          "weight": 7
-        },
-        {
-          "code": "601633",
-          "name": "长城汽车",
+          "code": "600111",
+          "name": "北方稀土",
           "weight": 7
         }
       ]
