@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-13T09:48:56.373586",
+  "generated_at": "2026-03-13T10:19:01.581742",
   "total_news": 60,
-  "total_sectors": 8,
+  "total_sectors": 9,
   "summary": [
     {
       "sector": "医药",
@@ -75,18 +75,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
+          "title": "315在行动|2025年度证券维权十大影响案件盘点",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/gmwq/rightscase/2026-03-13/doc-inhqvams1166652.shtml",
+          "time": "1773367308"
+        },
+        {
           "title": "中小银行再掀“降息潮”，部分五年期利率下调达30个基点",
           "content": "",
           "source": "新浪财经",
           "url": "https://finance.sina.com.cn/jjxw/2026-03-13/doc-inhqvams1130351.shtml",
           "time": "1773365040"
-        },
-        {
-          "title": "光大期货：3月13日金融日报",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamt7895363.shtml",
-          "time": "1773364432"
         }
       ],
       "leading_stocks": [
@@ -176,11 +176,18 @@
     },
     {
       "sector": "有色",
-      "heat_score": 40,
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
+        {
+          "title": "华泰期货：霍尔木兹海峡持续关闭，中东铝减产风险仍在",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamq4189303.shtml",
+          "time": "1773367031"
+        },
         {
           "title": "光大期货：3月13日有色金属日报",
           "content": "",
@@ -194,13 +201,6 @@
           "source": "新浪财经",
           "url": "https://finance.sina.com.cn/jjxw/2026-03-13/doc-inhqvamv4150830.shtml",
           "time": "1773364173"
-        },
-        {
-          "title": "中金财富期货：预计短期内黄金与美股走势同频的概率较大",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675268403.shtml",
-          "time": ""
         }
       ],
       "leading_stocks": [
@@ -305,18 +305,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
+          "title": "315在行动|2025年度证券维权十大影响案件盘点",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/gmwq/rightscase/2026-03-13/doc-inhqvams1166652.shtml",
+          "time": "1773367308"
+        },
+        {
           "title": "中小银行再掀“降息潮”，部分五年期利率下调达30个基点",
           "content": "",
           "source": "新浪财经",
           "url": "https://finance.sina.com.cn/jjxw/2026-03-13/doc-inhqvams1130351.shtml",
           "time": "1773365040"
-        },
-        {
-          "title": "光大期货：3月13日金融日报",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamt7895363.shtml",
-          "time": "1773364432"
         }
       ],
       "leading_stocks": [
@@ -406,11 +406,18 @@
     },
     {
       "sector": "有色",
-      "heat_score": 40,
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
+        {
+          "title": "华泰期货：霍尔木兹海峡持续关闭，中东铝减产风险仍在",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhqvamq4189303.shtml",
+          "time": "1773367031"
+        },
         {
           "title": "光大期货：3月13日有色金属日报",
           "content": "",
@@ -424,13 +431,6 @@
           "source": "新浪财经",
           "url": "https://finance.sina.com.cn/jjxw/2026-03-13/doc-inhqvamv4150830.shtml",
           "time": "1773364173"
-        },
-        {
-          "title": "中金财富期货：预计短期内黄金与美股走势同频的概率较大",
-          "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675268403.shtml",
-          "time": ""
         }
       ],
       "leading_stocks": [
