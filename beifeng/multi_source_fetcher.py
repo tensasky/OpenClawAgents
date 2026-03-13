@@ -54,13 +54,17 @@ class MultiSourceFetcher:
                 
                 fields = data.split(',')
                 if len(fields) >= 33:
+                    # 新浪成交量单位是"手"，转换为"股"（×100）
+                    volume_shou = int(fields[8])
+                    volume_gu = volume_shou * 100
+                    
                     results[code] = {
                         'name': fields[0],
                         'open': float(fields[1]),
                         'close': float(fields[3]),
                         'high': float(fields[4]),
                         'low': float(fields[5]),
-                        'volume': int(fields[8]),
+                        'volume': volume_gu,  # 转换为股
                         'amount': float(fields[9]),
                         'date': fields[30],
                         'time': fields[31],
