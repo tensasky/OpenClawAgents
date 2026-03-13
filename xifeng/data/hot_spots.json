@@ -1,65 +1,8 @@
 {
-  "generated_at": "2026-03-13T21:20:58.850750",
+  "generated_at": "2026-03-13T21:51:03.874338",
   "total_news": 60,
-  "total_sectors": 8,
+  "total_sectors": 6,
   "summary": [
-    {
-      "sector": "金融",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "美国国债上涨 数据支持美联储今年降息的预期",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwcxi3978232.shtml",
-          "time": "1773407053"
-        },
-        {
-          "title": "中国信贷向科技行业倾斜",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7701093.shtml",
-          "time": "1773406356"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
-          "weight": 7
-        }
-      ]
-    },
     {
       "sector": "医药",
       "heat_score": 60,
@@ -113,6 +56,63 @@
         {
           "code": "000538",
           "name": "云南白药",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "金融",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "银行上调油价预测，部分机构看涨至每桶150美元",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxe0953700.shtml",
+          "time": "1773409832"
+        },
+        {
+          "title": "道明证券将美联储下次降息的预测时间从6月推迟到9月",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwcxa3998893.shtml",
+          "time": "1773409758"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -176,11 +176,18 @@
     },
     {
       "sector": "汽车",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
+      "heat_score": 40,
+      "level": "Medium",
+      "news_count": 3,
+      "today_count": 3,
       "top_news": [
+        {
+          "title": "全球电动汽车销量二月再次下滑",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxi4002974.shtml",
+          "time": "1773409437"
+        },
         {
           "title": "优步与Motional在拉斯维加斯推出商用自动驾驶出租车服务",
           "content": "",
@@ -220,56 +227,6 @@
         {
           "code": "601633",
           "name": "长城汽车",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "中字头",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "美国在喀麦隆会议前拒绝WTO改革提案",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7703297.shtml",
-          "time": "1773406561"
-        },
-        {
-          "title": "688588，重大资产重组终止",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/wm/2026-03-13/doc-inhqwcxa3964137.shtml",
-          "time": "1773406140"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601988",
-          "name": "中国银行",
-          "weight": 9
-        },
-        {
-          "code": "601728",
-          "name": "中国电信",
-          "weight": 8
-        },
-        {
-          "code": "600028",
-          "name": "中国石化",
-          "weight": 8
-        },
-        {
-          "code": "601390",
-          "name": "中国中铁",
-          "weight": 7
-        },
-        {
-          "code": "601668",
-          "name": "中国建筑",
           "weight": 7
         }
       ]
@@ -277,63 +234,6 @@
   ],
   "hot_spots": [
     {
-      "sector": "金融",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "美国国债上涨 数据支持美联储今年降息的预期",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwcxi3978232.shtml",
-          "time": "1773407053"
-        },
-        {
-          "title": "中国信贷向科技行业倾斜",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7701093.shtml",
-          "time": "1773406356"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
-          "weight": 9
-        },
-        {
-          "code": "601398",
-          "name": "工商银行",
-          "weight": 8
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "weight": 8
-        },
-        {
-          "code": "601688",
-          "name": "华泰证券",
-          "weight": 7
-        }
-      ]
-    },
-    {
       "sector": "医药",
       "heat_score": 60,
       "level": "Medium",
@@ -386,6 +286,63 @@
         {
           "code": "000538",
           "name": "云南白药",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "金融",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "银行上调油价预测，部分机构看涨至每桶150美元",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxe0953700.shtml",
+          "time": "1773409832"
+        },
+        {
+          "title": "道明证券将美联储下次降息的预测时间从6月推迟到9月",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwcxa3998893.shtml",
+          "time": "1773409758"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -449,11 +406,18 @@
     },
     {
       "sector": "汽车",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
+      "heat_score": 40,
+      "level": "Medium",
+      "news_count": 3,
+      "today_count": 3,
       "top_news": [
+        {
+          "title": "全球电动汽车销量二月再次下滑",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxi4002974.shtml",
+          "time": "1773409437"
+        },
         {
           "title": "优步与Motional在拉斯维加斯推出商用自动驾驶出租车服务",
           "content": "",
@@ -493,56 +457,6 @@
         {
           "code": "601633",
           "name": "长城汽车",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "中字头",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "美国在喀麦隆会议前拒绝WTO改革提案",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7703297.shtml",
-          "time": "1773406561"
-        },
-        {
-          "title": "688588，重大资产重组终止",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/wm/2026-03-13/doc-inhqwcxa3964137.shtml",
-          "time": "1773406140"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601988",
-          "name": "中国银行",
-          "weight": 9
-        },
-        {
-          "code": "601728",
-          "name": "中国电信",
-          "weight": 8
-        },
-        {
-          "code": "600028",
-          "name": "中国石化",
-          "weight": 8
-        },
-        {
-          "code": "601390",
-          "name": "中国中铁",
-          "weight": 7
-        },
-        {
-          "code": "601668",
-          "name": "中国建筑",
           "weight": 7
         }
       ]
