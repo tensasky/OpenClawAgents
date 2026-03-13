@@ -14,7 +14,13 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("实时数据聚合")
 
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
+# 使用新的物理隔离数据库配置
+import sys
+sys.path.insert(0, str(Path("/Users/roberto/Documents/OpenClawAgents/beifeng")))
+from db_config import REAL_DB, VIRTUAL_DB, get_db_path
+
+BEIFENG_DB = REAL_DB  # 分钟数据在真实数据库
+VIRTUAL_DB_PATH = VIRTUAL_DB  # 虚拟日线在虚拟数据库
 
 
 class RealtimeAggregator:

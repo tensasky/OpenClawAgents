@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-13T08:18:40.471875",
+  "generated_at": "2026-03-13T08:48:45.826699",
   "total_news": 59,
   "total_sectors": 8,
   "summary": [
@@ -75,18 +75,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "安联首席经济顾问：美国私人信贷市场风险正在蔓延",
+          "title": "广发证券拟向广发香港增资不超61.01亿港元",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcx4251164.shtml",
-          "time": "1773360703"
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257519.shtml",
+          "time": "1773362605"
         },
         {
-          "title": "秘鲁央行连续第六次维持利率不变",
+          "title": "广发证券完成发行70亿元短期公司债券",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcv7972444.shtml",
-          "time": "1773358245"
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257047.shtml",
+          "time": "1773362540"
         }
       ],
       "leading_stocks": [
@@ -175,109 +175,109 @@
       ]
     },
     {
-      "sector": "有色",
+      "sector": "人工智能",
       "heat_score": 50,
       "level": "Medium",
       "news_count": 4,
       "today_count": 4,
       "top_news": [
         {
-          "title": "亚市早盘黄金小幅走高，受中东持续冲突影响",
+          "title": "Meta据悉将新款AI模型的发布时间至少推迟至5月份",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1211582.shtml",
-          "time": "1773360129"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1230213.shtml",
+          "time": "1773362005"
         },
         {
-          "title": "“金三银四”到来，有色板块有哪些交易机会？",
+          "title": "黄河实业洽谈人工智能领域潜在投资",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhquwcu1203024.shtml",
-          "time": "1773358864"
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcx4257638.shtml",
+          "time": "1773361661"
         },
         {
-          "title": "在黄金价格下跌后 澳大利亚黄金股连续第二天走低",
+          "title": "机构：关注AI算力产业链相关投资机遇",
           "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1195587.shtml",
-          "time": "1773358296"
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675264384.shtml",
+          "time": ""
         }
       ],
       "leading_stocks": [
         {
-          "code": "601899",
-          "name": "紫金矿业",
+          "code": "300033",
+          "name": "同花顺",
           "weight": 10
         },
         {
-          "code": "603993",
-          "name": "洛阳钼业",
+          "code": "002230",
+          "name": "科大讯飞",
+          "weight": 9
+        },
+        {
+          "code": "603019",
+          "name": "中科曙光",
           "weight": 8
         },
         {
-          "code": "600362",
-          "name": "江西铜业",
-          "weight": 7
-        },
-        {
-          "code": "002460",
-          "name": "赣锋锂业",
+          "code": "000938",
+          "name": "中芯国际",
           "weight": 8
         },
         {
-          "code": "600111",
-          "name": "北方稀土",
+          "code": "300474",
+          "name": "景嘉微",
           "weight": 7
         }
       ]
     },
     {
-      "sector": "低空经济",
+      "sector": "中字头",
       "heat_score": 30,
       "level": "Low",
       "news_count": 2,
       "today_count": 2,
       "top_news": [
         {
-          "title": "白宫：FBI的伊朗无人机袭击加州警告源于单一未经证实线报",
+          "title": "金威医疗公布拟进行股份合并",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1218830.shtml",
-          "time": "1773360742"
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcx4264131.shtml",
+          "time": "1773362555"
         },
         {
-          "title": "太古股份公司A拟配售所持若干国泰航空股份 净筹约17.89亿港元",
+          "title": "韩国股民狂买中国资产",
           "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4229064.shtml",
-          "time": "1773359292"
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675264242.shtml",
+          "time": ""
         }
       ],
       "leading_stocks": [
         {
-          "code": "002050",
-          "name": "三花智控",
+          "code": "601988",
+          "name": "中国银行",
+          "weight": 9
+        },
+        {
+          "code": "601728",
+          "name": "中国电信",
           "weight": 8
         },
         {
-          "code": "002151",
-          "name": "北斗星通",
+          "code": "600028",
+          "name": "中国石化",
+          "weight": 8
+        },
+        {
+          "code": "601390",
+          "name": "中国中铁",
           "weight": 7
         },
         {
-          "code": "300900",
-          "name": "广联航空",
+          "code": "601668",
+          "name": "中国建筑",
           "weight": 7
-        },
-        {
-          "code": "002097",
-          "name": "山河智能",
-          "weight": 6
-        },
-        {
-          "code": "300185",
-          "name": "通裕重工",
-          "weight": 6
         }
       ]
     }
@@ -355,18 +355,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "安联首席经济顾问：美国私人信贷市场风险正在蔓延",
+          "title": "广发证券拟向广发香港增资不超61.01亿港元",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcx4251164.shtml",
-          "time": "1773360703"
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257519.shtml",
+          "time": "1773362605"
         },
         {
-          "title": "秘鲁央行连续第六次维持利率不变",
+          "title": "广发证券完成发行70亿元短期公司债券",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcv7972444.shtml",
-          "time": "1773358245"
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4257047.shtml",
+          "time": "1773362540"
         }
       ],
       "leading_stocks": [
@@ -455,181 +455,31 @@
       ]
     },
     {
-      "sector": "有色",
+      "sector": "人工智能",
       "heat_score": 50,
       "level": "Medium",
       "news_count": 4,
       "today_count": 4,
       "top_news": [
         {
-          "title": "亚市早盘黄金小幅走高，受中东持续冲突影响",
+          "title": "Meta据悉将新款AI模型的发布时间至少推迟至5月份",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1211582.shtml",
-          "time": "1773360129"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1230213.shtml",
+          "time": "1773362005"
         },
         {
-          "title": "“金三银四”到来，有色板块有哪些交易机会？",
+          "title": "黄河实业洽谈人工智能领域潜在投资",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhquwcu1203024.shtml",
-          "time": "1773358864"
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcx4257638.shtml",
+          "time": "1773361661"
         },
         {
-          "title": "在黄金价格下跌后 澳大利亚黄金股连续第二天走低",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1195587.shtml",
-          "time": "1773358296"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601899",
-          "name": "紫金矿业",
-          "weight": 10
-        },
-        {
-          "code": "603993",
-          "name": "洛阳钼业",
-          "weight": 8
-        },
-        {
-          "code": "600362",
-          "name": "江西铜业",
-          "weight": 7
-        },
-        {
-          "code": "002460",
-          "name": "赣锋锂业",
-          "weight": 8
-        },
-        {
-          "code": "600111",
-          "name": "北方稀土",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "低空经济",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "白宫：FBI的伊朗无人机袭击加州警告源于单一未经证实线报",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1218830.shtml",
-          "time": "1773360742"
-        },
-        {
-          "title": "太古股份公司A拟配售所持若干国泰航空股份 净筹约17.89亿港元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4229064.shtml",
-          "time": "1773359292"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "002050",
-          "name": "三花智控",
-          "weight": 8
-        },
-        {
-          "code": "002151",
-          "name": "北斗星通",
-          "weight": 7
-        },
-        {
-          "code": "300900",
-          "name": "广联航空",
-          "weight": 7
-        },
-        {
-          "code": "002097",
-          "name": "山河智能",
-          "weight": 6
-        },
-        {
-          "code": "300185",
-          "name": "通裕重工",
-          "weight": 6
-        }
-      ]
-    },
-    {
-      "sector": "房地产",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "美国财长贝森特：美国允许俄罗斯石油销售是临时性且范围有限的措施",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcs4239904.shtml",
-          "time": "1773360293"
-        },
-        {
-          "title": "美国颁发许可证 允许部分俄罗斯石油销售",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1200451.shtml",
-          "time": "1773359158"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "000002",
-          "name": "万科A",
-          "weight": 10
-        },
-        {
-          "code": "600048",
-          "name": "保利发展",
-          "weight": 9
-        },
-        {
-          "code": "001979",
-          "name": "招商蛇口",
-          "weight": 8
-        },
-        {
-          "code": "600606",
-          "name": "绿地控股",
-          "weight": 7
-        },
-        {
-          "code": "000069",
-          "name": "华侨城A",
-          "weight": 6
-        }
-      ]
-    },
-    {
-      "sector": "人工智能",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "因性能担忧 Meta推迟推出新AI模型",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcs4235415.shtml",
-          "time": "1773359974"
-        },
-        {
-          "title": "马斯克：“数字擎天柱”将应用于所有AI4汽车",
+          "title": "机构：关注AI算力产业链相关投资机遇",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260313/c675263737.shtml",
+          "url": "https://news.10jqka.com.cn/20260313/c675264384.shtml",
           "time": ""
         }
       ],
@@ -657,6 +507,106 @@
         {
           "code": "300474",
           "name": "景嘉微",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "中字头",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "金威医疗公布拟进行股份合并",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcx4264131.shtml",
+          "time": "1773362555"
+        },
+        {
+          "title": "韩国股民狂买中国资产",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675264242.shtml",
+          "time": ""
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "601988",
+          "name": "中国银行",
+          "weight": 9
+        },
+        {
+          "code": "601728",
+          "name": "中国电信",
+          "weight": 8
+        },
+        {
+          "code": "600028",
+          "name": "中国石化",
+          "weight": 8
+        },
+        {
+          "code": "601390",
+          "name": "中国中铁",
+          "weight": 7
+        },
+        {
+          "code": "601668",
+          "name": "中国建筑",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "机构：2月份全球纯电和插电式混动汽车销量同比下降11%",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcs4247541.shtml",
+          "time": "1773361212"
+        },
+        {
+          "title": "马斯克：“数字擎天柱”将应用于所有AI4汽车",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675263737.shtml",
+          "time": ""
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "002594",
+          "name": "比亚迪",
+          "weight": 10
+        },
+        {
+          "code": "601127",
+          "name": "赛力斯",
+          "weight": 8
+        },
+        {
+          "code": "000625",
+          "name": "长安汽车",
+          "weight": 7
+        },
+        {
+          "code": "600104",
+          "name": "上汽集团",
+          "weight": 7
+        },
+        {
+          "code": "601633",
+          "name": "长城汽车",
           "weight": 7
         }
       ]
