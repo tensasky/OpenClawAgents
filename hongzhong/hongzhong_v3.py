@@ -8,10 +8,15 @@ import sqlite3
 import json
 import requests
 import smtplib
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+
+# 导入股票名称管理器
+sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents/utils"))
+from stock_name_manager import get_stock_name
 
 # 配置
 HONGZHONG_DIR = Path(__file__).parent
@@ -70,7 +75,7 @@ class HongzhongV31:
             signals.append({
                 'timestamp': now,
                 'stock_code': 'sh600348',
-                'stock_name': '华阳股份',
+                'stock_name': get_stock_name('sh600348'),
                 'strategy': '趋势跟踪',
                 'version': 'conservative',
                 'entry_price': 10.27,
@@ -85,7 +90,7 @@ class HongzhongV31:
             signals.append({
                 'timestamp': now,
                 'stock_code': 'sz301667',
-                'stock_name': '测试股份',
+                'stock_name': get_stock_name('sz301667'),
                 'strategy': '突破策略',
                 'version': 'balance',
                 'entry_price': 25.50,
