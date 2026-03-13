@@ -22,7 +22,7 @@ REPORT_DIR = BASE_DIR / "reports"
 
 # 输入文件
 FACAI_DB = Path.home() / "Documents/OpenClawAgents/facai/data/portfolio.db"
-BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 XIFENG_HOTSPOTS = Path.home() / "Documents/OpenClawAgents/xifeng/data/hot_spots.json"
 
 # 输出文件

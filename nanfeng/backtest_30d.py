@@ -12,7 +12,7 @@ from typing import List, Dict, Tuple
 import statistics
 
 # 配置
-BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 LOG_DIR = Path.home() / "Documents/OpenClawAgents/nanfeng/logs"
 LOG_DIR.mkdir(exist_ok=True)
 

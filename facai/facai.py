@@ -22,7 +22,7 @@ LOG_DIR = BASE_DIR / "logs"
 # 输入文件
 HONGZHONG_TOP3 = Path.home() / "Documents/OpenClawAgents/hongzhong/data/top3.json"
 XIFENG_HOTSPOTS = Path.home() / "Documents/OpenClawAgents/xifeng/data/hot_spots.json"
-BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 
 # 输出文件
 PORTFOLIO_DB = DATA_DIR / "portfolio.db"

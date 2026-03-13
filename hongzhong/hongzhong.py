@@ -55,7 +55,7 @@ class NanfengV51API:
     """调用南风V5.1精选策略"""
     
     def __init__(self, strategy_name: str = "趋势跟踪"):
-        self.db_path = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+        self.db_path = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
         self.strategy_name = strategy_name
         
         # 加载策略配置

@@ -51,7 +51,7 @@ class NanfengV51API:
     """调用南风V5.1精选策略"""
     
     def __init__(self):
-        self.db_path = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+        self.db_path = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
         # 动态导入V5.1
         try:
             from nanfeng_v5_1 import NanFengV5_1
