@@ -16,7 +16,7 @@ from strategy_config import STRATEGIES, get_strategy
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger("策略回测")
 
-BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 
 
 class StrategyBacktest:

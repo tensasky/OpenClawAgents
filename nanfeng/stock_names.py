@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Optional, Dict
 import requests
 
-BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 XIFENG_HOTSPOTS = Path.home() / "Documents/OpenClawAgents/xifeng/data/hot_spots.json"
 
 class StockNameResolver:

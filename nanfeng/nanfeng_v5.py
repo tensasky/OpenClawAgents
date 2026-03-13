@@ -24,7 +24,7 @@ from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass, field
 
 # 配置
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
+BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db")
 LOG_DIR = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng/logs")
 LOG_DIR.mkdir(exist_ok=True)
 

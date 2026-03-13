@@ -17,7 +17,7 @@ sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents/nanfeng"))
 from nanfeng_v5 import NanFengV5
 
 # 配置
-BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 LOG_DIR = Path.home() / "Documents/OpenClawAgents/nanfeng/logs"
 LOG_DIR.mkdir(exist_ok=True)
 

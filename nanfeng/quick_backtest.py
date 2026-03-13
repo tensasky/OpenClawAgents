@@ -13,7 +13,7 @@ from datetime import datetime
 sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents/nanfeng"))
 from nanfeng_v5_1 import NanFengV5_1
 
-BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 
 def get_stocks(date: str, limit: int = 100):
     conn = sqlite3.connect(BEIFENG_DB)

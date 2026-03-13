@@ -23,12 +23,12 @@ from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass
 
 # 移除对 storage_v2 的依赖，直接使用 SQLite
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
+BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("南风V4")
 
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
+BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db")
 
 
 class StorageV2:

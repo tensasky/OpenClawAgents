@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents/nanfeng"))
 from strategy_config import get_strategy, STRATEGIES
 from nanfeng_v5_1 import NanFengV5_1
 
-BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks.db"
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 
 class StrategyBacktest:
     def __init__(self, strategy_name: str, initial_capital: float = 100000):
