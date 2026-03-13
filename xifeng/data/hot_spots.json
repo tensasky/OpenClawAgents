@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-12T20:46:22.839507",
-  "total_news": 60,
-  "total_sectors": 8,
+  "generated_at": "2026-03-13T13:19:33.816063",
+  "total_news": 59,
+  "total_sectors": 9,
   "summary": [
     {
       "sector": "医药",
@@ -118,6 +118,63 @@
       ]
     },
     {
+      "sector": "人工智能",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
+      "top_news": [
+        {
+          "title": "一家顶尖基金看好中国AI巨头 称其投资价值优于美国同行",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvhtq1122623.shtml",
+          "time": "1773374820"
+        },
+        {
+          "title": "中国金融国际午前涨超10% 此前宣布发新股引入范式智能",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-03-13/doc-inhqvhtn4154074.shtml",
+          "time": "1773374618"
+        },
+        {
+          "title": "奇点国峰午前涨超25% 附属订立200台AI服务器销售合约",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-03-13/doc-inhqvhtr7887715.shtml",
+          "time": "1773373539"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300033",
+          "name": "同花顺",
+          "weight": 10
+        },
+        {
+          "code": "002230",
+          "name": "科大讯飞",
+          "weight": 9
+        },
+        {
+          "code": "603019",
+          "name": "中科曙光",
+          "weight": 8
+        },
+        {
+          "code": "000938",
+          "name": "中芯国际",
+          "weight": 8
+        },
+        {
+          "code": "300474",
+          "name": "景嘉微",
+          "weight": 7
+        }
+      ]
+    },
+    {
       "sector": "金融",
       "heat_score": 40,
       "level": "Medium",
@@ -132,18 +189,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "私人信贷赎回受限 摩根士丹利限制一只私人信贷基金的赎回",
+          "title": "中国金融国际午前涨超10% 此前宣布发新股引入范式智能",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusi8441228.shtml",
-          "time": "1773319207"
+          "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-03-13/doc-inhqvhtn4154074.shtml",
+          "time": "1773374618"
         },
         {
-          "title": "美国安达保险将为通过霍尔木兹海峡的船舶提供保险",
+          "title": "银行板块震荡上扬，重庆银行等股涨超2%",
           "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4703831.shtml",
-          "time": "1773319044"
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675272030.shtml",
+          "time": ""
         }
       ],
       "leading_stocks": [
@@ -170,6 +227,56 @@
         {
           "code": "601688",
           "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "有色",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "港股午评：恒指跌0.48% 科指跌0.41% 航空股、黄金股普跌 化肥板块逆势上涨",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-03-13/doc-inhqvhtr7896536.shtml",
+          "time": "1773374433"
+        },
+        {
+          "title": "小金属板块震荡走弱，中钨高新逼近跌停",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675272112.shtml",
+          "time": ""
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "601899",
+          "name": "紫金矿业",
+          "weight": 10
+        },
+        {
+          "code": "603993",
+          "name": "洛阳钼业",
+          "weight": 8
+        },
+        {
+          "code": "600362",
+          "name": "江西铜业",
+          "weight": 7
+        },
+        {
+          "code": "002460",
+          "name": "赣锋锂业",
+          "weight": 8
+        },
+        {
+          "code": "600111",
+          "name": "北方稀土",
           "weight": 7
         }
       ]
@@ -291,6 +398,63 @@
       ]
     },
     {
+      "sector": "人工智能",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
+      "top_news": [
+        {
+          "title": "一家顶尖基金看好中国AI巨头 称其投资价值优于美国同行",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvhtq1122623.shtml",
+          "time": "1773374820"
+        },
+        {
+          "title": "中国金融国际午前涨超10% 此前宣布发新股引入范式智能",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-03-13/doc-inhqvhtn4154074.shtml",
+          "time": "1773374618"
+        },
+        {
+          "title": "奇点国峰午前涨超25% 附属订立200台AI服务器销售合约",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-03-13/doc-inhqvhtr7887715.shtml",
+          "time": "1773373539"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300033",
+          "name": "同花顺",
+          "weight": 10
+        },
+        {
+          "code": "002230",
+          "name": "科大讯飞",
+          "weight": 9
+        },
+        {
+          "code": "603019",
+          "name": "中科曙光",
+          "weight": 8
+        },
+        {
+          "code": "000938",
+          "name": "中芯国际",
+          "weight": 8
+        },
+        {
+          "code": "300474",
+          "name": "景嘉微",
+          "weight": 7
+        }
+      ]
+    },
+    {
       "sector": "金融",
       "heat_score": 40,
       "level": "Medium",
@@ -305,18 +469,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "私人信贷赎回受限 摩根士丹利限制一只私人信贷基金的赎回",
+          "title": "中国金融国际午前涨超10% 此前宣布发新股引入范式智能",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusi8441228.shtml",
-          "time": "1773319207"
+          "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-03-13/doc-inhqvhtn4154074.shtml",
+          "time": "1773374618"
         },
         {
-          "title": "美国安达保险将为通过霍尔木兹海峡的船舶提供保险",
+          "title": "银行板块震荡上扬，重庆银行等股涨超2%",
           "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4703831.shtml",
-          "time": "1773319044"
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675272030.shtml",
+          "time": ""
         }
       ],
       "leading_stocks": [
@@ -343,6 +507,56 @@
         {
           "code": "601688",
           "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "有色",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "港股午评：恒指跌0.48% 科指跌0.41% 航空股、黄金股普跌 化肥板块逆势上涨",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-03-13/doc-inhqvhtr7896536.shtml",
+          "time": "1773374433"
+        },
+        {
+          "title": "小金属板块震荡走弱，中钨高新逼近跌停",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260313/c675272112.shtml",
+          "time": ""
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "601899",
+          "name": "紫金矿业",
+          "weight": 10
+        },
+        {
+          "code": "603993",
+          "name": "洛阳钼业",
+          "weight": 8
+        },
+        {
+          "code": "600362",
+          "name": "江西铜业",
+          "weight": 7
+        },
+        {
+          "code": "002460",
+          "name": "赣锋锂业",
+          "weight": 8
+        },
+        {
+          "code": "600111",
+          "name": "北方稀土",
           "weight": 7
         }
       ]
