@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-13T20:20:48.367247",
-  "total_news": 59,
+  "generated_at": "2026-03-13T20:50:53.463707",
+  "total_news": 60,
   "total_sectors": 7,
   "summary": [
     {
       "sector": "金融",
-      "heat_score": 70,
+      "heat_score": 90,
       "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "news_count": 8,
+      "today_count": 8,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -18,18 +18,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "罗马尼亚通胀放缓速度快于预期，但降息前景因战争蒙上阴影",
+          "title": "美联储降息预期大幅降温",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxri7812956.shtml",
-          "time": "1773404080"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7699181.shtml",
+          "time": "1773406156"
         },
         {
-          "title": "中东战事笼罩降息前景，黄金价格小幅波动",
+          "title": "美国抵押贷款利率跳升 30年期抵押贷款利率升至6.11%",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxri7811168.shtml",
-          "time": "1773403798"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7698838.shtml",
+          "time": "1773406119"
         }
       ],
       "leading_stocks": [
@@ -61,68 +61,11 @@
       ]
     },
     {
-      "sector": "医药",
+      "sector": "消费",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "今日盘中突破年线个股",
-          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
-          "time": "2026-02-05 13:10:20"
-        },
-        {
-          "title": "【盘中播报】43只个股跨越牛熊分界线",
-          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
-          "time": "2026-02-05 10:47:48"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600276",
-          "name": "恒瑞医药",
-          "weight": 10
-        },
-        {
-          "code": "300760",
-          "name": "迈瑞医疗",
-          "weight": 9
-        },
-        {
-          "code": "603259",
-          "name": "药明康德",
-          "weight": 8
-        },
-        {
-          "code": "300122",
-          "name": "智飞生物",
-          "weight": 7
-        },
-        {
-          "code": "000538",
-          "name": "云南白药",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "消费",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -175,108 +118,58 @@
       ]
     },
     {
-      "sector": "人工智能",
-      "heat_score": 40,
+      "sector": "医药",
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
-          "title": "Adobe股价下跌 CEO离职凸显关键的人工智能战略",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxrh1029976.shtml",
-          "time": "1773403173"
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "理想第一份AI公司财报，背后是五个问题",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/s/2026-03-13/doc-inhqvxri7788882.shtml",
-          "time": "1773400659"
+          "title": "今日盘中突破年线个股",
+          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
+          "time": "2026-02-05 13:10:20"
         },
         {
-          "title": "谁在“操盘”大位科技和*ST东易？起底“算力商人”张建华的生意经",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/s/2026-03-13/doc-inhqvxrh1004776.shtml",
-          "time": "1773398994"
+          "title": "【盘中播报】43只个股跨越牛熊分界线",
+          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
+          "time": "2026-02-05 10:47:48"
         }
       ],
       "leading_stocks": [
         {
-          "code": "300033",
-          "name": "同花顺",
+          "code": "600276",
+          "name": "恒瑞医药",
           "weight": 10
         },
         {
-          "code": "002230",
-          "name": "科大讯飞",
+          "code": "300760",
+          "name": "迈瑞医疗",
           "weight": 9
         },
         {
-          "code": "603019",
-          "name": "中科曙光",
+          "code": "603259",
+          "name": "药明康德",
           "weight": 8
         },
         {
-          "code": "000938",
-          "name": "中芯国际",
-          "weight": 8
-        },
-        {
-          "code": "300474",
-          "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "中字头",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "嘉能可CEO寄望煤炭价格上涨能重启与力拓的合并交易",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxrh1027562.shtml",
-          "time": "1773402843"
-        },
-        {
-          "title": "Anthropic与五角大楼之争，事关所有美国企业",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxrh0977882.shtml",
-          "time": "1773397208"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601988",
-          "name": "中国银行",
-          "weight": 9
-        },
-        {
-          "code": "601728",
-          "name": "中国电信",
-          "weight": 8
-        },
-        {
-          "code": "600028",
-          "name": "中国石化",
-          "weight": 8
-        },
-        {
-          "code": "601390",
-          "name": "中国中铁",
+          "code": "300122",
+          "name": "智飞生物",
           "weight": 7
         },
         {
-          "code": "601668",
-          "name": "中国建筑",
+          "code": "000538",
+          "name": "云南白药",
           "weight": 7
         }
       ]
@@ -285,10 +178,10 @@
   "hot_spots": [
     {
       "sector": "金融",
-      "heat_score": 70,
+      "heat_score": 90,
       "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "news_count": 8,
+      "today_count": 8,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -298,18 +191,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "罗马尼亚通胀放缓速度快于预期，但降息前景因战争蒙上阴影",
+          "title": "美联储降息预期大幅降温",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxri7812956.shtml",
-          "time": "1773404080"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7699181.shtml",
+          "time": "1773406156"
         },
         {
-          "title": "中东战事笼罩降息前景，黄金价格小幅波动",
+          "title": "美国抵押贷款利率跳升 30年期抵押贷款利率升至6.11%",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxri7811168.shtml",
-          "time": "1773403798"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxf7698838.shtml",
+          "time": "1773406119"
         }
       ],
       "leading_stocks": [
@@ -341,68 +234,11 @@
       ]
     },
     {
-      "sector": "医药",
+      "sector": "消费",
       "heat_score": 60,
       "level": "Medium",
       "news_count": 5,
       "today_count": 5,
-      "top_news": [
-        {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "今日盘中突破年线个股",
-          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
-          "time": "2026-02-05 13:10:20"
-        },
-        {
-          "title": "【盘中播报】43只个股跨越牛熊分界线",
-          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
-          "time": "2026-02-05 10:47:48"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "600276",
-          "name": "恒瑞医药",
-          "weight": 10
-        },
-        {
-          "code": "300760",
-          "name": "迈瑞医疗",
-          "weight": 9
-        },
-        {
-          "code": "603259",
-          "name": "药明康德",
-          "weight": 8
-        },
-        {
-          "code": "300122",
-          "name": "智飞生物",
-          "weight": 7
-        },
-        {
-          "code": "000538",
-          "name": "云南白药",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "消费",
-      "heat_score": 50,
-      "level": "Medium",
-      "news_count": 4,
-      "today_count": 4,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -455,108 +291,58 @@
       ]
     },
     {
-      "sector": "人工智能",
-      "heat_score": 40,
+      "sector": "医药",
+      "heat_score": 50,
       "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
-          "title": "Adobe股价下跌 CEO离职凸显关键的人工智能战略",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxrh1029976.shtml",
-          "time": "1773403173"
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
         },
         {
-          "title": "理想第一份AI公司财报，背后是五个问题",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/s/2026-03-13/doc-inhqvxri7788882.shtml",
-          "time": "1773400659"
+          "title": "今日盘中突破年线个股",
+          "content": "2.84 1.52 2.86 2.90 1.30 600727 鲁北化工 2.95 5.47 7.58 7.68 1.30 605108 同庆楼 1.28 1.76 20.32 20.56 1.19 688363 华熙生物 4.86 2.45 50.58 51.17 1.16 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642620448.html",
+          "time": "2026-02-05 13:10:20"
         },
         {
-          "title": "谁在“操盘”大位科技和*ST东易？起底“算力商人”张建华的生意经",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/s/2026-03-13/doc-inhqvxrh1004776.shtml",
-          "time": "1773398994"
+          "title": "【盘中播报】43只个股跨越牛熊分界线",
+          "content": "8.70 25.65 26.27 2.43 688363 华熙生物 5.96 2.17 50.58 51.71 2.23 920748 路桥信息 13.36 8.97 46.66 47.60 2.01 300859 西域旅游 2.87 3.11 38.68 39.45 1.98 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642563518.html",
+          "time": "2026-02-05 10:47:48"
         }
       ],
       "leading_stocks": [
         {
-          "code": "300033",
-          "name": "同花顺",
+          "code": "600276",
+          "name": "恒瑞医药",
           "weight": 10
         },
         {
-          "code": "002230",
-          "name": "科大讯飞",
+          "code": "300760",
+          "name": "迈瑞医疗",
           "weight": 9
         },
         {
-          "code": "603019",
-          "name": "中科曙光",
+          "code": "603259",
+          "name": "药明康德",
           "weight": 8
         },
         {
-          "code": "000938",
-          "name": "中芯国际",
-          "weight": 8
-        },
-        {
-          "code": "300474",
-          "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "中字头",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "嘉能可CEO寄望煤炭价格上涨能重启与力拓的合并交易",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxrh1027562.shtml",
-          "time": "1773402843"
-        },
-        {
-          "title": "Anthropic与五角大楼之争，事关所有美国企业",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqvxrh0977882.shtml",
-          "time": "1773397208"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "601988",
-          "name": "中国银行",
-          "weight": 9
-        },
-        {
-          "code": "601728",
-          "name": "中国电信",
-          "weight": 8
-        },
-        {
-          "code": "600028",
-          "name": "中国石化",
-          "weight": 8
-        },
-        {
-          "code": "601390",
-          "name": "中国中铁",
+          "code": "300122",
+          "name": "智飞生物",
           "weight": 7
         },
         {
-          "code": "601668",
-          "name": "中国建筑",
+          "code": "000538",
+          "name": "云南白药",
           "weight": 7
         }
       ]

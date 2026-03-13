@@ -132,7 +132,7 @@ def send_email(report):
         SMTP_SERVER = "smtp.qq.com"
         SMTP_PORT = 465
         SENDER_EMAIL = "3823810468@qq.com"
-        SENDER_PASSWORD = "fhmozvhlbqzldjhg"
+        SENDER_PASSWORD = "tmwhuqnthrpbcgec"
         
         msg = MIMEMultipart()
         msg['From'] = SENDER_EMAIL

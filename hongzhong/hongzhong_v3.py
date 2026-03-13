@@ -25,7 +25,7 @@ DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1480218571211673605/M7NTuN1_
 SMTP_SERVER = "smtp.qq.com"
 SMTP_PORT = 465
 SENDER_EMAIL = "3823810468@qq.com"
-SENDER_PASSWORD = "fhmozvhlbqzldjhg"
+SENDER_PASSWORD = "tmwhuqnthrpbcgec"
 RECEIVER_EMAIL = "3823810468@qq.com"
 
 class HongzhongV31:
