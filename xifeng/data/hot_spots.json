@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-12T21:46:33.302006",
-  "total_news": 60,
+  "generated_at": "2026-03-13T08:18:40.471875",
+  "total_news": 59,
   "total_sectors": 8,
   "summary": [
     {
@@ -56,6 +56,63 @@
         {
           "code": "000538",
           "name": "云南白药",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "金融",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "安联首席经济顾问：美国私人信贷市场风险正在蔓延",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcx4251164.shtml",
+          "time": "1773360703"
+        },
+        {
+          "title": "秘鲁央行连续第六次维持利率不变",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcv7972444.shtml",
+          "time": "1773358245"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -118,151 +175,108 @@
       ]
     },
     {
-      "sector": "汽车",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
+      "sector": "有色",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
-          "title": "宝可梦新作意外爆火提振Switch 2销量预期，任天堂本周股价大涨18%",
+          "title": "亚市早盘黄金小幅走高，受中东持续冲突影响",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4726580.shtml",
-          "time": "1773321557"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1211582.shtml",
+          "time": "1773360129"
         },
         {
-          "title": "理想汽车季报图解：营收288亿同比降35% 运营亏损4亿 股价承压",
+          "title": "“金三银四”到来，有色板块有哪些交易机会？",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/s/2026-03-12/doc-inhqtush1685681.shtml",
-          "time": "1773320787"
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhquwcu1203024.shtml",
+          "time": "1773358864"
+        },
+        {
+          "title": "在黄金价格下跌后 澳大利亚黄金股连续第二天走低",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1195587.shtml",
+          "time": "1773358296"
         }
       ],
       "leading_stocks": [
         {
-          "code": "002594",
-          "name": "比亚迪",
+          "code": "601899",
+          "name": "紫金矿业",
           "weight": 10
         },
         {
-          "code": "601127",
-          "name": "赛力斯",
+          "code": "603993",
+          "name": "洛阳钼业",
           "weight": 8
         },
         {
-          "code": "000625",
-          "name": "长安汽车",
+          "code": "600362",
+          "name": "江西铜业",
           "weight": 7
         },
         {
-          "code": "600104",
-          "name": "上汽集团",
-          "weight": 7
+          "code": "002460",
+          "name": "赣锋锂业",
+          "weight": 8
         },
         {
-          "code": "601633",
-          "name": "长城汽车",
+          "code": "600111",
+          "name": "北方稀土",
           "weight": 7
         }
       ]
     },
     {
-      "sector": "人工智能",
+      "sector": "低空经济",
       "heat_score": 30,
       "level": "Low",
       "news_count": 2,
       "today_count": 2,
       "top_news": [
         {
-          "title": "Atlassian为转向AI裁员1600人 ，优先发展AI和企业销售",
+          "title": "白宫：FBI的伊朗无人机袭击加州警告源于单一未经证实线报",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtuse4712949.shtml",
-          "time": "1773320651"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1218830.shtml",
+          "time": "1773360742"
         },
         {
-          "title": "英伟达瞄准智能体平台 推介开源人工智能智能体框架“NemoClaw”",
+          "title": "太古股份公司A拟配售所持若干国泰航空股份 净筹约17.89亿港元",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4707879.shtml",
-          "time": "1773319563"
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4229064.shtml",
+          "time": "1773359292"
         }
       ],
       "leading_stocks": [
         {
-          "code": "300033",
-          "name": "同花顺",
-          "weight": 10
-        },
-        {
-          "code": "002230",
-          "name": "科大讯飞",
-          "weight": 9
-        },
-        {
-          "code": "603019",
-          "name": "中科曙光",
+          "code": "002050",
+          "name": "三花智控",
           "weight": 8
         },
         {
-          "code": "000938",
-          "name": "中芯国际",
-          "weight": 8
-        },
-        {
-          "code": "300474",
-          "name": "景嘉微",
-          "weight": 7
-        }
-      ]
-    },
-    {
-      "sector": "房地产",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
-      "top_news": [
-        {
-          "title": "Atlassian为转向AI裁员1600人 ，优先发展AI和企业销售",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtuse4712949.shtml",
-          "time": "1773320651"
-        },
-        {
-          "title": "特斯拉获批向全英供电 能源部门获准向家庭和企业销售电力",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4715519.shtml",
-          "time": "1773320224"
-        }
-      ],
-      "leading_stocks": [
-        {
-          "code": "000002",
-          "name": "万科A",
-          "weight": 10
-        },
-        {
-          "code": "600048",
-          "name": "保利发展",
-          "weight": 9
-        },
-        {
-          "code": "001979",
-          "name": "招商蛇口",
-          "weight": 8
-        },
-        {
-          "code": "600606",
-          "name": "绿地控股",
+          "code": "002151",
+          "name": "北斗星通",
           "weight": 7
         },
         {
-          "code": "000069",
-          "name": "华侨城A",
+          "code": "300900",
+          "name": "广联航空",
+          "weight": 7
+        },
+        {
+          "code": "002097",
+          "name": "山河智能",
+          "weight": 6
+        },
+        {
+          "code": "300185",
+          "name": "通裕重工",
           "weight": 6
         }
       ]
@@ -327,6 +341,63 @@
       ]
     },
     {
+      "sector": "金融",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "安联首席经济顾问：美国私人信贷市场风险正在蔓延",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcx4251164.shtml",
+          "time": "1773360703"
+        },
+        {
+          "title": "秘鲁央行连续第六次维持利率不变",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcv7972444.shtml",
+          "time": "1773358245"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
+          "weight": 7
+        }
+      ]
+    },
+    {
       "sector": "消费",
       "heat_score": 50,
       "level": "Medium",
@@ -384,102 +455,109 @@
       ]
     },
     {
-      "sector": "汽车",
-      "heat_score": 30,
-      "level": "Low",
-      "news_count": 2,
-      "today_count": 2,
+      "sector": "有色",
+      "heat_score": 50,
+      "level": "Medium",
+      "news_count": 4,
+      "today_count": 4,
       "top_news": [
         {
-          "title": "宝可梦新作意外爆火提振Switch 2销量预期，任天堂本周股价大涨18%",
+          "title": "亚市早盘黄金小幅走高，受中东持续冲突影响",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4726580.shtml",
-          "time": "1773321557"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1211582.shtml",
+          "time": "1773360129"
         },
         {
-          "title": "理想汽车季报图解：营收288亿同比降35% 运营亏损4亿 股价承压",
+          "title": "“金三银四”到来，有色板块有哪些交易机会？",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/s/2026-03-12/doc-inhqtush1685681.shtml",
-          "time": "1773320787"
+          "url": "https://finance.sina.com.cn/money/future/fmnews/2026-03-13/doc-inhquwcu1203024.shtml",
+          "time": "1773358864"
+        },
+        {
+          "title": "在黄金价格下跌后 澳大利亚黄金股连续第二天走低",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1195587.shtml",
+          "time": "1773358296"
         }
       ],
       "leading_stocks": [
         {
-          "code": "002594",
-          "name": "比亚迪",
+          "code": "601899",
+          "name": "紫金矿业",
           "weight": 10
         },
         {
-          "code": "601127",
-          "name": "赛力斯",
+          "code": "603993",
+          "name": "洛阳钼业",
           "weight": 8
         },
         {
-          "code": "000625",
-          "name": "长安汽车",
+          "code": "600362",
+          "name": "江西铜业",
           "weight": 7
         },
         {
-          "code": "600104",
-          "name": "上汽集团",
-          "weight": 7
+          "code": "002460",
+          "name": "赣锋锂业",
+          "weight": 8
         },
         {
-          "code": "601633",
-          "name": "长城汽车",
+          "code": "600111",
+          "name": "北方稀土",
           "weight": 7
         }
       ]
     },
     {
-      "sector": "人工智能",
+      "sector": "低空经济",
       "heat_score": 30,
       "level": "Low",
       "news_count": 2,
       "today_count": 2,
       "top_news": [
         {
-          "title": "Atlassian为转向AI裁员1600人 ，优先发展AI和企业销售",
+          "title": "白宫：FBI的伊朗无人机袭击加州警告源于单一未经证实线报",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtuse4712949.shtml",
-          "time": "1773320651"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1218830.shtml",
+          "time": "1773360742"
         },
         {
-          "title": "英伟达瞄准智能体平台 推介开源人工智能智能体框架“NemoClaw”",
+          "title": "太古股份公司A拟配售所持若干国泰航空股份 净筹约17.89亿港元",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4707879.shtml",
-          "time": "1773319563"
+          "url": "https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-03-13/doc-inhquwcs4229064.shtml",
+          "time": "1773359292"
         }
       ],
       "leading_stocks": [
         {
-          "code": "300033",
-          "name": "同花顺",
-          "weight": 10
-        },
-        {
-          "code": "002230",
-          "name": "科大讯飞",
-          "weight": 9
-        },
-        {
-          "code": "603019",
-          "name": "中科曙光",
+          "code": "002050",
+          "name": "三花智控",
           "weight": 8
         },
         {
-          "code": "000938",
-          "name": "中芯国际",
-          "weight": 8
-        },
-        {
-          "code": "300474",
-          "name": "景嘉微",
+          "code": "002151",
+          "name": "北斗星通",
           "weight": 7
+        },
+        {
+          "code": "300900",
+          "name": "广联航空",
+          "weight": 7
+        },
+        {
+          "code": "002097",
+          "name": "山河智能",
+          "weight": 6
+        },
+        {
+          "code": "300185",
+          "name": "通裕重工",
+          "weight": 6
         }
       ]
     },
@@ -491,18 +569,18 @@
       "today_count": 2,
       "top_news": [
         {
-          "title": "Atlassian为转向AI裁员1600人 ，优先发展AI和企业销售",
+          "title": "美国财长贝森特：美国允许俄罗斯石油销售是临时性且范围有限的措施",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtuse4712949.shtml",
-          "time": "1773320651"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcs4239904.shtml",
+          "time": "1773360293"
         },
         {
-          "title": "特斯拉获批向全英供电 能源部门获准向家庭和企业销售电力",
+          "title": "美国颁发许可证 允许部分俄罗斯石油销售",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-12/doc-inhqtusm4715519.shtml",
-          "time": "1773320224"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcu1200451.shtml",
+          "time": "1773359158"
         }
       ],
       "leading_stocks": [
@@ -534,51 +612,51 @@
       ]
     },
     {
-      "sector": "有色",
+      "sector": "人工智能",
       "heat_score": 30,
       "level": "Low",
       "news_count": 2,
       "today_count": 2,
       "top_news": [
         {
-          "title": "现货黄金短线下挫12美元",
+          "title": "因性能担忧 Meta推迟推出新AI模型",
           "content": "",
-          "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675257819.shtml",
-          "time": ""
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhquwcs4235415.shtml",
+          "time": "1773359974"
         },
         {
-          "title": "现货黄金在伊朗新任最高领袖声明公布后短线跌幅一度扩大至25美元",
+          "title": "马斯克：“数字擎天柱”将应用于所有AI4汽车",
           "content": "",
           "source": "同花顺",
-          "url": "https://news.10jqka.com.cn/20260312/c675257753.shtml",
+          "url": "https://news.10jqka.com.cn/20260313/c675263737.shtml",
           "time": ""
         }
       ],
       "leading_stocks": [
         {
-          "code": "601899",
-          "name": "紫金矿业",
+          "code": "300033",
+          "name": "同花顺",
           "weight": 10
         },
         {
-          "code": "603993",
-          "name": "洛阳钼业",
+          "code": "002230",
+          "name": "科大讯飞",
+          "weight": 9
+        },
+        {
+          "code": "603019",
+          "name": "中科曙光",
           "weight": 8
         },
         {
-          "code": "600362",
-          "name": "江西铜业",
-          "weight": 7
-        },
-        {
-          "code": "002460",
-          "name": "赣锋锂业",
+          "code": "000938",
+          "name": "中芯国际",
           "weight": 8
         },
         {
-          "code": "600111",
-          "name": "北方稀土",
+          "code": "300474",
+          "name": "景嘉微",
           "weight": 7
         }
       ]
