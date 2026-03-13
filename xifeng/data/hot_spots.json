@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-13T22:21:09.222382",
+  "generated_at": "2026-03-13T22:51:14.772432",
   "total_news": 60,
-  "total_sectors": 7,
+  "total_sectors": 8,
   "summary": [
     {
       "sector": "消费",
-      "heat_score": 60,
-      "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "heat_score": 80,
+      "level": "High",
+      "news_count": 7,
+      "today_count": 7,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -62,10 +62,10 @@
     },
     {
       "sector": "金融",
-      "heat_score": 60,
-      "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "heat_score": 70,
+      "level": "High",
+      "news_count": 6,
+      "today_count": 6,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -75,18 +75,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
+          "title": "美国股市早盘小幅反弹 经济数据提振美联储降息希望",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwkfa0841848.shtml",
+          "time": "1773412414"
+        },
+        {
           "title": "经济学家：高油价不利于抵押贷款利率",
           "content": "",
           "source": "新浪财经",
           "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxa4011396.shtml",
           "time": "1773411185"
-        },
-        {
-          "title": "银行上调油价预测，部分机构看涨至每桶150美元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxe0953700.shtml",
-          "time": "1773409832"
         }
       ],
       "leading_stocks": [
@@ -178,10 +178,10 @@
   "hot_spots": [
     {
       "sector": "消费",
-      "heat_score": 60,
-      "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "heat_score": 80,
+      "level": "High",
+      "news_count": 7,
+      "today_count": 7,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -235,10 +235,10 @@
     },
     {
       "sector": "金融",
-      "heat_score": 60,
-      "level": "Medium",
-      "news_count": 5,
-      "today_count": 5,
+      "heat_score": 70,
+      "level": "High",
+      "news_count": 6,
+      "today_count": 6,
       "top_news": [
         {
           "title": "今日38只个股突破年线",
@@ -248,18 +248,18 @@
           "time": "2026-02-05 17:18:17"
         },
         {
+          "title": "美国股市早盘小幅反弹 经济数据提振美联储降息希望",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwkfa0841848.shtml",
+          "time": "1773412414"
+        },
+        {
           "title": "经济学家：高油价不利于抵押贷款利率",
           "content": "",
           "source": "新浪财经",
           "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxa4011396.shtml",
           "time": "1773411185"
-        },
-        {
-          "title": "银行上调油价预测，部分机构看涨至每桶150美元",
-          "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxe0953700.shtml",
-          "time": "1773409832"
         }
       ],
       "leading_stocks": [
