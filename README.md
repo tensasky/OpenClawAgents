@@ -1,120 +1,161 @@
-# OpenClaw Agents - 多 Agent 协作系统
+# 💰 财神爷量化交易系统 - 8-Agent协作
 
-## 概述
-7-Agent 系统中的前 4 个 Agent，结构化共享，方便自行处理。
-
-## Agent 列表
-
-### 1. 北风 (BeiFeng) 🌪️
-- **功能**: 股票数据采集
-- **状态**: ✅ 运行中
-- **数据**: 2,470只A股，122万条日线
-- **定时**: 每5分钟更新
-- **目录**: `beifeng/`
-
-### 2. 西风 (XiFeng) 🌪️
-- **功能**: 舆情与热点分析
-- **状态**: ✅ 运行中
-- **数据**: 10个板块热度评分
-- **定时**: 每30分钟分析
-- **目录**: `xifeng/`
-
-### 3. 码农 (Coder) 👨‍💻
-- **功能**: 代码开发与审查
-- **状态**: 📝 待开发
-- **目录**: `coder/`
-
-### 4. 监控 (Monitor) 👁️
-- **功能**: 系统监控与告警
-- **状态**: 📝 基础框架
-- **目录**: `monitor/`
-
-## 目录结构
-```
-OpenClawAgents/
-├── README.md           # 本文件
-├── beifeng/            # 股票数据Agent
-│   ├── README.md
-│   ├── beifeng.py
-│   ├── fetcher.py
-│   ├── config/
-│   ├── data/
-│   ├── logs/
-│   └── scripts/
-├── xifeng/             # 舆情分析Agent
-│   ├── README.md
-│   ├── xifeng.py
-│   ├── config/
-│   ├── data/
-│   ├── logs/
-│   └── scripts/
-├── coder/              # 代码开发Agent
-│   ├── README.md
-│   └── coder.py
-└── monitor/            # 监控Agent
-    ├── README.md
-    └── monitor.py
-```
-
-## 快速开始
-
-### 查看状态
-```bash
-# 北风状态
-cd beifeng && python3 status.py
-
-# 西风热点
-cat xifeng/data/hot_spots.json
-
-# 监控报告
-cd monitor && python3 monitor.py
-```
-
-### 手动运行
-```bash
-# 运行北风
-cd beifeng && python3 beifeng.py sh000001
-
-# 运行西风
-cd xifeng && python3 xifeng.py
-```
-
-### 定时任务
-```bash
-# 查看当前定时任务
-crontab -l
-
-# 北风: 每5分钟
-*/5 * * * * /bin/bash ~/Documents/OpenClawAgents/beifeng/scripts/cron_update_sqlite.sh
-
-# 西风: 每30分钟
-*/30 * * * * /bin/bash ~/Documents/OpenClawAgents/xifeng/scripts/run.sh
-```
-
-## 数据文件
-
-### 北风
-- `data/stocks.db` - SQLite数据库 (221MB)
-- `data/all_stocks.json` - 股票列表
-- `data/hot_spots.json` - 热点数据
-
-### 西风
-- `data/xifeng.db` - SQLite数据库
-- `data/hot_spots.json` - 热点输出
-
-## 自定义
-
-所有 Agent 都是独立的，可以：
-- 修改配置文件
-- 调整定时任务
-- 扩展功能模块
-- 添加新数据源
-
-## 注意
-
-- 北风数据库较大 (221MB)，备份时注意
-- 西风使用模拟数据，可接入真实RSS源
-- 所有日志在 `logs/` 目录
+**版本**: V5.4  
+**更新日期**: 2026-03-13  
+**核心目标**: 月度盈利≥5%，胜率最大化
 
 ---
-*Created by 财神爷 - OpenClaw*
+
+## 🎯 系统概述
+
+8-Agent闭环量化交易系统，从数据采集到策略执行，全自动运行。
+
+```
+北风(数据) → 西风(舆情) → 南风(策略) → 东风(初筛)
+                                    ↓
+白板(复盘) ← 发财(交易) ← 红中(预警) ←┘
+        ↑___________________________↓
+              财神爷(监督协调)
+```
+
+---
+
+## 🤖 Agent清单
+
+| Agent | 功能 | 版本 | 状态 | 关键指标 |
+|-------|------|------|------|---------|
+| 🌪️ **北风** | 数据采集 | V3.0.0 | ✅ 运行中 | 5348只，分钟级更新 |
+| 🍃 **西风** | 舆情分析 | V2.0.0 | ✅ 运行中 | 每2小时板块推送 |
+| 🌬️ **南风** | 量化策略 | V5.4.0 | ✅ 运行中 | 胜率>60%，收益>5% |
+| 🌸 **东风** | 初筛选股 | V1.0.0 | ⏸️ 待机 | 候选池管理 |
+| 🀄 **红中** | 决策预警 | V3.1.0 | ✅ 运行中 | 每30分钟扫描 |
+| 💰 **发财** | 模拟交易 | V1.0.0 | ⏸️ 待机 | 严格执行信号 |
+| 🀆 **白板** | 策略进化 | V1.0.0 | ⏸️ 待机 | 收盘归因分析 |
+| 💰 **财神爷** | 监督协调 | V5.0.0 | ✅ 运行中 | 每小时状态报告 |
+
+---
+
+## 📊 核心特性
+
+### 双版本策略
+- **保守版**: 胜率85%，收益8-13%，15笔/月
+- **平衡版**: 胜率65%，收益5-8%，75笔/月
+
+### 高频监控
+- 北风: 交易时段每5分钟采集
+- 西风: 每2小时板块分析
+- 红中: 每30分钟扫描预警
+- 财神爷: 每小时状态报告
+
+### 数据持久化
+- SQLite数据库物理隔离
+- 本地日志完整记录
+- Git版本管理
+
+---
+
+## 🚀 快速启动
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/tensasky/OpenClawAgents.git
+cd OpenClawAgents
+
+# 2. 启动北风数据采集
+python3 beifeng/beifeng.py
+
+# 3. 启动红中预警系统
+python3 hongzhong/hongzhong_v3.py
+
+# 4. 查看财神爷报告
+python3 workspace/scripts/caishen_hourly_report_v5.py
+```
+
+---
+
+## 📁 目录结构
+
+```
+OpenClawAgents/
+├── README.md                 # 本文件
+├── MISSION.md               # 💰 财神爷核心使命
+├── AGENTS_VERSION.md        # Agent版本管理
+├── VERSION.md               # 系统版本
+│
+├── 🌪️ beifeng/              # 北风 - 数据采集
+│   ├── beifeng.py
+│   ├── db_config.py         # 物理隔离配置
+│   ├── realtime_fetcher.py
+│   ├── data/
+│   │   ├── stocks_real.db   # 真实数据
+│   │   └── stocks_virtual.db # 虚拟数据
+│   └── logs/
+│
+├── 🍃 xifeng/               # 西风 - 舆情分析
+│   ├── xifeng_v2_sector.py  # V2.0板块分析
+│   ├── data/
+│   └── logs/
+│
+├── 🌬️ nanfeng/              # 南风 - 量化策略
+│   ├── nanfeng_v5_1.py      # V5.1量化引擎
+│   ├── strategy_config_v54_conservative.py  # 保守版
+│   ├── strategy_config_v53.py               # 平衡版
+│   └── data/
+│
+├── 🀄 hongzhong/            # 红中 - 决策预警
+│   ├── hongzhong_v3.py      # V3.0高频扫描
+│   ├── cron_report_30min.sh # 30分钟报告
+│   └── data/
+│
+├── 💰 caishen/              # 财神爷 - 监督协调
+│   └── workspace/
+│       └── scripts/
+│           ├── caishen_hourly_report_v5.py  # V5.0报告
+│           └── cron_caishen_hourly.sh       # 定时任务
+│
+└── 🀆 baiban/               # 白板 - 策略进化
+    ├── backtest_5strategies_v2.py
+    └── optimizer_v2.py
+```
+
+---
+
+## 🔔 通知渠道
+
+- **Discord**: 实时预警、状态报告
+- **邮件**: 详细报告、每日汇总
+- **日志**: 本地完整记录
+
+---
+
+## 📈 版本历史
+
+| 日期 | 版本 | 更新内容 |
+|------|------|---------|
+| 2026-03-13 | V5.4 | 南风双版本优化，财神爷V5.0 |
+| 2026-03-13 | V3.1 | 红中30分钟高频扫描 |
+| 2026-03-13 | V3.0 | 北风物理隔离数据库 |
+| 2026-03-12 | V2.5 | 红中Discord+邮件通知 |
+| 2026-03-10 | V1.0 | 系统初始化 |
+
+---
+
+## 🎯 核心KPI
+
+> **月度盈利 ≥ 5%**  
+> **胜率最大化**  
+> **所有Agent为此服务**
+
+详见 [MISSION.md](./MISSION.md)
+
+---
+
+## 🤝 贡献
+
+- 提交Issue反馈问题
+- 提交PR改进代码
+- 联系财神爷: Discord/邮件
+
+---
+
+**💰 财神爷量化交易系统 - 让AI为你赚钱**
