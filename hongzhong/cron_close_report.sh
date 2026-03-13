@@ -122,10 +122,39 @@ def send_discord(report):
     except Exception as e:
         print(f"Discord发送失败: {e}")
 
+def send_email(report):
+    """发送邮件"""
+    try:
+        import smtplib
+        from email.mime.text import MIMEText
+        from email.mime.multipart import MIMEMultipart
+        
+        SMTP_SERVER = "smtp.qq.com"
+        SMTP_PORT = 465
+        SENDER_EMAIL = "3823810468@qq.com"
+        SENDER_PASSWORD = "fhmozvhlbqzldjhg"
+        
+        msg = MIMEMultipart()
+        msg['From'] = SENDER_EMAIL
+        msg['To'] = RECEIVER_EMAIL
+        msg['Subject'] = f"🀄 红中V3.1收盘总结 - {datetime.now().strftime('%Y-%m-%d')}"
+        
+        msg.attach(MIMEText(report, 'plain', 'utf-8'))
+        
+        server = smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT, timeout=10)
+        server.login(SENDER_EMAIL, SENDER_PASSWORD)
+        server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg.as_string())
+        server.quit()
+        
+        print(f"[{datetime.now()}] 邮件已发送")
+    except Exception as e:
+        print(f"邮件发送失败: {e}")
+
 # 主程序
 report = generate_close_report()
 print(report)
 send_discord(report)
+send_email(report)
 
 # 保存报告
 report_file = Path.home() / f"Documents/OpenClawAgents/hongzhong/reports/close_report_{datetime.now().strftime('%Y%m%d')}.txt"

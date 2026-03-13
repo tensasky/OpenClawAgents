@@ -7,8 +7,11 @@
 import sqlite3
 import json
 import requests
+import smtplib
 from datetime import datetime, timedelta
 from pathlib import Path
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # 配置
 HONGZHONG_DIR = Path(__file__).parent
@@ -17,6 +20,13 @@ DATA_DIR.mkdir(exist_ok=True)
 
 SIGNALS_DB = DATA_DIR / "signals_v3.db"
 DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1480218571211673605/M7NTuN1_2a1jHR9D8T0m_D7IVoD_oDYxfKZvEEW54PYx0JCk2AMsAWYhaqmPfRP8QW48"
+
+# 邮件配置
+SMTP_SERVER = "smtp.qq.com"
+SMTP_PORT = 465
+SENDER_EMAIL = "3823810468@qq.com"
+SENDER_PASSWORD = "fhmozvhlbqzldjhg"
+RECEIVER_EMAIL = "3823810468@qq.com"
 
 class HongzhongV31:
     """红中V3.1"""
@@ -146,6 +156,50 @@ class HongzhongV31:
             except Exception as e:
                 print(f"Discord发送失败: {e}")
     
+    def send_email(self, signals):
+        """发送邮件通知"""
+        for sig in signals:
+            try:
+                msg = MIMEMultipart()
+                msg['From'] = SENDER_EMAIL
+                msg['To'] = RECEIVER_EMAIL
+                msg['Subject'] = f"🀄 红中V3.1预警 - {sig['stock_code']} ({'保守版' if sig['version'] == 'conservative' else '平衡版'})"
+                
+                body = f"""
+红中V3.1交易预警
+
+版本: {'保守版' if sig['version'] == 'conservative' else '平衡版'}
+策略: {sig['strategy']}
+股票: {sig['stock_code']} {sig['stock_name'] or ''}
+时间: {sig['timestamp']}
+
+【操作建议】
+入场价: ¥{sig['entry_price']:.2f}
+止损价: ¥{sig['stop_loss']:.2f}
+目标1: ¥{sig['target_1']:.2f}
+目标2: ¥{sig['target_2']:.2f}
+
+【评分】
+综合分数: {sig['score']}
+
+请及时查看并决策。
+
+--
+红中V3.1量化预警系统
+"""
+                
+                msg.attach(MIMEText(body, 'plain', 'utf-8'))
+                
+                server = smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT, timeout=10)
+                server.login(SENDER_EMAIL, SENDER_PASSWORD)
+                server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, msg.as_string())
+                server.quit()
+                
+                print(f"✅ 邮件已发送: {sig['stock_code']}")
+                
+            except Exception as e:
+                print(f"❌ 邮件发送失败: {e}")
+    
     def run(self):
         """运行扫描"""
         print(f"[{datetime.now().strftime('%H:%M:%S')}] 🀄 红中V3.1扫描启动...")
@@ -156,6 +210,7 @@ class HongzhongV31:
             saved = self.save_signals(signals)
             print(f"✅ 发现 {len(signals)} 个信号，保存 {saved} 个")
             self.send_discord(signals)
+            self.send_email(signals)
         else:
             print("⏳ 本次扫描无信号")
         
