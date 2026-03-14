@@ -21,7 +21,7 @@ log = get_logger("南风")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("实时数据聚合")
 
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db")
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 
 
 class RealtimeAggregator:

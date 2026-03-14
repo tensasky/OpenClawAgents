@@ -17,10 +17,10 @@ from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass
 
 # 配置
-WORKSPACE = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng")
+WORKSPACE = Path.home() / "Documents/OpenClawAgents/nanfeng"
 DATA_DIR = WORKSPACE / "data"
 LOG_DIR = WORKSPACE / "logs"
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db")
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 LOG_DIR.mkdir(parents=True, exist_ok=True)

@@ -17,7 +17,7 @@ log = get_logger("System")
 
 def auto_push():
     """自动推送代码到 GitHub"""
-    repo_dir = Path("/Users/roberto/Documents/OpenClawAgents")
+    repo_dir = Path.home() / "Documents/OpenClawAgents"
     
     # 检查仓库目录
     if not repo_dir.exists():

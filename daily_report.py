@@ -18,11 +18,11 @@ from agent_logger import get_logger
 log = get_logger("System")
 
 
-sys.path.insert(0, '/Users/roberto/.openclaw/agents/beifeng')
+sys.path.insert(0, str(Path.home() / '.openclaw/agents/beifeng'))
 
-BEIFENG_DB = Path("/Users/roberto/.openclaw/agents/beifeng/data/stocks_v2.db")
-XIFENG_DATA = Path("/Users/roberto/Documents/OpenClawAgents/xifeng/data/hot_spots.json")
-REPORT_FILE = Path("/Users/roberto/Documents/OpenClawAgents/logs/daily_report.txt")
+BEIFENG_DB = Path.home() / ".openclaw/agents/beifeng/data/stocks_v2.db"
+XIFENG_DATA = Path.home() / "Documents/OpenClawAgents/xifeng/data/hot_spots.json"
+REPORT_FILE = Path.home() / "Documents/OpenClawAgents/logs/daily_report.txt"
 
 def check_beifeng():
     """检查北风状态"""
@@ -79,7 +79,7 @@ def check_xifeng():
 
 def check_nanfeng():
     """检查南风状态"""
-    signals_dir = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng/signals")
+    signals_dir = Path.home() / "Documents/OpenClawAgents/nanfeng/signals"
     
     if not signals_dir.exists():
         return {'status': '⚠️ 无信号目录'}
