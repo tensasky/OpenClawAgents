@@ -41,6 +41,13 @@ class V51Backtest:
         """获取历史数据"""
         try:
             import pandas as pd
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("南风")
+
             conn = sqlite3.connect(self.db_path)
             query = """
                 SELECT timestamp, open, high, low, close, volume, amount
@@ -221,9 +228,9 @@ def main():
     
     backtest.run_backtest(test_dates, max_stocks=200)
     
-    print("\n" + "=" * 80)
-    print("🌬️ V5.1回测完成")
-    print("=" * 80)
+    log.info("\n" + "=" * 80)
+    log.info("🌬️ V5.1回测完成")
+    log.info("=" * 80)
 
 
 if __name__ == "__main__":

@@ -9,6 +9,13 @@ import subprocess
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 BATCH_SIZE = 2  # 分钟数据量大，每批2只
@@ -36,17 +43,17 @@ def fetch_minute_batch(stock_codes):
         return False, str(e)
 
 def main():
-    print("🌪️ 北风分钟数据补全启动")
-    print("=" * 60)
+    log.info("🌪️ 北风分钟数据补全启动")
+    log.info("=" * 60)
     
     stocks = load_core_stocks()
     stock_codes = [s['code'] for s in stocks]
     total = len(stock_codes)
     
-    print(f"📊 目标: {total} 只核心股票")
-    print(f"📈 数据: 近30天分钟线")
-    print(f"⏱️  预计: {total * 2} 分钟")
-    print("=" * 60)
+    log.info(f"📊 目标: {total} 只核心股票")
+    log.info(f"📈 数据: 近30天分钟线")
+    log.info(f"⏱️  预计: {total * 2} 分钟")
+    log.info("=" * 60)
     
     success_count = 0
     fail_count = 0
@@ -56,16 +63,16 @@ def main():
         batch_num = i // BATCH_SIZE + 1
         total_batches = (total + BATCH_SIZE - 1) // BATCH_SIZE
         
-        print(f"\n[{batch_num}/{total_batches}] {', '.join(batch)}")
+        log.info(f"\n[{batch_num}/{total_batches}] {', '.join(batch)}")
         
         success, output = fetch_minute_batch(batch)
         
         if success:
             success_count += len(batch)
-            print(f"  ✅ 成功")
+            log.info(f"  ✅ 成功")
         else:
             fail_count += len(batch)
-            print(f"  ❌ 失败")
+            log.info(f"  ❌ 失败")
             # 记录失败
             with open(WORKSPACE / "logs" / "minute_failed.log", 'a') as f:
                 f.write(f"{datetime.now()}: {batch}\n")
@@ -73,10 +80,10 @@ def main():
         if i + BATCH_SIZE < total:
             time.sleep(DELAY)
     
-    print("\n" + "=" * 60)
-    print(f"✅ 完成!")
-    print(f"  成功: {success_count}/{total}")
-    print(f"  失败: {fail_count}")
+    log.info("\n" + "=" * 60)
+    log.info(f"✅ 完成!")
+    log.info(f"  成功: {success_count}/{total}")
+    log.info(f"  失败: {fail_count}")
 
 if __name__ == '__main__':
     main()

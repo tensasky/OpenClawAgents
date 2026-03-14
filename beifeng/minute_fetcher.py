@@ -45,7 +45,7 @@ class MinuteDataFetcher:
             
             key = tencent_code
             if 'data' not in data or key not in data['data']:
-                print(f"  无分钟数据: {stock_code}")
+                log.info(f"  无分钟数据: {stock_code}")
                 return []
             
             stock_data = data['data'][key]
@@ -88,7 +88,7 @@ class MinuteDataFetcher:
             return minute_data
             
         except Exception as e:
-            print(f"  腾讯分钟数据失败: {e}")
+            log.info(f"  腾讯分钟数据失败: {e}")
             return []
     
     def fetch_sina_minute(self, stock_code: str) -> List[Dict]:
@@ -109,12 +109,12 @@ class MinuteDataFetcher:
             return []
             
         except Exception as e:
-            print(f"  新浪分钟数据失败: {e}")
+            log.info(f"  新浪分钟数据失败: {e}")
             return []
     
     def fetch_minute_data(self, stock_code: str) -> List[Dict]:
         """获取分钟数据（主入口）"""
-        print(f"  获取 {stock_code} 分钟数据...")
+        log.info(f"  获取 {stock_code} 分钟数据...")
         
         # 优先腾讯
         data = self.fetch_tencent_minute(stock_code)
@@ -123,7 +123,7 @@ class MinuteDataFetcher:
             # 腾讯失败用新浪
             data = self.fetch_sina_minute(stock_code)
         
-        print(f"    获取 {len(data)} 条分钟数据")
+        log.info(f"    获取 {len(data)} 条分钟数据")
         return data
     
     def analyze_minute_trend(self, data: List[Dict]) -> Dict:
@@ -208,30 +208,37 @@ def fetch_and_analyze(stock_code: str) -> Dict:
 
 if __name__ == '__main__':
     import sys
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
     
     stock_code = sys.argv[1] if len(sys.argv) > 1 else "sz300480"
     
-    print("=" * 60)
-    print(f"🌪️ 北风 - 分钟数据抓取")
-    print("=" * 60)
+    log.info("=" * 60)
+    log.info(f"🌪️ 北风 - 分钟数据抓取")
+    log.info("=" * 60)
     
     result = fetch_and_analyze(stock_code)
     
-    print(f"\n股票: {result['stock_code']}")
-    print(f"更新时间: {result['update_time']}")
-    print(f"\n分钟数据: {len(result['minute_data'])} 条")
+    log.info(f"\n股票: {result['stock_code']}")
+    log.info(f"更新时间: {result['update_time']}")
+    log.info(f"\n分钟数据: {len(result['minute_data'])} 条")
     
     if result['minute_data']:
-        print(f"\n最新5条:")
+        log.info(f"\n最新5条:")
         for d in result['minute_data'][-5:]:
-            print(f"  {d['time']} 价格:{d['price']} 量:{d['volume']}")
+            log.info(f"  {d['time']} 价格:{d['price']} 量:{d['volume']}")
     
-    print(f"\n趋势分析:")
+    log.info(f"\n趋势分析:")
     analysis = result['analysis']
-    print(f"  信号: {analysis.get('signal', 'N/A')}")
-    print(f"  涨跌幅: {analysis.get('change_pct', 0)}%")
-    print(f"  开盘: {analysis.get('open', 0)}")
-    print(f"  最新: {analysis.get('latest', 0)}")
-    print(f"  最高: {analysis.get('high', 0)}")
-    print(f"  最低: {analysis.get('low', 0)}")
-    print(f"  量比: {analysis.get('volume_ratio', 0)}")
+    log.info(f"  信号: {analysis.get('signal', 'N/A')}")
+    log.info(f"  涨跌幅: {analysis.get('change_pct', 0)}%")
+    log.info(f"  开盘: {analysis.get('open', 0)}")
+    log.info(f"  最新: {analysis.get('latest', 0)}")
+    log.info(f"  最高: {analysis.get('high', 0)}")
+    log.info(f"  最低: {analysis.get('low', 0)}")
+    log.info(f"  量比: {analysis.get('volume_ratio', 0)}")

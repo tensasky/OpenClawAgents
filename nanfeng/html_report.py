@@ -5,6 +5,13 @@ HTML报告生成器 - 多策略综合报告
 
 from datetime import datetime
 from typing import List, Dict
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("南风")
+
 
 
 def generate_html_report(strategies_data: List[Dict], market_msg: str = "") -> str:
@@ -387,4 +394,4 @@ if __name__ == '__main__':
     
     html = generate_html_report(test_data, "大盘环境良好ADX=26.0，今日+1.45%")
     print(html[:2000])
-    print("\n... (HTML内容已截断)")
+    log.info("\n... (HTML内容已截断)")

@@ -13,6 +13,13 @@ from pathlib import Path
 from typing import List, Dict, Optional, Set, Tuple
 import sqlite3
 import sys
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("东风")
+
 
 # 配置路径
 BASE_DIR = Path(__file__).parent
@@ -558,25 +565,25 @@ def main():
         
         elif args.list:
             pool = scanner.candidate_pool
-            print(f"\n🌸 候选池 ({len(pool)} 只):\n")
-            print(f"{'代码':<10} {'名称':<10} {'价格':<8} {'振幅':<8} {'放量':<8} {'热点':<10} {'进入时间':<20}")
-            print("-" * 90)
+            log.info(f"\n🌸 候选池 ({len(pool)} 只):\n")
+            log.info(f"{'代码':<10} {'名称':<10} {'价格':<8} {'振幅':<8} {'放量':<8} {'热点':<10} {'进入时间':<20}")
+            log.info("-" * 90)
             for s in pool[:20]:  # 显示前20只
                 hot = s.get('sector', '否') if s.get('is_hot_sector') else '否'
                 entry = s.get('entry_time', '')[:19] if s.get('entry_time') else ''
-                print(f"{s['code']:<10} {s['name']:<10} {s['price']:<8.2f} {s['amplitude']:<8}% {s['volume_ratio']:<8} {hot:<10} {entry:<20}")
+                log.info(f"{s['code']:<10} {s['name']:<10} {s['price']:<8.2f} {s['amplitude']:<8}% {s['volume_ratio']:<8} {hot:<10} {entry:<20}")
             if len(pool) > 20:
-                print(f"... 还有 {len(pool)-20} 只")
+                log.info(f"... 还有 {len(pool)-20} 只")
             print()
         
         elif args.standby:
             pool = scanner.standby_pool
-            print(f"\n🍂 备用池 (最近 {min(len(pool), 20)} 只):\n")
-            print(f"{'代码':<10} {'名称':<10} {'退出时间':<20} {'原因':<20} {'天数':<6}")
-            print("-" * 70)
+            log.info(f"\n🍂 备用池 (最近 {min(len(pool), 20)} 只):\n")
+            log.info(f"{'代码':<10} {'名称':<10} {'退出时间':<20} {'原因':<20} {'天数':<6}")
+            log.info("-" * 70)
             for s in pool[:20]:
                 exit_time = s.get('exit_time', '')[:19] if s.get('exit_time') else ''
-                print(f"{s['code']:<10} {s['name']:<10} {exit_time:<20} {s.get('exit_reason', ''):<20} {s.get('days_in_pool', 0):<6}")
+                log.info(f"{s['code']:<10} {s['name']:<10} {exit_time:<20} {s.get('exit_reason', ''):<20} {s.get('days_in_pool', 0):<6}")
             print()
         
         else:

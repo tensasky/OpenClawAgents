@@ -156,6 +156,13 @@ class StrategyBacktest:
         elif "天" in period:
             # 提取数字
             import re
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("南风")
+
             numbers = re.findall(r'\d+', period)
             if numbers:
                 return int(sum(map(int, numbers)) / len(numbers))

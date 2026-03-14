@@ -13,6 +13,13 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass
 import logging
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 logger = logging.getLogger("北风")
 
@@ -354,6 +361,6 @@ if __name__ == '__main__':
         datetime.now() - timedelta(days=30),
         datetime.now()
     )
-    print(f"获取到 {len(data)} 条记录")
+    log.info(f"获取到 {len(data)} 条记录")
     if data:
-        print("最新一条:", data[-1])
+        log.info("最新一条:", data[-1])

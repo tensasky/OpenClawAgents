@@ -13,6 +13,13 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("发财")
+
 
 # 配置路径
 BASE_DIR = Path(__file__).parent
@@ -602,27 +609,27 @@ class FacaiTrader:
         account = self.portfolio.get_account()
         positions = self.portfolio.get_positions()
         
-        print("\n" + "=" * 60)
-        print("💰 发财·模拟账户概览")
-        print("=" * 60)
-        print(f"初始资金: ¥{account['initial_capital']:,.2f}")
-        print(f"现金余额: ¥{account['cash_balance']:,.2f}")
-        print(f"总资产:   ¥{account['total_assets']:,.2f}")
-        print(f"收益率:   {(account['total_assets']/account['initial_capital']-1)*100:+.2f}%")
-        print("-" * 60)
+        log.info("\n" + "=" * 60)
+        log.info("💰 发财·模拟账户概览")
+        log.info("=" * 60)
+        log.info(f"初始资金: ¥{account['initial_capital']:,.2f}")
+        log.info(f"现金余额: ¥{account['cash_balance']:,.2f}")
+        log.info(f"总资产:   ¥{account['total_assets']:,.2f}")
+        log.info(f"收益率:   {(account['total_assets']/account['initial_capital']-1)*100:+.2f}%")
+        log.info("-" * 60)
         
         if positions:
-            print(f"当前持仓 ({len(positions)}只):")
-            print(f"{'代码':<12} {'名称':<10} {'数量':<8} {'成本':<8} {'现价':<8} {'盈亏':<10} {'止损':<8}")
-            print("-" * 60)
+            log.info(f"当前持仓 ({len(positions)}只):")
+            log.info(f"{'代码':<12} {'名称':<10} {'数量':<8} {'成本':<8} {'现价':<8} {'盈亏':<10} {'止损':<8}")
+            log.info("-" * 60)
             for pos in positions:
                 profit = (pos.current_price - pos.avg_price) * pos.quantity
                 profit_pct = (pos.current_price / pos.avg_price - 1) * 100
-                print(f"{pos.symbol:<12} {pos.name:<10} {pos.quantity:<8} {pos.avg_price:<8.2f} {pos.current_price:<8.2f} {profit:>+9.0f} {pos.stop_loss:<8.2f}")
+                log.info(f"{pos.symbol:<12} {pos.name:<10} {pos.quantity:<8} {pos.avg_price:<8.2f} {pos.current_price:<8.2f} {profit:>+9.0f} {pos.stop_loss:<8.2f}")
         else:
-            print("当前无持仓")
+            log.info("当前无持仓")
         
-        print("=" * 60 + "\n")
+        log.info("=" * 60 + "\n")
 
 
 def main():
@@ -650,11 +657,11 @@ def main():
         rows = cursor.fetchall()
         conn.close()
         
-        print("\n💰 最近10笔交易:")
-        print(f"{'时间':<20} {'动作':<6} {'代码':<12} {'价格':<8} {'数量':<8} {'理由':<30}")
-        print("-" * 80)
+        log.info("\n💰 最近10笔交易:")
+        log.info(f"{'时间':<20} {'动作':<6} {'代码':<12} {'价格':<8} {'数量':<8} {'理由':<30}")
+        log.info("-" * 80)
         for row in rows:
-            print(f"{row[1][:19]:<20} {row[2]:<6} {row[3]:<12} {row[5]:<8.2f} {row[6]:<8} {row[8][:28]:<30}")
+            log.info(f"{row[1][:19]:<20} {row[2]:<6} {row[3]:<12} {row[5]:<8.2f} {row[6]:<8} {row[8][:28]:<30}")
         print()
     else:
         facai.show_portfolio()

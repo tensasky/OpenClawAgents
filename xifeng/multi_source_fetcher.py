@@ -14,6 +14,13 @@ import re
 from datetime import datetime
 from typing import List, Dict
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
+
 
 # 请求头
 HEADERS = {
@@ -75,10 +82,10 @@ class MultiSourceFetcher:
                         'time': str(row.get('发布时间', ''))
                     })
             
-            print(f"  东方财富: {len(news_list)} 条")
+            log.info(f"  东方财富: {len(news_list)} 条")
             
         except Exception as e:
-            print(f"  东方财富失败: {e}")
+            log.info(f"  东方财富失败: {e}")
         
         return news_list
     
@@ -101,10 +108,10 @@ class MultiSourceFetcher:
                         'time': str(row.get('时间', ''))
                     })
             
-            print(f"  财联社: {len(news_list)} 条")
+            log.info(f"  财联社: {len(news_list)} 条")
             
         except Exception as e:
-            print(f"  财联社失败: {e}")
+            log.info(f"  财联社失败: {e}")
         
         return news_list
     
@@ -133,10 +140,10 @@ class MultiSourceFetcher:
                             'time': item.get('ctime', '')
                         })
             
-            print(f"  新浪财经: {len(news_list)} 条")
+            log.info(f"  新浪财经: {len(news_list)} 条")
             
         except Exception as e:
-            print(f"  新浪财经失败: {e}")
+            log.info(f"  新浪财经失败: {e}")
         
         return news_list
     
@@ -165,10 +172,10 @@ class MultiSourceFetcher:
                             'time': item.get('created_at', '')
                         })
             
-            print(f"  雪球: {len(news_list)} 条")
+            log.info(f"  雪球: {len(news_list)} 条")
             
         except Exception as e:
-            print(f"  雪球失败: {e}")
+            log.info(f"  雪球失败: {e}")
         
         return news_list
     
@@ -203,10 +210,10 @@ class MultiSourceFetcher:
                             'time': item.get('publish_time', '')
                         })
             
-            print(f"  腾讯财经: {len(news_list)} 条")
+            log.info(f"  腾讯财经: {len(news_list)} 条")
             
         except Exception as e:
-            print(f"  腾讯财经失败: {e}")
+            log.info(f"  腾讯财经失败: {e}")
         
         return news_list
     
@@ -235,17 +242,17 @@ class MultiSourceFetcher:
                             'time': item.get('time', '')
                         })
             
-            print(f"  同花顺: {len(news_list)} 条")
+            log.info(f"  同花顺: {len(news_list)} 条")
             
         except Exception as e:
-            print(f"  同花顺失败: {e}")
+            log.info(f"  同花顺失败: {e}")
         
         return news_list
     
     def fetch_all(self) -> List[Dict]:
         """抓取所有数据源"""
-        print("🌪️ 抓取多源财经新闻...")
-        print("-" * 60)
+        log.info("🌪️ 抓取多源财经新闻...")
+        log.info("-" * 60)
         
         all_news = []
         
@@ -267,8 +274,8 @@ class MultiSourceFetcher:
         # 数据源6: 同花顺
         all_news.extend(self.fetch_10jqka())
         
-        print("-" * 60)
-        print(f"📊 总计: {len(all_news)} 条（已去重）")
+        log.info("-" * 60)
+        log.info(f"📊 总计: {len(all_news)} 条（已去重）")
         
         return all_news
 
@@ -348,9 +355,9 @@ def fetch_multi_source_news() -> List[Dict]:
 
 
 if __name__ == '__main__':
-    print("=" * 60)
-    print("🌪️ 西风 - 多源财经新闻测试")
-    print("=" * 60)
+    log.info("=" * 60)
+    log.info("🌪️ 西风 - 多源财经新闻测试")
+    log.info("=" * 60)
     
     news_list = fetch_multi_source_news()
     
@@ -365,17 +372,17 @@ if __name__ == '__main__':
         src = news.get('source', '未知')
         sources[src] = sources.get(src, 0) + 1
     
-    print(f"\n来源分布:")
+    log.info(f"\n来源分布:")
     for src, count in sorted(sources.items(), key=lambda x: x[1], reverse=True):
-        print(f"  {src}: {count} 条")
+        log.info(f"  {src}: {count} 条")
     
-    print(f"\n板块分布:")
+    log.info(f"\n板块分布:")
     for s, c in sorted(sectors.items(), key=lambda x: x[1], reverse=True)[:10]:
-        print(f"  {s}: {c} 条")
+        log.info(f"  {s}: {c} 条")
     
-    print(f"\n前5条新闻:")
+    log.info(f"\n前5条新闻:")
     for news in news_list[:5]:
         icon = "📈" if news.get('sentiment', 0) > 0.2 else "📉" if news.get('sentiment', 0) < -0.2 else "➡️"
-        print(f"  [{news.get('source', '未知')}] [{news.get('sector', '其他')}] {icon}")
-        print(f"    {news['title'][:60]}...")
+        log.info(f"  [{news.get('source', '未知')}] [{news.get('sector', '其他')}] {icon}")
+        log.info(f"    {news['title'][:60]}...")
         print()

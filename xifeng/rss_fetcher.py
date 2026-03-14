@@ -13,6 +13,13 @@ import random
 from datetime import datetime
 from typing import List, Dict
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
+
 
 # RSS 源配置
 RSS_FEEDS = {
@@ -91,7 +98,7 @@ class RealRSSFetcher:
             return news_list
             
         except Exception as e:
-            print(f"新浪财经 RSS 失败: {e}")
+            log.info(f"新浪财经 RSS 失败: {e}")
             return []
     
     def fetch_cls(self) -> List[Dict]:
@@ -108,7 +115,7 @@ class RealRSSFetcher:
             )
             
             if resp.status_code != 200:
-                print(f"财联社 HTTP {resp.status_code}")
+                log.info(f"财联社 HTTP {resp.status_code}")
                 return []
             
             data = resp.json()
@@ -127,7 +134,7 @@ class RealRSSFetcher:
             return news_list
             
         except Exception as e:
-            print(f"财联社抓取失败: {e}")
+            log.info(f"财联社抓取失败: {e}")
             return []
     
     def fetch_eastmoney(self) -> List[Dict]:
@@ -150,7 +157,7 @@ class RealRSSFetcher:
             )
             
             if resp.status_code != 200:
-                print(f"东方财富 HTTP {resp.status_code}")
+                log.info(f"东方财富 HTTP {resp.status_code}")
                 return []
             
             data = resp.json()
@@ -171,7 +178,7 @@ class RealRSSFetcher:
             return news_list
             
         except Exception as e:
-            print(f"东方财富抓取失败: {e}")
+            log.info(f"东方财富抓取失败: {e}")
             return []
     
     def identify_sector(self, text: str) -> str:
@@ -221,19 +228,19 @@ class RealRSSFetcher:
         
         # 新浪财经 RSS (最稳定)
         sina_news = self.fetch_sina_rss()
-        print(f"  新浪财经: {len(sina_news)} 条")
+        log.info(f"  新浪财经: {len(sina_news)} 条")
         all_news.extend(sina_news)
         
         # 财联社
         cls_news = self.fetch_cls()
         if cls_news:
-            print(f"  财联社: {len(cls_news)} 条")
+            log.info(f"  财联社: {len(cls_news)} 条")
             all_news.extend(cls_news)
         
         # 东方财富
         em_news = self.fetch_eastmoney()
         if em_news:
-            print(f"  东方财富: {len(em_news)} 条")
+            log.info(f"  东方财富: {len(em_news)} 条")
             all_news.extend(em_news)
         
         # 处理
@@ -246,13 +253,13 @@ class RealRSSFetcher:
 
 
 if __name__ == '__main__':
-    print("🌪️ 西风 RSS 抓取测试")
-    print("=" * 60)
+    log.info("🌪️ 西风 RSS 抓取测试")
+    log.info("=" * 60)
     
     fetcher = RealRSSFetcher()
     news_list = fetcher.fetch_all()
     
-    print(f"\n📊 总计: {len(news_list)} 条")
+    log.info(f"\n📊 总计: {len(news_list)} 条")
     
     # 统计
     sectors = {}
@@ -260,11 +267,11 @@ if __name__ == '__main__':
         s = news.get('sector', '其他')
         sectors[s] = sectors.get(s, 0) + 1
     
-    print(f"\n板块分布:")
+    log.info(f"\n板块分布:")
     for s, c in sorted(sectors.items(), key=lambda x: x[1], reverse=True)[:10]:
-        print(f"  {s}: {c}")
+        log.info(f"  {s}: {c}")
     
-    print(f"\n前5条:")
+    log.info(f"\n前5条:")
     for news in news_list[:5]:
         icon = "📈" if news.get('sentiment', 0) > 0 else "📉" if news.get('sentiment', 0) < 0 else "➡️"
-        print(f"  [{news.get('sector', '其他')}] {icon} {news['title'][:50]}...")
+        log.info(f"  [{news.get('sector', '其他')}] {icon} {news['title'][:50]}...")

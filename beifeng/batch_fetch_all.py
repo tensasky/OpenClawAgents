@@ -8,6 +8,13 @@ import subprocess
 import sys
 from pathlib import Path
 import time
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 BATCH_SIZE = 5  # 每批处理5只，避免请求过快
@@ -36,9 +43,9 @@ def main():
     stocks = load_stocks()
     total = len(stocks)
     
-    print(f"🌪️ 北风批量初始化")
-    print(f"📊 共 {total} 只股票")
-    print("=" * 50)
+    log.info(f"🌪️ 北风批量初始化")
+    log.info(f"📊 共 {total} 只股票")
+    log.info("=" * 50)
     
     # 提取股票代码
     stock_codes = [s['code'] for s in stocks]
@@ -53,34 +60,34 @@ def main():
         batch_num = i // BATCH_SIZE + 1
         total_batches = (total + BATCH_SIZE - 1) // BATCH_SIZE
         
-        print(f"\n[{batch_num}/{total_batches}] 处理: {', '.join(batch)}")
+        log.info(f"\n[{batch_num}/{total_batches}] 处理: {', '.join(batch)}")
         
         success, output = fetch_batch(batch)
         
         if success:
-            print(f"  ✅ 成功")
+            log.info(f"  ✅ 成功")
             success_count += len(batch)
         else:
-            print(f"  ❌ 失败")
+            log.info(f"  ❌ 失败")
             fail_count += len(batch)
             failed_stocks.extend(batch)
         
         # 短暂休息，避免请求过快
         time.sleep(1)
     
-    print("\n" + "=" * 50)
-    print(f"✅ 成功: {success_count} 只")
-    print(f"❌ 失败: {fail_count} 只")
+    log.info("\n" + "=" * 50)
+    log.info(f"✅ 成功: {success_count} 只")
+    log.info(f"❌ 失败: {fail_count} 只")
     
     if failed_stocks:
-        print(f"\n失败的股票:")
+        log.info(f"\n失败的股票:")
         for code in failed_stocks:
-            print(f"  - {code}")
+            log.info(f"  - {code}")
         
         # 保存失败列表供后续重试
         with open(WORKSPACE / "data" / "failed_stocks.txt", "w") as f:
             f.write("\n".join(failed_stocks))
-        print(f"\n已保存到 failed_stocks.txt，可后续重试")
+        log.info(f"\n已保存到 failed_stocks.txt，可后续重试")
 
 if __name__ == '__main__':
     main()

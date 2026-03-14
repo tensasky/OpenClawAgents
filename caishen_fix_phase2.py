@@ -7,6 +7,13 @@ import sqlite3
 import requests
 from datetime import datetime, timedelta
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("财神爷")
+
 
 BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 HONGZHONG_DB = Path.home() / "Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
@@ -16,9 +23,9 @@ def aggregate_minute_to_daily():
     实时聚合：分钟数据 -> 日线数据
     交易时段用分钟数据聚合，收盘后用真实日线
     """
-    print("="*80)
-    print("🌪️ 北风 - 实时数据聚合")
-    print("="*80)
+    log.info("="*80)
+    log.info("🌪️ 北风 - 实时数据聚合")
+    log.info("="*80)
     
     conn = sqlite3.connect(BEIFENG_DB)
     cursor = conn.cursor()
@@ -33,7 +40,7 @@ def aggregate_minute_to_daily():
     """)
     
     stocks = [row[0] for row in cursor.fetchall()]
-    print(f"发现 {len(stocks)} 只股票有分钟数据")
+    log.info(f"发现 {len(stocks)} 只股票有分钟数据")
     
     aggregated = 0
     for stock in stocks[:100]:  # 先处理100只测试
@@ -69,7 +76,7 @@ def aggregate_minute_to_daily():
     conn.commit()
     conn.close()
     
-    print(f"✅ 已聚合 {aggregated} 只股票数据")
+    log.info(f"✅ 已聚合 {aggregated} 只股票数据")
     return aggregated
 
 def generate_realtime_signals():
@@ -77,9 +84,9 @@ def generate_realtime_signals():
     红中重构：从北风实时数据生成信号
     不再使用硬编码价格
     """
-    print("\n" + "="*80)
-    print("🀄 红中 - 实时信号生成（重构版）")
-    print("="*80)
+    log.info("\n" + "="*80)
+    log.info("🀄 红中 - 实时信号生成（重构版）")
+    log.info("="*80)
     
     conn = sqlite3.connect(BEIFENG_DB)
     cursor = conn.cursor()
@@ -103,7 +110,7 @@ def generate_realtime_signals():
     candidates = cursor.fetchall()
     conn.close()
     
-    print(f"发现 {len(candidates)} 只候选股票")
+    log.info(f"发现 {len(candidates)} 只候选股票")
     
     # 生成信号（使用真实价格）
     signals = []
@@ -123,7 +130,7 @@ def generate_realtime_signals():
                 'target_2': round(close * 1.10, 2),   # +10%目标
             }
             signals.append(signal)
-            print(f"✅ 生成信号: {code} | 涨幅{change:.1f}% | 价格¥{close:.2f}")
+            log.info(f"✅ 生成信号: {code} | 涨幅{change:.1f}% | 价格¥{close:.2f}")
     
     # 保存到红中数据库
     if signals:
@@ -142,7 +149,7 @@ def generate_realtime_signals():
         
         conn.commit()
         conn.close()
-        print(f"✅ 已保存 {len(signals)} 个信号到数据库")
+        log.info(f"✅ 已保存 {len(signals)} 个信号到数据库")
     
     return signals
 
@@ -160,9 +167,9 @@ def get_stock_name(stock_code):
 
 def verify_fix():
     """验证修复结果"""
-    print("\n" + "="*80)
-    print("⚖️ 判官 - 修复验证")
-    print("="*80)
+    log.info("\n" + "="*80)
+    log.info("⚖️ 判官 - 修复验证")
+    log.info("="*80)
     
     conn = sqlite3.connect(BEIFENG_DB)
     cursor = conn.cursor()
@@ -181,18 +188,18 @@ def verify_fix():
         LIMIT 10
     """)
     
-    print("\n📊 数据一致性抽查:")
+    log.info("\n📊 数据一致性抽查:")
     for row in cursor.fetchall():
         code, d_close, m_close = row
         if m_close:
             diff = abs(d_close - m_close) / d_close * 100
             status = "✅" if diff < 1 else "❌"
-            print(f"  {status} {code}: 日线{d_close:.2f} vs 分钟{m_close:.2f} (差异{diff:.2f}%)")
+            log.info(f"  {status} {code}: 日线{d_close:.2f} vs 分钟{m_close:.2f} (差异{diff:.2f}%)")
     
     conn.close()
 
 if __name__ == '__main__':
-    print("💰 财神爷 - 第二阶段修复\n")
+    log.info("💰 财神爷 - 第二阶段修复\n")
     
     # 1. 实时数据聚合
     aggregate_minute_to_daily()
@@ -203,6 +210,6 @@ if __name__ == '__main__':
     # 3. 验证修复
     verify_fix()
     
-    print("\n" + "="*80)
-    print("✅ 第二阶段修复完成")
-    print("="*80)
+    log.info("\n" + "="*80)
+    log.info("✅ 第二阶段修复完成")
+    log.info("="*80)

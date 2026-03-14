@@ -9,6 +9,13 @@ import sqlite3
 from pathlib import Path
 from typing import Optional, Dict
 import requests
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("南风")
+
 
 BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 XIFENG_HOTSPOTS = Path.home() / "Documents/OpenClawAgents/xifeng/data/hot_spots.json"
@@ -33,7 +40,7 @@ class StockNameResolver:
                         if code and name:
                             self.cache[code] = name
             except Exception as e:
-                print(f"加载热点数据失败: {e}")
+                log.info(f"加载热点数据失败: {e}")
     
     def get_name(self, stock_code: str) -> str:
         """获取股票名称"""
@@ -96,7 +103,7 @@ class StockNameResolver:
                     name = parts[1]
                     return name
         except Exception as e:
-            print(f"获取 {stock_code} 名称失败: {e}")
+            log.info(f"获取 {stock_code} 名称失败: {e}")
         
         return None
     
@@ -132,7 +139,7 @@ if __name__ == '__main__':
     codes = ['sh600268', 'sh600068', 'sh600233', 'sh600163', 'sh600158']
     resolver = StockNameResolver()
     
-    print("股票名称查询测试:")
+    log.info("股票名称查询测试:")
     for code in codes:
         name = resolver.get_name(code)
-        print(f"  {code}: {name}")
+        log.info(f"  {code}: {name}")

@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
+
 """
 西风 - 股票-板块关联数据
 A股核心股票与板块映射
@@ -127,11 +134,11 @@ def get_stock_sector(stock_code: str) -> str:
 
 
 if __name__ == '__main__':
-    print("板块龙头股数据")
-    print("=" * 60)
+    log.info("板块龙头股数据")
+    log.info("=" * 60)
     
     for sector in ["人工智能", "新能源", "机器人", "半导体"]:
         stocks = get_leading_stocks(sector, 3)
-        print(f"\n{sector}:")
+        log.info(f"\n{sector}:")
         for s in stocks:
-            print(f"  {s['code']} {s['name']} (权重{s['weight']})")
+            log.info(f"  {s['code']} {s['name']} (权重{s['weight']})")

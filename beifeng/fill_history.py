@@ -10,6 +10,13 @@ import logging
 from datetime import datetime, timedelta
 from pathlib import Path
 import time
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 # 配置
 DB_PATH = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"

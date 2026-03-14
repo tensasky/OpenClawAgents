@@ -9,6 +9,13 @@ import json
 from datetime import datetime
 from pathlib import Path
 import sys
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("System")
+
 
 # 配置路径
 BASE_PATH = Path.home() / "Documents/OpenClawAgents"
@@ -30,13 +37,13 @@ class AgentFlowSimulator:
             'detail': detail
         })
         icon = "✅" if status == "通过" else "❌" if status == "失败" else "⚠️"
-        print(f"{icon} {step}: {status} {detail}")
+        log.info(f"{icon} {step}: {status} {detail}")
     
     def step1_beifeng(self):
         """Step 1: 北风 - 数据采集"""
-        print("\n" + "="*60)
-        print("🌪️ Step 1: 北风 - 数据采集")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("🌪️ Step 1: 北风 - 数据采集")
+        log.info("="*60)
         
         # 检查主程序
         beifeng_main = BASE_PATH / "beifeng/beifeng.py"
@@ -86,9 +93,9 @@ class AgentFlowSimulator:
     
     def step2_judge(self):
         """Step 2: 判官 - 数据验证"""
-        print("\n" + "="*60)
-        print("⚖️ Step 2: 判官 - 数据验证")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("⚖️ Step 2: 判官 - 数据验证")
+        log.info("="*60)
         
         judge_main = BASE_PATH / "judge/judge_agent.py"
         if not judge_main.exists():
@@ -106,9 +113,9 @@ class AgentFlowSimulator:
     
     def step3_xifeng(self):
         """Step 3: 西风 - 舆情分析"""
-        print("\n" + "="*60)
-        print("🍃 Step 3: 西风 - 舆情分析")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("🍃 Step 3: 西风 - 舆情分析")
+        log.info("="*60)
         
         xifeng_main = BASE_PATH / "xifeng/xifeng_v2_sector.py"
         if not xifeng_main.exists():
@@ -124,9 +131,9 @@ class AgentFlowSimulator:
     
     def step4_dongfeng(self):
         """Step 4: 东风 - 盘中监控"""
-        print("\n" + "="*60)
-        print("🌸 Step 4: 东风 - 盘中监控")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("🌸 Step 4: 东风 - 盘中监控")
+        log.info("="*60)
         
         dongfeng_main = BASE_PATH / "dongfeng/dongfeng_v2.py"
         if not dongfeng_main.exists():
@@ -142,9 +149,9 @@ class AgentFlowSimulator:
     
     def step5_nanfeng(self):
         """Step 5: 南风 - 量化策略"""
-        print("\n" + "="*60)
-        print("🌬️ Step 5: 南风 - 量化策略")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("🌬️ Step 5: 南风 - 量化策略")
+        log.info("="*60)
         
         nanfeng_main = BASE_PATH / "nanfeng/nanfeng_v5_1.py"
         if not nanfeng_main.exists():
@@ -174,9 +181,9 @@ class AgentFlowSimulator:
     
     def step6_hongzhong(self):
         """Step 6: 红中 - 决策预警"""
-        print("\n" + "="*60)
-        print("🀄 Step 6: 红中 - 决策预警")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("🀄 Step 6: 红中 - 决策预警")
+        log.info("="*60)
         
         hongzhong_main = BASE_PATH / "hongzhong/hongzhong_v33.py"
         if not hongzhong_main.exists():
@@ -200,9 +207,9 @@ class AgentFlowSimulator:
     
     def step7_facai(self):
         """Step 7: 发财 - 模拟交易"""
-        print("\n" + "="*60)
-        print("💰 Step 7: 发财 - 模拟交易")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("💰 Step 7: 发财 - 模拟交易")
+        log.info("="*60)
         
         facai_main = BASE_PATH / "facai/facai_v2.py"
         if not facai_main.exists():
@@ -226,9 +233,9 @@ class AgentFlowSimulator:
     
     def step8_baiban(self):
         """Step 8: 白板 - 策略进化"""
-        print("\n" + "="*60)
-        print("🀆 Step 8: 白板 - 策略进化")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("🀆 Step 8: 白板 - 策略进化")
+        log.info("="*60)
         
         baiban_main = BASE_PATH / "baiban/baiban.py"
         if not baiban_main.exists():
@@ -243,9 +250,9 @@ class AgentFlowSimulator:
     
     def step9_caishen(self):
         """Step 9: 财神爷 - 监督协调"""
-        print("\n" + "="*60)
-        print("💰 Step 9: 财神爷 - 监督协调")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("💰 Step 9: 财神爷 - 监督协调")
+        log.info("="*60)
         
         caishen_main = WORKSPACE / "scripts/caishen_monitor_v51.py"
         if not caishen_main.exists():
@@ -261,9 +268,9 @@ class AgentFlowSimulator:
     
     def check_data_flow(self):
         """检查数据流完整性"""
-        print("\n" + "="*60)
-        print("🔄 数据流检查")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("🔄 数据流检查")
+        log.info("="*60)
         
         # 检查北风→南风数据流
         beifeng_db = BASE_PATH / "beifeng/data/stocks_real.db"
@@ -284,9 +291,9 @@ class AgentFlowSimulator:
     
     def check_architecture_issues(self):
         """检查架构缺陷"""
-        print("\n" + "="*60)
-        print("🔍 架构缺陷检查")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("🔍 架构缺陷检查")
+        log.info("="*60)
         
         issues = []
         
@@ -311,41 +318,41 @@ class AgentFlowSimulator:
     
     def generate_report(self):
         """生成模拟报告"""
-        print("\n" + "="*60)
-        print("📊 模拟测试总结")
-        print("="*60)
+        log.info("\n" + "="*60)
+        log.info("📊 模拟测试总结")
+        log.info("="*60)
         
         passed = sum(1 for log in self.flow_log if log['status'] == '通过')
         warned = sum(1 for log in self.flow_log if log['status'] == '警告')
         failed = sum(1 for log in self.flow_log if log['status'] == '失败')
         
-        print(f"\n总计检查: {len(self.flow_log)} 项")
-        print(f"✅ 通过: {passed} 项")
-        print(f"⚠️ 警告: {warned} 项")
-        print(f"❌ 失败: {failed} 项")
+        log.info(f"\n总计检查: {len(self.flow_log)} 项")
+        log.info(f"✅ 通过: {passed} 项")
+        log.info(f"⚠️ 警告: {warned} 项")
+        log.info(f"❌ 失败: {failed} 项")
         
         if self.issues:
-            print(f"\n🔴 发现问题 ({len(self.issues)} 个):")
+            log.info(f"\n🔴 发现问题 ({len(self.issues)} 个):")
             for i, issue in enumerate(self.issues, 1):
-                print(f"  {i}. {issue}")
+                log.info(f"  {i}. {issue}")
         else:
-            print("\n🎉 无重大问题，系统运行正常！")
+            log.info("\n🎉 无重大问题，系统运行正常！")
         
         # 架构建议
-        print("\n💡 架构优化建议:")
-        print("  1. 统一日志格式和级别")
-        print("  2. 完善错误处理和恢复机制")
-        print("  3. 考虑添加Agent间消息队列")
-        print("  4. 增加数据版本控制")
+        log.info("\n💡 架构优化建议:")
+        log.info("  1. 统一日志格式和级别")
+        log.info("  2. 完善错误处理和恢复机制")
+        log.info("  3. 考虑添加Agent间消息队列")
+        log.info("  4. 增加数据版本控制")
         
         return len(self.issues) == 0
     
     def run_full_simulation(self):
         """运行完整模拟"""
-        print("\n" + "="*70)
-        print("🚀 财神爷量化交易系统 - 全Agent流程模拟")
-        print("="*70)
-        print(f"开始时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        log.info("\n" + "="*70)
+        log.info("🚀 财神爷量化交易系统 - 全Agent流程模拟")
+        log.info("="*70)
+        log.info(f"开始时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
         # 执行所有步骤
         results = []
@@ -369,8 +376,8 @@ class AgentFlowSimulator:
         # 生成报告
         success = self.generate_report()
         
-        print(f"\n结束时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        print("="*70)
+        log.info(f"\n结束时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        log.info("="*70)
         
         return success
 

@@ -19,12 +19,12 @@ def import_stocks():
     with open(stocks_file, 'r', encoding='utf-8') as f:
         stocks = json.load(f)
     
-    print(f"📥 导入 {len(stocks)} 只股票到数据库...")
+    log.info(f"📥 导入 {len(stocks)} 只股票到数据库...")
     
     for stock in stocks:
         db.insert_stock(stock['code'], stock['name'], stock['market'])
     
-    print(f"✅ 导入完成")
+    log.info(f"✅ 导入完成")
     return [s['code'] for s in stocks]
 
 def batch_fetch(stock_codes, batch_size=10):
@@ -33,15 +33,22 @@ def batch_fetch(stock_codes, batch_size=10):
     
     for i in range(0, total, batch_size):
         batch = stock_codes[i:i+batch_size]
-        print(f"\n🔄 [{i+1}/{total}] 抓取: {', '.join(batch)}")
+        log.info(f"\n🔄 [{i+1}/{total}] 抓取: {', '.join(batch)}")
         
         agent = BeiFengAgent()
         try:
             agent.run(batch, 'daily')
         except Exception as e:
-            print(f"❌ 批次失败: {e}")
+            log.info(f"❌ 批次失败: {e}")
         
         import time
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
         time.sleep(1)  # 避免请求过快
 
 if __name__ == '__main__':
@@ -49,7 +56,7 @@ if __name__ == '__main__':
     codes = import_stocks()
     
     # 批量抓取（先测试前20只）
-    print(f"\n🚀 开始批量抓取前 20 只股票...")
+    log.info(f"\n🚀 开始批量抓取前 20 只股票...")
     batch_fetch(codes[:20], batch_size=5)
     
-    print(f"\n✅ 初始化完成！")
+    log.info(f"\n✅ 初始化完成！")

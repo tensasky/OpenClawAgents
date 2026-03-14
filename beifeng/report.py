@@ -7,6 +7,13 @@
 import sqlite3
 from datetime import datetime
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 

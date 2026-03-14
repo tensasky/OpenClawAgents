@@ -6,6 +6,13 @@
 
 import json
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
@@ -61,7 +68,7 @@ def get_extended_stocks():
     return stocks
 
 def main():
-    print("🌪️ 生成扩展股票列表...")
+    log.info("🌪️ 生成扩展股票列表...")
     stocks = get_extended_stocks()
     
     # 保存
@@ -69,22 +76,22 @@ def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(stocks, f, ensure_ascii=False, indent=2)
     
-    print(f"✅ 已生成 {len(stocks)} 只股票")
-    print(f"💾 保存到 {output_file}")
+    log.info(f"✅ 已生成 {len(stocks)} 只股票")
+    log.info(f"💾 保存到 {output_file}")
     
-    print(f"\n📊 分布:")
+    log.info(f"\n📊 分布:")
     sh_count = sum(1 for s in stocks if s['market'] == 'SH')
     sz_count = sum(1 for s in stocks if s['market'] == 'SZ')
-    print(f"  上海: {sh_count} 只")
-    print(f"  深圳: {sz_count} 只")
+    log.info(f"  上海: {sh_count} 只")
+    log.info(f"  深圳: {sz_count} 只")
     
-    print(f"\n💡 说明:")
-    print(f"  - 包含主要指数、大盘股、科创板、创业板")
-    print(f"  - 约1000+只核心股票")
-    print(f"  - 覆盖A股80%以上市值")
-    print(f"\n如需全量5000+只股票，建议:")
-    print(f"  1. 从Wind/同花顺导出CSV导入")
-    print(f"  2. 或运行 fetch_valid_stocks.py 爬取（约30分钟）")
+    log.info(f"\n💡 说明:")
+    log.info(f"  - 包含主要指数、大盘股、科创板、创业板")
+    log.info(f"  - 约1000+只核心股票")
+    log.info(f"  - 覆盖A股80%以上市值")
+    log.info(f"\n如需全量5000+只股票，建议:")
+    log.info(f"  1. 从Wind/同花顺导出CSV导入")
+    log.info(f"  2. 或运行 fetch_valid_stocks.py 爬取（约30分钟）")
 
 if __name__ == '__main__':
     main()

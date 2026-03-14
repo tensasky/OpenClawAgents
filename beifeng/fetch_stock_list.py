@@ -6,6 +6,13 @@ import requests
 import time
 import json
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 def fetch_all_stocks():
     """从东方财富获取全量 A 股"""
@@ -47,11 +54,11 @@ def fetch_all_stocks():
                         "market": prefix.upper()
                     })
             
-            print(f"✅ 第{page}页: {len(items)} 只，累计 {len(all_stocks)}")
+            log.info(f"✅ 第{page}页: {len(items)} 只，累计 {len(all_stocks)}")
             time.sleep(0.3)
             
         except Exception as e:
-            print(f"❌ 第{page}页失败: {e}")
+            log.info(f"❌ 第{page}页失败: {e}")
             break
     
     # 保存到文件
@@ -59,8 +66,8 @@ def fetch_all_stocks():
     with open(output, 'w', encoding='utf-8') as f:
         json.dump(all_stocks, f, ensure_ascii=False, indent=2)
     
-    print(f"\n🎉 总共获取 {len(all_stocks)} 只股票")
-    print(f"💾 已保存到: {output}")
+    log.info(f"\n🎉 总共获取 {len(all_stocks)} 只股票")
+    log.info(f"💾 已保存到: {output}")
     return all_stocks
 
 if __name__ == '__main__':

@@ -5,6 +5,13 @@
 
 import json
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
@@ -117,7 +124,7 @@ def get_top100_stocks():
     return stocks
 
 def main():
-    print("🌪️ 生成核心100只股票列表...")
+    log.info("🌪️ 生成核心100只股票列表...")
     stocks = get_top100_stocks()
     
     # 保存为当前任务列表
@@ -125,8 +132,8 @@ def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(stocks, f, ensure_ascii=False, indent=2)
     
-    print(f"✅ 已生成 {len(stocks)} 只核心股票")
-    print(f"💾 保存到 {output_file}")
+    log.info(f"✅ 已生成 {len(stocks)} 只核心股票")
+    log.info(f"💾 保存到 {output_file}")
     
     # 同时更新 all_stocks.json（核心100 + 扩展3000）
     # 读取扩展列表
@@ -139,9 +146,9 @@ def main():
     with open(WORKSPACE / "data" / "all_stocks.json", 'w', encoding='utf-8') as f:
         json.dump(combined, f, ensure_ascii=False, indent=2)
     
-    print(f"\n📊 总列表: {len(combined)} 只")
-    print(f"  - 核心100: 优先立即抓取")
-    print(f"  - 扩展3000+: 定时任务逐步补全")
+    log.info(f"\n📊 总列表: {len(combined)} 只")
+    log.info(f"  - 核心100: 优先立即抓取")
+    log.info(f"  - 扩展3000+: 定时任务逐步补全")
 
 if __name__ == '__main__':
     main()

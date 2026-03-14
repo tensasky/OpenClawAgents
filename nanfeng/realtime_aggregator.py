@@ -10,6 +10,13 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional, Dict
 import logging
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("南风")
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("实时数据聚合")
@@ -166,30 +173,30 @@ def main():
     # 测试几只股票
     test_codes = ['sh600068', 'sh600310', 'sh000001']
     
-    print("=" * 60)
-    print("实时数据聚合测试")
-    print("=" * 60)
+    log.info("=" * 60)
+    log.info("实时数据聚合测试")
+    log.info("=" * 60)
     
     for code in test_codes:
-        print(f"\n📊 {code}:")
+        log.info(f"\n📊 {code}:")
         
         # 检查数据新鲜度
         freshness = aggregator.check_data_freshness(code)
         
         if freshness['has_minute_today']:
-            print(f"  ✅ 有今日分钟数据")
-            print(f"  📈 分钟条数: {freshness['minute_count']}")
-            print(f"  ⏰ 最后更新: {freshness['last_minute_time']}")
+            log.info(f"  ✅ 有今日分钟数据")
+            log.info(f"  📈 分钟条数: {freshness['minute_count']}")
+            log.info(f"  ⏰ 最后更新: {freshness['last_minute_time']}")
             
             daily = freshness['aggregated_daily']
             if daily:
-                print(f"  💰 实时价格: ¥{daily['close']:.2f}")
-                print(f"  📊 今日涨跌: {(daily['close']/daily['open']-1)*100:+.2f}%")
-                print(f"  💎 最高: ¥{daily['high']:.2f} / 最低: ¥{daily['low']:.2f}")
+                log.info(f"  💰 实时价格: ¥{daily['close']:.2f}")
+                log.info(f"  📊 今日涨跌: {(daily['close']/daily['open']-1)*100:+.2f}%")
+                log.info(f"  💎 最高: ¥{daily['high']:.2f} / 最低: ¥{daily['low']:.2f}")
         else:
-            print(f"  ❌ 无今日分钟数据，使用昨日收盘价")
+            log.info(f"  ❌ 无今日分钟数据，使用昨日收盘价")
     
-    print("\n" + "=" * 60)
+    log.info("\n" + "=" * 60)
 
 
 if __name__ == '__main__':

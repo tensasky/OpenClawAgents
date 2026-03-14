@@ -11,6 +11,13 @@ from datetime import datetime
 from pathlib import Path
 import akshare as ak
 import time
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
+
 
 # 配置
 DATA_DIR = Path.home() / "Documents/OpenClawAgents/xifeng/data"

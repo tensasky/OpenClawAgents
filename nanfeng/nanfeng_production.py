@@ -21,6 +21,13 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass, field
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("南风")
+
 
 # 配置
 BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db")
@@ -596,12 +603,12 @@ def main():
     signals = nanfeng.scan_signals(max_stocks=300)
     
     # 输出结果
-    print("\n" + "="*60)
-    print("🌬️ 南风V5.1 精选结果")
-    print("="*60)
+    log.info("\n" + "="*60)
+    log.info("🌬️ 南风V5.1 精选结果")
+    log.info("="*60)
     
     if not signals:
-        print("未发现符合条件的信号")
+        log.info("未发现符合条件的信号")
         return
     
     for signal in signals:
@@ -635,7 +642,7 @@ def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
     
-    print(f"\n💾 结果已保存: {output_file}")
+    log.info(f"\n💾 结果已保存: {output_file}")
 
 
 if __name__ == '__main__':

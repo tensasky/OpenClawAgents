@@ -8,6 +8,13 @@ import json
 import time
 from datetime import datetime
 from typing import List, Dict
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
+
 
 # 板块关键词映射
 SECTOR_KEYWORDS = {
@@ -41,10 +48,10 @@ def fetch_akshare_news() -> List[Dict]:
                 'time': str(row.get('datetime', '')),
             })
         
-        print(f"  东方财富: {len(news_list)} 条")
+        log.info(f"  东方财富: {len(news_list)} 条")
         
     except Exception as e:
-        print(f"东方财富新闻失败: {e}")
+        log.info(f"东方财富新闻失败: {e}")
     
     try:
         # 新浪财经新闻
@@ -59,10 +66,10 @@ def fetch_akshare_news() -> List[Dict]:
                 'time': str(row.get('datetime', '')),
             })
         
-        print(f"  新浪财经: {len(news_list)} 条")
+        log.info(f"  新浪财经: {len(news_list)} 条")
         
     except Exception as e:
-        print(f"新浪财经失败: {e}")
+        log.info(f"新浪财经失败: {e}")
     
     return news_list
 
@@ -112,7 +119,7 @@ def analyze_sentiment(text: str) -> float:
 
 def fetch_all() -> List[Dict]:
     """抓取所有新闻"""
-    print("🌪️ 抓取真实财经新闻...")
+    log.info("🌪️ 抓取真实财经新闻...")
     
     news_list = fetch_akshare_news()
     
@@ -126,13 +133,13 @@ def fetch_all() -> List[Dict]:
 
 
 if __name__ == '__main__':
-    print("=" * 60)
-    print("🌪️ 西风 - 真实财经新闻测试")
-    print("=" * 60)
+    log.info("=" * 60)
+    log.info("🌪️ 西风 - 真实财经新闻测试")
+    log.info("=" * 60)
     
     news_list = fetch_all()
     
-    print(f"\n📊 总计: {len(news_list)} 条")
+    log.info(f"\n📊 总计: {len(news_list)} 条")
     
     # 统计
     sectors = {}
@@ -140,11 +147,11 @@ if __name__ == '__main__':
         s = news.get('sector', '其他')
         sectors[s] = sectors.get(s, 0) + 1
     
-    print(f"\n板块分布:")
+    log.info(f"\n板块分布:")
     for s, c in sorted(sectors.items(), key=lambda x: x[1], reverse=True)[:10]:
-        print(f"  {s}: {c}")
+        log.info(f"  {s}: {c}")
     
-    print(f"\n前5条:")
+    log.info(f"\n前5条:")
     for news in news_list[:5]:
         icon = "📈" if news.get('sentiment', 0) > 0 else "📉" if news.get('sentiment', 0) < 0 else "➡️"
-        print(f"  [{news.get('sector', '其他')}] {icon} {news['title'][:50]}...")
+        log.info(f"  [{news.get('sector', '其他')}] {icon} {news['title'][:50]}...")

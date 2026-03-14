@@ -7,6 +7,13 @@
 import sqlite3
 from pathlib import Path
 from typing import Dict, Optional
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("System")
+
 
 BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 
@@ -37,10 +44,10 @@ class StockNameManager:
                     self.cache[code] = name
             
             conn.close()
-            print(f"✅ 已加载 {len(self.cache)} 只股票名称")
+            log.info(f"✅ 已加载 {len(self.cache)} 只股票名称")
             
         except Exception as e:
-            print(f"❌ 加载失败: {e}")
+            log.info(f"❌ 加载失败: {e}")
     
     def get_name(self, stock_code: str) -> Optional[str]:
         """获取股票名称"""
@@ -69,20 +76,20 @@ class StockNameManager:
             return None
             
         except Exception as e:
-            print(f"查询失败 {stock_code}: {e}")
+            log.info(f"查询失败 {stock_code}: {e}")
             return None
     
     def validate_name(self, stock_code: str, name: str) -> bool:
         """验证股票名称是否正确"""
         correct_name = self.get_name(stock_code)
         if correct_name is None:
-            print(f"⚠️  未找到 {stock_code} 的名称记录")
+            log.info(f"⚠️  未找到 {stock_code} 的名称记录")
             return False
         
         if correct_name != name:
-            print(f"❌ 名称不匹配: {stock_code}")
-            print(f"   输入: {name}")
-            print(f"   正确: {correct_name}")
+            log.info(f"❌ 名称不匹配: {stock_code}")
+            log.info(f"   输入: {name}")
+            log.info(f"   正确: {correct_name}")
             return False
         
         return True
@@ -91,7 +98,7 @@ class StockNameManager:
         """自动修正股票名称"""
         correct_name = self.get_name(stock_code)
         if correct_name and correct_name != input_name:
-            print(f"🔄 自动修正: {stock_code} {input_name} -> {correct_name}")
+            log.info(f"🔄 自动修正: {stock_code} {input_name} -> {correct_name}")
             return correct_name
         return input_name
 
@@ -112,24 +119,24 @@ def validate_and_correct(stock_code: str, input_name: str) -> str:
 
 
 if __name__ == '__main__':
-    print("="*70)
-    print("📊 股票名称管理工具")
-    print("="*70)
+    log.info("="*70)
+    log.info("📊 股票名称管理工具")
+    log.info("="*70)
     
     # 测试
     test_codes = ['sh600348', 'sz301667', 'sh601888', 'sz300750']
     
-    print("\n查询测试:")
+    log.info("\n查询测试:")
     for code in test_codes:
         name = get_stock_name(code)
-        print(f"  {code} -> {name}")
+        log.info(f"  {code} -> {name}")
     
-    print("\n验证测试:")
-    print(f"  sz301667 '测试股份': {stock_manager.validate_name('sz301667', '测试股份')}")
-    print(f"  sz301667 '纳百川': {stock_manager.validate_name('sz301667', '纳百川')}")
+    log.info("\n验证测试:")
+    log.info(f"  sz301667 '测试股份': {stock_manager.validate_name('sz301667', '测试股份')}")
+    log.info(f"  sz301667 '纳百川': {stock_manager.validate_name('sz301667', '纳百川')}")
     
-    print("\n自动修正测试:")
+    log.info("\n自动修正测试:")
     corrected = validate_and_correct('sz301667', '测试股份')
-    print(f"  修正结果: {corrected}")
+    log.info(f"  修正结果: {corrected}")
     
-    print("="*70)
+    log.info("="*70)

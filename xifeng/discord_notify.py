@@ -10,6 +10,13 @@ from pathlib import Path
 # 导入备用通知管理器
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from backup_notifier import send_notification
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
+
 
 SKILL_DIR = Path(__file__).parent
 
@@ -54,10 +61,10 @@ def send_report():
             color = 0x3498db
         
         send_notification(content, "🌪️ 西风热点报告", color)
-        print("✅ 报告已发送")
+        log.info("✅ 报告已发送")
         
     except Exception as e:
-        print(f"报告生成失败: {e}")
+        log.info(f"报告生成失败: {e}")
 
 if __name__ == '__main__':
     send_report()

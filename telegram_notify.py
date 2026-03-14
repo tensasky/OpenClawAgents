@@ -6,6 +6,13 @@ Telegram 通知模块 - 备用通知渠道
 import requests
 import json
 from datetime import datetime
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("System")
+
 
 # Telegram Bot 配置
 BOT_TOKEN = "8254326617:AAHNI0UmAbhh2RZQfscshDLow2jqQZ5ICvk"
@@ -27,7 +34,7 @@ def send_message(text: str, parse_mode: str = "Markdown") -> bool:
         response = requests.post(url, json=payload, timeout=10)
         return response.status_code == 200
     except Exception as e:
-        print(f"Telegram 发送失败: {e}")
+        log.info(f"Telegram 发送失败: {e}")
         return False
 
 def send_beifeng_report(stocks: int, records: int, latest: str):
@@ -76,6 +83,6 @@ def send_alert(message: str):
 
 if __name__ == '__main__':
     # 测试
-    print("测试 Telegram 通知...")
+    log.info("测试 Telegram 通知...")
     result = send_message("🤖 OpenClaw 备用通知测试\n\n北风/西风 Telegram 通知已配置")
-    print(f"发送结果: {'成功' if result else '失败'}")
+    log.info(f"发送结果: {'成功' if result else '失败'}")

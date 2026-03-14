@@ -7,6 +7,13 @@
 
 import json
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
@@ -30,7 +37,7 @@ def generate_core_stocks():
     ]
     
     # 上海主板 - 大盘股（前300只）
-    print("  生成上海大盘股...")
+    log.info("  生成上海大盘股...")
     sh_large = [
         600000, 600004, 600009, 600010, 600011, 600015, 600016, 600018, 600019,
         600020, 600021, 600022, 600023, 600025, 600026, 600027, 600028, 600029,
@@ -65,7 +72,7 @@ def generate_core_stocks():
     sh_kcb = list(range(688001, 688600))
     
     # 深圳主板
-    print("  生成深圳主板...")
+    log.info("  生成深圳主板...")
     sz_main = list(range(1, 1000))
     
     # 深圳中小板
@@ -93,11 +100,11 @@ def generate_core_stocks():
     for code in sz_cyb:
         stocks.append({'code': f'sz{code:06d}', 'name': '', 'market': 'SZ'})
     
-    print(f"✅ 生成 {len(stocks)} 只核心股票代码")
+    log.info(f"✅ 生成 {len(stocks)} 只核心股票代码")
     return stocks
 
 def main():
-    print("🌪️ 生成 A 股核心股票列表...")
+    log.info("🌪️ 生成 A 股核心股票列表...")
     stocks = generate_core_stocks()
     
     # 保存
@@ -105,16 +112,16 @@ def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(stocks, f, ensure_ascii=False, indent=2)
     
-    print(f"💾 已保存到 {output_file}")
-    print(f"\n📊 统计:")
-    print(f"  上海主板: ~300只")
-    print(f"  科创板: ~600只")
-    print(f"  深圳主板: ~1000只")
-    print(f"  中小板: ~1000只")
-    print(f"  创业板: ~600只")
-    print(f"  总计: {len(stocks)} 只")
-    print(f"\n💡 提示: 这是核心股票列表，覆盖主要大盘股")
-    print(f"   如需全量5000+只股票，建议从专业数据源导入")
+    log.info(f"💾 已保存到 {output_file}")
+    log.info(f"\n📊 统计:")
+    log.info(f"  上海主板: ~300只")
+    log.info(f"  科创板: ~600只")
+    log.info(f"  深圳主板: ~1000只")
+    log.info(f"  中小板: ~1000只")
+    log.info(f"  创业板: ~600只")
+    log.info(f"  总计: {len(stocks)} 只")
+    log.info(f"\n💡 提示: 这是核心股票列表，覆盖主要大盘股")
+    log.info(f"   如需全量5000+只股票，建议从专业数据源导入")
 
 if __name__ == '__main__':
     main()

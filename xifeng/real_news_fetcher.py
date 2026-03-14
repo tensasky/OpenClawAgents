@@ -39,6 +39,13 @@ class RealNewsFetcher:
     def _rate_limit(self, delay: float = 0.5):
         """请求限流"""
         import time
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
+
         elapsed = time.time() - self.last_request
         if elapsed < delay:
             time.sleep(delay - elapsed)
@@ -64,10 +71,10 @@ class RealNewsFetcher:
                         'keywords': str(row.get('关键词', ''))
                     })
             
-            print(f"  东方财富: {len(news_list)} 条")
+            log.info(f"  东方财富: {len(news_list)} 条")
             
         except Exception as e:
-            print(f"东方财富新闻失败: {e}")
+            log.info(f"东方财富新闻失败: {e}")
         
         try:
             self._rate_limit()
@@ -83,10 +90,10 @@ class RealNewsFetcher:
                     'time': str(row.get('时间', datetime.now().isoformat()))
                 })
             
-            print(f"  财联社: {len(news_list)} 条")
+            log.info(f"  财联社: {len(news_list)} 条")
             
         except Exception as e:
-            print(f"财联社新闻失败: {e}")
+            log.info(f"财联社新闻失败: {e}")
         
         return news_list
     
@@ -133,7 +140,7 @@ class RealNewsFetcher:
     
     def fetch_all(self) -> List[Dict]:
         """抓取所有新闻"""
-        print("🌪️ 抓取真实财经新闻...")
+        log.info("🌪️ 抓取真实财经新闻...")
         
         news_list = self.fetch_akshare_news()
         
@@ -153,13 +160,13 @@ def fetch_real_news(count: int = 100) -> List[Dict]:
 
 
 if __name__ == '__main__':
-    print("=" * 60)
-    print("🌪️ 西风 - 真实财经新闻测试")
-    print("=" * 60)
+    log.info("=" * 60)
+    log.info("🌪️ 西风 - 真实财经新闻测试")
+    log.info("=" * 60)
     
     news_list = fetch_real_news()
     
-    print(f"\n📊 总计: {len(news_list)} 条")
+    log.info(f"\n📊 总计: {len(news_list)} 条")
     
     # 统计
     sectors = {}
@@ -176,16 +183,16 @@ if __name__ == '__main__':
         else:
             sentiments["neutral"] += 1
     
-    print("\n板块分布:")
+    log.info("\n板块分布:")
     for s, c in sorted(sectors.items(), key=lambda x: x[1], reverse=True)[:10]:
-        print(f"  {s}: {c} 条")
+        log.info(f"  {s}: {c} 条")
     
-    print(f"\n情感分布:")
-    print(f"  利好: {sentiments['positive']} 条")
-    print(f"  中性: {sentiments['neutral']} 条")
-    print(f"  利空: {sentiments['negative']} 条")
+    log.info(f"\n情感分布:")
+    log.info(f"  利好: {sentiments['positive']} 条")
+    log.info(f"  中性: {sentiments['neutral']} 条")
+    log.info(f"  利空: {sentiments['negative']} 条")
     
-    print(f"\n前5条新闻:")
+    log.info(f"\n前5条新闻:")
     for news in news_list[:5]:
         icon = "📈" if news.get('sentiment', 0) > 0.2 else "📉" if news.get('sentiment', 0) < -0.2 else "➡️"
-        print(f"  [{news.get('sector', '其他')}] {icon} {news['title'][:60]}...")
+        log.info(f"  [{news.get('sector', '其他')}] {icon} {news['title'][:60]}...")

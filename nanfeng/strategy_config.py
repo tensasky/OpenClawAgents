@@ -6,6 +6,13 @@
 
 from typing import Dict, List
 from dataclasses import dataclass
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("南风")
+
 
 @dataclass
 class StrategyConfig:
@@ -239,8 +246,8 @@ def format_strategy_info(strategy: StrategyConfig) -> str:
 
 if __name__ == '__main__':
     # 测试
-    print("可用策略:")
+    log.info("可用策略:")
     for name, desc in list_strategies().items():
-        print(f"  - {name}: {desc}")
+        log.info(f"  - {name}: {desc}")
     
-    print("\n" + format_strategy_info(STRATEGIES["趋势跟踪"]))
+    log.info("\n" + format_strategy_info(STRATEGIES["趋势跟踪"]))

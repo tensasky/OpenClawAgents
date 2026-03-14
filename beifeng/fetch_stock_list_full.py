@@ -8,6 +8,13 @@ import requests
 import json
 import re
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
@@ -19,12 +26,12 @@ def fetch_all_stocks():
     
     # 实际上我们需要用另一个接口获取全部列表
     # 使用东方财富的股票列表接口
-    print("🌪️ 正在获取全部 A 股列表...")
+    log.info("🌪️ 正在获取全部 A 股列表...")
     
     all_stocks = []
     
     # 上海 A 股 (sh6xxxxxx)
-    print("  获取上海 A 股...")
+    log.info("  获取上海 A 股...")
     for page in range(1, 100):  # 足够多的页数
         url = f"http://31.push2.eastmoney.com/api/qt/clist/get?pn={page}&pz=500&po=1&np=1&fltt=2&invt=2&fid=f12&fs=m:0+t:6,m:0+t:13,m:0+t:80,m:1+t:2,m:1+t:23&fields=f12,f14"
         try:
@@ -61,13 +68,13 @@ def fetch_all_stocks():
                         'market': market
                     })
             
-            print(f"    第 {page} 页: {len(stocks)} 只")
+            log.info(f"    第 {page} 页: {len(stocks)} 只")
             
             if len(stocks) < 500:
                 break
                 
         except Exception as e:
-            print(f"    第 {page} 页错误: {e}")
+            log.info(f"    第 {page} 页错误: {e}")
             break
     
     # 去重
@@ -78,7 +85,7 @@ def fetch_all_stocks():
             seen.add(s['code'])
             unique_stocks.append(s)
     
-    print(f"\n✅ 共获取 {len(unique_stocks)} 只 A 股")
+    log.info(f"\n✅ 共获取 {len(unique_stocks)} 只 A 股")
     return unique_stocks
 
 def save_stocks(stocks):
@@ -86,13 +93,13 @@ def save_stocks(stocks):
     output_file = WORKSPACE / "data" / "all_stocks.json"
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(stocks, f, ensure_ascii=False, indent=2)
-    print(f"💾 已保存到 {output_file}")
+    log.info(f"💾 已保存到 {output_file}")
 
 if __name__ == '__main__':
     stocks = fetch_all_stocks()
     save_stocks(stocks)
     
     # 显示前20只
-    print(f"\n前20只股票:")
+    log.info(f"\n前20只股票:")
     for s in stocks[:20]:
-        print(f"  {s['code']}: {s['name']}")
+        log.info(f"  {s['code']}: {s['name']}")

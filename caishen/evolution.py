@@ -8,6 +8,13 @@ import json
 import logging
 from datetime import datetime, timedelta
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("财神爷")
+
 
 LOG_DIR = Path.home() / "Documents/OpenClawAgents/caishen/logs"
 LOG_DIR.mkdir(exist_ok=True)
@@ -104,16 +111,16 @@ def main():
     
     tracker.log_progress()
     
-    print("\n" + "=" * 60)
-    print("💰 财神爷持续进化系统")
-    print("=" * 60)
-    print("目标: 月收益 > 5%")
-    print("当前: 系统刚启动，收益为0")
-    print("状态: 🚀 进化中...")
-    print("=" * 60)
-    print("\n每日14:45自动执行量化交易")
-    print("每周日20:00自动策略进化")
-    print("=" * 60 + "\n")
+    log.info("\n" + "=" * 60)
+    log.info("💰 财神爷持续进化系统")
+    log.info("=" * 60)
+    log.info("目标: 月收益 > 5%")
+    log.info("当前: 系统刚启动，收益为0")
+    log.info("状态: 🚀 进化中...")
+    log.info("=" * 60)
+    log.info("\n每日14:45自动执行量化交易")
+    log.info("每周日20:00自动策略进化")
+    log.info("=" * 60 + "\n")
 
 
 if __name__ == "__main__":

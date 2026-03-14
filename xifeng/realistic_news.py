@@ -8,6 +8,13 @@ import json
 import random
 from datetime import datetime
 from typing import List, Dict
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
+
 
 # 板块配置（带权重和关联性）
 SECTORS_CONFIG = {
@@ -175,12 +182,12 @@ def fetch_realistic_news(count: int = 100) -> List[Dict]:
 
 
 if __name__ == '__main__':
-    print("🌪️ 西风 - 真实感新闻生成")
-    print("=" * 60)
+    log.info("🌪️ 西风 - 真实感新闻生成")
+    log.info("=" * 60)
     
     news_list = fetch_realistic_news(100)
     
-    print(f"生成 {len(news_list)} 条新闻\n")
+    log.info(f"生成 {len(news_list)} 条新闻\n")
     
     # 统计
     sectors = {}
@@ -197,16 +204,16 @@ if __name__ == '__main__':
         else:
             sentiments["neutral"] += 1
     
-    print("板块分布:")
+    log.info("板块分布:")
     for s, c in sorted(sectors.items(), key=lambda x: x[1], reverse=True):
-        print(f"  {s}: {c} 条")
+        log.info(f"  {s}: {c} 条")
     
-    print(f"\n情感分布:")
-    print(f"  利好: {sentiments['positive']} 条")
-    print(f"  中性: {sentiments['neutral']} 条")
-    print(f"  利空: {sentiments['negative']} 条")
+    log.info(f"\n情感分布:")
+    log.info(f"  利好: {sentiments['positive']} 条")
+    log.info(f"  中性: {sentiments['neutral']} 条")
+    log.info(f"  利空: {sentiments['negative']} 条")
     
-    print(f"\n前5条新闻:")
+    log.info(f"\n前5条新闻:")
     for news in news_list[:5]:
         icon = "📈" if news['sentiment'] > 0.2 else "📉" if news['sentiment'] < -0.2 else "➡️"
-        print(f"  [{news['sector']}] {icon} {news['title'][:50]}...")
+        log.info(f"  [{news['sector']}] {icon} {news['title'][:50]}...")

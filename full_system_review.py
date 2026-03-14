@@ -9,6 +9,13 @@ import sqlite3
 import subprocess
 from pathlib import Path
 from datetime import datetime
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("System")
+
 
 class FullSystemReview:
     """全面系统审查"""
@@ -20,10 +27,10 @@ class FullSystemReview:
         
     def run_full_review(self):
         """运行全面审查"""
-        print("="*80)
-        print("💰 财神爷 - 全面架构和代码审查")
-        print("="*80)
-        print(f"审查时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        log.info("="*80)
+        log.info("💰 财神爷 - 全面架构和代码审查")
+        log.info("="*80)
+        log.info(f"审查时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         
         # 1. 数据库架构审查
         self.review_databases()
@@ -42,9 +49,9 @@ class FullSystemReview:
     
     def review_databases(self):
         """审查数据库架构"""
-        print("\n" + "="*80)
-        print("🗄️ 数据库架构审查")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("🗄️ 数据库架构审查")
+        log.info("="*80)
         
         beifeng_db = self.base_path / "beifeng/data/stocks_real.db"
         
@@ -55,18 +62,18 @@ class FullSystemReview:
             # 检查表结构
             cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
             tables = [t[0] for t in cursor.fetchall()]
-            print(f"\n📊 北风数据库表: {tables}")
+            log.info(f"\n📊 北风数据库表: {tables}")
             
             # 检查是否有旧表残留
             if 'kline_data' in tables:
                 self.issues.append("北风: 残留旧表kline_data")
-                print("❌ 发现残留旧表: kline_data")
+                log.info("❌ 发现残留旧表: kline_data")
                 
                 # 清理旧表
                 cursor.execute("DROP TABLE IF EXISTS kline_data")
                 conn.commit()
                 self.fixed.append("北风: 删除残留表kline_data")
-                print("✅ 已删除旧表")
+                log.info("✅ 已删除旧表")
             
             # 检查数据一致性
             today = datetime.now().strftime('%Y-%m-%d')
@@ -82,13 +89,13 @@ class FullSystemReview:
             """)
             minute_stocks = cursor.fetchone()[0]
             
-            print(f"\n📈 今日数据:")
-            print(f"  日线记录: {daily_count}")
-            print(f"  分钟股票: {minute_stocks}")
+            log.info(f"\n📈 今日数据:")
+            log.info(f"  日线记录: {daily_count}")
+            log.info(f"  分钟股票: {minute_stocks}")
             
             if daily_count != minute_stocks:
                 self.issues.append(f"北风: 日线({daily_count})≠分钟({minute_stocks})")
-                print(f"⚠️  数据不一致!")
+                log.info(f"⚠️  数据不一致!")
             
             conn.close()
         
@@ -97,14 +104,14 @@ class FullSystemReview:
         if old_db.exists():
             size_mb = old_db.stat().st_size / 1024 / 1024
             self.issues.append(f"北风: 旧数据库仍存在({size_mb:.1f}MB)")
-            print(f"\n⚠️  旧数据库仍存在: {size_mb:.1f}MB")
-            print("   建议: 已备份，可以删除")
+            log.info(f"\n⚠️  旧数据库仍存在: {size_mb:.1f}MB")
+            log.info("   建议: 已备份，可以删除")
     
     def review_code(self):
         """审查代码一致性"""
-        print("\n" + "="*80)
-        print("📜 代码一致性审查")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("📜 代码一致性审查")
+        log.info("="*80)
         
         # 检查所有Python文件
         py_files = list(self.base_path.rglob("*.py"))
@@ -121,21 +128,21 @@ class FullSystemReview:
                 pass
         
         if old_db_refs:
-            print(f"\n❌ 发现 {len(old_db_refs)} 个文件引用旧数据库:")
+            log.info(f"\n❌ 发现 {len(old_db_refs)} 个文件引用旧数据库:")
             for f in old_db_refs[:10]:
-                print(f"  - {f}")
+                log.info(f"  - {f}")
             if len(old_db_refs) > 10:
-                print(f"  ... 还有 {len(old_db_refs)-10} 个")
+                log.info(f"  ... 还有 {len(old_db_refs)-10} 个")
             
             self.issues.append(f"代码: {len(old_db_refs)}个文件引用旧数据库")
         else:
-            print("\n✅ 所有代码使用新数据库")
+            log.info("\n✅ 所有代码使用新数据库")
     
     def cleanup_data(self):
         """清理数据"""
-        print("\n" + "="*80)
-        print("🧹 数据清理")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("🧹 数据清理")
+        log.info("="*80)
         
         # 清理红中旧信号
         hongzhong_db = self.base_path / "hongzhong/data/signals_v3.db"
@@ -156,9 +163,9 @@ class FullSystemReview:
             
             duplicates = cursor.fetchall()
             if duplicates:
-                print(f"\n🗑️  清理重复信号:")
+                log.info(f"\n🗑️  清理重复信号:")
                 for code, cnt in duplicates:
-                    print(f"  {code}: {cnt}个重复")
+                    log.info(f"  {code}: {cnt}个重复")
                     
                     # 保留最新的，删除旧的
                     cursor.execute(f"""
@@ -174,17 +181,17 @@ class FullSystemReview:
                     self.fixed.append(f"红中: 清理{code}的{cnt-1}个重复信号")
                 
                 conn.commit()
-                print(f"✅ 已清理重复信号")
+                log.info(f"✅ 已清理重复信号")
             else:
-                print("\n✅ 无重复信号")
+                log.info("\n✅ 无重复信号")
             
             conn.close()
     
     def verify_fixes(self):
         """验证修复"""
-        print("\n" + "="*80)
-        print("✅ 修复验证")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("✅ 修复验证")
+        log.info("="*80)
         
         # 验证纳百川价格
         beifeng_db = self.base_path / "beifeng/data/stocks_real.db"
@@ -203,33 +210,33 @@ class FullSystemReview:
         if result:
             price = result[0]
             if abs(price - 84.79) < 0.01:
-                print(f"✅ 纳百川价格正确: ¥{price:.2f}")
+                log.info(f"✅ 纳百川价格正确: ¥{price:.2f}")
             else:
-                print(f"❌ 纳百川价格错误: ¥{price:.2f} (应为¥84.79)")
+                log.info(f"❌ 纳百川价格错误: ¥{price:.2f} (应为¥84.79)")
                 self.issues.append(f"数据: 纳百川价格错误¥{price:.2f}")
         
         conn.close()
     
     def print_report(self):
         """输出报告"""
-        print("\n" + "="*80)
-        print("📊 审查报告")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("📊 审查报告")
+        log.info("="*80)
         
-        print(f"\n🔴 发现问题: {len(self.issues)} 个")
+        log.info(f"\n🔴 发现问题: {len(self.issues)} 个")
         for issue in self.issues:
-            print(f"  ❌ {issue}")
+            log.info(f"  ❌ {issue}")
         
-        print(f"\n✅ 已修复: {len(self.fixed)} 个")
+        log.info(f"\n✅ 已修复: {len(self.fixed)} 个")
         for fix in self.fixed:
-            print(f"  ✅ {fix}")
+            log.info(f"  ✅ {fix}")
         
-        print("\n" + "="*80)
+        log.info("\n" + "="*80)
         if self.issues:
-            print("⚠️  仍有未解决问题")
+            log.info("⚠️  仍有未解决问题")
         else:
-            print("✅ 系统审查通过")
-        print("="*80)
+            log.info("✅ 系统审查通过")
+        log.info("="*80)
 
 
 if __name__ == '__main__':

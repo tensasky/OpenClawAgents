@@ -19,6 +19,13 @@ from pathlib import Path
 # 导入多源新闻抓取器
 from multi_source_fetcher import fetch_multi_source_news
 from stock_sector_map import get_leading_stocks
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
+
 
 # 配置路径
 SKILL_DIR = Path(__file__).parent
@@ -86,7 +93,7 @@ class LLMAnalyzer:
                 }
             
         except Exception as e:
-            print(f"LLM分析失败: {e}")
+            log.info(f"LLM分析失败: {e}")
         
         # 失败时返回默认值
         return {
@@ -197,7 +204,7 @@ class RSSFetcher:
             return news_list
             
         except Exception as e:
-            print(f"财联社抓取失败: {e}")
+            log.info(f"财联社抓取失败: {e}")
             return []
     
     def fetch_mock_news(self, count: int = 50) -> List[Dict]:
@@ -231,7 +238,7 @@ class RSSFetcher:
         """抓取所有源"""
         # 使用真实新闻抓取器
         all_news = fetch_real_news()
-        print(f"  真实财经新闻: {len(all_news)} 条")
+        log.info(f"  真实财经新闻: {len(all_news)} 条")
         return all_news
 
 
@@ -445,19 +452,19 @@ class XiFengSkill:
     
     def analyze(self):
         """执行完整分析流程"""
-        print("=" * 60)
-        print("🌪️ 西风 Skill - 舆情热点分析")
-        print("=" * 60)
-        print(f"⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        log.info("=" * 60)
+        log.info("🌪️ 西风 Skill - 舆情热点分析")
+        log.info("=" * 60)
+        log.info(f"⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print()
         
         # 1. 抓取新闻（多源）
-        print("📰 Step 1: 抓取多源财经新闻...")
+        log.info("📰 Step 1: 抓取多源财经新闻...")
         news_list = fetch_multi_source_news()
-        print(f"   获取 {len(news_list)} 条新闻\n")
+        log.info(f"   获取 {len(news_list)} 条新闻\n")
         
         # 2. LLM分析（全量+去重）
-        print("🧠 Step 2: LLM语义分析（全量+去重）...")
+        log.info("🧠 Step 2: LLM语义分析（全量+去重）...")
         
         # 去重：基于标题相似度
         unique_news = []
@@ -485,9 +492,9 @@ class XiFengSkill:
             else:
                 duplicate_count += 1
         
-        print(f"   原始新闻: {len(news_list)} 条")
-        print(f"   去重后: {len(unique_news)} 条")
-        print(f"   重复: {duplicate_count} 条")
+        log.info(f"   原始新闻: {len(news_list)} 条")
+        log.info(f"   去重后: {len(unique_news)} 条")
+        log.info(f"   重复: {duplicate_count} 条")
         
         # 分析去重后的新闻
         analyzed_news = []
@@ -502,14 +509,14 @@ class XiFengSkill:
             self.calculator.save_news(news, analysis)
             
             if i <= 5:  # 只显示前5条
-                print(f"   [{analysis['sector']}] {news['title'][:40]}...")
+                log.info(f"   [{analysis['sector']}] {news['title'][:40]}...")
         
         if len(unique_news) > 5:
-            print(f"   ... 还有 {len(unique_news)-5} 条")
+            log.info(f"   ... 还有 {len(unique_news)-5} 条")
         print()
         
         # 3. 统计板块（全量：重新统计所有抓取的新闻）
-        print("📊 Step 3: 统计板块词频（全量）...")
+        log.info("📊 Step 3: 统计板块词频（全量）...")
         sector_stats = {}
         for item in analyzed_news:
             sector = item['analysis']['sector']
@@ -521,10 +528,10 @@ class XiFengSkill:
             sector_stats[sector]['count'] += 1
             sector_stats[sector]['sentiment_sum'] += sentiment
         
-        print(f"   识别 {len(sector_stats)} 个板块\n")
+        log.info(f"   识别 {len(sector_stats)} 个板块\n")
         
         # 4. 计算热度
-        print("🔥 Step 4: 计算热度评分...")
+        log.info("🔥 Step 4: 计算热度评分...")
         hot_spots = []
         
         for sector, stats in sector_stats.items():
@@ -544,12 +551,12 @@ class XiFengSkill:
         # 显示结果
         for spot in hot_spots[:10]:
             icon = "🔥" if spot['level'] == "High" else "📈" if spot['level'] == "Medium" else "📉"
-            print(f"   {icon} {spot['sector']}: {spot['heat_score']} ({spot['level']})")
-            print(f"      今日{spot['today_count']}次 | 爆发系数{spot['momentum']}x | 情感{spot['sentiment']:+.1f}")
+            log.info(f"   {icon} {spot['sector']}: {spot['heat_score']} ({spot['level']})")
+            log.info(f"      今日{spot['today_count']}次 | 爆发系数{spot['momentum']}x | 情感{spot['sentiment']:+.1f}")
         print()
         
         # 5. 生成核心汇总
-        print("📋 Step 5: 生成核心汇总...")
+        log.info("📋 Step 5: 生成核心汇总...")
         
         # 获取热门新闻（按板块分组）
         sector_news = {}
@@ -595,7 +602,7 @@ class XiFengSkill:
             summary.append(summary_item)
         
         # 6. 导出结果
-        print("💾 Step 6: 导出结果...")
+        log.info("💾 Step 6: 导出结果...")
         output = {
             "generated_at": datetime.now().isoformat(),
             "total_sectors": len(hot_spots),
@@ -607,40 +614,40 @@ class XiFengSkill:
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(output, f, ensure_ascii=False, indent=2)
         
-        print(f"   已保存: {output_file}")
-        print(f"   板块数: {len(hot_spots)}")
+        log.info(f"   已保存: {output_file}")
+        log.info(f"   板块数: {len(hot_spots)}")
         print()
         
         # 显示核心汇总
-        print("=" * 60)
-        print("📊 核心汇总")
-        print("=" * 60)
+        log.info("=" * 60)
+        log.info("📊 核心汇总")
+        log.info("=" * 60)
         for item in summary:
             icon = "🔥" if item['level'] == "High" else "📈" if item['level'] == "Medium" else "📉"
-            print(f"\n{icon} {item['sector']} (热度: {item['heat_score']})")
-            print(f"   提及: {item['today_count']}次 | 情感: {item['sentiment']:+.2f}")
+            log.info(f"\n{icon} {item['sector']} (热度: {item['heat_score']})")
+            log.info(f"   提及: {item['today_count']}次 | 情感: {item['sentiment']:+.2f}")
             
-            print(f"   热门新闻:")
+            log.info(f"   热门新闻:")
             for news in item['top_news']:
-                print(f"     {news['sentiment']} {news['title']}... ({news['source']})")
+                log.info(f"     {news['sentiment']} {news['title']}... ({news['source']})")
             
-            print(f"   影响股票:")
+            log.info(f"   影响股票:")
             for stock in item['leading_stocks']:
-                print(f"     • {stock['code']} {stock['name']} (权重{stock['weight']})")
+                log.info(f"     • {stock['code']} {stock['name']} (权重{stock['weight']})")
         
-        print("\n" + "=" * 60)
+        log.info("\n" + "=" * 60)
         
         # 总结
         high_count = sum(1 for s in hot_spots if s['level'] == "High")
         medium_count = sum(1 for s in hot_spots if s['level'] == "Medium")
         
-        print("📋 统计")
-        print("=" * 60)
-        print(f"   新闻总数: {len(news_list)}")
-        print(f"   热点板块: {high_count} 个 🔥")
-        print(f"   中热板块: {medium_count} 个 📈")
-        print(f"   总板块数: {len(hot_spots)}")
-        print("=" * 60)
+        log.info("📋 统计")
+        log.info("=" * 60)
+        log.info(f"   新闻总数: {len(news_list)}")
+        log.info(f"   热点板块: {high_count} 个 🔥")
+        log.info(f"   中热板块: {medium_count} 个 📈")
+        log.info(f"   总板块数: {len(hot_spots)}")
+        log.info("=" * 60)
         
         return True
 

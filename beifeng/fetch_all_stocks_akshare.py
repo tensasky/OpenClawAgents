@@ -6,32 +6,39 @@
 import akshare as ak
 import json
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
 def fetch_all_stocks():
     """使用 akshare 获取全部 A 股"""
     
-    print("🌪️ 正在通过 akshare 获取全部 A 股...")
+    log.info("🌪️ 正在通过 akshare 获取全部 A 股...")
     
     # 获取上海 A 股
-    print("  获取上海 A 股...")
+    log.info("  获取上海 A 股...")
     sh_stocks = ak.stock_sh_a_spot_em()
-    print(f"    上海: {len(sh_stocks)} 只")
+    log.info(f"    上海: {len(sh_stocks)} 只")
     
     # 获取深圳 A 股
-    print("  获取深圳 A 股...")
+    log.info("  获取深圳 A 股...")
     sz_stocks = ak.stock_sz_a_spot_em()
-    print(f"    深圳: {len(sz_stocks)} 只")
+    log.info(f"    深圳: {len(sz_stocks)} 只")
     
     # 获取北京 A 股
-    print("  获取北京 A 股...")
+    log.info("  获取北京 A 股...")
     try:
         bj_stocks = ak.stock_bj_a_spot_em()
-        print(f"    北京: {len(bj_stocks)} 只")
+        log.info(f"    北京: {len(bj_stocks)} 只")
     except:
         bj_stocks = None
-        print("    北京: 0 只")
+        log.info("    北京: 0 只")
     
     all_stocks = []
     
@@ -69,7 +76,7 @@ def fetch_all_stocks():
                     'market': 'BJ'
                 })
     
-    print(f"\n✅ 共获取 {len(all_stocks)} 只 A 股")
+    log.info(f"\n✅ 共获取 {len(all_stocks)} 只 A 股")
     return all_stocks
 
 def save_stocks(stocks):
@@ -77,7 +84,7 @@ def save_stocks(stocks):
     output_file = WORKSPACE / "data" / "all_stocks.json"
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(stocks, f, ensure_ascii=False, indent=2)
-    print(f"💾 已保存到 {output_file}")
+    log.info(f"💾 已保存到 {output_file}")
 
 def main():
     stocks = fetch_all_stocks()
@@ -88,14 +95,14 @@ def main():
     sz_count = sum(1 for s in stocks if s['market'] == 'SZ')
     bj_count = sum(1 for s in stocks if s['market'] == 'BJ')
     
-    print(f"\n📊 分布统计:")
-    print(f"  上海: {sh_count} 只")
-    print(f"  深圳: {sz_count} 只")
-    print(f"  北京: {bj_count} 只")
+    log.info(f"\n📊 分布统计:")
+    log.info(f"  上海: {sh_count} 只")
+    log.info(f"  深圳: {sz_count} 只")
+    log.info(f"  北京: {bj_count} 只")
     
-    print(f"\n前20只股票:")
+    log.info(f"\n前20只股票:")
     for s in stocks[:20]:
-        print(f"  {s['code']}: {s['name']}")
+        log.info(f"  {s['code']}: {s['name']}")
 
 if __name__ == '__main__':
     main()

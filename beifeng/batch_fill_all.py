@@ -62,20 +62,20 @@ def log_progress(current, total, success, failed):
     print(msg)
 
 def main():
-    print("🌪️ 北风全量A股数据补全启动")
-    print("=" * 60)
+    log.info("🌪️ 北风全量A股数据补全启动")
+    log.info("=" * 60)
     
     # 获取待补全股票
     pending = get_pending_stocks()
     total = len(pending)
     
     if total == 0:
-        print("✅ 所有股票数据已完整！")
+        log.info("✅ 所有股票数据已完整！")
         return
     
-    print(f"📊 待补全股票: {total} 只")
-    print(f"⏱️  预计时间: {total * 2 // 60} 小时")
-    print("=" * 60)
+    log.info(f"📊 待补全股票: {total} 只")
+    log.info(f"⏱️  预计时间: {total * 2 // 60} 小时")
+    log.info("=" * 60)
     
     # 提取代码
     stock_codes = [s['code'] for s in pending]
@@ -89,17 +89,17 @@ def main():
         batch_num = i // BATCH_SIZE + 1
         total_batches = (total + BATCH_SIZE - 1) // BATCH_SIZE
         
-        print(f"\n[{batch_num}/{total_batches}] 处理: {', '.join(batch)}")
+        log.info(f"\n[{batch_num}/{total_batches}] 处理: {', '.join(batch)}")
         
         success, output = fetch_batch(batch)
         
         if success:
             success_count += len(batch)
-            print(f"  ✅ 成功")
+            log.info(f"  ✅ 成功")
         else:
             fail_count += len(batch)
             failed_stocks.extend(batch)
-            print(f"  ❌ 失败")
+            log.info(f"  ❌ 失败")
             # 保存失败记录
             with open(WORKSPACE / "logs" / "failed_batches.log", 'a') as f:
                 f.write(f"{datetime.now()}: {batch} - {output[:200]}\n")
@@ -111,17 +111,17 @@ def main():
         if i + BATCH_SIZE < total:
             time.sleep(DELAY_BETWEEN_BATCHES)
     
-    print("\n" + "=" * 60)
-    print(f"✅ 补全完成!")
-    print(f"  成功: {success_count}/{total}")
-    print(f"  失败: {fail_count}")
+    log.info("\n" + "=" * 60)
+    log.info(f"✅ 补全完成!")
+    log.info(f"  成功: {success_count}/{total}")
+    log.info(f"  失败: {fail_count}")
     
     if failed_stocks:
-        print(f"\n失败的股票 ({len(failed_stocks)} 只):")
+        log.info(f"\n失败的股票 ({len(failed_stocks)} 只):")
         for code in failed_stocks[:20]:
-            print(f"  - {code}")
+            log.info(f"  - {code}")
         if len(failed_stocks) > 20:
-            print(f"  ... 还有 {len(failed_stocks) - 20} 只")
+            log.info(f"  ... 还有 {len(failed_stocks) - 20} 只")
         
         # 保存失败列表
         with open(WORKSPACE / "data" / "failed_stocks_retry.json", 'w') as f:
@@ -130,6 +130,13 @@ def main():
     # 发送Discord通知
     try:
         from discord_notify import send_discord_message
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
         content = f"""
 🌪️ **北风全量补全完成**
 
@@ -143,7 +150,7 @@ def main():
 """
         send_discord_message(content, "🌪️ 北风全量补全完成", 0x00ff00)
     except Exception as e:
-        print(f"Discord通知失败: {e}")
+        log.info(f"Discord通知失败: {e}")
 
 if __name__ == '__main__':
     main()

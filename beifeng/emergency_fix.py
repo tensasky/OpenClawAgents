@@ -50,6 +50,13 @@ def insert_today_minute_data():
         
         # 模拟价格走势（略微上涨）
         import random
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
         random.seed(42)  # 固定随机种子
         
         current_price = prev_close
@@ -83,12 +90,12 @@ def insert_today_minute_data():
         GROUP BY stock_code
     """)
     
-    print("今日分钟数据已插入:")
+    log.info("今日分钟数据已插入:")
     for row in cursor.fetchall():
-        print(f"  {row[0]}: {row[1]}条 ({row[2]} ~ {row[3]})")
+        log.info(f"  {row[0]}: {row[1]}条 ({row[2]} ~ {row[3]})")
     
     conn.close()
 
 if __name__ == '__main__':
     insert_today_minute_data()
-    print("\n✅ 紧急数据修复完成")
+    log.info("\n✅ 紧急数据修复完成")

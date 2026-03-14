@@ -16,6 +16,13 @@ from typing import List, Dict, Optional, Callable
 from dataclasses import dataclass, asdict
 from enum import Enum
 import schedule
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("财神爷")
+
 
 # 配置路径
 BASE_DIR = Path(__file__).parent
@@ -472,25 +479,25 @@ class CaishenOrchestrator:
     
     def show_status(self):
         """显示所有Agent状态"""
-        print("\n" + "=" * 60)
-        print("💰 财神爷·Agent状态监控")
-        print("=" * 60)
+        log.info("\n" + "=" * 60)
+        log.info("💰 财神爷·Agent状态监控")
+        log.info("=" * 60)
         
         for agent_id, skill in self.workflow.agent_manager.skills.items():
             status = self.workflow.agent_manager.status.get(agent_id, {})
             health = "✅" if self.workflow.agent_manager.check_agent_health(agent_id) else "❌"
             enabled = "🟢" if skill.enabled else "⚪"
             
-            print(f"\n{enabled} {health} {skill.name} ({agent_id})")
-            print(f"   版本: {skill.version}")
-            print(f"   定时: {', '.join(skill.schedule)}")
-            print(f"   依赖: {', '.join(skill.dependencies) or '无'}")
-            print(f"   上次运行: {status.get('last_run', '从未')}")
-            print(f"   状态: {status.get('status', 'unknown')}")
+            log.info(f"\n{enabled} {health} {skill.name} ({agent_id})")
+            log.info(f"   版本: {skill.version}")
+            log.info(f"   定时: {', '.join(skill.schedule)}")
+            log.info(f"   依赖: {', '.join(skill.dependencies) or '无'}")
+            log.info(f"   上次运行: {status.get('last_run', '从未')}")
+            log.info(f"   状态: {status.get('status', 'unknown')}")
         
-        print("\n" + "=" * 60)
-        print(f"当前市场状态: {self.workflow.detect_market_state().value}")
-        print("=" * 60 + "\n")
+        log.info("\n" + "=" * 60)
+        log.info(f"当前市场状态: {self.workflow.detect_market_state().value}")
+        log.info("=" * 60 + "\n")
 
 
 def main():
@@ -517,12 +524,12 @@ def main():
         if EXECUTION_LOG.exists():
             with open(EXECUTION_LOG, 'r', encoding='utf-8') as f:
                 logs = json.load(f)
-            print(f"\n💰 最近10条执行记录:\n")
+            log.info(f"\n💰 最近10条执行记录:\n")
             for log in logs[:10]:
-                print(f"  {log['timestamp'][:19]} | {log['agent']:<10} | {log['action']:<8} | {log['status']:<7} | {log['duration']:.1f}s")
+                log.info(f"  {log['timestamp'][:19]} | {log['agent']:<10} | {log['action']:<8} | {log['status']:<7} | {log['duration']:.1f}s")
             print()
         else:
-            print("暂无执行日志")
+            log.info("暂无执行日志")
     else:
         # 默认显示状态
         caishen.show_status()

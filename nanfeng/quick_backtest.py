@@ -12,6 +12,13 @@ from datetime import datetime
 
 sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents/nanfeng"))
 from nanfeng_v5_1 import NanFengV5_1
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("南风")
+
 
 BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 
@@ -44,9 +51,9 @@ def get_stock_data(stock_code: str, end_date: str, days: int = 40):
 
 def quick_backtest(strategy_name: str = "趋势跟踪", date: str = "2026-03-10"):
     """快速回测单日"""
-    print(f"\n🎯 策略: {strategy_name}")
-    print(f"📅 日期: {date}")
-    print("-" * 50)
+    log.info(f"\n🎯 策略: {strategy_name}")
+    log.info(f"📅 日期: {date}")
+    log.info("-" * 50)
     
     nanfeng = NanFengV5_1(strategy_name=strategy_name)
     stocks = get_stocks(date, limit=100)
@@ -59,13 +66,13 @@ def quick_backtest(strategy_name: str = "趋势跟踪", date: str = "2026-03-10"
             if signal:
                 signals.append((code, signal.total_score))
     
-    print(f"✅ 发现 {len(signals)} 个信号")
+    log.info(f"✅ 发现 {len(signals)} 个信号")
     
     if signals:
         signals.sort(key=lambda x: x[1], reverse=True)
-        print("\n🏆 Top 5:")
+        log.info("\n🏆 Top 5:")
         for i, (code, score) in enumerate(signals[:5], 1):
-            print(f"  {i}. {code}: {score:.1f}分")
+            log.info(f"  {i}. {code}: {score:.1f}分")
     
     return signals
 
@@ -74,5 +81,5 @@ if __name__ == '__main__':
     signals = quick_backtest("趋势跟踪", "2026-03-10")
     
     if not signals:
-        print("\n⚠️ 无信号，尝试降低门槛...")
+        log.info("\n⚠️ 无信号，尝试降低门槛...")
         # 可以在这里调整门槛再测

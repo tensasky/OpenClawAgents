@@ -10,6 +10,13 @@ import sqlite3
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("System")
+
 
 sys.path.insert(0, '/Users/roberto/.openclaw/agents/beifeng')
 

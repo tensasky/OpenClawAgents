@@ -8,6 +8,13 @@ import requests
 import json
 from pathlib import Path
 from typing import List, Set
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
 
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
 
@@ -57,53 +64,53 @@ def verify_stock_batch(codes: List[str]) -> List[dict]:
         return valid_stocks
         
     except Exception as e:
-        print(f"  请求失败: {e}")
+        log.info(f"  请求失败: {e}")
         return []
 
 def fetch_all_valid_stocks():
     """获取全部有效 A 股"""
     
-    print("🌪️ 正在获取全部有效 A 股...")
-    print("  这会需要一些时间（约5-10分钟）...")
+    log.info("🌪️ 正在获取全部有效 A 股...")
+    log.info("  这会需要一些时间（约5-10分钟）...")
     
     all_valid = []
     batch_size = 500
     
     # 上海主板 (600000-609999)
-    print("\n  扫描上海主板...")
+    log.info("\n  扫描上海主板...")
     for prefix in ['600', '601', '602', '603', '605', '688']:
-        print(f"    {prefix}xxx 段...")
+        log.info(f"    {prefix}xxx 段...")
         for start in range(0, 1000, batch_size):
             batch = [f"sh{prefix}{i:03d}" for i in range(start, min(start+batch_size, 1000))]
             valid = verify_stock_batch(batch)
             all_valid.extend(valid)
             if valid:
-                print(f"      找到 {len(valid)} 只")
+                log.info(f"      找到 {len(valid)} 只")
     
     # 深圳主板 (000000-009999)
-    print("\n  扫描深圳主板...")
+    log.info("\n  扫描深圳主板...")
     for start in range(0, 10000, batch_size):
         batch = [f"sz{i:06d}" for i in range(start, min(start+batch_size, 10000))]
         valid = verify_stock_batch(batch)
         all_valid.extend(valid)
         if valid and start % 2000 == 0:
-            print(f"    进度 {start}/10000, 累计 {len(all_valid)} 只")
+            log.info(f"    进度 {start}/10000, 累计 {len(all_valid)} 只")
     
     # 深圳中小板 (002000-002999)
-    print("\n  扫描深圳中小板...")
+    log.info("\n  扫描深圳中小板...")
     for start in range(2000, 3000, batch_size):
         batch = [f"sz{i:06d}" for i in range(start, min(start+batch_size, 3000))]
         valid = verify_stock_batch(batch)
         all_valid.extend(valid)
     
     # 深圳创业板 (300000-301999)
-    print("\n  扫描深圳创业板...")
+    log.info("\n  扫描深圳创业板...")
     for start in range(300000, 302000, batch_size):
         batch = [f"sz{i:06d}" for i in range(start, min(start+batch_size, 302000))]
         valid = verify_stock_batch(batch)
         all_valid.extend(valid)
     
-    print(f"\n✅ 共找到 {len(all_valid)} 只有效 A 股")
+    log.info(f"\n✅ 共找到 {len(all_valid)} 只有效 A 股")
     return all_valid
 
 def main():
@@ -114,21 +121,21 @@ def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(stocks, f, ensure_ascii=False, indent=2)
     
-    print(f"\n💾 已保存到 {output_file}")
+    log.info(f"\n💾 已保存到 {output_file}")
     
     # 统计
     sh_count = sum(1 for s in stocks if s['market'] == 'SH')
     sz_count = sum(1 for s in stocks if s['market'] == 'SZ')
     bj_count = sum(1 for s in stocks if s['market'] == 'BJ')
     
-    print(f"\n📊 分布:")
-    print(f"  上海: {sh_count} 只")
-    print(f"  深圳: {sz_count} 只")
-    print(f"  北京: {bj_count} 只")
+    log.info(f"\n📊 分布:")
+    log.info(f"  上海: {sh_count} 只")
+    log.info(f"  深圳: {sz_count} 只")
+    log.info(f"  北京: {bj_count} 只")
     
-    print(f"\n前20只:")
+    log.info(f"\n前20只:")
     for s in stocks[:20]:
-        print(f"  {s['code']}: {s['name']}")
+        log.info(f"  {s['code']}: {s['name']}")
 
 if __name__ == '__main__':
     main()

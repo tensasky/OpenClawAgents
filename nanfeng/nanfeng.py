@@ -387,6 +387,13 @@ class NanFeng:
 def main():
     """主函数"""
     import argparse
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("南风")
+
     
     parser = argparse.ArgumentParser(description='南风量化分析')
     parser.add_argument('--scan', action='store_true', help='扫描全市场')
@@ -403,13 +410,13 @@ def main():
         df = nanfeng.get_stock_data(args.stock)
         score = nanfeng.analyzer.analyze_stock(df)
         if score:
-            print(f"\n📊 {args.stock} 分析结果:")
-            print(f"  总分: {score.total_score}/10")
-            print(f"  置信度: {score.confidence}")
-            print(f"  信号: {', '.join(score.signals)}")
-            print(f"  指标得分:")
+            log.info(f"\n📊 {args.stock} 分析结果:")
+            log.info(f"  总分: {score.total_score}/10")
+            log.info(f"  置信度: {score.confidence}")
+            log.info(f"  信号: {', '.join(score.signals)}")
+            log.info(f"  指标得分:")
             for indicator, value in score.indicators.items():
-                print(f"    {indicator}: {value}")
+                log.info(f"    {indicator}: {value}")
     
     elif args.scan:
         # 扫描全市场
@@ -417,10 +424,10 @@ def main():
         nanfeng.generate_report(results, args.output)
         
         # 打印前10名
-        print("\n🏆 TOP 10 信号股票:")
+        log.info("\n🏆 TOP 10 信号股票:")
         for i, r in enumerate(results[:10], 1):
-            print(f"{i}. {r.stock_code} - {r.total_score}分 [{r.confidence}]")
-            print(f"   信号: {', '.join(r.signals)}")
+            log.info(f"{i}. {r.stock_code} - {r.total_score}分 [{r.confidence}]")
+            log.info(f"   信号: {', '.join(r.signals)}")
     
     else:
         parser.print_help()

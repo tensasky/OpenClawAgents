@@ -18,10 +18,10 @@ class CaishenCommander:
         
     def execute_fix_plan(self):
         """执行修复计划"""
-        print("="*80)
-        print("💰 财神爷全面修复指挥")
-        print("="*80)
-        print(f"开始时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        log.info("="*80)
+        log.info("💰 财神爷全面修复指挥")
+        log.info("="*80)
+        log.info(f"开始时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         
         # 1. 判官 - 数据校验
         self.command_judge()
@@ -49,15 +49,22 @@ class CaishenCommander:
     
     def command_judge(self):
         """指挥判官 - 数据校验"""
-        print("\n" + "="*80)
-        print("⚖️ 判官 - 数据全面校验")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("⚖️ 判官 - 数据全面校验")
+        log.info("="*80)
         
         # 检查所有股票数据一致性
         check_script = """
 import sqlite3
 from pathlib import Path
 from datetime import datetime
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("财神爷")
+
 
 DB_PATH = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 conn = sqlite3.connect(DB_PATH)
@@ -66,7 +73,7 @@ cursor = conn.cursor()
 today = datetime.now().strftime('%Y-%m-%d')
 
 # 检查日线和分钟差异
-print("🔍 判官校验: 日线分钟数据一致性")
+log.info("🔍 判官校验: 日线分钟数据一致性")
 cursor.execute(f\"\"\"
     SELECT d.stock_code, d.close as daily_close,
            (SELECT close FROM minute m 
@@ -86,9 +93,9 @@ for row in cursor.fetchall():
 
 conn.close()
 
-print(f"发现 {len(mismatches)} 只股票数据不一致")
+log.info(f"发现 {len(mismatches)} 只股票数据不一致")
 for code, d, m in mismatches[:5]:
-    print(f"  {code}: 日线{d:.2f} vs 分钟{m:.2f}")
+    log.info(f"  {code}: 日线{d:.2f} vs 分钟{m:.2f}")
 """
         
         result = subprocess.run(
@@ -97,15 +104,15 @@ for code, d, m in mismatches[:5]:
         )
         print(result.stdout)
         if result.stderr:
-            print(f"❌ 判官错误: {result.stderr}")
+            log.info(f"❌ 判官错误: {result.stderr}")
         
         self.fix_log.append("判官: 完成数据一致性校验")
     
     def command_beifeng(self):
         """指挥北风 - 数据库修复"""
-        print("\n" + "="*80)
-        print("🌪️ 北风 - 数据库修复")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("🌪️ 北风 - 数据库修复")
+        log.info("="*80)
         
         # 1. 备份旧数据库
         old_db = self.base_path / "beifeng/data/stocks.db"
@@ -113,7 +120,7 @@ for code, d, m in mismatches[:5]:
         
         if old_db.exists():
             os.rename(old_db, backup_db)
-            print(f"✅ 旧数据库已备份: {backup_db.name}")
+            log.info(f"✅ 旧数据库已备份: {backup_db.name}")
             self.fix_log.append("北风: 旧数据库已备份")
         
         # 2. 更新所有代码引用
@@ -137,16 +144,16 @@ for code, d, m in mismatches[:5]:
                     new_content = content.replace('stocks.db', 'stocks_real.db')
                     full_path.write_text(new_content)
                     fixed_count += 1
-                    print(f"✅ 修复: {file_path}")
+                    log.info(f"✅ 修复: {file_path}")
         
-        print(f"\n✅ 共修复 {fixed_count} 个文件")
+        log.info(f"\n✅ 共修复 {fixed_count} 个文件")
         self.fix_log.append(f"北风: 修复{fixed_count}个文件的数据库引用")
     
     def command_nanfeng(self):
         """指挥南风 - 策略修复"""
-        print("\n" + "="*80)
-        print("🌬️ 南风 - 策略修复")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("🌬️ 南风 - 策略修复")
+        log.info("="*80)
         
         files_to_fix = [
             'nanfeng/nanfeng_v5_1.py',
@@ -162,14 +169,14 @@ for code, d, m in mismatches[:5]:
                     # 同时修复表名
                     new_content = new_content.replace('kline_data', 'daily')
                     full_path.write_text(new_content)
-                    print(f"✅ 修复: {file_path}")
+                    log.info(f"✅ 修复: {file_path}")
                     self.fix_log.append(f"南风: 修复{file_path}")
     
     def command_hongzhong(self):
         """指挥红中 - 信号修复"""
-        print("\n" + "="*80)
-        print("🀄 红中 - 信号修复")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("🀄 红中 - 信号修复")
+        log.info("="*80)
         
         # 修复硬编码价格 - 必须从数据库获取
         hongzhong_v3 = self.base_path / "hongzhong/hongzhong_v3.py"
@@ -178,62 +185,62 @@ for code, d, m in mismatches[:5]:
             
             # 检查是否还有硬编码
             if "'entry_price': 10.27" in content:
-                print("❌ 仍有硬编码价格，需要重构")
-                print("   红中必须连接南风实时引擎获取真实价格")
+                log.info("❌ 仍有硬编码价格，需要重构")
+                log.info("   红中必须连接南风实时引擎获取真实价格")
                 self.fix_log.append("红中: 需要重构，连接南风引擎")
             else:
-                print("✅ 无硬编码价格")
+                log.info("✅ 无硬编码价格")
     
     def command_baiban(self):
         """指挥白板 - 复盘检查"""
-        print("\n" + "="*80)
-        print("🀆 白板 - 复盘检查")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("🀆 白板 - 复盘检查")
+        log.info("="*80)
         
         # 检查修复结果
-        print("📊 白板复盘:")
-        print("  1. 数据库统一性检查")
-        print("  2. 代码引用正确性检查")
-        print("  3. 数据一致性验证")
+        log.info("📊 白板复盘:")
+        log.info("  1. 数据库统一性检查")
+        log.info("  2. 代码引用正确性检查")
+        log.info("  3. 数据一致性验证")
         
         self.fix_log.append("白板: 完成修复复盘")
     
     def command_xifeng(self):
         """指挥西风 - 板块更新"""
-        print("\n" + "="*80)
-        print("🍃 西风 - 板块更新")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("🍃 西风 - 板块更新")
+        log.info("="*80)
         
-        print("✅ 板块数据正常")
+        log.info("✅ 板块数据正常")
         self.fix_log.append("西风: 板块数据正常")
     
     def command_facai(self):
         """指挥发财 - 交易准备"""
-        print("\n" + "="*80)
-        print("💰 发财 - 交易准备")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("💰 发财 - 交易准备")
+        log.info("="*80)
         
-        print("✅ 模拟交易系统就绪")
+        log.info("✅ 模拟交易系统就绪")
         self.fix_log.append("发财: 系统就绪")
     
     def print_fix_report(self):
         """输出修复报告"""
-        print("\n" + "="*80)
-        print("📊 财神爷修复报告")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("📊 财神爷修复报告")
+        log.info("="*80)
         
-        print(f"\n修复时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        print(f"修复项目: {len(self.fix_log)} 项\n")
+        log.info(f"\n修复时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        log.info(f"修复项目: {len(self.fix_log)} 项\n")
         
         for log in self.fix_log:
-            print(f"  ✅ {log}")
+            log.info(f"  ✅ {log}")
         
-        print("\n" + "="*80)
-        print("⚠️  重要提醒:")
-        print("  1. 红中仍需重构，连接南风实时引擎")
-        print("  2. 需要建立分钟数据实时聚合机制")
-        print("  3. 所有修复需要验证测试")
-        print("="*80)
+        log.info("\n" + "="*80)
+        log.info("⚠️  重要提醒:")
+        log.info("  1. 红中仍需重构，连接南风实时引擎")
+        log.info("  2. 需要建立分钟数据实时聚合机制")
+        log.info("  3. 所有修复需要验证测试")
+        log.info("="*80)
 
 
 if __name__ == '__main__':

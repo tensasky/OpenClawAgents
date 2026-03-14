@@ -508,6 +508,13 @@ def fetch_all_astocks() -> List[str]:
 def main():
     """命令行入口"""
     import argparse
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+from agent_logger import get_logger
+
+log = get_logger("北风")
+
     
     parser = argparse.ArgumentParser(description='北风 - 股票数据采集 Agent')
     parser.add_argument('--init', action='store_true', help='初始化股票列表')
