@@ -54,71 +54,87 @@ class HistoricalDataUpdater:
         log.info(f"获取到 {len(stocks)} 只股票")
         return stocks
     
-    def fetch_history(self, stock_code: str, start_date: str, end_date: str) -> Tuple[bool, int]:
+    def fetch_history(self, stock_code: str, start_date: str, end_date: str, max_retries: int = 3) -> Tuple[bool, int]:
         """
         获取单只股票历史数据
+        
+        Args:
+            stock_code: 股票代码
+            start_date: 开始日期
+            end_date: 结束日期
+            max_retries: 最大重试次数
         
         Returns:
             (是否成功, 新增记录数)
         """
-        try:
-            # 使用AKShare获取历史数据
-            import akshare as ak
-            
-            # 转换股票代码格式
-            if stock_code.startswith('sh'):
-                symbol = stock_code[2:] + '.SH'
-            elif stock_code.startswith('sz'):
-                symbol = stock_code[2:] + '.SZ'
-            else:
-                symbol = stock_code
-            
-            # 获取历史数据
-            df = ak.stock_zh_a_hist(
-                symbol=stock_code[2:],
-                period="daily",
-                start_date=start_date.replace('-', ''),
-                end_date=end_date.replace('-', ''),
-                adjust="qfq"
-            )
-            
-            if df.empty:
-                return True, 0
-            
-            # 保存到数据库
-            conn = sqlite3.connect(BEIFENG_DB)
-            cursor = conn.cursor()
-            
-            inserted = 0
-            for _, row in df.iterrows():
-                try:
-                    cursor.execute("""
-                        INSERT OR REPLACE INTO daily 
-                        (stock_code, timestamp, open, high, low, close, volume, amount, source)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    """, (
-                        stock_code,
-                        row['日期'],
-                        row['开盘'],
-                        row['最高'],
-                        row['最低'],
-                        row['收盘'],
-                        row['成交量'],
-                        row['成交额'],
-                        'akshare'
-                    ))
-                    inserted += 1
-                except Exception as e:
-                    continue
-            
-            conn.commit()
-            conn.close()
-            
-            return True, inserted
-            
-        except Exception as e:
-            log.warning(f"获取 {stock_code} 历史数据失败: {e}")
-            return False, 0
+        for attempt in range(max_retries):
+            try:
+                # 添加延迟避免请求过快
+                time.sleep(0.5)
+                
+                # 使用AKShare获取历史数据
+                import akshare as ak
+                
+                # 转换股票代码格式
+                if stock_code.startswith('sh'):
+                    symbol = stock_code[2:]
+                elif stock_code.startswith('sz'):
+                    symbol = stock_code[2:]
+                else:
+                    symbol = stock_code
+                
+                # 获取历史数据
+                df = ak.stock_zh_a_hist(
+                    symbol=symbol,
+                    period="daily",
+                    start_date=start_date.replace('-', ''),
+                    end_date=end_date.replace('-', ''),
+                    adjust="qfq"
+                )
+                
+                if df.empty:
+                    return True, 0
+                
+                # 保存到数据库
+                conn = sqlite3.connect(BEIFENG_DB)
+                cursor = conn.cursor()
+                
+                inserted = 0
+                for _, row in df.iterrows():
+                    try:
+                        cursor.execute("""
+                            INSERT OR REPLACE INTO daily 
+                            (stock_code, timestamp, open, high, low, close, volume, amount, source)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """, (
+                            stock_code,
+                            row['日期'],
+                            row['开盘'],
+                            row['最高'],
+                            row['最低'],
+                            row['收盘'],
+                            row['成交量'],
+                            row['成交额'],
+                            'akshare'
+                        ))
+                        inserted += 1
+                    except Exception as e:
+                        continue
+                
+                conn.commit()
+                conn.close()
+                
+                return True, inserted
+                
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    log.warning(f"获取 {stock_code} 失败，{attempt+1}/{max_retries} 次重试: {e}")
+                    time.sleep(2)  # 重试前等待
+                else:
+                    log.warning(f"获取 {stock_code} 历史数据失败: {e}")
+                    return False, 0
+        
+        return False, 0
     
     def update_stock(self, stock_code: str, start_date: str, end_date: str) -> Tuple[bool, int]:
         """更新单只股票"""
@@ -207,8 +223,8 @@ class HistoricalDataUpdater:
 if __name__ == '__main__':
     updater = HistoricalDataUpdater()
     
-    # 从最早日期开始更新
+    # 从A股最早日期开始（1990年12月19日上海证券交易所开业）
     updater.run(
-        start_date="2021-03-10",
+        start_date="1990-12-19",
         end_date=datetime.now().strftime('%Y-%m-%d')
     )
