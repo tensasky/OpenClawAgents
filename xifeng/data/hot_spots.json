@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-13T22:51:14.772432",
+  "generated_at": "2026-03-14T08:53:08.972904",
   "total_news": 60,
-  "total_sectors": 8,
+  "total_sectors": 9,
   "summary": [
     {
       "sector": "消费",
-      "heat_score": 80,
+      "heat_score": 70,
       "level": "High",
-      "news_count": 7,
-      "today_count": 7,
+      "news_count": 6,
+      "today_count": 6,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -61,58 +61,58 @@
       ]
     },
     {
-      "sector": "金融",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "sector": "人工智能",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "美国股市早盘小幅反弹 经济数据提振美联储降息希望",
+          "title": "3月14日隔夜要闻：美股三大指数收跌 布油再次收于100美元上方 金价下跌 马斯克称xAI必须重建",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwkfa0841848.shtml",
-          "time": "1773412414"
+          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzax3652435.shtml",
+          "time": "1773442757"
         },
         {
-          "title": "经济学家：高油价不利于抵押贷款利率",
+          "title": "美国商务部撤回拟定的AI芯片出口规则",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxa4011396.shtml",
-          "time": "1773411185"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-14/doc-inhqwzas3623432.shtml",
+          "time": "1773438443"
+        },
+        {
+          "title": "马斯克称xAI需“彻底重建”：联合创始人持续离职，SpaceX即将IPO",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzax3627025.shtml",
+          "time": "1773437652"
         }
       ],
       "leading_stocks": [
         {
-          "code": "600036",
-          "name": "招商银行",
+          "code": "300033",
+          "name": "同花顺",
           "weight": 10
         },
         {
-          "code": "601318",
-          "name": "中国平安",
+          "code": "002230",
+          "name": "科大讯飞",
           "weight": 9
         },
         {
-          "code": "601398",
-          "name": "工商银行",
+          "code": "603019",
+          "name": "中科曙光",
           "weight": 8
         },
         {
-          "code": "600030",
-          "name": "中信证券",
+          "code": "000938",
+          "name": "中芯国际",
           "weight": 8
         },
         {
-          "code": "601688",
-          "name": "华泰证券",
+          "code": "300474",
+          "name": "景嘉微",
           "weight": 7
         }
       ]
@@ -170,6 +170,63 @@
         {
           "code": "000538",
           "name": "云南白药",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "金融",
+      "heat_score": 40,
+      "level": "Medium",
+      "news_count": 3,
+      "today_count": 3,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "出于“审慎的保险” 摩根大通一年来首次看好美元",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzas3635916.shtml",
+          "time": "1773440860"
+        },
+        {
+          "title": "美国抵押贷款利率飙升至去年9月以来最高水平，冲击春季楼市",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwuuz3754973.shtml",
+          "time": "1773436909"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
           "weight": 7
         }
       ]
@@ -178,10 +235,10 @@
   "hot_spots": [
     {
       "sector": "消费",
-      "heat_score": 80,
+      "heat_score": 70,
       "level": "High",
-      "news_count": 7,
-      "today_count": 7,
+      "news_count": 6,
+      "today_count": 6,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -234,58 +291,58 @@
       ]
     },
     {
-      "sector": "金融",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "sector": "人工智能",
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "美国股市早盘小幅反弹 经济数据提振美联储降息希望",
+          "title": "3月14日隔夜要闻：美股三大指数收跌 布油再次收于100美元上方 金价下跌 马斯克称xAI必须重建",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-13/doc-inhqwkfa0841848.shtml",
-          "time": "1773412414"
+          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzax3652435.shtml",
+          "time": "1773442757"
         },
         {
-          "title": "经济学家：高油价不利于抵押贷款利率",
+          "title": "美国商务部撤回拟定的AI芯片出口规则",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-13/doc-inhqwcxa4011396.shtml",
-          "time": "1773411185"
+          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-14/doc-inhqwzas3623432.shtml",
+          "time": "1773438443"
+        },
+        {
+          "title": "马斯克称xAI需“彻底重建”：联合创始人持续离职，SpaceX即将IPO",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzax3627025.shtml",
+          "time": "1773437652"
         }
       ],
       "leading_stocks": [
         {
-          "code": "600036",
-          "name": "招商银行",
+          "code": "300033",
+          "name": "同花顺",
           "weight": 10
         },
         {
-          "code": "601318",
-          "name": "中国平安",
+          "code": "002230",
+          "name": "科大讯飞",
           "weight": 9
         },
         {
-          "code": "601398",
-          "name": "工商银行",
+          "code": "603019",
+          "name": "中科曙光",
           "weight": 8
         },
         {
-          "code": "600030",
-          "name": "中信证券",
+          "code": "000938",
+          "name": "中芯国际",
           "weight": 8
         },
         {
-          "code": "601688",
-          "name": "华泰证券",
+          "code": "300474",
+          "name": "景嘉微",
           "weight": 7
         }
       ]
@@ -343,6 +400,63 @@
         {
           "code": "000538",
           "name": "云南白药",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "金融",
+      "heat_score": 40,
+      "level": "Medium",
+      "news_count": 3,
+      "today_count": 3,
+      "top_news": [
+        {
+          "title": "今日38只个股突破年线",
+          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
+          "source": "东方财富",
+          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
+          "time": "2026-02-05 17:18:17"
+        },
+        {
+          "title": "出于“审慎的保险” 摩根大通一年来首次看好美元",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzas3635916.shtml",
+          "time": "1773440860"
+        },
+        {
+          "title": "美国抵押贷款利率飙升至去年9月以来最高水平，冲击春季楼市",
+          "content": "",
+          "source": "新浪财经",
+          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwuuz3754973.shtml",
+          "time": "1773436909"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "600036",
+          "name": "招商银行",
+          "weight": 10
+        },
+        {
+          "code": "601318",
+          "name": "中国平安",
+          "weight": 9
+        },
+        {
+          "code": "601398",
+          "name": "工商银行",
+          "weight": 8
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "weight": 8
+        },
+        {
+          "code": "601688",
+          "name": "华泰证券",
           "weight": 7
         }
       ]
