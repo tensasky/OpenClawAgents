@@ -7,8 +7,15 @@
 import sqlite3
 import requests
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
+
+# 导入统一日志
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from agent_logger import get_logger
+
+log = get_logger("判官")
 
 BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 REPORT_DIR = Path(__file__).parent / "reports"

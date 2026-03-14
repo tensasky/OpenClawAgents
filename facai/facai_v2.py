@@ -6,9 +6,16 @@
 
 import sqlite3
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List
+
+# 导入统一日志
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from agent_logger import get_logger
+
+log = get_logger("发财")
 
 # 配置
 FACAI_DIR = Path(__file__).parent
@@ -369,9 +376,7 @@ class TradeRecord:
 
 def main():
     """测试"""
-    print("="*70)
-    print("💰 发财V2.0 - 模拟交易系统")
-    print("="*70)
+    log.step("发财V2.0初始化")
     
     trade = TradeRecord()
     
@@ -380,14 +385,12 @@ def main():
     for s in strategies:
         trade.init_strategy_capital(s)
     
-    print("\n📊 初始资金:")
+    log.info("初始资金:")
     for cap in trade.get_capital():
-        print(f"  {cap['strategy']}: ¥{cap['available']:,.0f}")
+        log.info(f"  {cap['strategy']}: ¥{cap['available']:,.0f}")
     
-    print("\n" + "="*70)
-    print("✅ 发财V2.0初始化完成")
-    print("每个策略10万资金，买入记录完整条件，卖出手续费万分之三")
-    print("="*70)
+    log.success("发财V2.0初始化完成")
+    log.info("每个策略10万资金，买入记录完整条件，卖出手续费万分之三")
 
 
 if __name__ == '__main__':

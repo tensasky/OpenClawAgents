@@ -6,8 +6,15 @@
 
 import json
 import requests
+import sys
 from datetime import datetime
 from pathlib import Path
+
+# 导入统一日志
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from agent_logger import get_logger
+
+log = get_logger("西风")
 
 DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1480218571211673605/M7NTuN1_2a1jHR9D8T0m_D7IVoD_oDYxfKZvEEW54PYx0JCk2AMsAWYhaqmPfRP8QW48"
 DATA_FILE = Path(__file__).parent / "data/hot_spots.json"
@@ -40,9 +47,9 @@ def send_discord():
             headers={"Content-Type": "application/json"},
             timeout=10
         )
-        print("✅ 西风板块分析已发送")
+        log.success("板块分析已发送")
     except Exception as e:
-        print(f"❌ 发送失败: {e}")
+        log.fail(f"发送失败: {e}")
 
 if __name__ == '__main__':
     send_discord()

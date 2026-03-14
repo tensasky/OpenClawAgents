@@ -5,7 +5,7 @@
 """
 
 import json
-import logging
+import sys
 import sqlite3
 import argparse
 from datetime import datetime, timedelta
@@ -14,10 +14,13 @@ from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass, asdict
 import statistics
 
+# 导入统一日志
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from agent_logger import get_logger
+
 # 配置路径
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
-LOG_DIR = BASE_DIR / "logs"
 REPORT_DIR = BASE_DIR / "reports"
 
 # 输入文件
@@ -32,19 +35,10 @@ EVOLUTION_LOG = DATA_DIR / "evolution_log.json"
 
 # 确保目录存在
 DATA_DIR.mkdir(exist_ok=True)
-LOG_DIR.mkdir(exist_ok=True)
 REPORT_DIR.mkdir(exist_ok=True)
 
-# 配置日志
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(LOG_DIR / f"baiban_{datetime.now().strftime('%Y%m%d')}.log"),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger("白板")
+# 初始化日志
+log = get_logger("白板")
 
 
 @dataclass
@@ -117,10 +111,10 @@ class TradeLoader:
                 ))
             
             conn.close()
-            logger.info(f"加载交易记录: {len(trades)} 笔")
+            log.info(f"加载交易记录: {len(trades)} 笔")
             
         except Exception as e:
-            logger.error(f"加载交易记录失败: {e}")
+            log.fail(f"加载交易记录失败: {e}")
         
         return trades
 
@@ -280,7 +274,7 @@ class SentimentSensor:
             }
             
         except Exception as e:
-            logger.error(f"情绪检测失败: {e}")
+            log.fail(f"情绪检测失败: {e}")
             return {'sentiment': 'Unknown', 'indicators': {}}
     
     def get_strategy_advice(self, sentiment: str) -> Dict:
@@ -377,15 +371,15 @@ class BaibanSystem:
     
     def run_daily_backtest(self):
         """每日收盘后回测"""
-        logger.info("=" * 60)
-        logger.info("🀆 白板执行每日回测...")
-        logger.info("=" * 60)
+        log.info("=" * 60)
+        log.info("🀆 白板执行每日回测...")
+        log.info("=" * 60)
         
         # 1. 加载交易记录
         trades = self.trade_loader.load_facai_trades(days=7)
         
         if len(trades) < 2:
-            logger.warning("交易记录不足，跳过回测")
+            log.warning("交易记录不足，跳过回测")
             return
         
         # 2. 归因分析
@@ -393,17 +387,17 @@ class BaibanSystem:
         win_rate_by_factor = analyzer.analyze_win_rate_by_factor()
         stop_losses = analyzer.analyze_stop_losses()
         
-        logger.info("归因分析结果:")
-        logger.info(f"  西风题材胜率: {win_rate_by_factor.get('theme', {}).get('win_rate', 0):.1f}%")
-        logger.info(f"  南风技术胜率: {win_rate_by_factor.get('tech', {}).get('win_rate', 0):.1f}%")
-        logger.info(f"  止损次数: {len(stop_losses)}")
+        log.info("归因分析结果:")
+        log.info(f"  西风题材胜率: {win_rate_by_factor.get('theme', {}).get('win_rate', 0):.1f}%")
+        log.info(f"  南风技术胜率: {win_rate_by_factor.get('tech', {}).get('win_rate', 0):.1f}%")
+        log.info(f"  止损次数: {len(stop_losses)}")
         
         # 3. 情绪检测
         sentiment_result = self.sentiment_sensor.detect_sentiment()
         self.current_sentiment = sentiment_result['sentiment']
         
-        logger.info(f"市场情绪: {self.current_sentiment}")
-        logger.info(f"  指标: {sentiment_result['indicators']}")
+        log.info(f"市场情绪: {self.current_sentiment}")
+        log.info(f"  指标: {sentiment_result['indicators']}")
         
         # 4. 保存结果
         result = {
@@ -417,15 +411,15 @@ class BaibanSystem:
         
         self._save_backtest_result(result)
         
-        logger.info("=" * 60)
-        logger.info("🀆 每日回测完成")
-        logger.info("=" * 60)
+        log.info("=" * 60)
+        log.info("🀆 每日回测完成")
+        log.info("=" * 60)
     
     def run_weekly_evolution(self):
         """周末全量回测与进化"""
-        logger.info("=" * 60)
-        logger.info("🀆 白板执行周末全量回测与进化...")
-        logger.info("=" * 60)
+        log.info("=" * 60)
+        log.info("🀆 白板执行周末全量回测与进化...")
+        log.info("=" * 60)
         
         # 1. 加载30天交易记录
         trades = self.trade_loader.load_facai_trades(days=30)
@@ -433,12 +427,12 @@ class BaibanSystem:
         # 2. 计算回测指标
         result = self._calculate_backtest_metrics(trades)
         
-        logger.info(f"回测结果:")
-        logger.info(f"  总交易: {result.total_trades}")
-        logger.info(f"  胜率: {result.win_rate:.1f}%")
-        logger.info(f"  平均盈利: {result.avg_profit:.2f}%")
-        logger.info(f"  最大回撤: {result.max_drawdown:.2f}%")
-        logger.info(f"  总收益: {result.total_return:.2f}%")
+        log.info(f"回测结果:")
+        log.info(f"  总交易: {result.total_trades}")
+        log.info(f"  胜率: {result.win_rate:.1f}%")
+        log.info(f"  平均盈利: {result.avg_profit:.2f}%")
+        log.info(f"  最大回撤: {result.max_drawdown:.2f}%")
+        log.info(f"  总收益: {result.total_return:.2f}%")
         
         # 3. 参数优化
         optimizer = Optimizer(trades)
@@ -462,9 +456,9 @@ class BaibanSystem:
         self._save_evolution_command(command)
         self._generate_weekly_report(result, command, trailing_stop_opt)
         
-        logger.info("=" * 60)
-        logger.info("🀆 周末进化完成")
-        logger.info("=" * 60)
+        log.info("=" * 60)
+        log.info("🀆 周末进化完成")
+        log.info("=" * 60)
     
     def _calculate_backtest_metrics(self, trades: List[TradeRecord]) -> BacktestResult:
         """计算回测指标"""
@@ -524,7 +518,7 @@ class BaibanSystem:
         with open(BACKTEST_RESULTS, 'w', encoding='utf-8') as f:
             json.dump(results, f, ensure_ascii=False, indent=2)
         
-        logger.info(f"回测结果已保存: {BACKTEST_RESULTS}")
+        log.info(f"回测结果已保存: {BACKTEST_RESULTS}")
     
     def _save_evolution_command(self, command: EvolutionCommand):
         """保存进化指令"""
@@ -542,7 +536,7 @@ class BaibanSystem:
         with open(EVOLUTION_LOG, 'w', encoding='utf-8') as f:
             json.dump(logs, f, ensure_ascii=False, indent=2)
         
-        logger.info(f"进化指令已保存: {EVOLUTION_LOG}")
+        log.info(f"进化指令已保存: {EVOLUTION_LOG}")
     
     def _generate_weekly_report(self, result: BacktestResult, command: EvolutionCommand, 
                                 trailing_opt: Dict):
@@ -605,7 +599,7 @@ class BaibanSystem:
         with open(report_path, 'w', encoding='utf-8') as f:
             f.write(report)
         
-        logger.info(f"周报已生成: {report_path}")
+        log.info(f"周报已生成: {report_path}")
 
 
 def main():
