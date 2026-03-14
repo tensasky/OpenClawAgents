@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-03-14T08:53:08.972904",
-  "total_news": 60,
+  "generated_at": "2026-03-14T13:54:02.376915",
+  "total_news": 57,
   "total_sectors": 9,
   "summary": [
     {
       "sector": "消费",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -68,25 +68,25 @@
       "today_count": 5,
       "top_news": [
         {
-          "title": "3月14日隔夜要闻：美股三大指数收跌 布油再次收于100美元上方 金价下跌 马斯克称xAI必须重建",
+          "title": "AI重磅！马斯克，超级计划曝光！",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzax3652435.shtml",
-          "time": "1773442757"
+          "url": "https://finance.sina.com.cn/wm/2026-03-14/doc-inhqxryr3417950.shtml",
+          "time": "1773462780"
         },
         {
-          "title": "美国商务部撤回拟定的AI芯片出口规则",
+          "title": "AI语料“投毒”产业链揭秘：“用模型对抗模型”，百亿市场该如何健康发展？",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-14/doc-inhqwzas3623432.shtml",
-          "time": "1773438443"
+          "url": "https://finance.sina.com.cn/stock/t/2026-03-14/doc-inhqxryt0506695.shtml",
+          "time": "1773460233"
         },
         {
-          "title": "马斯克称xAI需“彻底重建”：联合创始人持续离职，SpaceX即将IPO",
+          "title": "上海推出全国首个虚实融合具身智能训练场",
           "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzax3627025.shtml",
-          "time": "1773437652"
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260314/c675295603.shtml",
+          "time": ""
         }
       ],
       "leading_stocks": [
@@ -175,58 +175,101 @@
       ]
     },
     {
-      "sector": "金融",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "sector": "中字头",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "出于“审慎的保险” 摩根大通一年来首次看好美元",
+          "title": "港交所开启上市机制改革：拟放宽同股不同权上市门槛，扩大IPO保密申请范围",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzas3635916.shtml",
-          "time": "1773440860"
+          "url": "https://finance.sina.com.cn/jjxw/2026-03-14/doc-inhqxfkv3542492.shtml",
+          "time": "1773445930"
         },
         {
-          "title": "美国抵押贷款利率飙升至去年9月以来最高水平，冲击春季楼市",
+          "title": "港交所再启重磅改革：拟放宽同股不同权门槛 保密申请扩大至所有新股",
           "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwuuz3754973.shtml",
-          "time": "1773436909"
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260314/c675295168.shtml",
+          "time": ""
         }
       ],
       "leading_stocks": [
         {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
+          "code": "601988",
+          "name": "中国银行",
           "weight": 9
         },
         {
-          "code": "601398",
-          "name": "工商银行",
+          "code": "601728",
+          "name": "中国电信",
           "weight": 8
         },
         {
-          "code": "600030",
-          "name": "中信证券",
+          "code": "600028",
+          "name": "中国石化",
           "weight": 8
         },
         {
-          "code": "601688",
-          "name": "华泰证券",
+          "code": "601390",
+          "name": "中国中铁",
+          "weight": 7
+        },
+        {
+          "code": "601668",
+          "name": "中国建筑",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "山东临沂成立工作组调查报废汽车非法拆解有关情况",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260314/c675295518.shtml",
+          "time": ""
+        },
+        {
+          "title": "琼州海峡春运运输量创新高 海安至海口新能源车增加61.66%",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260314/c675295500.shtml",
+          "time": ""
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "002594",
+          "name": "比亚迪",
+          "weight": 10
+        },
+        {
+          "code": "601127",
+          "name": "赛力斯",
+          "weight": 8
+        },
+        {
+          "code": "000625",
+          "name": "长安汽车",
+          "weight": 7
+        },
+        {
+          "code": "600104",
+          "name": "上汽集团",
+          "weight": 7
+        },
+        {
+          "code": "601633",
+          "name": "长城汽车",
           "weight": 7
         }
       ]
@@ -235,10 +278,10 @@
   "hot_spots": [
     {
       "sector": "消费",
-      "heat_score": 70,
-      "level": "High",
-      "news_count": 6,
-      "today_count": 6,
+      "heat_score": 60,
+      "level": "Medium",
+      "news_count": 5,
+      "today_count": 5,
       "top_news": [
         {
           "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
@@ -298,25 +341,25 @@
       "today_count": 5,
       "top_news": [
         {
-          "title": "3月14日隔夜要闻：美股三大指数收跌 布油再次收于100美元上方 金价下跌 马斯克称xAI必须重建",
+          "title": "AI重磅！马斯克，超级计划曝光！",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzax3652435.shtml",
-          "time": "1773442757"
+          "url": "https://finance.sina.com.cn/wm/2026-03-14/doc-inhqxryr3417950.shtml",
+          "time": "1773462780"
         },
         {
-          "title": "美国商务部撤回拟定的AI芯片出口规则",
+          "title": "AI语料“投毒”产业链揭秘：“用模型对抗模型”，百亿市场该如何健康发展？",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/stock/usstock/c/2026-03-14/doc-inhqwzas3623432.shtml",
-          "time": "1773438443"
+          "url": "https://finance.sina.com.cn/stock/t/2026-03-14/doc-inhqxryt0506695.shtml",
+          "time": "1773460233"
         },
         {
-          "title": "马斯克称xAI需“彻底重建”：联合创始人持续离职，SpaceX即将IPO",
+          "title": "上海推出全国首个虚实融合具身智能训练场",
           "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzax3627025.shtml",
-          "time": "1773437652"
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260314/c675295603.shtml",
+          "time": ""
         }
       ],
       "leading_stocks": [
@@ -405,58 +448,101 @@
       ]
     },
     {
-      "sector": "金融",
-      "heat_score": 40,
-      "level": "Medium",
-      "news_count": 3,
-      "today_count": 3,
+      "sector": "中字头",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
       "top_news": [
         {
-          "title": "今日38只个股突破年线",
-          "content": "1.83 5.57 38.68 39.05 0.95 600539 狮头股份 1.21 1.71 10.81 10.90 0.84 688363 华熙生物 4.47 2.86 50.58 50.98 0.79 601229 上海银行 4.27 0.77 9.70 9.77 0.75 603777",
-          "source": "东方财富",
-          "url": "http://finance.eastmoney.com/a/202602053642849131.html",
-          "time": "2026-02-05 17:18:17"
-        },
-        {
-          "title": "出于“审慎的保险” 摩根大通一年来首次看好美元",
+          "title": "港交所开启上市机制改革：拟放宽同股不同权上市门槛，扩大IPO保密申请范围",
           "content": "",
           "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwzas3635916.shtml",
-          "time": "1773440860"
+          "url": "https://finance.sina.com.cn/jjxw/2026-03-14/doc-inhqxfkv3542492.shtml",
+          "time": "1773445930"
         },
         {
-          "title": "美国抵押贷款利率飙升至去年9月以来最高水平，冲击春季楼市",
+          "title": "港交所再启重磅改革：拟放宽同股不同权门槛 保密申请扩大至所有新股",
           "content": "",
-          "source": "新浪财经",
-          "url": "https://finance.sina.com.cn/world/2026-03-14/doc-inhqwuuz3754973.shtml",
-          "time": "1773436909"
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260314/c675295168.shtml",
+          "time": ""
         }
       ],
       "leading_stocks": [
         {
-          "code": "600036",
-          "name": "招商银行",
-          "weight": 10
-        },
-        {
-          "code": "601318",
-          "name": "中国平安",
+          "code": "601988",
+          "name": "中国银行",
           "weight": 9
         },
         {
-          "code": "601398",
-          "name": "工商银行",
+          "code": "601728",
+          "name": "中国电信",
           "weight": 8
         },
         {
-          "code": "600030",
-          "name": "中信证券",
+          "code": "600028",
+          "name": "中国石化",
           "weight": 8
         },
         {
-          "code": "601688",
-          "name": "华泰证券",
+          "code": "601390",
+          "name": "中国中铁",
+          "weight": 7
+        },
+        {
+          "code": "601668",
+          "name": "中国建筑",
+          "weight": 7
+        }
+      ]
+    },
+    {
+      "sector": "汽车",
+      "heat_score": 30,
+      "level": "Low",
+      "news_count": 2,
+      "today_count": 2,
+      "top_news": [
+        {
+          "title": "山东临沂成立工作组调查报废汽车非法拆解有关情况",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260314/c675295518.shtml",
+          "time": ""
+        },
+        {
+          "title": "琼州海峡春运运输量创新高 海安至海口新能源车增加61.66%",
+          "content": "",
+          "source": "同花顺",
+          "url": "https://news.10jqka.com.cn/20260314/c675295500.shtml",
+          "time": ""
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "002594",
+          "name": "比亚迪",
+          "weight": 10
+        },
+        {
+          "code": "601127",
+          "name": "赛力斯",
+          "weight": 8
+        },
+        {
+          "code": "000625",
+          "name": "长安汽车",
+          "weight": 7
+        },
+        {
+          "code": "600104",
+          "name": "上汽集团",
+          "weight": 7
+        },
+        {
+          "code": "601633",
+          "name": "长城汽车",
           "weight": 7
         }
       ]
