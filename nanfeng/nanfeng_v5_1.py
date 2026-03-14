@@ -13,7 +13,6 @@ V5.1关键改进：
 import os
 import sys
 import json
-import logging
 import sqlite3
 import numpy as np
 import pandas as pd
@@ -22,26 +21,23 @@ from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass, field
 
+# 导入统一日志
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from agent_logger import get_logger
+
 # 导入实时数据聚合器和策略配置
 sys.path.insert(0, str(Path(__file__).parent))
 from realtime_aggregator import RealtimeAggregator
 from strategy_config import StrategyConfig, get_strategy, STRATEGIES
 
-# 配置
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db")
-XIFENG_HOTSPOTS = Path("/Users/roberto/Documents/OpenClawAgents/xifeng/data/hot_spots.json")
-LOG_DIR = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng/logs")
-LOG_DIR.mkdir(exist_ok=True)
+# 初始化日志
+log = get_logger("南风")
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(LOG_DIR / f"nanfeng_v5_1_{datetime.now().strftime('%Y%m%d')}.log"),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger("南风V5.1")
+# 配置
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+XIFENG_HOTSPOTS = Path.home() / "Documents/OpenClawAgents/xifeng/data/hot_spots.json"
+LOG_DIR = Path.home() / "Documents/OpenClawAgents/nanfeng/logs"
+LOG_DIR.mkdir(exist_ok=True)
 
 
 @dataclass
@@ -152,7 +148,7 @@ class NanFengV5_1:
         
         # 加载策略配置
         self.strategy = get_strategy(strategy_name)
-        logger.info(f"🎯 加载策略: {self.strategy.name} - {self.strategy.description}")
+        log.info(f"🎯 加载策略: {self.strategy.name} - {self.strategy.description}")
         
         # 从策略配置加载参数
         self.min_adx = self.strategy.min_adx
@@ -189,7 +185,7 @@ class NanFengV5_1:
                         if code:
                             hot_stocks[code] = {'sector': sector, 'level': level, 'name': name}
             except Exception as e:
-                logger.error(f"加载热点失败: {e}")
+                log.error(f"加载热点失败: {e}")
         return hot_stocks
     
     def get_stock_name(self, stock_code: str) -> str:
@@ -271,7 +267,7 @@ class NanFengV5_1:
                 return True, f"[{data_source}]大盘环境良好ADX={market_adx:.1f}，今日{daily_change:+.2f}%"
                 
         except Exception as e:
-            logger.error(f"市场环境检查失败: {e}")
+            log.error(f"市场环境检查失败: {e}")
             return True, "检查失败，默认允许"
     
     def get_stock_data(self, stock_code: str, days: int = 60) -> Optional[pd.DataFrame]:
@@ -283,7 +279,7 @@ class NanFengV5_1:
                 # 检查是否有实时数据
                 has_realtime = df['is_realtime'].iloc[-1] if 'is_realtime' in df.columns else False
                 if has_realtime:
-                    logger.debug(f"{stock_code}: 使用实时聚合数据")
+                    log.debug(f"{stock_code}: 使用实时聚合数据")
                     return df.drop(columns=['is_realtime']) if 'is_realtime' in df.columns else df
         
         # 2. 回退到传统日线数据
@@ -703,19 +699,19 @@ class NanFengV5_1:
     
     def scan_signals(self, max_stocks: int = 300) -> List[TradeSignal]:
         """扫描精选信号 - 每天最多5只"""
-        logger.info("🌬️ 南风V5.1 - 精选扫描...")
+        log.info("🌬️ 南风V5.1 - 精选扫描...")
         
         # 检查市场环境
         market_ok, market_msg = self.check_market_environment()
-        logger.info(f"市场环境: {market_msg}")
+        log.info(f"市场环境: {market_msg}")
         
         if not market_ok:
-            logger.warning("市场环境不佳，建议观望")
+            log.warning("市场环境不佳，建议观望")
             return []
         
         # 获取股票列表
         stock_codes = self.get_all_stocks(limit=max_stocks)
-        logger.info(f"扫描 {len(stock_codes)} 只股票")
+        log.info(f"扫描 {len(stock_codes)} 只股票")
         
         # 预加载数据
         all_data = {}
@@ -724,7 +720,7 @@ class NanFengV5_1:
             if df is not None:
                 all_data[code] = df
         
-        logger.info(f"成功加载 {len(all_data)} 只股票数据")
+        log.info(f"成功加载 {len(all_data)} 只股票数据")
         
         # 分析每只股票
         signals = []
@@ -735,20 +731,20 @@ class NanFengV5_1:
                     signals.append(signal)
                 
                 if (i + 1) % 100 == 0:
-                    logger.info(f"进度: {i+1}/{len(all_data)}, 已发现 {len(signals)} 个信号")
+                    log.info(f"进度: {i+1}/{len(all_data)}, 已发现 {len(signals)} 个信号")
                     
             except Exception as e:
-                logger.debug(f"分析 {code} 失败: {e}")
+                log.debug(f"分析 {code} 失败: {e}")
                 continue
         
         # 排序并精选Top 5
         signals.sort(key=lambda x: (x.total_score, x.relative_strength, x.is_hot_sector), reverse=True)
         selected = signals[:self.max_signals_per_day]
         
-        logger.info(f"\n发现 {len(signals)} 个合格信号，精选 Top {len(selected)}:")
+        log.info(f"\n发现 {len(signals)} 个合格信号，精选 Top {len(selected)}:")
         for i, s in enumerate(selected, 1):
             hot_tag = "🔥" if s.is_hot_sector else ""
-            logger.info(f"  {i}. {s.stock_code}: {s.total_score:.1f}分 {hot_tag}")
+            log.info(f"  {i}. {s.stock_code}: {s.total_score:.1f}分 {hot_tag}")
         
         return selected
     

@@ -8,13 +8,16 @@ import os
 import sys
 import time
 import json
-import logging
 import sqlite3
 import random
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass, asdict
 from pathlib import Path
+
+# 导入统一日志
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from agent_logger import get_logger
 
 # 导入抓取模块
 from fetcher import DataFetcher, SinaFetcher, TencentFetcher, RateLimiter
@@ -27,6 +30,9 @@ LOG_DIR = WORKSPACE / "logs"
 # 确保目录存在
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+# 初始化日志
+log = get_logger("北风")
 
 # 日志配置
 logging.basicConfig(
@@ -177,7 +183,7 @@ class Database:
         """)
         
         self.conn.commit()
-        logger.info(f"数据库初始化完成: {self.db_path}")
+        log.info(f"数据库初始化完成: {self.db_path}")
     
     def get_sync_status(self, stock_code: str, data_type: str) -> Optional[SyncStatus]:
         """获取同步状态"""
@@ -302,7 +308,7 @@ class SelfCheck:
     
     def run(self) -> bool:
         """执行自检"""
-        logger.info("🔍 阶段1: 自检")
+        log.info("🔍 阶段1: 自检")
         
         checks = []
         
@@ -339,7 +345,7 @@ class SelfCheck:
             msg = f"  {status} {name}"
             if info:
                 msg += f": {info}"
-            logger.info(msg)
+            log.info(msg)
             if not passed:
                 all_pass = False
         
@@ -354,7 +360,7 @@ class SourceSpeedTest:
     
     def run(self) -> Optional[str]:
         """执行测速，返回最优数据源名称"""
-        logger.info("\n⚡ 阶段2: 测速")
+        log.info("\n⚡ 阶段2: 测速")
         
         results = []
         
@@ -363,17 +369,17 @@ class SourceSpeedTest:
             results.append(health)
             
             status = "✅" if health.available else "❌"
-            logger.info(f"  {status} {config['name']}: {health.latency*1000:.0f}ms")
+            log.info(f"  {status} {config['name']}: {health.latency*1000:.0f}ms")
         
         # 选择最优
         available = [r for r in results if r.available]
         if not available:
-            logger.error("❌ 所有数据源不可用！")
+            log.error("❌ 所有数据源不可用！")
             return None
         
         # 按延迟排序
         best = min(available, key=lambda x: x.latency)
-        logger.info(f"🎯 选择数据源: {best.name} ({best.latency*1000:.0f}ms)")
+        log.info(f"🎯 选择数据源: {best.name} ({best.latency*1000:.0f}ms)")
         return best.name
     
     def _test_source(self, key: str, config: Dict) -> SourceHealth:
@@ -412,7 +418,7 @@ class FetchEngine:
         执行抓取任务
         返回: (成功, 记录数, 错误信息)
         """
-        logger.info(f"\n📥 抓取: {task.stock_code} ({task.start_time.date()} ~ {task.end_time.date()})")
+        log.info(f"\n📥 抓取: {task.stock_code} ({task.start_time.date()} ~ {task.end_time.date()})")
         
         start_time = time.time()
         
@@ -430,13 +436,13 @@ class FetchEngine:
             
             # 超时检查
             if duration_ms > 30000:  # 30秒
-                logger.warning(f"  ⏱️ 请求超时 ({duration_ms}ms)")
+                log.warning(f"  ⏱️ 请求超时 ({duration_ms}ms)")
                 self.db.log_error_task(task, f"Timeout: {duration_ms}ms")
                 return False, 0, f"Timeout: {duration_ms}ms"
             
             # 数据校验
             if not self._validate_data(data):
-                logger.warning(f"  ⚠️ 数据校验失败")
+                log.warning(f"  ⚠️ 数据校验失败")
                 self.db.log_fetch(task.stock_code, task.data_type, task.start_time, task.end_time,
                                  'INVALID', 0, self.source, duration_ms)
                 return False, 0, "Data validation failed"
@@ -450,10 +456,10 @@ class FetchEngine:
                 # 更新同步状态
                 self.db.update_sync_status(task.stock_code, task.data_type, len(data))
                 
-                logger.info(f"  ✅ 成功: {len(data)} 条记录 ({duration_ms}ms)")
+                log.info(f"  ✅ 成功: {len(data)} 条记录 ({duration_ms}ms)")
                 return True, len(data), None
             else:
-                logger.info(f"  ⚠️ 无数据")
+                log.info(f"  ⚠️ 无数据")
                 self.db.log_fetch(task.stock_code, task.data_type, task.start_time, task.end_time,
                                  'EMPTY', 0, self.source, duration_ms)
                 return True, 0, None
@@ -461,7 +467,7 @@ class FetchEngine:
         except Exception as e:
             duration_ms = int((time.time() - start_time) * 1000)
             error_msg = str(e)
-            logger.error(f"  ❌ 失败: {error_msg}")
+            log.error(f"  ❌ 失败: {error_msg}")
             
             self.db.log_fetch(task.stock_code, task.data_type, task.start_time, task.end_time,
                              'FAILED', 0, self.source, duration_ms)
@@ -480,7 +486,7 @@ class FetchEngine:
             # 检查必需字段
             for field in required_fields:
                 if field not in item:
-                    logger.warning(f"  缺少字段: {field}")
+                    log.warning(f"  缺少字段: {field}")
                     return False
             
             # 检查数值有效性
@@ -503,7 +509,7 @@ class TaskPlanner:
     
     def plan(self, stock_codes: List[str], data_type: str = 'daily') -> List[FetchTask]:
         """规划抓取任务"""
-        logger.info(f"\n📋 任务规划: {len(stock_codes)} 只股票")
+        log.info(f"\n📋 任务规划: {len(stock_codes)} 只股票")
         
         tasks = []
         now = datetime.now()
@@ -514,7 +520,7 @@ class TaskPlanner:
             
             if min_time is None:
                 # 全新股票，抓取5年历史
-                logger.info(f"  {code}: 全新股票，全量抓取")
+                log.info(f"  {code}: 全新股票，全量抓取")
                 tasks.append(FetchTask(
                     stock_code=code,
                     data_type=data_type,
@@ -527,7 +533,7 @@ class TaskPlanner:
                 status = self.db.get_sync_status(code, data_type)
                 if status and status.gap_ranges:
                     for gap_start, gap_end in status.gap_ranges:
-                        logger.info(f"  {code}: 补缺口 {gap_start.date()} ~ {gap_end.date()}")
+                        log.info(f"  {code}: 补缺口 {gap_start.date()} ~ {gap_end.date()}")
                         tasks.append(FetchTask(
                             stock_code=code,
                             data_type=data_type,
@@ -538,7 +544,7 @@ class TaskPlanner:
                 
                 # 2. 再抓增量
                 if (now - max_time) > timedelta(days=1):
-                    logger.info(f"  {code}: 增量更新 {max_time.date()} ~ {now.date()}")
+                    log.info(f"  {code}: 增量更新 {max_time.date()} ~ {now.date()}")
                     tasks.append(FetchTask(
                         stock_code=code,
                         data_type=data_type,
@@ -550,7 +556,7 @@ class TaskPlanner:
         # 按优先级排序
         tasks.sort(key=lambda x: x.priority, reverse=True)
         
-        logger.info(f"  生成 {len(tasks)} 个任务")
+        log.info(f"  生成 {len(tasks)} 个任务")
         return tasks
 
 
@@ -563,14 +569,14 @@ class BeiFengAgent:
     
     def run(self, stock_codes: List[str], data_type: str = 'daily'):
         """执行完整流程"""
-        logger.info("=" * 60)
-        logger.info("🌪️ 北风启动 - 股票数据采集")
-        logger.info("=" * 60)
+        log.info("=" * 60)
+        log.info("🌪️ 北风启动 - 股票数据采集")
+        log.info("=" * 60)
         
         # ========== 阶段1: 自检 ==========
         self_check = SelfCheck(self.db)
         if not self_check.run():
-            logger.error("❌ 自检失败，任务终止")
+            log.error("❌ 自检失败，任务终止")
             return False
         
         # ========== 阶段2: 测速 ==========
@@ -578,7 +584,7 @@ class BeiFengAgent:
         best_source = speed_test.run()
         
         if not best_source:
-            logger.error("❌ 无可用数据源，任务终止")
+            log.error("❌ 无可用数据源，任务终止")
             return False
         
         self.current_source = best_source
@@ -588,11 +594,11 @@ class BeiFengAgent:
         tasks = planner.plan(stock_codes, data_type)
         
         if not tasks:
-            logger.info("✅ 所有数据已是最新，无需抓取")
+            log.info("✅ 所有数据已是最新，无需抓取")
             return True
         
         # ========== 阶段4: 抓取 ==========
-        logger.info(f"\n📥 阶段4: 抓取 ({best_source})")
+        log.info(f"\n📥 阶段4: 抓取 ({best_source})")
         engine = FetchEngine(self.db, best_source)
         
         success_count = 0
@@ -600,7 +606,7 @@ class BeiFengAgent:
         total_records = 0
         
         for i, task in enumerate(tasks, 1):
-            logger.info(f"\n[{i}/{len(tasks)}]")
+            log.info(f"\n[{i}/{len(tasks)}]")
             success, count, error = engine.run(task)
             
             if success:
@@ -610,14 +616,14 @@ class BeiFengAgent:
                 fail_count += 1
         
         # ========== 阶段5: 报告 ==========
-        logger.info("\n" + "=" * 60)
-        logger.info("📊 执行报告")
-        logger.info("=" * 60)
-        logger.info(f"  任务总数: {len(tasks)}")
-        logger.info(f"  成功: {success_count}")
-        logger.info(f"  失败: {fail_count}")
-        logger.info(f"  新增记录: {total_records}")
-        logger.info("=" * 60)
+        log.info("\n" + "=" * 60)
+        log.info("📊 执行报告")
+        log.info("=" * 60)
+        log.info(f"  任务总数: {len(tasks)}")
+        log.info(f"  成功: {success_count}")
+        log.info(f"  失败: {fail_count}")
+        log.info(f"  新增记录: {total_records}")
+        log.info("=" * 60)
         
         return fail_count == 0
 

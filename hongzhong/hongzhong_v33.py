@@ -6,13 +6,19 @@
 import sqlite3
 import requests
 import smtplib
+import sys
 from datetime import datetime
 from pathlib import Path
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+# 导入统一日志
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from agent_logger import get_logger
+
+log = get_logger("红中")
+
 # 导入表格格式
-import sys
 sys.path.insert(0, str(Path(__file__).parent))
 from discord_table_format import DiscordTableFormat
 
@@ -42,7 +48,7 @@ def get_stock_name(stock_code):
 def main():
     """主程序"""
     print("="*80)
-    print("🀄 红中V3.3 - 运行中")
+    log.step("红中V3.3运行中")
     print("="*80)
     
     # 获取今日信号
@@ -64,14 +70,14 @@ def main():
     conservative = [s for s in signals if s['version'] == 'conservative']
     balance = [s for s in signals if s['version'] == 'balance']
     
-    print(f"保守策略: {len(conservative)} 个")
-    print(f"平衡策略: {len(balance)} 个")
+    log.info(f"保守策略: {len(conservative)} 个")
+    log.info(f"平衡策略: {len(balance)} 个")
     
     # 生成Discord消息
     discord_msg = DiscordTableFormat.generate_full_message(conservative, balance)
     
     # 发送Discord
-    print("\n📤 发送Discord...")
+    log.step("发送Discord")
     try:
         requests.post(
             DISCORD_WEBHOOK,
@@ -79,9 +85,9 @@ def main():
             headers={"Content-Type": "application/json"},
             timeout=10
         )
-        print("✅ Discord已发送")
+        log.success("Discord已发送")
     except Exception as e:
-        print(f"❌ Discord失败: {e}")
+        log.fail(f"Discord失败: {e}")
     
     print("\n" + "="*80)
 
