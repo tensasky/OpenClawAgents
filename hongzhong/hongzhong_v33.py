@@ -22,13 +22,11 @@ log = get_logger("红中")
 sys.path.insert(0, str(Path(__file__).parent))
 from discord_table_format import DiscordTableFormat
 
+# 导入邮件配置（从单独文件，避免密码硬编码）
+from email_config import SMTP_SERVER, SMTP_PORT, SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAIL
+
 # 配置
 DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1480218571211673605/M7NTuN1_2a1jHR9D8T0m_D7IVoD_oDYxfKZvEEW54PYx0JCk2AMsAWYhaqmPfRP8QW48"
-SMTP_SERVER = "smtp.qq.com"
-SMTP_PORT = 465
-SENDER_EMAIL = "3823810468@qq.com"
-SENDER_PASSWORD = "tmwhuqnthrpbcgec"
-RECEIVER_EMAIL = "3823810468@qq.com"
 
 BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 HONGZHONG_DB = Path.home() / "Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
