@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Dict
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+sys.path.insert(0, str(Path(__file__).parent / "utils"))
 from agent_logger import get_logger
 from unified_notifier import get_notifier, NotificationCategory
 
@@ -58,6 +58,11 @@ class EnhancedStockSelector:
         
         # 过滤出真正热的板块
         hot_sectors = [s for s in hot_sectors if s.get('is_hot', False)]
+        
+        # 如果没有热点，取前3个板块
+        if not hot_sectors:
+            hot_sectors = sectors[:3]
+            log.info(f"未标记热点板块，取前 {len(hot_sectors)} 个板块分析")
         
         self.results['hot_sectors'] = hot_sectors
         
