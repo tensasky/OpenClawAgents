@@ -30,9 +30,9 @@ log = get_logger("南风")
 
 
 # 配置
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db")
-XIFENG_HOTSPOTS = Path("/Users/roberto/Documents/OpenClawAgents/xifeng/data/hot_spots.json")
-LOG_DIR = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng/logs")
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+XIFENG_HOTSPOTS = Path.home() / "Documents/OpenClawAgents/xifeng/data/hot_spots.json"
+LOG_DIR = Path.home() / "Documents/OpenClawAgents/nanfeng/logs"
 LOG_DIR.mkdir(exist_ok=True)
 
 logging.basicConfig(
