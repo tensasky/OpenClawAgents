@@ -10,6 +10,7 @@ import time
 import json
 import sqlite3
 import random
+import logging
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass, asdict
