@@ -15,7 +15,7 @@ from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 from agent_logger import get_logger
 
 log = get_logger("发财")

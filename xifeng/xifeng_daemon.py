@@ -17,7 +17,7 @@ from multi_source_fetcher import MultiSourceFetcher
 from stock_sector_map import SECTOR_LEADING_STOCKS, SECTOR_KEYWORDS
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 from agent_logger import get_logger
 
 log = get_logger("西风")

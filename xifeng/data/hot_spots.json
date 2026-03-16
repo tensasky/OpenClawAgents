@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-03-16T11:28:45.876430",
+  "total_sectors": 2,
+  "summary": [
+    {
+      "sector": "房地产",
+      "heat_score": 50.4,
+      "level": "Medium",
+      "today_count": 59,
+      "sentiment": 0.05,
+      "top_news": [
+        {
+          "title": "食品饮料行业今日净流入资金4.54亿元，贵州茅台等5股净流入资金超3000万元",
+          "source": "东方财富",
+          "sentiment": "➡️"
+        },
+        {
+          "title": "来伊份：控股股东爱屋企管质押910万股，占总股本的2.72%",
+          "source": "东方财富",
+          "sentiment": "➡️"
+        },
+        {
+          "title": "今日38只个股突破年线",
+          "source": "东方财富",
+          "sentiment": "📈"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "000002",
+          "name": "万科A",
+          "weight": 10
+        },
+        {
+          "code": "600048",
+          "name": "保利发展",
+          "weight": 9
+        },
+        {
+          "code": "001979",
+          "name": "招商蛇口",
+          "weight": 8
+        }
+      ]
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 14.9,
+      "level": "Low",
+      "today_count": 1,
+      "sentiment": 0.3,
+      "top_news": [
+        {
+          "title": "存储芯片板块持续上扬，太极实业等股涨停",
+          "source": "同花顺",
+          "sentiment": "📈"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300033",
+          "name": "同花顺",
+          "weight": 10
+        },
+        {
+          "code": "002230",
+          "name": "科大讯飞",
+          "weight": 9
+        },
+        {
+          "code": "603019",
+          "name": "中科曙光",
+          "weight": 8
+        }
+      ]
+    }
+  ],
+  "hot_spots": [
+    {
+      "sector": "房地产",
+      "heat_score": 50.4,
+      "level": "Medium",
+      "today_count": 59,
+      "avg_count": 59.5,
+      "momentum": 0.99,
+      "sentiment": 0.05,
+      "breakout_coefficient": 0.99
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 14.9,
+      "level": "Low",
+      "today_count": 1,
+      "avg_count": 7.5,
+      "momentum": 0.13,
+      "sentiment": 0.3,
+      "breakout_coefficient": 0.13
+    }
+  ]
+}

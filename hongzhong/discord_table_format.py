@@ -8,7 +8,7 @@ import json
 from datetime import datetime
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent/../ "utils"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 from agent_logger import get_logger
 
 log = get_logger("红中")
