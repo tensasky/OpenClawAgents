@@ -23,8 +23,7 @@ def insert_today_minute_data():
     for stock in stocks:
         cursor.execute("""
             SELECT close, open, high, low, volume 
-            FROM kline_data 
-            WHERE stock_code = ? AND data_type = 'daily'
+            FROM daily WHERE stock_code = ?
             ORDER BY timestamp DESC LIMIT 1
         """, (stock,))
         

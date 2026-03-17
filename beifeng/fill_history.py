@@ -50,8 +50,7 @@ def get_stock_earliest_date(stock_code: str) -> str:
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT MIN(timestamp) FROM kline_data 
-        WHERE stock_code = ? AND data_type = 'daily'
+        SELECT MIN(timestamp) FROM daily WHERE stock_code = ?
     """, (stock_code,))
     row = cursor.fetchone()
     conn.close()

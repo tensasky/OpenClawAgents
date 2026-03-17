@@ -233,7 +233,7 @@ class NanFengV5_1:
                 query = """
                     SELECT timestamp, open, high, low, close, volume
                     FROM daily
-                    WHERE stock_code = 'sh000001' AND data_type = 'daily'
+                    WHERE stock_code = 'sh000001'
                     ORDER BY timestamp DESC
                     LIMIT 30
                 """
@@ -288,7 +288,7 @@ class NanFengV5_1:
             query = """
                 SELECT timestamp, open, high, low, close, volume, amount
                 FROM daily
-                WHERE stock_code = ? AND data_type = 'daily'
+                WHERE stock_code = ?
                 ORDER BY timestamp DESC
                 LIMIT ?
             """
@@ -309,7 +309,6 @@ class NanFengV5_1:
         cursor.execute("""
             SELECT DISTINCT stock_code 
             FROM daily 
-            WHERE data_type = 'daily'
             ORDER BY stock_code
             LIMIT ?
         """, (limit,))

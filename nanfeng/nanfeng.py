@@ -313,8 +313,7 @@ class NanFeng:
         # 获取日线数据
         query = f"""
         SELECT timestamp, open, high, low, close, volume, amount
-        FROM kline_data
-        WHERE stock_code = '{stock_code}' AND data_type = 'daily'
+        FROM daily WHERE stock_code = '{stock_code}'
         AND timestamp >= date('now', '-{days} days')
         ORDER BY timestamp
         """
@@ -337,7 +336,7 @@ class NanFeng:
         # 获取所有股票列表
         conn = sqlite3.connect(self.beifeng_db)
         cursor = conn.cursor()
-        cursor.execute("SELECT DISTINCT stock_code FROM kline_data WHERE data_type = 'daily'")
+        cursor.execute("SELECT DISTINCT stock_code FROM daily WHERE 1=1")
         stocks = [row[0] for row in cursor.fetchall()]
         conn.close()
         

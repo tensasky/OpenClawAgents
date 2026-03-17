@@ -51,8 +51,8 @@ log = get_logger("南风")
             conn = sqlite3.connect(self.db_path)
             query = """
                 SELECT timestamp, open, high, low, close, volume, amount
-                FROM kline_data
-                WHERE stock_code = ? AND data_type = 'daily'
+                FROM daily
+                WHERE stock_code = ?
                 AND timestamp <= ?
                 ORDER BY timestamp DESC
                 LIMIT ?
@@ -74,8 +74,8 @@ log = get_logger("南风")
             cursor = conn.cursor()
             
             cursor.execute("""
-                SELECT close FROM kline_data
-                WHERE stock_code = ? AND data_type = 'daily'
+                SELECT close FROM daily
+                WHERE stock_code = ?
                 AND timestamp = ?
             """, (stock_code, entry_date))
             row = cursor.fetchone()
@@ -84,8 +84,8 @@ log = get_logger("南风")
             entry_price = row[0]
             
             cursor.execute("""
-                SELECT close FROM kline_data
-                WHERE stock_code = ? AND data_type = 'daily'
+                SELECT close FROM daily
+                WHERE stock_code = ?
                 AND timestamp > ?
                 ORDER BY timestamp
                 LIMIT 1 OFFSET ?
@@ -116,8 +116,7 @@ log = get_logger("南风")
             cursor = conn.cursor()
             cursor.execute("""
                 SELECT DISTINCT stock_code 
-                FROM kline_data 
-                WHERE data_type = 'daily'
+                FROM daily 
                 LIMIT ?
             """, (max_stocks,))
             stock_codes = [row[0] for row in cursor.fetchall()]

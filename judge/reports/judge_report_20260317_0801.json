@@ -1,0 +1,42 @@
+[
+  {
+    "check": "日线覆盖率",
+    "count": 0,
+    "status": "❌",
+    "threshold": 5000
+  },
+  {
+    "check": "分钟覆盖率",
+    "count": 0,
+    "status": "⚠️",
+    "threshold": 5000
+  },
+  {
+    "check": "sh600348价格",
+    "status": "❌",
+    "error": "无本地数据"
+  },
+  {
+    "check": "数据一致性",
+    "mismatches": [],
+    "status": "✅"
+  },
+  {
+    "check": "数据时效性",
+    "status": "✅",
+    "daily": {
+      "latest_ts": null,
+      "delay_minutes": null,
+      "count": 0,
+      "status": "❌"
+    },
+    "minute": {
+      "latest_ts": null,
+      "delay_minutes": null,
+      "count": 0,
+      "status": "❌"
+    },
+    "threshold_minutes": 30,
+    "is_valid": true
+  }
+]

@@ -27,8 +27,7 @@ def get_stocks(date: str, limit: int = 100):
     cursor = conn.cursor()
     cursor.execute("""
         SELECT DISTINCT stock_code
-        FROM kline_data
-        WHERE data_type = 'daily' AND date(timestamp) = ?
+        FROM daily WHERE date(timestamp) = ?
         LIMIT ?
     """, (date, limit))
     stocks = [row[0] for row in cursor.fetchall()]
@@ -39,8 +38,7 @@ def get_stock_data(stock_code: str, end_date: str, days: int = 40):
     conn = sqlite3.connect(BEIFENG_DB)
     query = """
         SELECT timestamp, open, high, low, close, volume, amount
-        FROM kline_data
-        WHERE stock_code = ? AND data_type = 'daily'
+        FROM daily WHERE stock_code = ?
         AND date(timestamp) <= ?
         ORDER BY timestamp DESC
         LIMIT ?

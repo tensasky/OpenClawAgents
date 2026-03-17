@@ -30,17 +30,17 @@ def show_status():
     conn.row_factory = sqlite3.Row
     
     # 1. 股票数量
-    cursor = conn.execute("SELECT COUNT(DISTINCT stock_code) FROM kline_data")
+    cursor = conn.execute("SELECT COUNT(DISTINCT stock_code) FROM daily")
     stock_count = cursor.fetchone()[0]
     log.info(f"📊 监控股票: {stock_count} 只")
     
     # 2. 数据总量
-    cursor = conn.execute("SELECT COUNT(*) FROM kline_data")
+    cursor = conn.execute("SELECT COUNT(*) FROM daily")
     total_records = cursor.fetchone()[0]
     log.info(f"📈 总记录数: {total_records:,} 条")
     
     # 3. 最新数据时间
-    cursor = conn.execute("SELECT MAX(timestamp) FROM kline_data")
+    cursor = conn.execute("SELECT MAX(timestamp) FROM daily")
     latest = cursor.fetchone()[0]
     log.info(f"🕐 最新数据: {latest}")
     

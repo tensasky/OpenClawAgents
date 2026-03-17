@@ -88,8 +88,7 @@ class RealtimeAggregator:
             # 1. 获取历史日线数据（不含今天）
             query = """
                 SELECT timestamp, open, high, low, close, volume, amount
-                FROM kline_data
-                WHERE stock_code = ? AND data_type = 'daily'
+                FROM daily WHERE stock_code = ?
                 AND timestamp < DATE('now')
                 ORDER BY timestamp DESC
                 LIMIT ?
