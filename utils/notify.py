@@ -32,7 +32,7 @@ if CONFIG_PATH.exists():
             'smtp_port': email_cfg.get('smtp_port', 465),
             'sender': email_cfg.get('username', '3823810468@qq.com'),
             'password': 'yodqmyrlygqecgaj',
-            'receivers': [email_cfg.get('to', '3823810468@qq.com')]
+            'receivers': ['tensasky@gmail.com', 'rcheng2@lululemon.com', '3823810468@qq.com']
         }
         
         if not DISCORD_WEBHOOK:
@@ -44,7 +44,8 @@ if CONFIG_PATH.exists():
             'smtp_port': 465,
             'sender': '3823810468@qq.com',
             'password': 'yodqmyrlygqecgaj',
-            'receivers': ['3823810468@qq.com']
+            'receivers': ['tensasky@gmail.com', 'rcheng2@lululemon.com', '3823810468@qq.com'],
+            'sender_name': '财神爷'
         }
 else:
     EMAIL_CONFIG = {
@@ -52,7 +53,8 @@ else:
         'smtp_port': 465,
         'sender': '3823810468@qq.com',
         'password': 'yodqmyrlygqecgaj',
-        'receivers': ['3823810468@qq.com']
+        'receivers': ['tensasky@gmail.com', 'rcheng2@lululemon.com', '3823810468@qq.com'],
+            'sender_name': '财神爷'
     }
 
 
@@ -90,7 +92,8 @@ def send_email(subject: str, content: str, config: dict = None) -> bool:
     try:
         msg = MIMEText(content, 'html', 'utf-8')
         msg['Subject'] = subject
-        msg['From'] = config['sender']
+        sender_name = config.get('sender_name', '')
+        msg['From'] = f'{sender_name} <{config["sender"]}>' if sender_name else config['sender']
         msg['To'] = ', '.join(config['receivers'])
         
         server = smtplib.SMTP(config['smtp_server'], config['smtp_port'])
