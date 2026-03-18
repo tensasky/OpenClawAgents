@@ -869,6 +869,24 @@ def main():
     
     # 保存信号到数据库
     hongzhong.save_signals()
+
+    # 事件驱动: 发布信号到消息队列
+    try:
+        from utils.event_bus import create_publisher
+        publisher = create_publisher()
+        for s in signals:
+            publisher.publish_signal({
+                'code': s['code'],
+                'name': s['name'],
+                'score': s['score'],
+                'strategy': s.get('strategy', '南风V5.5'),
+                'entry_price': s.get('entry_price', 0),
+                'stop_loss': s.get('stop_loss', 0)
+            })
+        print('✅ 信号已发布到事件总线')
+    except Exception as e:
+        print(f'⚠️ 事件驱动发布失败: {e}')
+
     
     # 显示信号
     print(f"\n📊 生成 {len(signals)} 个交易信号:\n")
