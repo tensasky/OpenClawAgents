@@ -48,6 +48,19 @@ def load_strategy_module():
     return module
 
 
+
+
+def get_stock_name(code):
+    """从数据库获取股票名称"""
+    import sqlite3
+    conn = sqlite3.connect(str(BEIFENG_DB))
+    cursor = conn.cursor()
+    cursor.execute('SELECT stock_name FROM master_stocks WHERE stock_code = ?', (code,))
+    row = cursor.fetchone()
+    conn.close()
+    return row[0] if row else code
+
+
 def get_multi_strategy_signals():
     """获取多策略信号"""
     module = load_strategy_module()
@@ -82,10 +95,13 @@ def get_multi_strategy_signals():
             else:
                 continue
             
+            # 获取股票名称
+            stock_name = get_stock_name(s.stock_code)
+            
             # 格式化信号
             level_signals[level].append({
                 'code': s.stock_code,
-                'name': s.stock_name,
+                'name': stock_name,
                 'score': score,
                 'strategy': strategy_name
             })
