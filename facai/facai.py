@@ -276,8 +276,8 @@ class PortfolioManager:
             cursor.execute("""
                 INSERT INTO positions 
                 (symbol, name, quantity, avg_price, current_price, stop_loss, highest_price, 
-                 entry_time, entry_logic, sector, sector_heat)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 entry_time, entry_logic, sector, sector_heat, signal_id, strategy, score)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 symbol, name, quantity, price, price, stop_loss, price,
                 datetime.now().isoformat(),
@@ -293,10 +293,13 @@ class PortfolioManager:
             
             # 记录交易
             cursor.execute("""
-                INSERT INTO trades (action, symbol, name, price, quantity, total_amount, logic, total_assets, cash_balance)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO trades (action, symbol, name, price, quantity, total_amount, logic, total_assets, cash_balance, signal_id, strategy, score)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, ('BUY', symbol, name, price, quantity, total_cost,
-                  f"南风{score}分，{sector}({sector_heat})", new_assets, new_cash))
+                  f"南风{score}分，{sector}({sector_heat})", new_assets, new_cash,
+                  signals[0].get('id') if signals else None,
+                  signals[0].get('strategy', '南风V5.5') if signals else '南风V5.5',
+                  score))
             
             conn.commit()
             logger.info(f"💰 买入成功: {symbol}({name}) {quantity}股 @ ¥{price}，止损¥{stop_loss:.2f}")
@@ -368,10 +371,11 @@ class PortfolioManager:
             
             # 记录交易（包含手续费）
             cursor.execute("""
-                INSERT INTO trades (action, symbol, name, price, quantity, total_amount, fee, logic, total_assets, cash_balance)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO trades (action, symbol, name, price, quantity, total_amount, fee, logic, total_assets, cash_balance, signal_id, strategy, score)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, ('SELL', symbol, position.name, price, quantity, net_amount, fee,
-                  f"{reason}，手续费¥{fee:.2f}", new_assets, new_cash))
+                  f"{reason}，手续费¥{fee:.2f}", new_assets, new_cash,
+                  position.get('signal_id'), position.get('strategy'), position.get('score')))
             
             conn.commit()
             logger.info(f"💰 卖出成功: {symbol}({position.name}) {quantity}股 @ ¥{price}，"
