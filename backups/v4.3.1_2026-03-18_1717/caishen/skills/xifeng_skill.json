@@ -1,9 +1,0 @@
-{
-  "name": "西风",
-  "version": "1.0.0",
-  "enabled": true,
-  "schedule": ["14:30"],
-  "dependencies": ["beifeng"],
-  "timeout": 60,
-  "retry_count": 2
-}

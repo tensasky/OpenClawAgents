@@ -1,9 +1,0 @@
-{
-  "name": "发财",
-  "version": "1.0.0",
-  "enabled": true,
-  "schedule": ["14:50"],
-  "dependencies": ["hongzhong"],
-  "timeout": 600,
-  "retry_count": 2
-}

@@ -1,9 +1,0 @@
-{
-  "name": "白板",
-  "version": "1.0.0",
-  "enabled": true,
-  "schedule": ["15:30", "sun:20:00"],
-  "dependencies": ["facai"],
-  "timeout": 1800,
-  "retry_count": 2
-}

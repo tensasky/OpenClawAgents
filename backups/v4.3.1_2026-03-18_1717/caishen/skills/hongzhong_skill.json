@@ -1,9 +1,0 @@
-{
-  "name": "红中",
-  "version": "1.0.0",
-  "enabled": true,
-  "schedule": ["14:45"],
-  "dependencies": ["nanfeng", "dongfeng"],
-  "timeout": 60,
-  "retry_count": 3
-}
