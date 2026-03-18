@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "socket": {
+    "path": "/Users/roberto/.openclaw/exec-approvals.sock",
+    "token": "EEJ0sl2_QKYZGHJlkz8Xsq3YOlrJCCOu"
+  },
+  "defaults": {
+    "security": "full"
+  },
+  "agents": {}
+}
