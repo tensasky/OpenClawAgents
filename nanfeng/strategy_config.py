@@ -168,6 +168,16 @@ STRATEGIES = {
         suitable_for="中长线投资者，上班族"
     ),
     
+    
+    "涨停监控": StrategyConfig(
+        name="涨停监控",
+        description="监控首板二板三板机会，快进快出",
+        min_adx=20,
+        rsi_period=6,
+        min_ma20_slope=0.5,
+        min_volume_ratio=2.0,
+        score_threshold=60
+    ),
     "热点追击": StrategyConfig(
         name="热点追击",
         description="紧跟市场热点，快进快出",
