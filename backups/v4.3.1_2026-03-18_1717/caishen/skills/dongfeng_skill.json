@@ -1,0 +1,9 @@
+{
+  "name": "东风",
+  "version": "1.0.0",
+  "enabled": true,
+  "schedule": ["13:30", "13:45", "14:00"],
+  "dependencies": ["beifeng", "xifeng"],
+  "timeout": 300,
+  "retry_count": 2
+}

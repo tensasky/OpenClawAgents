@@ -1,0 +1,105 @@
+{
+  "generated_at": "2026-03-17T10:38:05.213403",
+  "total_sectors": 2,
+  "summary": [
+    {
+      "sector": "房地产",
+      "heat_score": 50.2,
+      "level": "Medium",
+      "today_count": 58,
+      "sentiment": 0.04,
+      "top_news": [
+        {
+          "title": "今日91只个股突破年线",
+          "source": "东方财富",
+          "sentiment": "📈"
+        },
+        {
+          "title": "【盘中播报】60只个股跨越牛熊分界线",
+          "source": "东方财富",
+          "sentiment": "➡️"
+        },
+        {
+          "title": "食品饮料行业今日涨1.99%，主力资金净流入15.49亿元",
+          "source": "东方财富",
+          "sentiment": "➡️"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "000002",
+          "name": "万科A",
+          "weight": 10
+        },
+        {
+          "code": "600048",
+          "name": "保利发展",
+          "weight": 9
+        },
+        {
+          "code": "001979",
+          "name": "招商蛇口",
+          "weight": 8
+        }
+      ]
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 14.7,
+      "level": "Low",
+      "today_count": 2,
+      "sentiment": 0.0,
+      "top_news": [
+        {
+          "title": "GTC大会利好兑现，A股算力板块大跌",
+          "source": "同花顺",
+          "sentiment": "➡️"
+        },
+        {
+          "title": "xAI大规模招募银行家 马斯克要让Grok变身“顶级投行分析师”",
+          "source": "同花顺",
+          "sentiment": "➡️"
+        }
+      ],
+      "leading_stocks": [
+        {
+          "code": "300033",
+          "name": "同花顺",
+          "weight": 10
+        },
+        {
+          "code": "002230",
+          "name": "科大讯飞",
+          "weight": 9
+        },
+        {
+          "code": "603019",
+          "name": "中科曙光",
+          "weight": 8
+        }
+      ]
+    }
+  ],
+  "hot_spots": [
+    {
+      "sector": "房地产",
+      "heat_score": 50.2,
+      "level": "Medium",
+      "today_count": 58,
+      "avg_count": 59.0,
+      "momentum": 0.98,
+      "sentiment": 0.04,
+      "breakout_coefficient": 0.98
+    },
+    {
+      "sector": "人工智能",
+      "heat_score": 14.7,
+      "level": "Low",
+      "today_count": 2,
+      "avg_count": 5.7,
+      "momentum": 0.35,
+      "sentiment": 0.0,
+      "breakout_coefficient": 0.35
+    }
+  ]
+}

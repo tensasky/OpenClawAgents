@@ -1,0 +1,1907 @@
+{
+  "backtest_date": "2026-03-11T09:18:33.124174",
+  "version": "V5",
+  "config": {
+    "min_adx": 25,
+    "min_ma20_slope": 0.001,
+    "weights": {
+      "trend": 0.4,
+      "momentum": 0.3,
+      "volume": 0.2,
+      "quality": 0.1
+    }
+  },
+  "total_stocks": 73,
+  "results": [
+    {
+      "code": "sh600015",
+      "score": 26.2,
+      "trend_score": 35,
+      "momentum_score": 24,
+      "volume_score": 20,
+      "adx": 31.871276578429732,
+      "rsi": 62.49999999999996,
+      "ma20_slope": 0.011380238369857722,
+      "relative_strength": 0.84,
+      "price": 6.79,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=31.9",
+        "RSI良好(62)",
+        "MACD水上",
+        "5日涨幅适中(2.1%)",
+        "量能理想(1.5倍)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [],
+      "future_return": 1.9145802650957222
+    },
+    {
+      "code": "sh600098",
+      "score": 25.0,
+      "trend_score": 35,
+      "momentum_score": 20,
+      "volume_score": 20,
+      "adx": 34.95682272224147,
+      "rsi": 92.2222222222222,
+      "ma20_slope": 0.015337423312883298,
+      "relative_strength": 0.91,
+      "price": 7.67,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=35.0",
+        "MACD水上",
+        "5日涨幅适中(7.4%)",
+        "20日强势(10.8%)",
+        "量能理想(2.0倍)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(92)"
+      ],
+      "future_return": 0.0
+    },
+    {
+      "code": "sh600101",
+      "score": 25.0,
+      "trend_score": 35,
+      "momentum_score": 20,
+      "volume_score": 20,
+      "adx": 56.4019733068188,
+      "rsi": 93.85964912280686,
+      "ma20_slope": 0.017630990812018892,
+      "relative_strength": 0.92,
+      "price": 11.04,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=56.4",
+        "MACD水上",
+        "5日涨幅适中(5.6%)",
+        "20日强势(12.1%)",
+        "量能理想(1.3倍)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(94)"
+      ],
+      "future_return": 1.3586956521739246
+    },
+    {
+      "code": "sh600216",
+      "score": 24.7,
+      "trend_score": 35,
+      "momentum_score": 20,
+      "volume_score": 20,
+      "adx": 61.403771041778754,
+      "rsi": 65.30612244897958,
+      "ma20_slope": 0.02836668648041735,
+      "relative_strength": 0.95,
+      "price": 16.77,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=61.4",
+        "MACD水上",
+        "5日微涨(1.2%)",
+        "20日强势(16.7%)",
+        "量能理想(1.4倍)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI偏高(65)"
+      ],
+      "future_return": -0.11926058437685683
+    },
+    {
+      "code": "sh600149",
+      "score": 24.6,
+      "trend_score": 35,
+      "momentum_score": 23,
+      "volume_score": 15,
+      "adx": 48.88722322476088,
+      "rsi": 67.032967032967,
+      "ma20_slope": 0.02642329421990441,
+      "relative_strength": 0.96,
+      "price": 6.34,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=48.9",
+        "MACD水上",
+        "5日涨幅适中(3.4%)",
+        "20日强势(18.3%)",
+        "温和放量(3.3倍)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI偏高(67)"
+      ],
+      "future_return": 6.466876971608837
+    },
+    {
+      "code": "sh600068",
+      "score": 24.3,
+      "trend_score": 35,
+      "momentum_score": 22,
+      "volume_score": 15,
+      "adx": 58.01055280654033,
+      "rsi": 89.89898989898978,
+      "ma20_slope": 0.02568694386927058,
+      "relative_strength": 0.94,
+      "price": 9.93,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=58.0",
+        "MACD金叉",
+        "5日涨幅适中(7.9%)",
+        "20日强势(15.6%)",
+        "温和放量(2.3倍)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(90)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600032",
+      "score": 24.2,
+      "trend_score": 35,
+      "momentum_score": 18,
+      "volume_score": 20,
+      "adx": 33.768422595249724,
+      "rsi": 88.40579710144928,
+      "ma20_slope": 0.006661639014580408,
+      "relative_strength": 0.72,
+      "price": 8.31,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=33.8",
+        "MACD水上",
+        "5日涨幅适中(2.7%)",
+        "量能理想(1.5倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(88)"
+      ],
+      "future_return": 3.4897713598074587
+    },
+    {
+      "code": "sh600016",
+      "score": 23.7,
+      "trend_score": 30,
+      "momentum_score": 23,
+      "volume_score": 20,
+      "adx": 30.406834955674874,
+      "rsi": 46.6666666666666,
+      "ma20_slope": 0.0075688372699984395,
+      "relative_strength": 0.77,
+      "price": 3.92,
+      "signals": [
+        "站上MA5/MA20",
+        "MA20强势向上",
+        "强趋势ADX=30.4",
+        "RSI健康(47)",
+        "MACD水上",
+        "5日微涨(0.8%)",
+        "量能理想(1.3倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [],
+      "future_return": 0.5102040816326481
+    },
+    {
+      "code": "sh600075",
+      "score": 23.5,
+      "trend_score": 35,
+      "momentum_score": 26,
+      "volume_score": 5,
+      "adx": 48.00524423194996,
+      "rsi": 57.77777777777777,
+      "ma20_slope": 0.020027456997496657,
+      "relative_strength": 0.9,
+      "price": 6.65,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=48.0",
+        "RSI良好(58)",
+        "MACD水上",
+        "5日涨幅适中(2.6%)",
+        "20日强势(10.8%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "量能不足(1.2倍)",
+        "波动率过高(64%)"
+      ],
+      "future_return": 2.105263157894721
+    },
+    {
+      "code": "sh600025",
+      "score": 23.4,
+      "trend_score": 35,
+      "momentum_score": 18,
+      "volume_score": 15,
+      "adx": 37.60365593337723,
+      "rsi": 98.76543209876546,
+      "ma20_slope": 0.008239042074041643,
+      "relative_strength": 0.86,
+      "price": 9.81,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=37.6",
+        "MACD水上",
+        "5日涨幅适中(7.1%)",
+        "温和放量(2.0倍)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(99)"
+      ],
+      "future_return": 5.70846075433229
+    },
+    {
+      "code": "sh600023",
+      "score": 23.2,
+      "trend_score": 32,
+      "momentum_score": 18,
+      "volume_score": 20,
+      "adx": 29.55478645150375,
+      "rsi": 94.00000000000011,
+      "ma20_slope": 0.014767932489451682,
+      "relative_strength": 0.87,
+      "price": 5.4,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "趋势良好ADX=29.6",
+        "MACD水上",
+        "5日涨幅适中(5.9%)",
+        "量能理想(1.4倍)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(94)"
+      ],
+      "future_return": 1.1111111111111072
+    },
+    {
+      "code": "sh600017",
+      "score": 23.0,
+      "trend_score": 32,
+      "momentum_score": 18,
+      "volume_score": 20,
+      "adx": 27.995252604439717,
+      "rsi": 91.66666666666652,
+      "ma20_slope": 0.0073635344965583905,
+      "relative_strength": 0.73,
+      "price": 3.23,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "趋势良好ADX=28.0",
+        "MACD水上",
+        "5日涨幅适中(2.2%)",
+        "量能理想(1.4倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(92)"
+      ],
+      "future_return": -1.5479876160990669
+    },
+    {
+      "code": "sh600230",
+      "score": 22.4,
+      "trend_score": 35,
+      "momentum_score": 23,
+      "volume_score": 5,
+      "adx": 60.86057264993183,
+      "rsi": 72.97039159503343,
+      "ma20_slope": 0.059919028340080796,
+      "relative_strength": 0.98,
+      "price": 24.68,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=60.9",
+        "MACD水上",
+        "5日涨幅适中(5.0%)",
+        "20日强势(30.7%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI偏高(73)",
+        "量能不足(1.1倍)",
+        "波动率过高(99%)"
+      ],
+      "future_return": -4.7406807131280315
+    },
+    {
+      "code": "sh600132",
+      "score": 22.2,
+      "trend_score": 32,
+      "momentum_score": 18,
+      "volume_score": 15,
+      "adx": 25.937135306944533,
+      "rsi": 100.0,
+      "ma20_slope": 0.010659578803089483,
+      "relative_strength": 0.82,
+      "price": 56.68,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "趋势良好ADX=25.9",
+        "MACD水上",
+        "5日涨幅适中(3.7%)",
+        "温和放量(2.1倍)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(100)"
+      ],
+      "future_return": 0.635144671841914
+    },
+    {
+      "code": "sh600188",
+      "score": 22.2,
+      "trend_score": 35,
+      "momentum_score": 15,
+      "volume_score": 15,
+      "adx": 47.547962795427615,
+      "rsi": 84.61538461538457,
+      "ma20_slope": 0.058877374219490484,
+      "relative_strength": 0.99,
+      "price": 20.5,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=47.5",
+        "MACD水上",
+        "20日强势(47.4%)",
+        "温和放量(2.1倍)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(85)",
+        "5日涨幅过大(19.2%)",
+        "波动率过高(61%)"
+      ],
+      "future_return": -4.975609756097555
+    },
+    {
+      "code": "sh600227",
+      "score": 22.2,
+      "trend_score": 35,
+      "momentum_score": 15,
+      "volume_score": 15,
+      "adx": 56.91201248716551,
+      "rsi": 91.17647058823528,
+      "ma20_slope": 0.03872216844143275,
+      "relative_strength": 0.98,
+      "price": 3.32,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=56.9",
+        "MACD水上",
+        "20日强势(27.7%)",
+        "温和放量(2.6倍)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(91)",
+        "5日涨幅过大(12.5%)",
+        "波动率过高(71%)"
+      ],
+      "future_return": 15.361445783132543
+    },
+    {
+      "code": "sh600152",
+      "score": 21.7,
+      "trend_score": 35,
+      "momentum_score": 20,
+      "volume_score": 5,
+      "adx": 40.28955298943304,
+      "rsi": 80.00000000000006,
+      "ma20_slope": 0.033316506814739716,
+      "relative_strength": 0.94,
+      "price": 9.13,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=40.3",
+        "MACD水上",
+        "5日涨幅适中(4.0%)",
+        "20日强势(15.4%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(80)",
+        "量能不足(1.1倍)"
+      ],
+      "future_return": 6.024096385542155
+    },
+    {
+      "code": "sh600157",
+      "score": 21.7,
+      "trend_score": 35,
+      "momentum_score": 20,
+      "volume_score": 5,
+      "adx": 34.925159435304764,
+      "rsi": 76.92307692307696,
+      "ma20_slope": 0.018050541516245508,
+      "relative_strength": 0.89,
+      "price": 1.84,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=34.9",
+        "MACD水上",
+        "5日涨幅适中(6.4%)",
+        "20日强势(10.2%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(77)",
+        "量能不足(1.1倍)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600160",
+      "score": 21.4,
+      "trend_score": 35,
+      "momentum_score": 18,
+      "volume_score": 5,
+      "adx": 40.58318644252225,
+      "rsi": 79.60992907801419,
+      "ma20_slope": 0.01459167461074034,
+      "relative_strength": 0.82,
+      "price": 42.15,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=40.6",
+        "MACD水上",
+        "5日涨幅适中(2.8%)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(80)",
+        "量能不足(1.1倍)"
+      ],
+      "future_return": -1.8030842230130406
+    },
+    {
+      "code": "sh600213",
+      "score": 21.3,
+      "trend_score": 28,
+      "momentum_score": 18,
+      "volume_score": 20,
+      "adx": 23.884863751940614,
+      "rsi": 84.61538461538457,
+      "ma20_slope": 0.015997217875152084,
+      "relative_strength": 0.87,
+      "price": 6.36,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "MACD水上",
+        "5日涨幅适中(8.9%)",
+        "量能理想(1.4倍)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "趋势较弱ADX=23.9",
+        "RSI过热(85)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600027",
+      "score": 21.2,
+      "trend_score": 35,
+      "momentum_score": 18,
+      "volume_score": 5,
+      "adx": 36.86173673248931,
+      "rsi": 91.89189189189185,
+      "ma20_slope": 0.004072490327835566,
+      "relative_strength": 0.76,
+      "price": 5.16,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=36.9",
+        "MACD水上",
+        "5日涨幅适中(5.3%)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(92)",
+        "量能不足(1.2倍)"
+      ],
+      "future_return": -0.19379844961240345
+    },
+    {
+      "code": "sh600123",
+      "score": 21.0,
+      "trend_score": 32,
+      "momentum_score": 15,
+      "volume_score": 15,
+      "adx": 28.62525333910856,
+      "rsi": 94.94949494949489,
+      "ma20_slope": 0.015083934798475383,
+      "relative_strength": 0.96,
+      "price": 6.98,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "趋势良好ADX=28.6",
+        "MACD水上",
+        "20日强势(18.1%)",
+        "温和放量(3.3倍)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(95)",
+        "5日涨幅过大(10.4%)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600121",
+      "score": 20.9,
+      "trend_score": 28,
+      "momentum_score": 20,
+      "volume_score": 15,
+      "adx": 23.620963763779493,
+      "rsi": 91.78082191780827,
+      "ma20_slope": 0.010862186014935717,
+      "relative_strength": 0.94,
+      "price": 4.9,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "MACD水上",
+        "5日涨幅适中(8.2%)",
+        "20日强势(15.3%)",
+        "温和放量(2.3倍)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "趋势较弱ADX=23.6",
+        "RSI过热(92)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600163",
+      "score": 20.4,
+      "trend_score": 25,
+      "momentum_score": 18,
+      "volume_score": 20,
+      "adx": 37.72570906891474,
+      "rsi": 66.6666666666667,
+      "ma20_slope": 0.013197713517148622,
+      "relative_strength": 0.86,
+      "price": 6.23,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=37.7",
+        "MACD水上",
+        "5日微涨(1.8%)",
+        "量能理想(1.3倍)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI偏高(67)"
+      ],
+      "future_return": 6.260032102728719
+    },
+    {
+      "code": "sh600219",
+      "score": 20.4,
+      "trend_score": 30,
+      "momentum_score": 13,
+      "volume_score": 20,
+      "adx": 34.224895211584055,
+      "rsi": 76.04166666666669,
+      "ma20_slope": 0.011326976844218312,
+      "relative_strength": 0.61,
+      "price": 7.2,
+      "signals": [
+        "站上MA5/MA20",
+        "MA20强势向上",
+        "强趋势ADX=34.2",
+        "5日涨幅适中(2.1%)",
+        "量能理想(1.6倍)",
+        "相对强度前40%"
+      ],
+      "warnings": [
+        "RSI过热(76)",
+        "波动率过高(74%)"
+      ],
+      "future_return": 1.8055555555555491
+    },
+    {
+      "code": "sh600026",
+      "score": 20.2,
+      "trend_score": 35,
+      "momentum_score": 15,
+      "volume_score": 5,
+      "adx": 69.00181149349635,
+      "rsi": 100.0,
+      "ma20_slope": 0.09302111182815505,
+      "relative_strength": 0.99,
+      "price": 24.9,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=69.0",
+        "MACD水上",
+        "20日强势(63.0%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(100)",
+        "5日涨幅过大(23.6%)",
+        "量能不足(1.0倍)",
+        "波动率过高(88%)"
+      ],
+      "future_return": -6.586345381526093
+    },
+    {
+      "code": "sh600028",
+      "score": 20.2,
+      "trend_score": 35,
+      "momentum_score": 15,
+      "volume_score": 5,
+      "adx": 38.751635619686375,
+      "rsi": 92.89940828402366,
+      "ma20_slope": 0.02483017100023436,
+      "relative_strength": 0.97,
+      "price": 7.82,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=38.8",
+        "MACD水上",
+        "20日强势(22.8%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(93)",
+        "5日涨幅过大(19.9%)",
+        "放量过大(4.2倍)"
+      ],
+      "future_return": -16.112531969309472
+    },
+    {
+      "code": "sh600108",
+      "score": 20.2,
+      "trend_score": 35,
+      "momentum_score": 15,
+      "volume_score": 5,
+      "adx": 38.40161395271033,
+      "rsi": 97.98657718120803,
+      "ma20_slope": 0.0299902357372017,
+      "relative_strength": 0.98,
+      "price": 4.81,
+      "signals": [
+        "多头排列",
+        "MA20强势向上",
+        "强趋势ADX=38.4",
+        "MACD水上",
+        "20日强势(32.5%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(98)",
+        "5日涨幅过大(32.1%)",
+        "放量过大(5.2倍)",
+        "波动率过高(72%)"
+      ],
+      "future_return": 24.116424116424117
+    },
+    {
+      "code": "sh600011",
+      "score": 20.1,
+      "trend_score": 27,
+      "momentum_score": 15,
+      "volume_score": 20,
+      "adx": 39.35439710734092,
+      "rsi": 88.33333333333341,
+      "ma20_slope": -0.003113501273705101,
+      "relative_strength": 0.7,
+      "price": 7.43,
+      "signals": [
+        "多头排列",
+        "强趋势ADX=39.4",
+        "MACD向上",
+        "5日涨幅适中(6.4%)",
+        "量能理想(1.3倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "RSI过热(88)"
+      ],
+      "future_return": 1.211305518169592
+    },
+    {
+      "code": "sh600057",
+      "score": 19.9,
+      "trend_score": 25,
+      "momentum_score": 18,
+      "volume_score": 20,
+      "adx": 24.607263776504624,
+      "rsi": 100.0,
+      "ma20_slope": 0.0023103112840467083,
+      "relative_strength": 0.8,
+      "price": 8.57,
+      "signals": [
+        "多头排列",
+        "MA20向上",
+        "MACD水上",
+        "5日涨幅适中(3.1%)",
+        "量能理想(1.5倍)",
+        "相对强度前40%"
+      ],
+      "warnings": [
+        "趋势较弱ADX=24.6",
+        "RSI过热(100)"
+      ],
+      "future_return": -5.134189031505243
+    },
+    {
+      "code": "sh600079",
+      "score": 19.8,
+      "trend_score": 25,
+      "momentum_score": 16,
+      "volume_score": 20,
+      "adx": 34.345701509970766,
+      "rsi": 59.23566878980889,
+      "ma20_slope": 0.016075624866481626,
+      "relative_strength": 0.83,
+      "price": 19.49,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=34.3",
+        "RSI良好(59)",
+        "MACD水上",
+        "量能理想(1.4倍)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "5日下跌(-2.1%)"
+      ],
+      "future_return": 0.0
+    },
+    {
+      "code": "sh600018",
+      "score": 19.1,
+      "trend_score": 27,
+      "momentum_score": 15,
+      "volume_score": 15,
+      "adx": 35.61481953133986,
+      "rsi": 90.90909090909076,
+      "ma20_slope": 0.0007937295366602955,
+      "relative_strength": 0.71,
+      "price": 5.19,
+      "signals": [
+        "多头排列",
+        "强趋势ADX=35.6",
+        "MACD向上",
+        "5日涨幅适中(2.6%)",
+        "温和放量(2.2倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "RSI过热(91)"
+      ],
+      "future_return": -1.5414258188824692
+    },
+    {
+      "code": "sh600089",
+      "score": 19.1,
+      "trend_score": 25,
+      "momentum_score": 16,
+      "volume_score": 20,
+      "adx": 38.276775970450764,
+      "rsi": 59.244532803180924,
+      "ma20_slope": 0.010460104425833276,
+      "relative_strength": 0.78,
+      "price": 29.68,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=38.3",
+        "RSI良好(59)",
+        "MACD水上",
+        "量能理想(1.2倍)",
+        "相对强度前40%"
+      ],
+      "warnings": [
+        "5日下跌(-1.8%)"
+      ],
+      "future_return": 7.3450134770889575
+    },
+    {
+      "code": "sh600130",
+      "score": 18.4,
+      "trend_score": 22,
+      "momentum_score": 16,
+      "volume_score": 20,
+      "adx": 26.23558052281941,
+      "rsi": 62.85714285714295,
+      "ma20_slope": 0.004167631396156676,
+      "relative_strength": 0.61,
+      "price": 4.44,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "趋势良好ADX=26.2",
+        "RSI良好(63)",
+        "MACD水上",
+        "量能理想(1.5倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "5日下跌(-0.4%)"
+      ],
+      "future_return": 6.981981981981966
+    },
+    {
+      "code": "sh600126",
+      "score": 18.1,
+      "trend_score": 22,
+      "momentum_score": 26,
+      "volume_score": 5,
+      "adx": 26.075753213568316,
+      "rsi": 44.621513944223075,
+      "ma20_slope": 0.013577199281867196,
+      "relative_strength": 0.61,
+      "price": 9.2,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "趋势良好ADX=26.1",
+        "RSI健康(45)",
+        "MACD水上",
+        "5日涨幅适中(3.3%)",
+        "相对强度前40%"
+      ],
+      "warnings": [
+        "量能不足(1.1倍)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600010",
+      "score": 17.2,
+      "trend_score": 22,
+      "momentum_score": 23,
+      "volume_score": 5,
+      "adx": 29.80445827618044,
+      "rsi": 69.30693069306929,
+      "ma20_slope": 0.04849432929213927,
+      "relative_strength": 0.96,
+      "price": 3.01,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "趋势良好ADX=29.8",
+        "MACD水上",
+        "5日涨幅适中(2.7%)",
+        "20日强势(18.5%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI偏高(69)",
+        "量能不足(1.0倍)",
+        "波动率过高(78%)",
+        "近期大跌-9.3%"
+      ],
+      "future_return": 0.6644518272425293
+    },
+    {
+      "code": "sh600073",
+      "score": 17.2,
+      "trend_score": 19,
+      "momentum_score": 16,
+      "volume_score": 20,
+      "adx": 29.11696103460368,
+      "rsi": 64.28571428571423,
+      "ma20_slope": 0.002582997796854738,
+      "relative_strength": 0.65,
+      "price": 6.65,
+      "signals": [
+        "站上MA20",
+        "MA20向上",
+        "趋势良好ADX=29.1",
+        "RSI良好(64)",
+        "MACD水上",
+        "量能理想(1.5倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "5日下跌(-0.2%)"
+      ],
+      "future_return": -0.4511278195488799
+    },
+    {
+      "code": "sh600207",
+      "score": 17.1,
+      "trend_score": 25,
+      "momentum_score": 18,
+      "volume_score": 5,
+      "adx": 42.99117821164763,
+      "rsi": 74.07407407407402,
+      "ma20_slope": 0.022252991791118545,
+      "relative_strength": 0.88,
+      "price": 5.51,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=43.0",
+        "MACD水上",
+        "5日微涨(1.7%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI偏高(74)",
+        "量能不足(1.2倍)"
+      ],
+      "future_return": 5.444646098003636
+    },
+    {
+      "code": "sh600111",
+      "score": 16.9,
+      "trend_score": 25,
+      "momentum_score": 18,
+      "volume_score": 5,
+      "adx": 32.74768160029422,
+      "rsi": 52.57309941520466,
+      "ma20_slope": 0.03482402601106622,
+      "relative_strength": 0.88,
+      "price": 55.62,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=32.7",
+        "RSI健康(53)",
+        "MACD水上",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "5日下跌(-8.0%)",
+        "量能不足(1.1倍)",
+        "波动率过高(90%)",
+        "近期大跌-9.9%"
+      ],
+      "future_return": -2.96655879180151
+    },
+    {
+      "code": "sh600167",
+      "score": 16.9,
+      "trend_score": 22,
+      "momentum_score": 15,
+      "volume_score": 15,
+      "adx": 36.12999276970584,
+      "rsi": 70.90909090909105,
+      "ma20_slope": -0.011119767688929813,
+      "relative_strength": 0.49,
+      "price": 7.03,
+      "signals": [
+        "站上MA5/MA20",
+        "强趋势ADX=36.1",
+        "MACD向上",
+        "5日微涨(0.1%)",
+        "温和放量(2.2倍)",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "RSI偏高(71)"
+      ],
+      "future_return": -4.551920341394034
+    },
+    {
+      "code": "sh600179",
+      "score": 16.8,
+      "trend_score": 19,
+      "momentum_score": 18,
+      "volume_score": 15,
+      "adx": 29.767866694903198,
+      "rsi": 76.31578947368425,
+      "ma20_slope": -0.000897934750074862,
+      "relative_strength": 0.71,
+      "price": 5.29,
+      "signals": [
+        "站上MA5/MA20",
+        "趋势良好ADX=29.8",
+        "MACD水上",
+        "5日涨幅适中(4.3%)",
+        "温和放量(2.8倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "RSI过热(76)"
+      ],
+      "future_return": -12.854442344045358
+    },
+    {
+      "code": "sh600172",
+      "score": 16.7,
+      "trend_score": 25,
+      "momentum_score": 20,
+      "volume_score": 0,
+      "adx": 48.29462198489193,
+      "rsi": 82.84313725490192,
+      "ma20_slope": 0.0860940422121293,
+      "relative_strength": 0.98,
+      "price": 9.36,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=48.3",
+        "MACD水上",
+        "5日涨幅适中(6.0%)",
+        "20日强势(30.7%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(83)",
+        "严重缩量(0.9倍)",
+        "波动率过高(89%)"
+      ],
+      "future_return": 7.692307692307709
+    },
+    {
+      "code": "sh600118",
+      "score": 16.5,
+      "trend_score": 17,
+      "momentum_score": 19,
+      "volume_score": 20,
+      "adx": 30.58268236917964,
+      "rsi": 62.92486583184257,
+      "ma20_slope": -0.014922087266557109,
+      "relative_strength": 0.35,
+      "price": 92.03,
+      "signals": [
+        "站上MA20",
+        "强趋势ADX=30.6",
+        "RSI良好(63)",
+        "5日涨幅适中(3.8%)",
+        "量能理想(1.4倍)"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "近期大跌-8.1%"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600176",
+      "score": 16.5,
+      "trend_score": 25,
+      "momentum_score": 20,
+      "volume_score": 0,
+      "adx": 71.06672396176337,
+      "rsi": 54.09090909090907,
+      "ma20_slope": 0.059849716570725735,
+      "relative_strength": 0.98,
+      "price": 26.45,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=71.1",
+        "RSI健康(54)",
+        "MACD水上",
+        "20日强势(29.0%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "5日下跌(-4.2%)",
+        "严重缩量(1.0倍)",
+        "波动率过高(84%)"
+      ],
+      "future_return": 1.5500945179584225
+    },
+    {
+      "code": "sh600080",
+      "score": 16.4,
+      "trend_score": 25,
+      "momentum_score": 18,
+      "volume_score": 0,
+      "adx": 42.536060643004895,
+      "rsi": 47.85714285714283,
+      "ma20_slope": 0.019776280823187706,
+      "relative_strength": 0.82,
+      "price": 8.53,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=42.5",
+        "RSI健康(48)",
+        "MACD水上",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "5日下跌(-3.8%)",
+        "严重缩量(0.8倍)"
+      ],
+      "future_return": 3.048065650644771
+    },
+    {
+      "code": "sh600008",
+      "score": 16.3,
+      "trend_score": 25,
+      "momentum_score": 15,
+      "volume_score": 5,
+      "adx": 34.869116262226186,
+      "rsi": 84.21052631578937,
+      "ma20_slope": 0.00602115541090316,
+      "relative_strength": 0.67,
+      "price": 3.15,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=34.9",
+        "MACD水上",
+        "5日微涨(1.3%)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(84)",
+        "量能不足(1.1倍)"
+      ],
+      "future_return": 0.31746031746031633
+    },
+    {
+      "code": "sh600136",
+      "score": 15.9,
+      "trend_score": 25,
+      "momentum_score": 13,
+      "volume_score": 5,
+      "adx": 43.63249234293916,
+      "rsi": 66.66666666666674,
+      "ma20_slope": 0.01898016997167131,
+      "relative_strength": 0.87,
+      "price": 1.85,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=43.6",
+        "MACD水上",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI偏高(67)",
+        "5日下跌(-1.6%)",
+        "量能不足(1.1倍)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600150",
+      "score": 15.9,
+      "trend_score": 25,
+      "momentum_score": 13,
+      "volume_score": 5,
+      "adx": 37.05995087254924,
+      "rsi": 69.93464052287578,
+      "ma20_slope": 0.013314177607715293,
+      "relative_strength": 0.86,
+      "price": 37.57,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=37.1",
+        "MACD水上",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI偏高(70)",
+        "5日下跌(-1.4%)",
+        "量能不足(1.1倍)"
+      ],
+      "future_return": -1.5171679531541082
+    },
+    {
+      "code": "sh600020",
+      "score": 15.7,
+      "trend_score": 19,
+      "momentum_score": 12,
+      "volume_score": 20,
+      "adx": 29.844588924740204,
+      "rsi": 81.24999999999986,
+      "ma20_slope": -0.011404561824729756,
+      "relative_strength": 0.33,
+      "price": 4.14,
+      "signals": [
+        "站上MA5/MA20",
+        "趋势良好ADX=29.8",
+        "MACD向上",
+        "5日微涨(0.7%)",
+        "量能理想(1.4倍)",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "RSI过热(81)"
+      ],
+      "future_return": -1.207729468599028
+    },
+    {
+      "code": "sh600158",
+      "score": 15.6,
+      "trend_score": 25,
+      "momentum_score": 12,
+      "volume_score": 5,
+      "adx": 48.190893976848145,
+      "rsi": 75.22123893805313,
+      "ma20_slope": 0.0164687661331958,
+      "relative_strength": 0.95,
+      "price": 10.34,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=48.2",
+        "MACD水上",
+        "20日强势(15.7%)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(75)",
+        "5日下跌(-0.1%)",
+        "量能不足(1.1倍)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600072",
+      "score": 15.5,
+      "trend_score": 22,
+      "momentum_score": 20,
+      "volume_score": 0,
+      "adx": 25.89105293887094,
+      "rsi": 43.60902255639098,
+      "ma20_slope": 0.02019754081838344,
+      "relative_strength": 0.89,
+      "price": 12.85,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "趋势良好ADX=25.9",
+        "RSI健康(44)",
+        "MACD水上",
+        "20日强势(10.5%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "5日下跌(-2.4%)",
+        "严重缩量(1.0倍)"
+      ],
+      "future_return": 2.64591439688715
+    },
+    {
+      "code": "sh000001",
+      "score": 15.4,
+      "trend_score": 15,
+      "momentum_score": 16,
+      "volume_score": 20,
+      "adx": 24.236004165036164,
+      "rsi": 62.56264307368695,
+      "ma20_slope": 0.0012944481073269279,
+      "relative_strength": 0.55,
+      "price": 4122.68,
+      "signals": [
+        "站上MA20",
+        "MA20向上",
+        "RSI良好(63)",
+        "MACD水上",
+        "量能理想(1.3倍)",
+        "波动率适中"
+      ],
+      "warnings": [
+        "趋势较弱ADX=24.2",
+        "5日下跌(-0.6%)"
+      ],
+      "future_return": -0.5843286405930126
+    },
+    {
+      "code": "sh000002",
+      "score": 15.4,
+      "trend_score": 15,
+      "momentum_score": 16,
+      "volume_score": 20,
+      "adx": 24.259685778350786,
+      "rsi": 62.65777987495572,
+      "ma20_slope": 0.0013052274131839462,
+      "relative_strength": 0.56,
+      "price": 4323.13,
+      "signals": [
+        "站上MA20",
+        "MA20向上",
+        "RSI良好(63)",
+        "MACD水上",
+        "量能理想(1.3倍)",
+        "波动率适中"
+      ],
+      "warnings": [
+        "趋势较弱ADX=24.3",
+        "5日下跌(-0.6%)"
+      ],
+      "future_return": -0.5859180732478486
+    },
+    {
+      "code": "sh600096",
+      "score": 15.4,
+      "trend_score": 25,
+      "momentum_score": 13,
+      "volume_score": 5,
+      "adx": 35.64205867006422,
+      "rsi": 72.24052718286657,
+      "ma20_slope": 0.03169207296671522,
+      "relative_strength": 0.85,
+      "price": 41.18,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=35.6",
+        "MACD水上",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI偏高(72)",
+        "5日下跌(-4.9%)",
+        "量能不足(1.1倍)",
+        "波动率过高(73%)"
+      ],
+      "future_return": 0.04856726566295766
+    },
+    {
+      "code": "sh600222",
+      "score": 15.4,
+      "trend_score": 25,
+      "momentum_score": 16,
+      "volume_score": 0,
+      "adx": 48.9212834786173,
+      "rsi": 59.61538461538462,
+      "ma20_slope": 0.008762241366615107,
+      "relative_strength": 0.52,
+      "price": 6.88,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=48.9",
+        "RSI良好(60)",
+        "MACD水上",
+        "波动率适中"
+      ],
+      "warnings": [
+        "5日下跌(-3.9%)",
+        "严重缩量(0.8倍)"
+      ],
+      "future_return": 7.994186046511631
+    },
+    {
+      "code": "sh600153",
+      "score": 14.9,
+      "trend_score": 15,
+      "momentum_score": 13,
+      "volume_score": 20,
+      "adx": 16.07770476552377,
+      "rsi": 74.28571428571418,
+      "ma20_slope": 0.011327034571612738,
+      "relative_strength": 0.81,
+      "price": 9.62,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "MACD水上",
+        "量能理想(1.2倍)",
+        "相对强度前20%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "无趋势ADX=16.1",
+        "RSI偏高(74)",
+        "5日下跌(-0.6%)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600183",
+      "score": 14.4,
+      "trend_score": 14,
+      "momentum_score": 16,
+      "volume_score": 20,
+      "adx": 27.32727528792283,
+      "rsi": 62.012756909992916,
+      "ma20_slope": -0.004674720436994271,
+      "relative_strength": 0.25,
+      "price": 67.64,
+      "signals": [
+        "站上MA20",
+        "趋势良好ADX=27.3",
+        "RSI良好(62)",
+        "MACD水上",
+        "量能理想(1.3倍)"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "5日下跌(-2.3%)",
+        "相对强度弱(25%)"
+      ],
+      "future_return": -4.77528089887641
+    },
+    {
+      "code": "sh600036",
+      "score": 14.3,
+      "trend_score": 15,
+      "momentum_score": 15,
+      "volume_score": 15,
+      "adx": 16.719865630739623,
+      "rsi": 71.17117117117141,
+      "ma20_slope": 0.004771017041193657,
+      "relative_strength": 0.68,
+      "price": 39.18,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "MACD向上",
+        "5日微涨(1.0%)",
+        "温和放量(2.0倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "无趋势ADX=16.7",
+        "RSI偏高(71)"
+      ],
+      "future_return": 0.10209290454312736
+    },
+    {
+      "code": "sh600127",
+      "score": 14.3,
+      "trend_score": 15,
+      "momentum_score": 15,
+      "volume_score": 15,
+      "adx": 23.76671264751848,
+      "rsi": 92.72727272727272,
+      "ma20_slope": -0.0005837711617046772,
+      "relative_strength": 0.69,
+      "price": 7.1,
+      "signals": [
+        "站上MA5/MA20",
+        "MACD向上",
+        "5日涨幅适中(5.7%)",
+        "温和放量(2.9倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "趋势较弱ADX=23.8",
+        "RSI过热(93)"
+      ],
+      "future_return": 2.6760563380281654
+    },
+    {
+      "code": "sh600168",
+      "score": 14.3,
+      "trend_score": 15,
+      "momentum_score": 15,
+      "volume_score": 15,
+      "adx": 21.734520375668414,
+      "rsi": 83.99999999999999,
+      "ma20_slope": -0.000953743443013809,
+      "relative_strength": 0.61,
+      "price": 5.28,
+      "signals": [
+        "站上MA5/MA20",
+        "MACD水上",
+        "5日微涨(0.6%)",
+        "温和放量(2.5倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "趋势较弱ADX=21.7",
+        "RSI过热(84)"
+      ],
+      "future_return": 2.4621212121212155
+    },
+    {
+      "code": "sh600206",
+      "score": 14.2,
+      "trend_score": 25,
+      "momentum_score": 13,
+      "volume_score": 0,
+      "adx": 38.94097327400467,
+      "rsi": 66.29834254143647,
+      "ma20_slope": 0.020324478516669776,
+      "relative_strength": 0.74,
+      "price": 24.14,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=38.9",
+        "MACD水上",
+        "相对强度前40%"
+      ],
+      "warnings": [
+        "RSI偏高(66)",
+        "5日下跌(-3.3%)",
+        "严重缩量(0.9倍)"
+      ],
+      "future_return": -2.692626346313187
+    },
+    {
+      "code": "sh600035",
+      "score": 14.1,
+      "trend_score": 12,
+      "momentum_score": 15,
+      "volume_score": 20,
+      "adx": 17.722250109427897,
+      "rsi": 75.0,
+      "ma20_slope": 0.0011342155009453345,
+      "relative_strength": 0.64,
+      "price": 4.01,
+      "signals": [
+        "站上MA20",
+        "MA20向上",
+        "MACD水上",
+        "5日微涨(0.2%)",
+        "量能理想(1.4倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "无趋势ADX=17.7",
+        "RSI过热(75)"
+      ],
+      "future_return": -0.7481296758104716
+    },
+    {
+      "code": "sh600110",
+      "score": 14.1,
+      "trend_score": 25,
+      "momentum_score": 12,
+      "volume_score": 0,
+      "adx": 30.966033429921698,
+      "rsi": 75.37688442211055,
+      "ma20_slope": 0.032089391877372586,
+      "relative_strength": 0.95,
+      "price": 7.98,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=31.0",
+        "MACD水上",
+        "20日强势(17.5%)",
+        "相对强度前20%"
+      ],
+      "warnings": [
+        "RSI过热(75)",
+        "5日下跌(-2.3%)",
+        "严重缩量(0.7倍)"
+      ],
+      "future_return": -3.007518796992481
+    },
+    {
+      "code": "sh600116",
+      "score": 14.1,
+      "trend_score": 22,
+      "momentum_score": 15,
+      "volume_score": 0,
+      "adx": 27.26506472403169,
+      "rsi": 85.71428571428567,
+      "ma20_slope": 0.005142313141383627,
+      "relative_strength": 0.66,
+      "price": 6.84,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "趋势良好ADX=27.3",
+        "MACD水上",
+        "5日微涨(1.0%)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "RSI过热(86)",
+        "严重缩量(0.9倍)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600039",
+      "score": 14.0,
+      "trend_score": 17,
+      "momentum_score": 18,
+      "volume_score": 5,
+      "adx": 16.889078862906235,
+      "rsi": 88.23529411764704,
+      "ma20_slope": -0.0018361726002244906,
+      "relative_strength": 0.69,
+      "price": 10.07,
+      "signals": [
+        "多头排列",
+        "MACD水上",
+        "5日涨幅适中(3.7%)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "无趋势ADX=16.9",
+        "RSI过热(88)",
+        "量能不足(1.2倍)"
+      ],
+      "future_return": -0.5958291956305928
+    },
+    {
+      "code": "sh600125",
+      "score": 14.0,
+      "trend_score": 12,
+      "momentum_score": 18,
+      "volume_score": 15,
+      "adx": 16.798920857108946,
+      "rsi": 100.0,
+      "ma20_slope": -0.00046518840130240743,
+      "relative_strength": 0.72,
+      "price": 6.73,
+      "signals": [
+        "站上MA5/MA20",
+        "MACD水上",
+        "5日涨幅适中(6.0%)",
+        "温和放量(2.5倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "无趋势ADX=16.8",
+        "RSI过热(100)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600190",
+      "score": 14.0,
+      "trend_score": 17,
+      "momentum_score": 10,
+      "volume_score": 20,
+      "adx": 40.334321106914444,
+      "rsi": 77.77777777777777,
+      "ma20_slope": -0.10583941605839417,
+      "relative_strength": 0.05,
+      "price": 0.63,
+      "signals": [
+        "站上MA20",
+        "强趋势ADX=40.3",
+        "MACD向上",
+        "量能理想(1.7倍)"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "RSI过热(78)",
+        "5日涨幅过大(26.0%)",
+        "相对强度弱(5%)",
+        "波动率过高(238%)"
+      ],
+      "future_return": null
+    },
+    {
+      "code": "sh600022",
+      "score": 13.5,
+      "trend_score": 25,
+      "momentum_score": 10,
+      "volume_score": 0,
+      "adx": 33.15968911090011,
+      "rsi": 75.99999999999997,
+      "ma20_slope": 0.015624999999999912,
+      "relative_strength": 0.79,
+      "price": 1.71,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "强趋势ADX=33.2",
+        "MACD水上",
+        "相对强度前40%"
+      ],
+      "warnings": [
+        "RSI过热(76)",
+        "5日下跌(-1.7%)",
+        "严重缩量(0.6倍)"
+      ],
+      "future_return": -2.3391812865497075
+    },
+    {
+      "code": "sh600012",
+      "score": 13.2,
+      "trend_score": 15,
+      "momentum_score": 18,
+      "volume_score": 5,
+      "adx": 17.947285086697544,
+      "rsi": 70.16129032258061,
+      "ma20_slope": 0.0033070644525750805,
+      "relative_strength": 0.74,
+      "price": 14.65,
+      "signals": [
+        "站上MA20",
+        "MA20强势向上",
+        "MACD向上",
+        "5日涨幅适中(6.3%)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "无趋势ADX=17.9",
+        "RSI偏高(70)",
+        "量能不足(1.0倍)"
+      ],
+      "future_return": -1.5699658703071662
+    },
+    {
+      "code": "sh600184",
+      "score": 12.4,
+      "trend_score": 15,
+      "momentum_score": 16,
+      "volume_score": 5,
+      "adx": 24.052080926792932,
+      "rsi": 55.98290598290602,
+      "ma20_slope": 0.0011804754845439866,
+      "relative_strength": 0.54,
+      "price": 18.53,
+      "signals": [
+        "站上MA20",
+        "MA20向上",
+        "RSI良好(56)",
+        "MACD水上",
+        "波动率适中"
+      ],
+      "warnings": [
+        "趋势较弱ADX=24.1",
+        "5日下跌(-2.4%)",
+        "量能不足(1.1倍)"
+      ],
+      "future_return": -0.8634646519158129
+    },
+    {
+      "code": "sh600033",
+      "score": 12.1,
+      "trend_score": 7,
+      "momentum_score": 15,
+      "volume_score": 20,
+      "adx": 19.60464416495472,
+      "rsi": 72.2222222222221,
+      "ma20_slope": -0.0007898894154816287,
+      "relative_strength": 0.62,
+      "price": 3.8,
+      "signals": [
+        "站上MA20",
+        "MACD向上",
+        "5日微涨(0.5%)",
+        "量能理想(1.9倍)",
+        "相对强度前40%",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "无趋势ADX=19.6",
+        "RSI偏高(72)"
+      ],
+      "future_return": -0.7894736842105177
+    },
+    {
+      "code": "sh600019",
+      "score": 9.9,
+      "trend_score": 12,
+      "momentum_score": 15,
+      "volume_score": 0,
+      "adx": 17.308475637521532,
+      "rsi": 75.0,
+      "ma20_slope": -0.0018882439331422492,
+      "relative_strength": 0.59,
+      "price": 7.18,
+      "signals": [
+        "站上MA5/MA20",
+        "MACD向上",
+        "5日涨幅适中(2.3%)",
+        "波动率适中"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "无趋势ADX=17.3",
+        "RSI过热(75)",
+        "严重缩量(0.7倍)"
+      ],
+      "future_return": -2.506963788300831
+    },
+    {
+      "code": "sh600117",
+      "score": 7.0,
+      "trend_score": 7,
+      "momentum_score": 13,
+      "volume_score": 0,
+      "adx": 19.360346448262998,
+      "rsi": 67.50000000000003,
+      "ma20_slope": -0.000517955801104992,
+      "relative_strength": 0.52,
+      "price": 2.9,
+      "signals": [
+        "站上MA20",
+        "MACD水上"
+      ],
+      "warnings": [
+        "MA20走平或向下",
+        "无趋势ADX=19.4",
+        "RSI偏高(68)",
+        "5日下跌(-2.7%)",
+        "严重缩量(0.8倍)"
+      ],
+      "future_return": null
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "南风",
+  "version": "4.0.0",
+  "enabled": true,
+  "schedule": ["14:45"],
+  "dependencies": ["beifeng"],
+  "timeout": 120,
+  "retry_count": 2
+}

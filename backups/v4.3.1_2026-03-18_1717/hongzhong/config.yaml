@@ -1,0 +1,44 @@
+# 红中配置文件
+
+# 推送时间设置
+schedule:
+  push_times:
+    - "14:45"
+    - "14:50"
+    - "14:55"
+  cutoff_time: "14:55"  # 强制停止时间
+
+# 筛选标准
+screening:
+  min_score: 8.0  # 最低分数
+  max_picks: 3    # 最多推送几只
+
+# 通知渠道配置
+notification:
+  email:
+    enabled: true
+    smtp_server: "smtp.qq.com"
+    smtp_port: 465
+    username: "3823810468@qq.com"
+    password: ""  # 从环境变量 HONGZHONG_EMAIL_PASSWORD 读取
+    to: "3823810468@qq.com"
+  
+  discord:
+    enabled: true
+    webhook_url: ""  # 从环境变量 HONGZHONG_DISCORD_WEBHOOK 读取
+  
+  feishu:
+    enabled: false
+    webhook_url: ""  # 从环境变量 HONGZHONG_FEISHU_WEBHOOK 读取
+
+# 重试配置
+retry:
+  max_attempts: 3
+  timeout_seconds: 30
+  backoff_seconds: 1
+
+# 数据源路径
+data_sources:
+  dongfeng_pool: "~/Documents/OpenClawAgents/dongfeng/data/candidate_pool.json"
+  xifeng_hotspots: "~/Documents/OpenClawAgents/xifeng/data/hot_spots.json"
+  beifeng_db: "~/Documents/OpenClawAgents/beifeng/data/stocks.db"
