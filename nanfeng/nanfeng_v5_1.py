@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-nanfeng_v5_1.py - 南风量化交易引擎V5.1 (精选版)
+nanfeng_v5_1.py - 南风量化交易引擎V5.5 (精选版)
 核心改进：每天只选Top 5，大幅提高信号质量
 
-V5.1关键改进：
+V5.5关键改进：
 1. 严格门槛 - 分数>=8.5, ADX>=30, MA20强势向上
 2. 精选策略 - 每天最多选5只，按综合评分排序
 3. 市场环境过滤 - 大盘ADX<20时暂停
@@ -135,7 +135,7 @@ class TechnicalIndicators:
 
 
 class NanFengV5_1:
-    """南风V5.1 - 精选版 (支持多策略)"""
+    """南风V5.5 - 精选版 (支持多策略)"""
     
     def __init__(self, use_realtime: bool = True, strategy_name: str = "趋势跟踪"):
         self.db_path = BEIFENG_DB
@@ -337,7 +337,7 @@ class NanFengV5_1:
     
     def analyze_stock(self, stock_code: str, df: pd.DataFrame, 
                      all_stocks_data: Dict = None) -> Optional[TradeSignal]:
-        """分析单只股票 - V5.1严格标准"""
+        """分析单只股票 - V5.5严格标准"""
         if len(df) < 30:
             return None
         
@@ -698,7 +698,7 @@ class NanFengV5_1:
     
     def scan_signals(self, max_stocks: int = 300) -> List[TradeSignal]:
         """扫描精选信号 - 每天最多5只"""
-        log.info("🌬️ 南风V5.1 - 精选扫描...")
+        log.info("🌬️ 南风V5.5 - 精选扫描...")
         
         # 检查市场环境
         market_ok, market_msg = self.check_market_environment()
@@ -813,7 +813,7 @@ def main():
     
     # 输出结果
     print("\n" + "="*60)
-    print("🌬️ 南风V5.1 精选结果")
+    print("🌬️ 南风V5.5 精选结果")
     print("="*60)
     
     if not signals:
@@ -826,7 +826,7 @@ def main():
     # 保存结果
     output = {
         'scan_time': datetime.now().isoformat(),
-        'version': 'V5.1',
+        'version': 'V5.5',
         'market_check': nanfeng.check_market_environment()[1],
         'signals_count': len(signals),
         'signals': [

@@ -166,3 +166,58 @@ def notify_alert(level: str, title: str, content: str):
 if __name__ == '__main__':
     # 测试
     notify_trade("BUY", "sh600519", "贵州茅台", 1850.0, 100, "南风V5.1评分85分")
+
+
+# ============ 表格通知格式 ============
+
+def format_table_notification(signals: list, title: str = "📊 信号报告") -> str:
+    """格式化表格通知"""
+    if not signals:
+        return "暂无信号"
+    
+    # 表头
+    header = f"**{title}**\n"
+    header += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    header += "代码     | 名称     | 价格   | 评分 | 策略\n"
+    header += "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    
+    # 数据行
+    rows = []
+    for s in signals:
+        code = s.get('stock_code', '')[:8]
+        name = s.get('stock_name', '')[:8]
+        price = s.get('entry_price', 0)
+        score = s.get('score', 0)
+        strategy = s.get('strategy', '')[:10]
+        
+        rows.append(f"{code:8} | {name:8} | ¥{price:5.2f} | {score:5.1f} | {strategy}")
+    
+    return header + "\n".join(rows) + "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+
+def format_buy_notification(stock_code, stock_name, price, quantity, score, strategy) -> str:
+    """买入通知表格格式"""
+    return f"""
+🟢 **买入信号**
+━━━━━━━━━━━━━━━━━━━━
+股票: {stock_code} {stock_name}
+价格: ¥{price:.2f}
+数量: {quantity}股
+评分: {score}
+策略: {strategy}
+━━━━━━━━━━━━━━━━━━━━
+"""
+
+
+def format_sell_notification(stock_code, stock_name, price, quantity, profit_pct, reason) -> str:
+    """卖出通知表格格式"""
+    return f"""
+🔴 **卖出信号**
+━━━━━━━━━━━━━━━━━━━━
+股票: {stock_code} {stock_name}
+价格: ¥{price:.2f}
+数量: {quantity}股
+盈亏: {profit_pct:+.2f}%
+原因: {reason}
+━━━━━━━━━━━━━━━━━━━━
+"""

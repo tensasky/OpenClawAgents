@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-红中信号生成器 V3.0 - 完整版策略报告
+红中信号生成器 V3.4 - 完整版策略报告
 包含: 策略版本、操盘建议、盈利预期、持股天数
 """
 
@@ -387,7 +387,7 @@ class NanfengStrategyV51:
             }
 
 class HongzhongSignalV3:
-    """红中信号生成器V3.0"""
+    """红中信号生成器V3.4"""
     
     def __init__(self):
         self.strategy = NanfengStrategyV51()
@@ -645,7 +645,7 @@ class HongzhongSignalV3:
         </head>
         <body>
             <div class="header">
-                <h1>🎯 红中交易信号报告 V3.0</h1>
+                <h1>🎯 红中交易信号报告 V3.4</h1>
                 <p style="font-size: 18px; margin: 10px 0;">生成时间: {now}</p>
                 <p style="font-size: 14px; opacity: 0.9;">数据来源: 北风实时采集 | 策略: {strategy_info['version']}</p>
             </div>
@@ -811,7 +811,7 @@ class HongzhongSignalV3:
             
             <p style="text-align: center; color: #666; margin-top: 40px; padding: 20px;">
                 <strong>OpenClawAgents 智能量化交易系统</strong><br>
-                红中交易信号系统 V3.0 | 南风策略V5.1-保守版<br>
+                红中交易信号系统 V3.4 | 南风策略V5.1-保守版<br>
                 <span style="font-size: 12px;">本报告由AI自动生成，仅供参考</span>
             </p>
         </body>
@@ -826,7 +826,7 @@ class HongzhongSignalV3:
             log.step("正在发送完整版邮件报告...")
             
             msg = MIMEMultipart('alternative')
-            msg['Subject'] = f"🎯 红中交易信号V3.0 - {datetime.now().strftime('%Y-%m-%d')} (含完整操盘计划)"
+            msg['Subject'] = f"🎯 红中交易信号V3.4 - {datetime.now().strftime('%Y-%m-%d')} (含完整操盘计划)"
             msg['From'] = EMAIL_CONFIG['sender']
             
             receivers = EMAIL_CONFIG['receivers']
@@ -851,7 +851,7 @@ class HongzhongSignalV3:
 def main():
     """主程序"""
     print("="*70)
-    print("🎯 红中信号生成器 V3.0 - 完整版策略报告")
+    print("🎯 红中信号生成器 V3.4 - 完整版策略报告")
     print("="*70)
     print(f"时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"策略: {STRATEGY_CONFIG['version']}")
