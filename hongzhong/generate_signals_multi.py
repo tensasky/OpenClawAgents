@@ -90,6 +90,22 @@ def load_strategy_module():
 
 
 
+
+
+def get_realtime_price(code):
+    """获取实时价格"""
+    try:
+        import requests
+        url = f"https://qt.gtimg.cn/q={code}"
+        resp = requests.get(url, timeout=3)
+        if '~' in resp.text:
+            parts = resp.text.split('~')
+            return float(parts[3]) if parts[3] else 0
+    except:
+        pass
+    return 0
+
+
 def get_stock_name(code):
     """从数据库获取股票名称"""
     import sqlite3
@@ -139,11 +155,15 @@ def get_multi_strategy_signals():
             stock_name = get_stock_name(s.stock_code)
             
             # 格式化信号
+            # 获取实时价格
+            realtime_price = get_realtime_price(s.stock_code)
+            
             level_signals[level].append({
                 'code': s.stock_code,
                 'name': stock_name,
                 'score': score,
-                'strategy': strategy_name
+                'strategy': strategy_name,
+                'entry_price': realtime_price
             })
         
         all_signals[strategy_name] = level_signals
@@ -215,7 +235,12 @@ def format_multi_strategy_report(all_signals):
                 lines.append(f"\n  {emoji} {level} ({len(signals)}只)")
                 
                 for s in signals[:5]:
-                    lines.append(f"    • {s['code']} {s['name']} 评分:{s['score']:.0f}")
+                    price = s.get('entry_price', 0)
+                    if price > 0:
+                        suggest = price * 1.01
+                        lines.append(f"    • {s['code']} {s['name']} 评分:{s['score']:.0f} 现价:¥{price:.2f} 建议买:¥{suggest:.2f}")
+                    else:
+                        lines.append(f"    • {s['code']} {s['name']} 评分:{s['score']:.0f}")
                 
                 total_signals += len(signals)
     
