@@ -640,3 +640,92 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+class SlippageAnalyzer:
+    """滑点分析器"""
+    
+    def __init__(self, trades: List[TradeRecord]):
+        self.trades = trades
+    
+    def calculate_slippage(self, trade: TradeRecord) -> float:
+        """计算滑点百分比"""
+        if not trade.entry_price or trade.entry_price == 0:
+            return 0
+        
+        # 滑点 = (成交价 - 信号价) / 信号价 * 100%
+        # 买入滑点应该是正的(买贵了), 卖出滑点是负的(卖便宜了)
+        if trade.action == "BUY":
+            # 实际买入价应该比信号价高(上浮0.2%)
+            expected = trade.entry_price * 1.002
+            slippage = (trade.price - expected) / expected * 100
+        else:
+            # 实际卖出价应该比信号价低(下浮0.2%)
+            expected = trade.entry_price * 0.998
+            slippage = (trade.price - expected) / expected * 100
+        
+        return slippage
+    
+    def analyze_by_score(self) -> Dict:
+        """按评分分析滑点"""
+        score_buckets = {
+            "高评分(80+)": [],
+            "中高评分(70-80)": [],
+            "中等评分(60-70)": [],
+            "低评分(<60)": []
+        }
+        
+        for trade in self.trades:
+            if not trade.score:
+                continue
+            
+            slippage = self.calculate_slippage(trade)
+            
+            if trade.score >= 80:
+                score_buckets["高评分(80+)"].append(slippage)
+            elif trade.score >= 70:
+                score_buckets["中高评分(70-80)"].append(slippage)
+            elif trade.score >= 60:
+                score_buckets["中等评分(60-70)"].append(slippage)
+            else:
+                score_buckets["低评分(<60)"].append(slippage)
+        
+        # 计算每个区间的平均滑点
+        result = {}
+        for bucket, slippages in score_buckets.items():
+            if slippages:
+                result[bucket] = {
+                    "count": len(slippages),
+                    "avg_slippage": sum(slippages) / len(slippages),
+                    "max_slippage": max(slippages),
+                    "min_slippage": min(slippages)
+                }
+            else:
+                result[bucket] = {"count": 0, "avg_slippage": 0}
+        
+        return result
+    
+    def analyze_by_strategy(self) -> Dict:
+        """按策略分析滑点"""
+        strategy_buckets = {}
+        
+        for trade in self.trades:
+            if not trade.strategy:
+                continue
+            
+            slippage = self.calculate_slippage(trade)
+            
+            if trade.strategy not in strategy_buckets:
+                strategy_buckets[trade.strategy] = []
+            
+            strategy_buckets[trade.strategy].append(slippage)
+        
+        result = {}
+        for strategy, slippages in strategy_buckets.items():
+            result[strategy] = {
+                "count": len(slippages),
+                "avg_slippage": sum(slippages) / len(slippages)
+            }
+        
+        return result
+

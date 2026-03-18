@@ -182,10 +182,13 @@ class DataReconciliation:
         calculated_total = cash + positions_value
         diff = abs(calculated_total - total_assets)
         
+        # 使用百分比容差
+        tolerance = total_assets * TOLERANCE_PCT if total_assets > 0 else 100
+        
         if diff > tolerance:
             return {
                 'status': 'warning',
-                'msg': f'对账差异 {diff:.2f}元',
+                'msg': f'对账差异 {diff:.2f}元 ({diff/total_assets*100:.2f}%)',
                 'cash': cash,
                 'positions_value': positions_value,
                 'total_assets': total_assets,
@@ -195,7 +198,7 @@ class DataReconciliation:
         
         return {
             'status': 'ok',
-            'msg': '对账正常',
+            'msg': f'对账正常 (差异{abs(diff)/total_assets*100:.3f}%)',
             'cash': cash,
             'positions_value': positions_value,
             'total_assets': total_assets,
