@@ -221,3 +221,174 @@ def format_sell_notification(stock_code, stock_name, price, quantity, profit_pct
 原因: {reason}
 ━━━━━━━━━━━━━━━━━━━━
 """
+
+
+# ============ 股票详细信息 ============
+
+def get_stock_detail(code: str) -> dict:
+    """获取股票详细信息"""
+    import sqlite3
+    from pathlib import Path
+    
+    DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+    
+    try:
+        conn = sqlite3.connect(str(DB))
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+            SELECT stock_code, stock_name, market, sector, industry,
+                   total_shares, float_shares, company_name
+            FROM master_stocks
+            WHERE stock_code = ?
+        ''', (code,))
+        
+        row = cursor.fetchone()
+        conn.close()
+        
+        if row:
+            return {
+                'code': row[0],
+                'name': row[1],
+                'market': row[2],
+                'sector': row[3] or '未知',
+                'industry': row[4] or '未知',
+                'total_shares': row[5],
+                'float_shares': row[6],
+                'company': row[7]
+            }
+    except:
+        pass
+    
+    return {}
+
+
+def format_stock_detail(code: str) -> str:
+    """格式化股票详细信息"""
+    info = get_stock_detail(code)
+    
+    if not info:
+        return "暂无详细信息"
+    
+    lines = [
+        f"🏢 公司: {info.get('company', '未知')}",
+        f"📊 板块: {info.get('sector', '未知')}",
+        f"🏭 行业: {info.get('industry', '未知')}",
+    ]
+    
+    if info.get('total_shares'):
+        total = info['total_shares'] / 1e8  # 亿股
+        float_ = info.get('float_shares', 0) / 1e8
+        lines.append(f"📈 总股本: {total:.2f}亿  流通: {float_:.2f}亿")
+    
+    return "\n".join(lines)
+
+
+def format_signal_with_detail(code: str, name: str, price: float, score: float, strategy: str) -> str:
+    """格式化信号详情（带板块和财务）"""
+    detail = format_stock_detail(code)
+    
+    return f"""
+📊 **交易信号**
+━━━━━━━━━━━━━━━━━━━━
+股票: {code} {name}
+价格: ¥{price:.2f}
+评分: {score:.1f}
+策略: {strategy}
+
+{detail}
+━━━━━━━━━━━━━━━━━━━━
+"""
+
+
+def get_financial_data(code: str) -> dict:
+    """获取财务数据"""
+    import requests
+    
+    try:
+        # 东方财富财务指标API
+        secid = f"1.{code[2:]}" if code.startswith('sh') else f"0.{code[2:]}"
+        url = f"https://emweb.securities.eastmoney.com/PC_HSF10/FinanceAnalysis/GetMainFinanceAjax?code={secid}&"
+        
+        resp = requests.get(url, timeout=5)
+        data = resp.json()
+        
+        if data.get('data'):
+            d = data['data']
+            return {
+                'revenue': d.get('totalRevenue'),  # 营业收入
+                'profit': d.get('netProfit'),  # 净利润
+                'assets': d.get('totalAssets'),  # 总资产
+                'debt': d.get('totalLiab'),  # 总负债
+                'roe': d.get('roe'),  # ROE
+                'gross_margin': d.get('grossProfitMargin'),  # 毛利率
+            }
+    except:
+        pass
+    
+    return {}
+
+
+def format_financial_report(code: str) -> str:
+    """格式化财务报告"""
+    data = get_financial_data(code)
+    
+    if not data:
+        return "暂无财务数据"
+    
+    lines = ["📈 财务数据:"]
+    
+    if data.get('revenue'):
+        lines.append(f"  营收: {data['revenue']/1e8:.2f}亿")
+    if data.get('profit'):
+        lines.append(f"  净利润: {data['profit']/1e8:.2f}亿")
+    if data.get('roe'):
+        lines.append(f"  ROE: {data['roe']:.2f}%")
+    if data.get('gross_margin'):
+        lines.append(f"  毛利率: {data['gross_margin']:.2f}%")
+    
+    return "\n".join(lines)
+
+
+def format_enhanced_notification(code: str, name: str, price: float, 
+                                score: float, strategy: str, 
+                                reason: str = "") -> str:
+    """增强版通知 - 包含板块和财务信息"""
+    import requests
+    
+    # 获取实时数据
+    try:
+        resp = requests.get(f'https://qt.gtimg.cn/q={code}', timeout=3)
+        if '~' in resp.text:
+            parts = resp.text.split('~')
+            current_price = float(parts[3]) if parts[3] else price
+            change = parts[31] or '0'
+            change_pct = parts[32] or '0'
+            volume = int(parts[36]) if parts[36] else 0
+            amount = float(parts[37])/1e8 if parts[37] else 0  # 亿
+            market_cap = float(parts[45]) if parts[45] else 0  # 亿
+            float_cap = float(parts[46]) if parts[46] else 0  # 亿
+            
+            detail = f"""
+📊 **{code} {name}**
+━━━━━━━━━━━━━━━━━━━━
+💰 价格: ¥{current_price:.2f} ({change:+}{change_pct}%)
+📈 成交量: {volume/1e6:.1f}万手  成交额: {amount:.1f}亿
+🏢 总市值: {market_cap:.1f}亿  流通: {float_cap:.1f}亿
+🎯 评分: {score:.1f}  策略: {strategy}
+📝 理由: {reason}
+━━━━━━━━━━━━━━━━━━━━
+"""
+            return detail
+    except:
+        pass
+    
+    # Fallback
+    return f"""
+📊 **{code} {name}**
+━━━━━━━━━━━━━━━━━━━━
+💰 价格: ¥{price:.2f}
+🎯 评分: {score:.1f}  策略: {strategy}
+📝 理由: {reason}
+━━━━━━━━━━━━━━━━━━━━
+"""
