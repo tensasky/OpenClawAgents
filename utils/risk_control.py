@@ -280,7 +280,14 @@ def check_buy_risk(signal: Dict) -> tuple[bool, str]:
     if not controller.check_sector_limit(signal.get('code', '')):
         return False, "行业仓位已达30%上限"
     
-    # 3. 策略资金检查
+    # 3. 板块相关性检查
+    correlation_ctrl = SectorCorrelationController()
+    positions = controller.get_positions()
+    can_pass, reason = correlation_ctrl.check_cluster_limit(positions, signal.get('sector', ''))
+    if not can_pass:
+        return False, f"板块相关性限制: {reason}"
+    
+    # 4. 策略资金检查
     strategy = signal.get('strategy', 'default')
     sp = StrategyPortfolio(strategy)
     if not sp.can_buy(signal.get('entry_price', 0)):
@@ -335,3 +342,72 @@ if __name__ == '__main__':
     
     print("\n=== 今日交易次数 ===")
     print(f"今日交易: {controller.get_today_trades_count()}笔")
+
+
+# 板块相关性矩阵 (简化版)
+SECTOR_CORRELATION = {
+    # 高度相关板块集群
+    "科技集群": ["半导体", "人工智能", "电子", "计算机", "软件"],
+    "新能源集群": ["新能源", "光伏", "锂电", "电池", "风电"],
+    "消费集群": ["白酒", "食品饮料", "家电", "零售", "旅游"],
+    "金融集群": ["银行", "保险", "证券", "房地产"],
+    "医药集群": ["医药", "医疗器械", "生物", "疫苗"],
+}
+
+# 相关板块集群上限
+CORRELATION_CLUSTER_LIMIT = 0.40  # 40%
+
+
+class SectorCorrelationController:
+    """板块相关性控制器"""
+    
+    def __init__(self):
+        self.correlation = SECTOR_CORRELATION
+        self.cluster_limit = CORRELATION_CLUSTER_LIMIT
+    
+    def get_cluster_name(self, sector: str) -> str:
+        """获取板块所属集群"""
+        for cluster, sectors in self.correlation.items():
+            if any(s in sector for s in sectors):
+                return cluster
+        return "其他"
+    
+    def check_cluster_limit(self, positions: list, new_sector: str = None) -> tuple:
+        """
+        检查相关性集群限制
+        返回: (是否通过, 原因)
+        """
+        if not positions:
+            return True, "无持仓"
+        
+        # 计算当前集群暴露
+        cluster_exposure = {}
+        
+        for pos in positions:
+            sector = pos.get('sector', '其他')
+            cluster = self.get_cluster_name(sector)
+            value = pos.get('quantity', 0) * pos.get('current_price', 0)
+            
+            cluster_exposure[cluster] = cluster_exposure.get(cluster, 0) + value
+        
+        total_value = sum(cluster_exposure.values())
+        
+        if total_value == 0:
+            return True, "无持仓"
+        
+        # 检查新买入
+        if new_sector:
+            new_cluster = self.get_cluster_name(new_sector)
+            current_exposure = cluster_exposure.get(new_cluster, 0)
+            
+            # 新增仓位不能超过集群上限
+            if current_exposure / total_value >= self.cluster_limit:
+                return False, f"{new_cluster}集群已达{self.cluster_limit*100:.0%}上限"
+        
+        # 检查任一集群是否超限
+        for cluster, value in cluster_exposure.items():
+            if value / total_value > self.cluster_limit:
+                return False, f"{cluster}集群超限: {value/total_value:.1%}"
+        
+        return True, "通过"
+

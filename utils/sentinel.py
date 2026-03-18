@@ -207,12 +207,93 @@ class DataReconciliation:
         return self.check_reconciliation()
 
 
+
+
+class LimitDownMonitor:
+    """跌停流动性监控"""
+    
+    def __init__(self):
+        self.pool = get_pool(DB_PATH)
+    
+    def check_positions_limit_down(self) -> list:
+        """检查持仓股是否跌停"""
+        import requests
+        
+        conn = self.pool.get_connection()
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            SELECT symbol, current_price FROM positions
+            WHERE quantity > 0
+        """)
+        
+        positions = cursor.fetchall()
+        self.pool.release_connection(conn)
+        
+        limit_down_stocks = []
+        
+        for symbol, current_price in positions:
+            try:
+                # 获取实时数据
+                url = f"https://qt.gtimg.cn/q={symbol}"
+                resp = requests.get(url, timeout=3)
+                
+                if '~' in resp.text:
+                    parts = resp.text.split('~')
+                    price = float(parts[3]) if parts[3] else 0
+                    change_pct = float(parts[32]) if parts[32] else 0
+                    
+                    # 跌停检测 (-9.9%以下)
+                    if change_pct <= -9.9:
+                        # 获取封单量
+                        volume = int(parts[36]) if parts[36] else 0
+                        
+                        limit_down_stocks.append({
+                            'symbol': symbol,
+                            'price': price,
+                            'change_pct': change_pct,
+                            'volume': volume,
+                            'risk_level': 'HIGH' if change_pct <= -9.5 else 'MEDIUM'
+                        })
+                        
+            except Exception as e:
+                log.debug(f"检查{symbol}跌停失败: {e}")
+        
+        return limit_down_stocks
+    
+    def run_limit_down_check(self) -> dict:
+        """执行跌停检查"""
+        log.step("检查跌停流动性")
+        
+        limit_downs = self.check_positions_limit_down()
+        
+        if limit_downs:
+            log.warning(f"发现{len(limit_downs)}只跌停股!")
+            
+            for stock in limit_downs:
+                msg = f"🚨 跌停预警: {stock['symbol']} 跌幅{stock['change_pct']:.1f}%"
+                
+                if stock['risk_level'] == 'HIGH':
+                    msg += " ⚠️ 封单巨大，可能无法止损"
+                
+                try:
+                    from unified_notifier import notify_alert
+                    notify_alert("哨兵-跌停", msg)
+                except:
+                    pass
+        
+        return {
+            'count': len(limit_downs),
+            'stocks': limit_downs
+        }
+
 class Sentinel:
     """哨兵 - 整合心跳监测与数据对账"""
     
     def __init__(self):
         self.heartbeat = HeartbeatMonitor()
         self.reconciliation = DataReconciliation()
+        self.limit_down = LimitDownMonitor()
     
     def run(self) -> Dict:
         """执行完整哨兵检测"""
@@ -221,6 +302,9 @@ class Sentinel:
         # 心跳检测
         heartbeat_result = self.heartbeat.run_heartbeat_check()
         log.info(f"心跳检测: {heartbeat_result['status']}")
+        
+        # 跌停流动性检查
+        limit_result = self.limit_down.run_limit_down_check()
         
         # 数据对账
         recon_result = self.reconciliation.run_reconciliation()
