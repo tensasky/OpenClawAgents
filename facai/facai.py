@@ -14,6 +14,12 @@ from pathlib import Path
 from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass
 import sys
+import sys
+from pathlib import Path
+
+# 添加utils路径
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 from agent_logger import get_logger
@@ -416,6 +422,22 @@ class PortfolioManager:
                     total_market_value += pos.quantity * current_price
             
             beifeng_conn.close()
+            
+            # 更新ATR动态止损
+            try:
+                from risk_control import update_stop_loss
+                cursor.execute('SELECT symbol, current_price, highest_price FROM positions')
+                for row in cursor.fetchall():
+                    symbol, current_price, highest_price = row
+                    if current_price and highest_price:
+                        new_sl = update_stop_loss(symbol, current_price, highest_price)
+                        if new_sl:
+                            cursor.execute(
+                                'UPDATE positions SET stop_loss = ? WHERE symbol = ?',
+                                (new_sl, symbol)
+                            )
+            except Exception as e:
+                logger.warning(f'ATR止损更新失败: {e}')
             
             # 更新总资产
             account = self.get_account()

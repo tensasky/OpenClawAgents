@@ -1,6 +1,6 @@
 # 🎯 A股智能交易系统 - 9-Agent协同量化平台
 
-**版本**: v4.5.0  
+**版本**: v4.6.0  
 **日期**: 2026-03-18
 
 ---
@@ -87,7 +87,7 @@ python3 scripts/caishen_monitor_v52.py
 ## Git
 
 ```bash
-git checkout v4.5.0
+git checkout v4.6.0
 ```
 
 ---
