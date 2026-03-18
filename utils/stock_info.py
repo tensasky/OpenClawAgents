@@ -17,14 +17,14 @@ from dataclasses import dataclass
 
 # 统一架构
 import sys
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path.home() / "Documents/OpenClawAgents"))
 from utils.db_pool import get_pool
 from utils.agent_logger import get_logger
 
 log = get_logger("股票信息")
 
 # 配置
-DB_PATH = Path(__file__).parent.parent / "beifeng/data/stocks_real.db"
+DB_PATH = Path.home() / "Documents/OpenClawAgents" / "beifeng/data/stocks_real.db"
 
 
 @dataclass
