@@ -64,7 +64,7 @@ def get_multi_strategy_signals():
         strategy = NanFengV5_1(strategy_name=strategy_name)
         
         # 扫描股票
-        signals = strategy.scan_signals(max_stocks=50)
+        signals = strategy.scan_signals(max_stocks=500)
         
         log.info(f"  {strategy_name}: 获取到{len(signals)}个信号")
         
