@@ -1,5 +1,22 @@
 # 更新日志
 
+## v4.6.1 (2026-03-18) - 数据库追踪版
+
+### 数据库优化
+- trades表增加: signal_id, strategy, score
+- positions表增加: signal_id, strategy, score
+- 支持交易复盘追溯
+
+### 文档更新
+- BRD.md - 商业需求文档
+- PRD.md - 产品需求文档
+- SDD.md - 详细设计文档
+- CODE_LOGIC.md - 代码逻辑解释
+
+---
+
+# 更新日志
+
 ## v4.6.0 (2026-03-18) - 风控增强版
 
 ### ATR动态止损
