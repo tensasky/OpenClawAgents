@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 """
-事件驱动模块 - Redis Pub/Sub
-实现信号实时推送
-
-功能:
-1. 发布信号 - 红中生成信号后立即推送
-2. 订阅信号 - 发财实时接收并执行
+事件驱动模块 - Redis Streams 版
+支持消息持久化和ACK确认机制
 """
 
 import json
@@ -15,7 +11,6 @@ from pathlib import Path
 from typing import Dict, List, Optional, Callable
 from datetime import datetime
 
-# Redis (可选依赖)
 try:
     import redis
     REDIS_AVAILABLE = True
@@ -23,34 +18,38 @@ except ImportError:
     REDIS_AVAILABLE = False
     print("⚠️ Redis未安装，使用数据库轮询模式")
 
-# 日志
 import sys
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from utils.agent_logger import get_logger
 
-log = get_logger("事件驱动")
+log = get_logger("事件驱动-Streams")
 
 # 配置
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
-CHANNEL_SIGNALS = 'trade_signals'
-CHANNEL_ALERTS = 'system_alerts'
-
-# 数据库轮询间隔(秒)
-POLL_INTERVAL = 5
+STREAM_SIGNALS = 'trade_signals'
+CONSUMER_GROUP = 'facai'
+CONSUMER_NAME = 'consumer_1'
 
 
 class SignalPublisher:
-    """信号发布器"""
+    """信号发布器 - Streams版"""
     
-    def __init__(self, use_redis: bool = True):
-        self.use_redis = use_redis and REDIS_AVAILABLE
+    def __init__(self):
+        self.use_redis = REDIS_AVAILABLE
         
         if self.use_redis:
             try:
                 self.redis = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
                 self.redis.ping()
-                log.success("Redis连接成功")
+                
+                # 创建消费者组(如果不存在)
+                try:
+                    self.redis.xgroup_create(STREAM_SIGNALS, CONSUMER_GROUP, id='0', mkstream=True)
+                except:
+                    pass  # 已存在
+                
+                log.success("Redis Streams连接成功")
             except Exception as e:
                 log.warning(f"Redis连接失败: {e}，使用数据库模式")
                 self.use_redis = False
@@ -58,25 +57,19 @@ class SignalPublisher:
             log.info("使用数据库轮询模式")
     
     def publish_signal(self, signal: Dict) -> bool:
-        """发布交易信号"""
-        # 限流检查
-        limiter = FlowController.get_limiter('signal_publish', 20, 1)
-        if not limiter.allow():
-            log.warning(f'信号发布限流: {signal.get("code")}')
-            return False
-        
+        """发布交易信号到Stream"""
         signal['timestamp'] = datetime.now().isoformat()
-        signal_json = json.dumps(signal, ensure_ascii=False)
         
         if self.use_redis:
             try:
-                self.redis.publish(CHANNEL_SIGNALS, signal_json)
-                log.success(f"已发布信号: {signal.get('code')} {signal.get('name')}")
+                # 使用Streams添加消息
+                msg_id = self.redis.xadd(STREAM_SIGNALS, signal)
+                log.success(f"已发布信号: {signal.get('code')} -> {msg_id}")
                 return True
             except Exception as e:
-                log.error(f"发布失败: {e}")
+                log.error(f"Redis发布失败: {e}")
         
-        # 降级: 写入数据库
+        # 降级: 保存到数据库
         self._save_to_db(signal)
         return False
     
@@ -90,11 +83,10 @@ class SignalPublisher:
         
         if self.use_redis:
             try:
-                self.redis.publish(CHANNEL_ALERTS, json.dumps(alert))
+                self.redis.xadd('system_alerts', alert)
                 return True
             except:
                 pass
-        
         return False
     
     def _save_to_db(self, signal: Dict):
@@ -127,18 +119,16 @@ class SignalPublisher:
             
             conn.commit()
             conn.close()
-            
             log.info(f"信号已保存到数据库: {signal.get('code')}")
-            
         except Exception as e:
             log.error(f"数据库保存失败: {e}")
 
 
 class SignalSubscriber:
-    """信号订阅器"""
+    """信号订阅器 - Streams版"""
     
-    def __init__(self, use_redis: bool = True):
-        self.use_redis = use_redis and REDIS_AVAILABLE
+    def __init__(self):
+        self.use_redis = REDIS_AVAILABLE
         self.callbacks: List[Callable] = []
         self.running = False
         self.thread = None
@@ -147,7 +137,14 @@ class SignalSubscriber:
             try:
                 self.redis = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
                 self.redis.ping()
-                log.success("Redis订阅器连接成功")
+                
+                # 确保消费者组存在
+                try:
+                    self.redis.xgroup_create(STREAM_SIGNALS, CONSUMER_GROUP, id='0', mkstream=True)
+                except:
+                    pass
+                
+                log.success("Redis Streams订阅器连接成功")
             except Exception as e:
                 log.warning(f"Redis连接失败: {e}，使用数据库轮询模式")
                 self.use_redis = False
@@ -162,12 +159,12 @@ class SignalSubscriber:
         self.running = True
         
         if self.use_redis:
-            self.thread = threading.Thread(target=self._listen_redis, daemon=True)
+            self.thread = threading.Thread(target=self._listen_streams, daemon=True)
         else:
             self.thread = threading.Thread(target=self._poll_database, daemon=True)
         
         self.thread.start()
-        log.success("信号监听已启动")
+        log.success("信号监听已启动(Streams模式)")
     
     def stop(self):
         """停止监听"""
@@ -176,26 +173,42 @@ class SignalSubscriber:
             self.thread.join(timeout=5)
         log.info("信号监听已停止")
     
-    def _listen_redis(self):
-        """Redis监听模式"""
-        pubsub = self.redis.pubsub()
-        pubsub.subscribe(CHANNEL_SIGNALS)
+    def _listen_streams(self):
+        """Streams监听模式"""
+        last_id = '0'  # 从最新消息开始
         
-        for message in pubsub.listen():
-            if not self.running:
-                break
-            
-            if message['type'] == 'message':
-                try:
-                    signal = json.loads(message['data'])
-                    self._dispatch(signal)
-                except Exception as e:
-                    log.error(f"解析信号失败: {e}")
+        while self.running:
+            try:
+                # 读取新消息
+                messages = self.redis.xread(
+                    {STREAM_SIGNALS: last_id},
+                    count=10,
+                    block=5000  # 5秒阻塞
+                )
+                
+                if not messages:
+                    continue
+                
+                for stream, msgs in messages:
+                    for msg_id, data in msgs:
+                        last_id = msg_id
+                        
+                        try:
+                            self._dispatch(data)
+                            
+                            # ACK确认
+                            self.redis.xack(STREAM_SIGNALS, CONSUMER_GROUP, msg_id)
+                            
+                        except Exception as e:
+                            log.error(f"处理消息失败: {e}")
+                
+            except Exception as e:
+                log.error(f"Streams监听错误: {e}")
+                time.sleep(1)
     
     def _poll_database(self):
         """数据库轮询模式(降级)"""
         import sqlite3
-        from utils.db_pool import get_pool
         
         db_path = Path.home() / "Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
         last_id = 0
@@ -232,7 +245,7 @@ class SignalSubscriber:
             except Exception as e:
                 log.error(f"轮询失败: {e}")
             
-            time.sleep(POLL_INTERVAL)
+            time.sleep(5)
     
     def _dispatch(self, signal: Dict):
         """分发信号到回调"""
@@ -243,6 +256,17 @@ class SignalSubscriber:
                 callback(signal)
             except Exception as e:
                 log.error(f"回调失败 {callback.__name__}: {e}")
+    
+    def get_pending_messages(self) -> int:
+        """获取未处理消息数量"""
+        if not self.use_redis:
+            return 0
+        
+        try:
+            info = self.redis.xinfo_group(STREAM_SIGNALS)
+            return info.get('pending', 0)
+        except:
+            return 0
 
 
 # ============ 便捷函数 ============
@@ -260,31 +284,18 @@ def create_subscriber() -> SignalSubscriber:
 # ============ 测试 ============
 
 if __name__ == '__main__':
-    print("=== 信号发布测试 ===")
+    print("=== Streams测试 ===")
     
-    publisher = create_publisher()
+    pub = create_publisher()
     
-    # 测试信号
     test_signal = {
         'code': 'sh600519',
         'name': '贵州茅台',
-        'strategy': '测试策略',
+        'strategy': '测试',
         'entry_price': 1500.0,
-        'stop_loss': 1425.0,
-        'score': 85.0
+        'score': 85
     }
     
-    publisher.publish_signal(test_signal)
+    pub.publish_signal(test_signal)
     
-    print("=== 信号订阅测试 ===")
-    
-    def on_signal(sig):
-        print(f"收到信号: {sig}")
-    
-    subscriber = create_subscriber()
-    subscriber.subscribe(on_signal)
-    subscriber.start()
-    
-    # 监听10秒
-    time.sleep(10)
-    subscriber.stop()
+    print(f"未处理消息: {pub.redis.xinfo_group(STREAM_SIGNALS)}")

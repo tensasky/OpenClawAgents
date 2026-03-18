@@ -276,13 +276,14 @@ class PortfolioManager:
             cursor.execute("""
                 INSERT INTO positions 
                 (symbol, name, quantity, avg_price, current_price, stop_loss, highest_price, 
-                 entry_time, entry_logic, sector, sector_heat, signal_id, strategy, score)
+                 entry_time, entry_logic, sector, sector_heat, signal_id, strategy, score, is_sellable)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 symbol, name, quantity, price, price, stop_loss, price,
                 datetime.now().isoformat(),
                 f"南风打分{score}，{'|'.join(signals[:3])}，{sector}板块热度{sector_heat}",
-                sector, sector_heat
+                sector, sector_heat,
+                0  # is_sellable=0，买入当天不能卖出
             ))
             
             # 更新资金
@@ -442,6 +443,12 @@ class PortfolioManager:
                             )
             except Exception as e:
                 logger.warning(f'ATR止损更新失败: {e}')
+            
+            # T+1检查: 15:00后更新is_sellable允许卖出
+            current_hour = datetime.now().hour
+            if current_hour >= 15:
+                cursor.execute("UPDATE positions SET is_sellable = 1 WHERE is_sellable = 0")
+                logger.info("已更新T+1状态")
             
             # 更新总资产
             account = self.get_account()
