@@ -32,6 +32,46 @@ EMAIL_CONFIG = {
 }
 
 # 信号等级
+
+STRATEGY_DETAILS = {
+    "趋势跟踪": {
+        "条件": "ADX>25, MA20向上, 量比>1.5",
+        "持有": "5-15天",
+        "买入": "收盘前或回调企稳",
+        "卖出": "跌破MA10或ADX<20"
+    },
+    "均值回归": {
+        "条件": "RSI<30超卖, 价格<20日均线",
+        "持有": "3-7天",
+        "买入": "RSI拐头向上",
+        "卖出": "RSI>70或盈利5%"
+    },
+    "突破策略": {
+        "条件": "放量突破20日高点",
+        "持有": "5-10天",
+        "买入": "突破当日收盘确认",
+        "卖出": "跌破突破阳线最低点"
+    },
+    "稳健增长": {
+        "条件": "MA20支撑, 波动<3%",
+        "持有": "7-20天",
+        "买入": "回踩MA20企稳",
+        "卖出": "跌破MA20或盈利8%"
+    },
+    "涨停监控": {
+        "条件": "首板/二板/三板放量",
+        "持有": "1-3天",
+        "买入": "涨停打开或封板前",
+        "卖出": "不封板就走"
+    },
+    "热点追击": {
+        "条件": "板块涨幅>3%, 资金流入",
+        "持有": "2-5天",
+        "买入": "板块启动时",
+        "卖出": "板块退潮"
+    }
+}
+
 SIGNAL_LEVELS = {
     "强烈买入": {"emoji": "🚀", "score_min": 80},
     "买入": {"emoji": "📈", "score_min": 70},
@@ -157,6 +197,15 @@ def format_multi_strategy_report(all_signals):
     
     for strategy_name, level_signals in all_signals.items():
         lines.append(f"\n📊 {strategy_name}")
+        
+        # 添加策略详情
+        detail = STRATEGY_DETAILS.get(strategy_name, {})
+        if detail:
+            lines.append(f"   条件: {detail.get('条件', '')}")
+            lines.append(f"   持有: {detail.get('持有', '')}")
+            lines.append(f"   买入: {detail.get('买入', '')}")
+            lines.append(f"   卖出: {detail.get('卖出', '')}")
+        
         lines.append("-" * 40)
         
         for level in ["强烈买入", "买入", "积极关注"]:
