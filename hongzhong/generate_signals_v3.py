@@ -67,13 +67,27 @@ class NanfengStrategyV51:
         conn = sqlite3.connect(BEIFENG_DB)
         cursor = conn.cursor()
         
-        # 今日数据
+        # 获取最近有数据的交易日
+        cursor.execute("""
+            SELECT DISTINCT date(timestamp) as trade_date 
+            FROM daily 
+            WHERE stock_code = ?
+            ORDER BY trade_date DESC 
+            LIMIT 1
+        """, (stock_code,))
+        result = cursor.fetchone()
+        if not result:
+            conn.close()
+            return None
+        latest_date = result[0]
+        
+        # 今日/最近交易日数据
         cursor.execute(f"""
             SELECT open, high, low, close, volume, amount,
                    (close - open) / open * 100 as change_pct
             FROM daily
             WHERE stock_code = ? AND date(timestamp) = ?
-        """, (stock_code, self.today))
+        """, (stock_code, latest_date))
         
         today_data = cursor.fetchone()
         if not today_data:
@@ -378,32 +392,218 @@ class HongzhongSignalV3:
     def __init__(self):
         self.strategy = NanfengStrategyV51()
         self.signals = []
+        self.latest_date = None
+        self.realtime_data = {}  # 存储实时日线数据
     
-    def scan_all_stocks(self, limit: int = 100):
-        """扫描股票"""
-        log.step("开始扫描股票，生成交易信号")
+    def get_realtime_daily_data(self, stock_code: str) -> dict:
+        """
+        获取实时日线数据（当日用minute聚合，历史用daily）
+        ⚠️ 交易时段只用15分钟内的minute数据
+        """
+        import datetime
+        now = datetime.datetime.now()
+        hour = now.hour
+        minute = now.minute
+        time_val = hour * 100 + minute
+        is_trading = (930 <= time_val < 1130) or (1300 <= time_val < 1500)
         
         conn = sqlite3.connect(BEIFENG_DB)
         cursor = conn.cursor()
-        cursor.execute(f"""
-            SELECT stock_code
-            FROM daily
-            WHERE date(timestamp) = '{self.strategy.today}'
-            ORDER BY (close - open) / open * 100 DESC
-            LIMIT {limit}
-        """)
         
-        stocks = [row[0] for row in cursor.fetchall()]
+        # 1. 尝试从minute获取当日聚合数据
+        cursor.execute('''
+            SELECT 
+                MIN(timestamp) as open_time,
+                MAX(high) as high,
+                MIN(low) as low,
+                MAX(close) as close,
+                SUM(volume) as volume,
+                MAX(timestamp) as latest_time
+            FROM minute
+            WHERE stock_code = ? AND timestamp LIKE ?
+        ''', (stock_code, f"{self.strategy.today}%"))
+        
+        minute_data = cursor.fetchone()
+        
+        if minute_data and minute_data[3]:  # 有close价格
+            # 检查数据是否在15分钟内
+            latest_time = minute_data[5]
+            if latest_time:
+                latest_dt = datetime.datetime.strptime(latest_time, '%Y-%m-%d %H:%M:%S')
+                time_diff = (now - latest_dt).total_seconds() / 60
+                
+                # 交易时段：数据必须15分钟内
+                if is_trading and time_diff > 15:
+                    conn.close()
+                    return None  # 数据太旧，交易时段不使用
+            
+            conn.close()
+            return {
+                'source': 'minute',
+                'source_time': latest_time,
+                'is_fresh': time_diff <= 15 if minute_data[5] else False,
+                'open': minute_data[3],
+                'high': minute_data[1],
+                'low': minute_data[2],
+                'close': minute_data[3],
+                'volume': minute_data[4] or 0,
+                'change_pct': 0
+            }
+        
+        # 2. 非交易时段：可以使用历史daily数据
+        if not is_trading:
+            cursor.execute('''
+                SELECT open, high, low, close, volume, amount,
+                       (close - open) / open * 100 as change_pct
+                FROM daily
+                WHERE stock_code = ?
+                ORDER BY timestamp DESC
+                LIMIT 1
+            ''', (stock_code,))
+            
+            daily_data = cursor.fetchone()
+            conn.close()
+            
+            if daily_data:
+                return {
+                    'source': 'daily',
+                    'is_fresh': False,
+                    'open': daily_data[0],
+                    'high': daily_data[1],
+                    'low': daily_data[2],
+                    'close': daily_data[3],
+                    'volume': daily_data[4],
+                    'amount': daily_data[5],
+                    'change_pct': daily_data[6]
+                }
+        
+        conn.close()
+        return None
+    
+    def get_realtime_stock_list(self, limit: int = 100) -> list:
+        """
+        获取可用于筛选的股票列表（优先当日有minute数据的）
+        """
+        conn = sqlite3.connect(BEIFENG_DB)
+        cursor = conn.cursor()
+        
+        # 获取当日有minute数据的股票（优先）
+        cursor.execute('''
+            SELECT DISTINCT stock_code 
+            FROM minute 
+            WHERE timestamp LIKE ?
+            ORDER BY volume DESC
+            LIMIT ?
+        ''', (f"{self.strategy.today}%", limit))
+        
+        minute_stocks = [row[0] for row in cursor.fetchall()]
+        
+        # 获取昨日有daily数据的股票
+        cursor.execute('''
+            SELECT stock_code 
+            FROM daily 
+            WHERE timestamp = "2026-03-17"
+            ORDER BY (close - open) / open DESC
+            LIMIT ?
+        ''', (limit,))
+        
+        daily_stocks = [row[0] for row in cursor.fetchall()]
+        
         conn.close()
         
-        log.info(f"扫描 {len(stocks)} 只股票")
+        # 优先使用有minute数据的股票
+        return minute_stocks + [s for s in daily_stocks if s not in minute_stocks]
+    
+    def save_signals(self):
+        """保存信号到数据库"""
+        if not self.signals:
+            return
+        
+        conn = sqlite3.connect(HONGZHONG_DB)
+        cursor = conn.cursor()
+        
+        # 获取最近有数据的交易日
+        conn2 = sqlite3.connect(BEIFENG_DB)
+        cursor2 = conn2.cursor()
+        cursor2.execute("""
+            SELECT DISTINCT date(timestamp) as trade_date 
+            FROM daily 
+            ORDER BY trade_date DESC 
+            LIMIT 1
+        """)
+        latest = cursor2.fetchone()[0]
+        conn2.close()
+        
+        saved = 0
+        for s in self.signals:
+            try:
+                cursor.execute("""
+                    INSERT INTO signals 
+                    (timestamp, stock_code, stock_name, strategy, version, 
+                     entry_price, stop_loss, target_1, target_2, score, sent_discord)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    latest,
+                    s['code'],
+                    s['name'],
+                    s.get('signal', '南风V5.1'),
+                    s.get('strategy_version', 'V5.1'),
+                    s.get('entry_price', 0),
+                    s.get('stop_loss', 0),
+                    s.get('target_1', 0),
+                    s.get('target_2', 0),
+                    s['score'],
+                    0
+                ))
+                saved += 1
+            except Exception as e:
+                log.warning(f"保存失败 {s['code']}: {e}")
+        
+        conn.commit()
+        conn.close()
+        log.success(f"✅ 已保存 {saved} 个信号到数据库")
+        return saved
+    
+    def scan_all_stocks(self, limit: int = 100):
+        """扫描股票 - 使用实时数据（minute+当日聚合）"""
+        log.step("开始扫描股票，生成交易信号")
+        
+        # 获取股票列表（优先当日有minute数据的）
+        stocks = self.get_realtime_stock_list(limit)
+        
+        # 统计数据类型
+        minute_count = 0
+        daily_count = 0
         
         for stock in stocks:
+            # 获取实时数据
+            realtime = self.get_realtime_daily_data(stock)
+            if not realtime:
+                continue
+            
+            # 记录数据来源
+            if realtime['source'] == 'minute':
+                minute_count += 1
+            else:
+                daily_count += 1
+            
+            # 获取历史数据用于计算评分
             data = self.strategy.get_stock_data(stock)
             if data:
+                # 用实时数据更新当日数据
+                data['open'] = realtime['open']
+                data['high'] = realtime['high']
+                data['low'] = realtime['low']
+                data['close'] = realtime['close']
+                data['volume'] = realtime['volume']
+                data['change_pct'] = realtime['change_pct']
+                
                 result = self.strategy.calculate_score_detailed(data)
                 if result and result['score'] >= 65:
+                    result['data_source'] = realtime['source']
                     self.signals.append(result)
+        
+        log.info(f"扫描 {len(stocks)} 只股票 (实时:{minute_count}, 历史:{daily_count})")
         
         self.signals.sort(key=lambda x: x['score'], reverse=True)
         
@@ -666,6 +866,9 @@ def main():
     if not signals:
         print("❌ 未生成有效信号")
         return
+    
+    # 保存信号到数据库
+    hongzhong.save_signals()
     
     # 显示信号
     print(f"\n📊 生成 {len(signals)} 个交易信号:\n")

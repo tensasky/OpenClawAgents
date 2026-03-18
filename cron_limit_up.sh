@@ -1,8 +1,12 @@
 #!/bin/bash
-# 涨停策略实时监控定时任务
-# 交易时段运行：开盘后、午盘后、收盘前
+# 涨停策略实时监控
+# 带进程锁机制
 
-cd /Users/roberto/Documents/OpenClawAgents/nanfeng
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# 运行涨停监控
-/usr/bin/python3 limit_up_monitor.py >> /Users/roberto/.openclaw/workspace/logs/limit_up_monitor.log 2>&1
+python3 "${SCRIPT_DIR}/utils/cron_wrapper.py" -l "limit_up_monitor" -t 60 -- bash -c "
+    cd '${SCRIPT_DIR}/nanfeng'
+    echo \"[\$(date '+%Y-%m-%d %H:%M:%S')] 涨停监控启动\"
+    /usr/bin/python3 limit_up_monitor.py >> /Users/roberto/.openclaw/workspace/logs/limit_up_monitor.log 2>&1
+    echo \"[\$(date '+%Y-%m-%d %H:%M:%S')] 涨停监控完成\"
+"

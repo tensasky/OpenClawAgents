@@ -22,6 +22,7 @@ from agent_logger import get_logger
 
 # 导入抓取模块
 from fetcher import DataFetcher, SinaFetcher, TencentFetcher, RateLimiter
+from minute_fetcher import MinuteDataFetcher
 
 # 配置
 WORKSPACE = Path.home() / "Documents/OpenClawAgents/beifeng"
@@ -413,6 +414,7 @@ class FetchEngine:
         self.source = source
         self.fetcher = DataFetcher(source)
         self.rate_limiter = RateLimiter()
+        self.minute_fetcher = MinuteDataFetcher()
     
     def run(self, task: FetchTask) -> Tuple[bool, int, str]:
         """
@@ -430,6 +432,17 @@ class FetchEngine:
             # 执行抓取
             if task.data_type == 'daily':
                 data = self.fetcher.fetch_daily(task.stock_code, task.start_time, task.end_time)
+            elif task.data_type == 'minute':
+                # 分钟数据：获取当日数据
+                minute_data = self.minute_fetcher.fetch_tencent_minute(task.stock_code)
+                if minute_data:
+                    # 保存分钟数据
+                    self._save_minute_data(task.stock_code, minute_data)
+                    log.info(f"   ✅ 成功: {len(minute_data)} 条分钟数据")
+                    return True, len(minute_data), ""
+                else:
+                    log.info(f"   ⚠️ 无分钟数据")
+                    return True, 0, ""
             else:
                 raise ValueError(f"不支持的数据类型: {task.data_type}")
             
@@ -475,6 +488,48 @@ class FetchEngine:
             self.db.log_error_task(task, error_msg)
             
             return False, 0, error_msg
+    
+    def _save_minute_data(self, stock_code: str, data: List[Dict]):
+        """保存分钟数据到数据库"""
+        from datetime import datetime, timedelta
+        import random
+        
+        today = datetime.now().strftime('%Y-%m-%d')
+        
+        for item in data:
+            try:
+                # 解析时间戳 (格式: '0930' -> 转换为今天的时间)
+                ts = item.get('time', '')
+                if ts and len(ts) == 4 and ts.isdigit():
+                    hour = int(ts[:2])
+                    minute = int(ts[2:])
+                    # 转换为今天的时间
+                    now = datetime.now()
+                    timestamp = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+                    # 如果时间还没到（大于当前时间），使用前一个交易日
+                    if timestamp > now:
+                        timestamp = timestamp - timedelta(days=1)
+                        # 调整为交易时间
+                        if timestamp.hour < 9 or (timestamp.hour == 9 and timestamp.minute < 30):
+                            timestamp = timestamp.replace(hour=9, minute=30)
+                else:
+                    timestamp = datetime.now()
+                
+                price = item.get('price', item.get('open', 0))
+                
+                self.db.conn.execute("""
+                    INSERT OR REPLACE INTO minute 
+                    (stock_code, timestamp, open, high, low, close, volume)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    stock_code,
+                    timestamp,
+                    price, price, price, price,
+                    item.get('volume', 0)
+                ))
+            except Exception as e:
+                log.warning(f"   ⚠️ 保存失败: {e}")
+        self.db.conn.commit()
     
     def _validate_data(self, data: List[Dict]) -> bool:
         """数据校验"""

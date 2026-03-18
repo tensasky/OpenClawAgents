@@ -1,5 +1,83 @@
 [
   {
+    "scan_time": "2026-03-18T12:47:19.796918",
+    "total_candidates": 0,
+    "new_entered": 0,
+    "new_exited": 0,
+    "current_pool_size": 0,
+    "current_standby_size": 0,
+    "hot_sectors": [
+      "房地产"
+    ],
+    "entered_codes": [],
+    "exited_codes": []
+  },
+  {
+    "scan_time": "2026-03-18T12:45:08.296525",
+    "total_candidates": 0,
+    "new_entered": 0,
+    "new_exited": 0,
+    "current_pool_size": 0,
+    "current_standby_size": 0,
+    "hot_sectors": [
+      "房地产"
+    ],
+    "entered_codes": [],
+    "exited_codes": []
+  },
+  {
+    "scan_time": "2026-03-17T14:00:00.554543",
+    "total_candidates": 0,
+    "new_entered": 0,
+    "new_exited": 0,
+    "current_pool_size": 0,
+    "current_standby_size": 0,
+    "hot_sectors": [
+      "房地产"
+    ],
+    "entered_codes": [],
+    "exited_codes": []
+  },
+  {
+    "scan_time": "2026-03-17T13:45:00.323550",
+    "total_candidates": 0,
+    "new_entered": 0,
+    "new_exited": 0,
+    "current_pool_size": 0,
+    "current_standby_size": 0,
+    "hot_sectors": [
+      "房地产"
+    ],
+    "entered_codes": [],
+    "exited_codes": []
+  },
+  {
+    "scan_time": "2026-03-17T13:30:00.093872",
+    "total_candidates": 0,
+    "new_entered": 0,
+    "new_exited": 0,
+    "current_pool_size": 0,
+    "current_standby_size": 0,
+    "hot_sectors": [
+      "房地产"
+    ],
+    "entered_codes": [],
+    "exited_codes": []
+  },
+  {
+    "scan_time": "2026-03-17T09:20:41.966153",
+    "total_candidates": 0,
+    "new_entered": 0,
+    "new_exited": 0,
+    "current_pool_size": 0,
+    "current_standby_size": 0,
+    "hot_sectors": [
+      "房地产"
+    ],
+    "entered_codes": [],
+    "exited_codes": []
+  },
+  {
     "scan_time": "2026-03-16T11:33:50.231543",
     "total_candidates": 0,
     "new_entered": 0,

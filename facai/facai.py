@@ -17,6 +17,7 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 from agent_logger import get_logger
+from notify import notify_trade, notify_alert
 
 log = get_logger("发财")
 
@@ -54,6 +55,10 @@ logger = logging.getLogger("发财")
 INITIAL_CAPITAL = 100000.00
 MAX_POSITION_PCT = 0.50  # 单只股票最大50%
 SELL_FEE_RATE = 0.0003  # 卖出手续费万分之三
+SLIPPAGE = 0.002  # 滑点0.2%
+
+# Hongzhong信号数据库
+HONGZHONG_DB = Path.home() / "Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
 
 
 def is_trading_time() -> bool:
@@ -215,7 +220,7 @@ class PortfolioManager:
     
     def buy(self, symbol: str, name: str, price: float, score: float, 
             sector: str, sector_heat: str, signals: List[str]) -> bool:
-        """执行买入"""
+        """执行买入（含滑点）"""
         # 检查交易时间
         if is_auction_time():
             logger.warning(f"集合竞价时间(9:15-9:25)不能买入 {symbol}")
@@ -224,6 +229,9 @@ class PortfolioManager:
         if not is_trading_time():
             logger.warning(f"非交易时间不能买入 {symbol}")
             return False
+        
+        # 加入滑点（买入价上浮0.2%）
+        actual_price = price * (1 + SLIPPAGE)
         
         conn = sqlite3.connect(PORTFOLIO_DB)
         cursor = conn.cursor()
@@ -241,12 +249,12 @@ class PortfolioManager:
                 logger.warning(f"资金不足，跳过买入 {symbol}")
                 return False
             
-            quantity = int(buy_amount / price / 100) * 100  # 100股整数
+            quantity = int(buy_amount / actual_price / 100) * 100  # 100股整数
             if quantity < 100:
                 logger.warning(f"计算股数不足100，跳过买入 {symbol}")
                 return False
             
-            total_cost = quantity * price
+            total_cost = quantity * actual_price
             
             # 检查是否已有持仓
             existing = self.get_position(symbol)
@@ -286,6 +294,11 @@ class PortfolioManager:
             
             conn.commit()
             logger.info(f"💰 买入成功: {symbol}({name}) {quantity}股 @ ¥{price}，止损¥{stop_loss:.2f}")
+            
+            # 发送通知
+            reason = f"{signals[0] if signals else '南风V5.1'}"
+            notify_trade("BUY", symbol, name, price, quantity, reason)
+            
             return True
             
         except Exception as e:
@@ -296,7 +309,7 @@ class PortfolioManager:
             conn.close()
     
     def sell(self, symbol: str, price: float, reason: str) -> bool:
-        """执行卖出（含手续费）"""
+        """执行卖出（含手续费+滑点）"""
         # 检查交易时间
         if is_auction_time():
             logger.warning(f"集合竞价时间(9:15-9:25)不能卖出 {symbol}")
@@ -305,6 +318,9 @@ class PortfolioManager:
         if not is_trading_time():
             logger.warning(f"非交易时间不能卖出 {symbol}")
             return False
+        
+        # 加入滑点（卖出价下浮0.2%）
+        actual_price = price * (1 - SLIPPAGE)
         
         conn = sqlite3.connect(PORTFOLIO_DB)
         cursor = conn.cursor()
@@ -316,7 +332,7 @@ class PortfolioManager:
                 return False
             
             quantity = position.quantity
-            gross_amount = quantity * price
+            gross_amount = quantity * actual_price
             
             # 计算手续费（万分之三）
             fee = gross_amount * SELL_FEE_RATE
@@ -354,6 +370,10 @@ class PortfolioManager:
             conn.commit()
             logger.info(f"💰 卖出成功: {symbol}({position.name}) {quantity}股 @ ¥{price}，"
                        f"毛盈亏{gross_profit:+.2f}，手续费¥{fee:.2f}，净盈亏{net_profit:+.2f}({profit_pct:+.2f}%)，原因:{reason}")
+            
+            # 发送通知
+            notify_trade("SELL", symbol, position.name, price, quantity, reason)
+            
             return True
             
         except Exception as e:
@@ -530,6 +550,141 @@ class FacaiTrader:
         except Exception as e:
             logger.error(f"加载红中Top3失败: {e}")
             return []
+    
+    def load_signals_from_db(self, min_score: float = 65) -> List[Dict]:
+        """从红中数据库加载今日信号"""
+        if not HONGZHONG_DB.exists():
+            logger.warning(f"红中数据库不存在: {HONGZHONG_DB}")
+            return []
+        
+        try:
+            conn = sqlite3.connect(str(HONGZHONG_DB))
+            cursor = conn.cursor()
+            
+            # 获取今日信号
+            today = datetime.now().strftime('%Y-%m-%d')
+            cursor.execute("""
+                SELECT stock_code, stock_name, strategy, score, 
+                       entry_price, stop_loss, target_1, target_2
+                FROM signals 
+                WHERE timestamp LIKE ? AND score >= ?
+                ORDER BY score DESC
+            """, (f"{today}%", min_score))
+            
+            signals = []
+            for row in cursor.fetchall():
+                signals.append({
+                    'code': row[0],
+                    'name': row[1],
+                    'strategy': row[2],
+                    'score': row[3],
+                    'entry_price': row[4] or 0,
+                    'stop_loss': row[5] or 0,
+                    'target_1': row[6] or 0,
+                    'target_2': row[7] or 0
+                })
+            
+            conn.close()
+            logger.info(f"从数据库加载 {len(signals)} 个信号")
+            return signals
+        except Exception as e:
+            logger.error(f"加载信号失败: {e}")
+            return []
+    
+    def get_current_price(self, symbol: str) -> float:
+        """获取当前实时价格（只用minute最新价，不用daily收盘价）"""
+        import datetime
+        try:
+            conn = sqlite3.connect(str(BEIFENG_DB))
+            cursor = conn.cursor()
+            
+            # 只从minute获取最新价格，不用daily
+            cursor.execute("""
+                SELECT close, timestamp FROM minute 
+                WHERE stock_code = ?
+                ORDER BY timestamp DESC LIMIT 1
+            """, (symbol,))
+            
+            result = cursor.fetchone()
+            conn.close()
+            
+            if result:
+                return result[0]
+        except Exception as e:
+            logger.error(f"获取价格失败 {symbol}: {e}")
+        
+        return 0.0
+    
+    def is_limit_up(self, symbol: str, price: float) -> bool:
+        """检查是否涨停（涨幅>=9.9%）"""
+        try:
+            conn = sqlite3.connect(str(BEIFENG_DB))
+            cursor = conn.cursor()
+            
+            # 获取昨日收盘价
+            cursor.execute("""
+                SELECT close FROM daily 
+                WHERE stock_code = ?
+                ORDER BY timestamp DESC LIMIT 1, 1
+            """, (symbol,))
+            
+            result = cursor.fetchone()
+            conn.close()
+            
+            if result and result[0] > 0:
+                change_pct = (price - result[0]) / result[0] * 100
+                return change_pct >= 9.9
+        except:
+            pass
+        return False
+    
+    def auto_trade_signals(self):
+        """根据红中信号自动交易"""
+        logger.info("=" * 60)
+        logger.info("🎯 发财自动交易系统启动...")
+        logger.info("=" * 60)
+        
+        # 1. 获取今日信号
+        signals = self.load_signals_from_db(min_score=65)
+        if not signals:
+            logger.warning("今日没有信号")
+            return
+        
+        logger.info(f"获取到 {len(signals)} 个买入信号")
+        
+        # 2. 执行买入
+        for signal in signals:
+            code = signal['code']
+            name = signal['name']
+            score = signal['score']
+            
+            # 获取当前价格
+            current_price = self.get_current_price(code)
+            if current_price <= 0:
+                logger.warning(f"无法获取价格 {code}")
+                continue
+            
+            # 获取板块
+            sector = ""
+            sector_heat = ""
+            
+            # 执行买入
+            strategy_name = signal.get('strategy', '南风V5.1-保守版')
+            
+            # 检查是否涨停
+            if self.is_limit_up(code, current_price):
+                logger.warning(f"⚠️ {code} 涨停中，无法买入 (涨幅>=9.9%)")
+                notify_alert("warning", "涨停无法买入", f"{code} {name} 涨停中")
+                continue
+            
+            logger.info(f"尝试买入: {code} {name} @ ¥{current_price} (评分:{score} 策略:{strategy_name})")
+            success = self.portfolio.buy(
+                code, name, current_price, score,
+                sector, sector_heat, [strategy_name]
+            )
+            
+            if success:
+                logger.info(f"✅ 买入成功: {code} 策略:{strategy_name}")
     
     def execute_buy(self):
         """执行买入（14:50-15:00）"""
