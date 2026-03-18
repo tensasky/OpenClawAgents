@@ -19,6 +19,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from db_pool import get_pool
 from agent_logger import get_logger
 from unified_notifier import notify_alert
+from flow_control import FlowController
 
 log = get_logger("哨兵")
 

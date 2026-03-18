@@ -59,6 +59,12 @@ class SignalPublisher:
     
     def publish_signal(self, signal: Dict) -> bool:
         """发布交易信号"""
+        # 限流检查
+        limiter = FlowController.get_limiter('signal_publish', 20, 1)
+        if not limiter.allow():
+            log.warning(f'信号发布限流: {signal.get("code")}')
+            return False
+        
         signal['timestamp'] = datetime.now().isoformat()
         signal_json = json.dumps(signal, ensure_ascii=False)
         
