@@ -51,7 +51,14 @@ class HeartbeatMonitor:
             row = cursor.fetchone()
             
             if row and row[0]:
-                return datetime.fromisoformat(row[0])
+                ts = str(row[0])
+                # 处理缺少冒号的时间格式 如 "2026-03-19 1040" -> "2026-03-19 10:40"
+                if ' ' in ts and ':' not in ts.split(' ')[-1]:
+                    parts = ts.split(' ')
+                    time_part = parts[-1]
+                    if len(time_part) == 4:
+                        ts = f"{parts[0]} {time_part[:2]}:{time_part[2:]}"
+                return datetime.fromisoformat(ts)
         except Exception as e:
             log.error(f"查询失败: {e}")
         finally:

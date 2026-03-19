@@ -725,21 +725,21 @@ class FacaiTrader:
         logger.info("💰 发财执行买入策略...")
         logger.info("=" * 60)
         
-        # 1. 获取红中Top3
-        top3 = self.load_hongzhong_top3()
-        if not top3:
-            logger.warning("没有红中Top3数据，跳过买入")
+        # 1. 从数据库获取红中信号
+        signals = self.load_signals_from_db(min_score=65)
+        if not signals:
+            logger.warning("没有红中信号数据，跳过买入")
             return
         
-        # 2. 筛选符合条件的（分数>=8.5）
-        candidates = [s for s in top3 if s.get('score', 0) >= 8.5]
-        logger.info(f"红中Top3: {len(top3)}只，>=8.5分: {len(candidates)}只")
+        # 2. 使用所有信号作为候选
+        candidates = signals[:5]  # 取前5只
+        logger.info(f"红中信号: {len(signals)}只，买入候选: {len(candidates)}只")
         
         # 3. 执行买入
         for stock in candidates:
             symbol = stock.get('code', '')
             name = stock.get('name', '')
-            price = stock.get('price', 0)
+            price = stock.get('entry_price', 0) or stock.get('price', 0)
             score = stock.get('score', 0)
             
             # 检查是否已有持仓
@@ -747,10 +747,10 @@ class FacaiTrader:
                 logger.info(f"已有持仓 {symbol}，跳过")
                 continue
             
-            # 获取板块信息
-            sector = stock.get('sector', '未知')
-            sector_heat = stock.get('sector_heat', 'Low')
-            signals = stock.get('signals', [])
+            # 使用默认值
+            sector = '未知'
+            sector_heat = 'Medium'
+            signals = [stock.get('strategy', '南风V5.5')]
             
             # 执行买入
             success = self.portfolio.buy(symbol, name, price, score, sector, sector_heat, signals)

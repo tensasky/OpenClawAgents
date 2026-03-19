@@ -7,6 +7,7 @@
 import os
 import smtplib
 from email.mime.text import MIMEText
+from email.header import Header
 from pathlib import Path
 from datetime import datetime
 from typing import List
@@ -92,8 +93,10 @@ def send_email(subject: str, content: str, config: dict = None) -> bool:
     try:
         msg = MIMEText(content, 'html', 'utf-8')
         msg['Subject'] = subject
+        from email.header import Header
         sender_name = config.get('sender_name', '')
-        msg['From'] = f'{sender_name} <{config["sender"]}>' if sender_name else config['sender']
+        sender_encoded = Header(sender_name, 'utf-8').encode() if sender_name else ''
+        msg['From'] = f'{sender_encoded} <{config["sender"]}>' if sender_name else config['sender']
         msg['To'] = ', '.join(config['receivers'])
         
         server = smtplib.SMTP(config['smtp_server'], config['smtp_port'])
