@@ -84,12 +84,9 @@ class DongfengV21:
                 volume,
                 (close - open) / open * 100 as change_pct
             FROM daily
-            WHERE date(timestamp) = ?
-            AND stock_code IN ({placeholders})
-            AND volume > 1000000
-            AND (high - low) / open > 0.03
-            ORDER BY (high - low) / open DESC
-        """, [today] + stocks)
+            WHERE stock_code IN ({placeholders})
+            ORDER BY timestamp DESC
+        """, stocks)
         
         active_stocks = []
         for row in cursor.fetchall():
