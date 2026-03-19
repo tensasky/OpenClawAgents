@@ -30,6 +30,17 @@ PORTFOLIO_PATH = Path.home() / "Documents/OpenClawAgents/facai/data/portfolio.db
 # 阈值
 TOLERANCE_PCT = 0.001  # 对账容差 0.1%
 MINUTE_TIMEOUT = 10 * 60  # 10分钟无更新=警告
+
+def is_trading_hours():
+    """是否在交易时段"""
+    from datetime import datetime, time
+    now = datetime.now()
+    t = now.time()
+    # 周一到周五，交易时间
+    if now.weekday() >= 5:
+        return False
+    # 9:30-11:30, 13:00-15:00
+    return (time(9, 30) <= t <= time(11, 30)) or (time(13, 0) <= t <= time(15, 0))
 DAILY_TIMEOUT = 30 * 60    # 30分钟无日线=警告
 
 
@@ -73,6 +84,10 @@ class HeartbeatMonitor:
         if not last:
             return {'status': 'critical', 'msg': '无分钟数据', 'last': None}
         
+        # 非交易时间不告警
+        if not is_trading_hours():
+            return {'status': 'ok', 'msg': '非交易时段', 'last': last.isoformat()}
+
         elapsed = (datetime.now() - last).total_seconds()
         
         if elapsed > MINUTE_TIMEOUT:
