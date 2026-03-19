@@ -28,6 +28,7 @@ DB_PATH = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
 PORTFOLIO_PATH = Path.home() / "Documents/OpenClawAgents/facai/data/portfolio.db"
 
 # 阈值
+TOLERANCE_PCT = 0.001  # 对账容差 0.1%
 MINUTE_TIMEOUT = 10 * 60  # 10分钟无更新=警告
 DAILY_TIMEOUT = 30 * 60    # 30分钟无日线=警告
 
@@ -216,7 +217,7 @@ class LimitDownMonitor:
     """跌停流动性监控"""
     
     def __init__(self):
-        self.pool = get_pool(DB_PATH)
+        self.pool = get_pool(PORTFOLIO_PATH)
     
     def check_positions_limit_down(self) -> list:
         """检查持仓股是否跌停"""
