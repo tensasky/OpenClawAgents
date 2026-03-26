@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 北风 - 股票数据采集 Agent (重构版)
 完整流程：自检 -> 测速 -> 抓取 -> 校验 -> 持久化

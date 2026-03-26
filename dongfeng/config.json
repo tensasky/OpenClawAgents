@@ -1,0 +1,24 @@
+{
+  "macro": {
+    "index_code": "sh000300",
+    "bull_threshold": 0,
+    "scale_factor": 0.5
+  },
+  "sentiment": {
+    "min_up_count": 1000,
+    "min_hot_count": 50,
+    "exclude_followers": true
+  },
+  "sector": {
+    "require_top5": true
+  },
+  "volume_price": {
+    "exclude_shrink_up": true,
+    "exclude_volume_down": true
+  },
+  "strategy": {
+    "min_momentum": 0,
+    "min_turnover": 1,
+    "max_turnover": 25
+  }
+}

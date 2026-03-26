@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 发财 (The Trader) - 模拟交易与资产管理专家
 模拟交易执行、动态风控、资产管理
@@ -23,7 +23,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
 from agent_logger import get_logger
-from notify import notify_trade, notify_alert
+from unified_notifier import notify_trade, notify_alert
 
 log = get_logger("发财")
 

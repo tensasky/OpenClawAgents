@@ -31,20 +31,22 @@ class RealtimeAggregator:
         self.db_path = BEIFENG_DB
     
     def get_today_minute_data(self, stock_code: str) -> Optional[pd.DataFrame]:
-        """获取今日分钟数据"""
+        """获取今日分钟数据 - 优先minute表，备选kline_data"""
         try:
             conn = sqlite3.connect(self.db_path)
+            # 优先查minute表
             query = """
                 SELECT timestamp, open, high, low, close, volume, amount
-                FROM kline_data
-                WHERE stock_code = ? AND data_type = '1min'
-                AND DATE(timestamp) = DATE('now')
+                FROM minute
+                WHERE stock_code = ?
+                AND timestamp LIKE ?
                 ORDER BY timestamp
             """
-            df = pd.read_sql_query(query, conn, params=(stock_code,))
+            today = datetime.now().strftime('%Y-%m-%d')
+            df = pd.read_sql_query(query, conn, params=(stock_code, today + '%'))
             conn.close()
             
-            if len(df) == 0:
+            if df is None or len(df) == 0:
                 return None
             
             df['timestamp'] = pd.to_datetime(df['timestamp'])

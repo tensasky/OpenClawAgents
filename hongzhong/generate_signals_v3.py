@@ -7,6 +7,7 @@
 import sqlite3
 import json
 import smtplib
+from utils.notify import send_email
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timedelta
@@ -835,11 +836,10 @@ class HongzhongSignalV3:
             html_content = self.generate_email_content()
             msg.attach(MIMEText(html_content, 'html', 'utf-8'))
             
-            server = smtplib.SMTP(EMAIL_CONFIG['smtp_server'], EMAIL_CONFIG['smtp_port'])
-            server.starttls()
-            server.login(EMAIL_CONFIG['sender'], EMAIL_CONFIG['password'])
-            server.sendmail(EMAIL_CONFIG['sender'], receivers, msg.as_string())
-            server.quit()
+            # 使用utils.notify发送邮件
+            from utils.notify import send_email as util_send_email
+            subject = f"🎯 红中交易信号V3.4 - {datetime.now().strftime('%Y-%m-%d')} (含完整操盘计划)"
+            util_send_email(subject, html_content, EMAIL_CONFIG)
             
             log.success(f"✅ 完整版邮件已发送至 {len(receivers)} 个邮箱")
             return True

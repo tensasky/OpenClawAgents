@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
-nanfeng_v5_1.py - 南风量化交易引擎V5.1 (精选版)
+nanfeng_v5_1.py - 南风量化交易引擎V5.5 (精选版)
 核心改进：每天只选Top 5，大幅提高信号质量
 
-V5.1关键改进：
+V5.5关键改进：
 1. 严格门槛 - 分数>=8.5, ADX>=30, MA20强势向上
 2. 精选策略 - 每天最多选5只，按综合评分排序
 3. 市场环境过滤 - 大盘ADX<20时暂停
@@ -13,7 +13,6 @@ V5.1关键改进：
 import os
 import sys
 import json
-import logging
 import sqlite3
 import numpy as np
 import pandas as pd
@@ -22,26 +21,23 @@ from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass, field
 
+# 导入统一日志
+sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+from agent_logger import get_logger
+
 # 导入实时数据聚合器和策略配置
 sys.path.insert(0, str(Path(__file__).parent))
 from realtime_aggregator import RealtimeAggregator
 from strategy_config import StrategyConfig, get_strategy, STRATEGIES
 
-# 配置
-BEIFENG_DB = Path("/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks.db")
-XIFENG_HOTSPOTS = Path("/Users/roberto/Documents/OpenClawAgents/xifeng/data/hot_spots.json")
-LOG_DIR = Path("/Users/roberto/Documents/OpenClawAgents/nanfeng/logs")
-LOG_DIR.mkdir(exist_ok=True)
+# 初始化日志
+log = get_logger("南风")
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(LOG_DIR / f"nanfeng_v5_1_{datetime.now().strftime('%Y%m%d')}.log"),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger("南风V5.1")
+# 配置
+BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+XIFENG_HOTSPOTS = Path.home() / "Documents/OpenClawAgents/xifeng/data/hot_spots.json"
+LOG_DIR = Path.home() / "Documents/OpenClawAgents/nanfeng/logs"
+LOG_DIR.mkdir(exist_ok=True)
 
 
 @dataclass
@@ -139,7 +135,7 @@ class TechnicalIndicators:
 
 
 class NanFengV5_1:
-    """南风V5.1 - 精选版 (支持多策略)"""
+    """南风V5.5 - 精选版 (支持多策略)"""
     
     def __init__(self, use_realtime: bool = True, strategy_name: str = "趋势跟踪"):
         self.db_path = BEIFENG_DB
@@ -148,10 +144,11 @@ class NanFengV5_1:
         self.realtime = RealtimeAggregator() if use_realtime else None
         self.use_realtime = use_realtime
         self.stock_names = {}  # 缓存股票名称
+        self.strategy_name = strategy_name  # 保存策略名称
         
         # 加载策略配置
         self.strategy = get_strategy(strategy_name)
-        logger.info(f"🎯 加载策略: {self.strategy.name} - {self.strategy.description}")
+        log.info(f"🎯 加载策略: {self.strategy.name} - {self.strategy.description}")
         
         # 从策略配置加载参数
         self.min_adx = self.strategy.min_adx
@@ -188,7 +185,7 @@ class NanFengV5_1:
                         if code:
                             hot_stocks[code] = {'sector': sector, 'level': level, 'name': name}
             except Exception as e:
-                logger.error(f"加载热点失败: {e}")
+                log.error(f"加载热点失败: {e}")
         return hot_stocks
     
     def get_stock_name(self, stock_code: str) -> str:
@@ -235,8 +232,8 @@ class NanFengV5_1:
                 conn = sqlite3.connect(self.db_path)
                 query = """
                     SELECT timestamp, open, high, low, close, volume
-                    FROM kline_data
-                    WHERE stock_code = 'sh000001' AND data_type = 'daily'
+                    FROM daily
+                    WHERE stock_code = 'sh000001'
                     ORDER BY timestamp DESC
                     LIMIT 30
                 """
@@ -270,7 +267,7 @@ class NanFengV5_1:
                 return True, f"[{data_source}]大盘环境良好ADX={market_adx:.1f}，今日{daily_change:+.2f}%"
                 
         except Exception as e:
-            logger.error(f"市场环境检查失败: {e}")
+            log.error(f"市场环境检查失败: {e}")
             return True, "检查失败，默认允许"
     
     def get_stock_data(self, stock_code: str, days: int = 60) -> Optional[pd.DataFrame]:
@@ -282,7 +279,7 @@ class NanFengV5_1:
                 # 检查是否有实时数据
                 has_realtime = df['is_realtime'].iloc[-1] if 'is_realtime' in df.columns else False
                 if has_realtime:
-                    logger.debug(f"{stock_code}: 使用实时聚合数据")
+                    log.debug(f"{stock_code}: 使用实时聚合数据")
                     return df.drop(columns=['is_realtime']) if 'is_realtime' in df.columns else df
         
         # 2. 回退到传统日线数据
@@ -290,8 +287,8 @@ class NanFengV5_1:
             conn = sqlite3.connect(self.db_path)
             query = """
                 SELECT timestamp, open, high, low, close, volume, amount
-                FROM kline_data
-                WHERE stock_code = ? AND data_type = 'daily'
+                FROM daily
+                WHERE stock_code = ?
                 ORDER BY timestamp DESC
                 LIMIT ?
             """
@@ -311,8 +308,7 @@ class NanFengV5_1:
         cursor = conn.cursor()
         cursor.execute("""
             SELECT DISTINCT stock_code 
-            FROM kline_data 
-            WHERE data_type = 'daily'
+            FROM daily 
             ORDER BY stock_code
             LIMIT ?
         """, (limit,))
@@ -341,7 +337,7 @@ class NanFengV5_1:
     
     def analyze_stock(self, stock_code: str, df: pd.DataFrame, 
                      all_stocks_data: Dict = None) -> Optional[TradeSignal]:
-        """分析单只股票 - V5.1严格标准"""
+        """分析单只股票 - V5.5严格标准"""
         if len(df) < 30:
             return None
         
@@ -702,19 +698,19 @@ class NanFengV5_1:
     
     def scan_signals(self, max_stocks: int = 300) -> List[TradeSignal]:
         """扫描精选信号 - 每天最多5只"""
-        logger.info("🌬️ 南风V5.1 - 精选扫描...")
+        log.info("🌬️ 南风V5.5 - 精选扫描...")
         
         # 检查市场环境
         market_ok, market_msg = self.check_market_environment()
-        logger.info(f"市场环境: {market_msg}")
+        log.info(f"市场环境: {market_msg}")
         
         if not market_ok:
-            logger.warning("市场环境不佳，建议观望")
+            log.warning("市场环境不佳，建议观望")
             return []
         
         # 获取股票列表
         stock_codes = self.get_all_stocks(limit=max_stocks)
-        logger.info(f"扫描 {len(stock_codes)} 只股票")
+        log.info(f"扫描 {len(stock_codes)} 只股票")
         
         # 预加载数据
         all_data = {}
@@ -723,7 +719,7 @@ class NanFengV5_1:
             if df is not None:
                 all_data[code] = df
         
-        logger.info(f"成功加载 {len(all_data)} 只股票数据")
+        log.info(f"成功加载 {len(all_data)} 只股票数据")
         
         # 分析每只股票
         signals = []
@@ -734,20 +730,20 @@ class NanFengV5_1:
                     signals.append(signal)
                 
                 if (i + 1) % 100 == 0:
-                    logger.info(f"进度: {i+1}/{len(all_data)}, 已发现 {len(signals)} 个信号")
+                    log.info(f"进度: {i+1}/{len(all_data)}, 已发现 {len(signals)} 个信号")
                     
             except Exception as e:
-                logger.debug(f"分析 {code} 失败: {e}")
+                log.debug(f"分析 {code} 失败: {e}")
                 continue
         
         # 排序并精选Top 5
         signals.sort(key=lambda x: (x.total_score, x.relative_strength, x.is_hot_sector), reverse=True)
         selected = signals[:self.max_signals_per_day]
         
-        logger.info(f"\n发现 {len(signals)} 个合格信号，精选 Top {len(selected)}:")
+        log.info(f"\n发现 {len(signals)} 个合格信号，精选 Top {len(selected)}:")
         for i, s in enumerate(selected, 1):
             hot_tag = "🔥" if s.is_hot_sector else ""
-            logger.info(f"  {i}. {s.stock_code}: {s.total_score:.1f}分 {hot_tag}")
+            log.info(f"  {i}. {s.stock_code}: {s.total_score:.1f}分 {hot_tag}")
         
         return selected
     
@@ -817,7 +813,7 @@ def main():
     
     # 输出结果
     print("\n" + "="*60)
-    print("🌬️ 南风V5.1 精选结果")
+    print("🌬️ 南风V5.5 精选结果")
     print("="*60)
     
     if not signals:
@@ -830,7 +826,7 @@ def main():
     # 保存结果
     output = {
         'scan_time': datetime.now().isoformat(),
-        'version': 'V5.1',
+        'version': 'V5.5',
         'market_check': nanfeng.check_market_environment()[1],
         'signals_count': len(signals),
         'signals': [

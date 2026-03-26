@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 红中信号生成器 V3.5 - 多策略版
 为每个策略分别生成信号，分开显示
@@ -7,11 +7,13 @@
 import sqlite3
 import json
 import smtplib
+import requests
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timedelta
 from pathlib import Path
 import sys
+from utils.notify import send_email, send_discord, notify_alert
 import importlib.util
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))

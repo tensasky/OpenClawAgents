@@ -1,0 +1,7 @@
+30 * * * * /Users/roberto/scripts/run_xifeng.sh
+35 * * * * /Users/roberto/scripts/run_nanfeng.sh
+40 * * * * /Users/roberto/scripts/run_hongzhong.sh
+45 * * * * /Users/roberto/scripts/run_facai.sh
+0 * * * * /usr/bin/python3 /Users/roberto/Documents/OpenClawAgents/logs/self_check.py
+*/2 * * * * /Users/roberto/Documents/OpenClawAgents/beifeng/cron_fast.sh >> /Users/roberto/Documents/OpenClawAgents/logs/beifeng_fast.log 2>&1
+0 * * * * /Users/roberto/Documents/OpenClawAgents/beifeng/cron_wrapper.sh >> /Users/roberto/Documents/OpenClawAgents/logs/beifeng_full.log 2>&1

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 nanfeng_v5_1.py - 南风量化交易引擎V5.5 (精选版)
 核心改进：每天只选Top 5，大幅提高信号质量

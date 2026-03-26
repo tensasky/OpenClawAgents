@@ -1,0 +1,11 @@
+{
+  "smtp_server": "smtp.gmail.com",
+  "smtp_port": 587,
+  "sender": "tensasky2003@gmail.com",
+  "sender_name": "财神爷",
+  "password": "cqcm tbkh skyh auyf",
+  "receivers": [
+    "tensasky2003@gmail.com",
+    "rcheng2@lululemon.com"
+  ]
+}
