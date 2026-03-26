@@ -192,3 +192,31 @@ if __name__ == "__main__":
     result = factory.evaluate('sh600036')
     if result:
         print(f"{result['code']}: ¥{result['price']:.2f} 评分:{result['score']}")
+
+    def f_upper_shadow_risk(self, code):
+        """计算上影线风险"""
+        prices = self.get_price_data(code)
+        if len(prices) < 5:
+            return 0
+        
+        # 获取实时数据
+        rt = cache.get(f'realtime:{code}')
+        if not rt:
+            return 0
+        
+        high = rt.get('high', rt['price'])
+        close = rt['price']
+        
+        if close > 0:
+            # 上影线比例
+            upper_shadow = (high - close) / close
+            
+            # 风险评分
+            if upper_shadow > 0.05:  # >5%
+                return 3  # 高风险
+            elif upper_shadow > 0.03:  # >3%
+                return 2  # 中风险
+            elif upper_shadow > 0.02:  # >2%
+                return 1  # 低风险
+        
+        return 0
