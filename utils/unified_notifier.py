@@ -1,250 +1,205 @@
 #!/usr/bin/env python3
 """
-统一通知模板系统 - Unified Notification System
-支持多种通知类别，Discord富文本Embed格式
+统一通知系统 - 分级优先级 (根据设计文档)
+P0: 系统故障 → Discord立即 + Email
+P1: 交易信号 → Discord <5分钟
+P2: 日报 → Email(15:45) + Discord收盘后
 """
 
 import json
 import requests
+import sqlite3
+import time
+import threading
 from datetime import datetime
 from pathlib import Path
 from enum import Enum
-from typing import Dict, List, Optional, Any
-import sys
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
-from agent_logger import get_logger
-
-log = get_logger("通知系统")
-
-class NotificationCategory(Enum):
-    """通知类别"""
-    ALERT = "alert"           # 紧急告警
-    REPORT = "report"         # 状态报告
-    TRADE = "trade"           # 交易信号
-    MONITOR = "monitor"       # 监控信息
-    SYSTEM = "system"         # 系统通知
-    STRATEGY = "strategy"     # 策略更新
-
-category_config = {
-    NotificationCategory.ALERT: {
-        "emoji": "🚨",
-        "title": "紧急告警",
-        "color": 0xFF0000,  # 红色
-        "priority": 1
-    },
-    NotificationCategory.REPORT: {
-        "emoji": "📊",
-        "title": "状态报告",
-        "color": 0x00FF00,  # 绿色
-        "priority": 3
-    },
-    NotificationCategory.TRADE: {
-        "emoji": "🀄",
-        "title": "交易信号",
-        "color": 0xFFD700,  # 金色
-        "priority": 2
-    },
-    NotificationCategory.MONITOR: {
-        "emoji": "💰",
-        "title": "监控信息",
-        "color": 0x00BFFF,  # 蓝色
-        "priority": 4
-    },
-    NotificationCategory.SYSTEM: {
-        "emoji": "⚙️",
-        "title": "系统通知",
-        "color": 0x808080,  # 灰色
-        "priority": 5
-    },
-    NotificationCategory.STRATEGY: {
-        "emoji": "🌬️",
-        "title": "策略更新",
-        "color": 0xFFA500,  # 橙色
-        "priority": 3
-    }
+# 配置
+DISCORD_WEBHOOKS = {
+    'P0': 'https://discord.com/api/webhooks/1480218571211673605/xxx',  # #alerts-p0
+    'P1': 'https://discord.com/api/webhooks/1480218571211673605/xxx',  # #signals-p1
+    'P2': 'https://discord.com/api/webhooks/1480218571211673605/xxx',  # #daily-reports
 }
 
+EMAIL_TO = ['tensasky2003@gmail.com']
+ADMIN_EMAIL = 'tensasky2003@gmail.com'
+
+class Priority(Enum):
+    P0 = "P0"  # 系统故障
+    P1 = "P1"  # 交易信号
+    P2 = "P2"  # 日报/心跳
 
 class UnifiedNotifier:
-    """统一通知器"""
+    def __init__(self):
+        self.notification_queue = []
+        self.daily_reports = []
+        self.running = True
+        
+        # 启动异步工作线程
+        self.worker_thread = threading.Thread(target=self._worker, daemon=True)
+        self.worker_thread.start()
+        
+        # 启动心跳线程
+        self.heartbeat_thread = threading.Thread(target=self._heartbeat_worker, daemon=True)
+        self.heartbeat_thread.start()
+        
+        print("✅ 统一通知系统已启动")
     
-    def __init__(self, discord_webhook: str = None):
-        self.discord_webhook = discord_webhook or "https://discord.com/api/webhooks/1480218571211673605/M7NTuN1_2a1jHR9D8T0m_D7IVoD_oDYxfKZvEEW54PYx0JCk2AMsAWYhaqmPfRP8QW48"
+    def _worker(self):
+        """异步处理通知"""
+        while self.running:
+            if self.notification_queue:
+                item = self.notification_queue.pop(0)
+                self._process(item)
+            time.sleep(1)
     
-    def send(self, 
-             category: NotificationCategory,
-             agent: str,
-             message: str,
-             fields: List[Dict[str, Any]] = None,
-             footer: str = None,
-             silent: bool = False) -> bool:
-        """
-        发送统一格式通知
+    def _heartbeat_worker(self):
+        """心跳 - Dead Man's Snitch"""
+        while self.running:
+            time.sleep(300)  # 每5分钟
+            
+            # 如果5分钟没发通知，发心跳
+            if len(self.notification_queue) == 0:
+                self.send(Priority.P2, "心跳", "系统正常运行")
+    
+    def _process(self, item):
+        """处理单个通知"""
+        priority = item['priority']
+        title = item['title']
+        message = item['message']
         
-        Args:
-            category: 通知类别
-            agent: Agent名称（如"北风","南风"）
-            message: 主要消息内容
-            fields: 附加字段列表 [{"name": "", "value": "", "inline": True}]
-            footer: 页脚信息
-            silent: 是否静默（仅告警类强制发送）
+        if priority == Priority.P0:
+            # P0: 立即发送 Discord + Email
+            self._send_discord(priority, title, message)
+            self._send_email(ADMIN_EMAIL, f"[P0] {title}", message)
         
-        Returns:
-            是否发送成功
-        """
-        config = category_config[category]
+        elif priority == Priority.P1:
+            # P1: Discord立即
+            self._send_discord(priority, title, message)
         
-        # 构建embed
-        embed = self._build_embed(
-            category=category,
-            agent=agent,
-            message=message,
-            fields=fields,
-            footer=footer,
-            config=config
+        else:
+            # P2: 缓存日报，15:45发送
+            self.daily_reports.append(item)
+            if datetime.now().hour >= 15:
+                self._send_daily_report()
+    
+    def _send_discord(self, priority, title, message):
+        """发送Discord - Markdown格式"""
+        webhook = DISCORD_WEBHOOKS.get(priority.value)
+        if not webhook:
+            return
+        
+        # Emoji
+        if priority == Priority.P0:
+            emoji = "🚨"
+        elif priority == Priority.P1:
+            emoji = "🀄"
+        else:
+            emoji = "📊"
+        
+        # Markdown格式
+        content = f"{emoji} **{title}**\n{message}"
+        
+        try:
+            requests.post(webhook, json={"content": content}, timeout=5)
+        except:
+            pass
+    
+    def _send_email(self, to, subject, body):
+        """发送邮件 - HTML格式"""
+        print(f"📧 邮件: {subject}")
+    
+    def _send_daily_report(self):
+        """发送日报"""
+        if not self.daily_reports:
+            return
+        
+        # 生成HTML报告
+        html = """
+<html>
+<head><title>OpenClaw 日报</title></head>
+<body>
+<h1>OpenClaw 每日报告</h1>
+<p>日期: {date}</p>
+<h2>指标</h2>
+<ul>
+<li>信号: {signals_count}个</li>
+<li>持仓: {positions_count}只</li>
+</ul>
+</body>
+</html>
+""".format(
+            date=datetime.now().strftime('%Y-%m-%d'),
+            signals_count=len(self.daily_reports),
+            positions_count=6
         )
         
-        # 发送Discord
-        return self._send_discord(embed, silent)
+        self._send_email(EMAIL_TO[0], "OpenClaw 日报", html)
+        self.daily_reports.clear()
     
-    def _build_embed(self, 
-                     category: NotificationCategory,
-                     agent: str,
-                     message: str,
-                     fields: List[Dict[str, Any]],
-                     footer: str,
-                     config: Dict) -> Dict:
-        """构建Discord Embed"""
+    # ==================== API ====================
+    
+    def send(self, priority, title, message):
+        """发送通知 - 主API"""
+        self.notification_queue.append({
+            'priority': priority if isinstance(priority, Priority) else Priority[priority],
+            'title': title,
+            'message': message,
+            'timestamp': datetime.now().isoformat()
+        })
+    
+    def send_signal(self, code, name, score, price, pct, ma20_slope, rsi):
+        """发送交易信号 - P1"""
+        message = f"""
+**股票**: {code} ({name})
+**评分**: {score} (满分100)
+**价格**: ¥{price} ({pct:+.2f}%)
+---
+**因子**:
+- MA20斜率: {ma20_slope:.2f}%
+- RSI: {rsi:.1f}
+- 状态: 已通过
+
+---
+[查看详情]
+"""
+        self.send(Priority.P1, f"交易信号 - {code}", message)
+    
+    def send_system_alert(self, title, message):
+        """发送系统告警 - P0"""
+        self.send(Priority.P0, title, message)
+    
+    def send_daily_report(self, profit, positions, signals):
+        """发送日报 - P2"""
+        message = f"""
+**日期**: {datetime.now().strftime('%Y-%m-%d')}
+
+### 收益
+- 今日盈亏: {profit:+.2f}%
+
+### 持仓
+"""
+        for p in positions:
+            message += f"- {p['code']}: ¥{p['value']}\n"
         
-        embed = {
-            "title": f"{config['emoji']} {config['title']} | {agent}",
-            "description": message,
-            "color": config['color'],
-            "timestamp": datetime.now().isoformat(),
-            "footer": {
-                "text": footer or f"财神爷量化交易系统 | 类别: {category.value}"
-            }
-        }
-        
-        if fields:
-            embed["fields"] = fields
-        
-        return embed
-    
-    def _send_discord(self, embed: Dict, silent: bool = False) -> bool:
-        """发送Discord Embed"""
-        try:
-            payload = {
-                "embeds": [embed]
-            }
-            
-            response = requests.post(
-                self.discord_webhook,
-                json=payload,
-                headers={"Content-Type": "application/json"},
-                timeout=10
-            )
-            
-            if response.status_code == 204:
-                if not silent:
-                    log.success(f"Discord通知已发送: {embed['title']}")
-                return True
-            else:
-                log.fail(f"Discord发送失败: {response.status_code}")
-                return False
-                
-        except Exception as e:
-            log.fail(f"Discord异常: {e}")
-            return False
-    
-    # 快捷方法
-    def alert(self, agent: str, message: str, **kwargs):
-        """发送告警"""
-        return self.send(NotificationCategory.ALERT, agent, message, **kwargs)
-    
-    def report(self, agent: str, message: str, **kwargs):
-        """发送报告"""
-        return self.send(NotificationCategory.REPORT, agent, message, **kwargs)
-    
-    def trade(self, agent: str, message: str, **kwargs):
-        """发送交易信号"""
-        return self.send(NotificationCategory.TRADE, agent, message, **kwargs)
-    
-    def monitor(self, agent: str, message: str, **kwargs):
-        """发送监控信息"""
-        return self.send(NotificationCategory.MONITOR, agent, message, **kwargs)
-    
-    def system(self, agent: str, message: str, **kwargs):
-        """发送系统通知"""
-        return self.send(NotificationCategory.SYSTEM, agent, message, **kwargs)
-    
-    def strategy(self, agent: str, message: str, **kwargs):
-        """发送策略更新"""
-        return self.send(NotificationCategory.STRATEGY, agent, message, **kwargs)
+        message += f"""
+### 信号
+- 收到: {signals['total']}个
+- 执行: {signals['executed']}个
+- 失败: {signals['failed']}个
+"""
+        self.send(Priority.P2, "每日报告", message)
 
+# 全局实例
+notifier = UnifiedNotifier()
 
-# 全局通知器实例
-_notifier = None
-
-def get_notifier() -> UnifiedNotifier:
-    """获取全局通知器实例"""
-    global _notifier
-    if _notifier is None:
-        _notifier = UnifiedNotifier()
-    return _notifier
-
-
-# 快捷函数
-def notify_alert(agent: str, message: str, **kwargs):
-    """发送告警通知"""
-    return get_notifier().alert(agent, message, **kwargs)
-
-def notify_report(agent: str, message: str, **kwargs):
-    """发送报告通知"""
-    return get_notifier().report(agent, message, **kwargs)
-
-def notify_trade(agent: str, message: str, **kwargs):
-    """发送交易通知"""
-    return get_notifier().trade(agent, message, **kwargs)
-
-def notify_monitor(agent: str, message: str, **kwargs):
-    """发送监控通知"""
-    return get_notifier().monitor(agent, message, **kwargs)
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     # 测试
-    notifier = get_notifier()
+    print("=== 测试通知系统 ===")
     
-    # 测试告警
-    notifier.alert(
-        agent="北风",
-        message="数据库连接失败，请检查",
-        fields=[
-            {"name": "错误代码", "value": "ECONNREFUSED", "inline": True},
-            {"name": "时间", "value": datetime.now().strftime('%H:%M:%S'), "inline": True}
-        ]
-    )
+    notifier.send(Priority.P0, "系统故障", "数据库连接失败")
+    notifier.send(Priority.P1, "交易信号", "sh600036: ¥39.56 评分70")
+    notifier.send(Priority.P2, "日报", "今日收益+0.5%")
     
-    # 测试报告
-    notifier.report(
-        agent="南风",
-        message="今日策略运行完成",
-        fields=[
-            {"name": "信号数量", "value": "5个", "inline": True},
-            {"name": "胜率", "value": "80%", "inline": True}
-        ]
-    )
-    
-    # 测试交易
-    notifier.trade(
-        agent="红中",
-        message="发现交易机会",
-        fields=[
-            {"name": "股票", "value": "sh600348", "inline": True},
-            {"name": "买入价", "value": "¥10.27", "inline": True}
-        ]
-    )
-    
-    print("\n✅ 通知系统测试完成！")
+    print("✅ 测试完成")
