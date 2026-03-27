@@ -116,27 +116,42 @@ class UnifiedNotifier:
             return
         
         # 生成HTML报告
-        html = """
+        html = f"""
 <html>
 <head><title>OpenClaw 日报</title></head>
 <body>
 <h1>OpenClaw 每日报告</h1>
-<p>日期: {date}</p>
+<p>日期: {datetime.now().strftime('%Y-%m-%d')}</p>
 <h2>指标</h2>
 <ul>
-<li>信号: {signals_count}个</li>
-<li>持仓: {positions_count}只</li>
+<li>信号: {len(self.daily_reports)}个</li>
+<li>持仓: 6只</li>
 </ul>
 </body>
 </html>
-""".format(
-            date=datetime.now().strftime('%Y-%m-%d'),
-            signals_count=len(self.daily_reports),
-            positions_count=6
-        )
+"""
         
         self._send_email(EMAIL_TO[0], "OpenClaw 日报", html)
         self.daily_reports.clear()
+    
+    def buffer_daily_report(self, title, message):
+        """P2级别进入缓冲池，盘后统一发送"""
+        self.daily_reports.append({
+            'title': title,
+            'message': message,
+            'timestamp': datetime.now().isoformat()
+        })
+    
+    def send_alert(self, level, title, message):
+        """对外API - 符合原型"""
+        if level == "P0":
+            self._send_discord(Priority.P0, f"🔴 **CRITICAL**: {title}", message)
+            self._send_email(ADMIN_EMAIL, title, message)  # P0 同时发邮件备份
+        elif level == "P1":
+            self._send_discord(Priority.P1, f"🟢 **SIGNAL**: {title}", message)
+        else:
+            # P2 级别进入缓冲池，盘后统一发送邮件
+            self.buffer_daily_report(title, message)
     
     # ==================== API ====================
     
