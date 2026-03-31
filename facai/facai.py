@@ -277,12 +277,15 @@ class PortfolioManager:
                 INSERT INTO positions 
                 (symbol, name, quantity, avg_price, current_price, stop_loss, highest_price, 
                  entry_time, entry_logic, sector, sector_heat, signal_id, strategy, score, is_sellable)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 symbol, name, quantity, price, price, stop_loss, price,
                 datetime.now().isoformat(),
                 f"南风打分{score}，{'|'.join(signals[:3])}，{sector}板块热度{sector_heat}",
                 sector, sector_heat,
+                signals[0].get('id') if signals else None,  # signal_id
+                signals[0].get('strategy', '南风V5.5') if signals else '南风V5.5',  # strategy
+                score,  # score
                 0  # is_sellable=0，买入当天不能卖出
             ))
             

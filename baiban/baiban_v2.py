@@ -6,9 +6,9 @@ import numpy as np
 from datetime import datetime, timedelta
 import json
 
-STOCKS_DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
-SIGNALS_DB = "/Users/roberto/Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
-STRATEGY_DB = "/Users/roberto/Documents/OpenClawAgents/strategy/strategy.db"
+STOCKS_DB = BASE_DIR / "beifeng/data/stocks_real.db"
+SIGNALS_DB = BASE_DIR / "hongzhong/data/signals_v3.db"
+STRATEGY_DB = BASE_DIR / "strategy/strategy.db"
 
 class Baiban:
     def __init__(self):

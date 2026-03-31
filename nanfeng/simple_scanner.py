@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import urllib.request
 
-DB_PATH = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+DB_PATH = BASE_DIR / "beifeng/data/stocks_real.db"
 
 def get_realtime_price(code):
     try:

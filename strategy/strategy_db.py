@@ -5,7 +5,7 @@ import sqlite3
 import json
 from datetime import datetime
 
-DB = "/Users/roberto/Documents/OpenClawAgents/strategy/strategy.db"
+DB = BASE_DIR / "strategy/strategy.db"
 
 def init_db():
     conn = sqlite3.connect(DB)

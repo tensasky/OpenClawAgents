@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 from datetime import datetime, timedelta
 
-LOG_FILE = Path("/Users/roberto/Documents/OpenClawAgents/logs/manager.log")
+LOG_FILE = Path(BASE_DIR / "logs/manager.log")
 
 class LogMonitor:
     def __init__(self):

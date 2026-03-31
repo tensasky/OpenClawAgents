@@ -9,17 +9,17 @@ from datetime import datetime, datetime
 import signal
 
 # 添加路径
-sys.path.insert(0, '/Users/roberto/Documents/OpenClawAgents/logs')
+sys.path.insert(0, BASE_DIR / "logs")
 
 class ProcessManager:
     def __init__(self):
         self.running = True
         self.agents = {
-            'caishen': {'script': '/Users/roberto/Documents/OpenClawAgents/manager/caishen_manager.py', 'interval': 300},
-            'beifeng': {'script': '/Users/roberto/Documents/OpenClawAgents/beifeng/beifeng.py', 'interval': 300},
-            'dongfeng': {'script': '/Users/roberto/Documents/OpenClawAgents/dongfeng/dongfeng_v2.py', 'interval': 600},
-            'hongzhong': {'script': '/Users/roberto/Documents/OpenClawAgents/logs/quick_scan.py', 'interval': 300},
-            'facai': {'script': '/Users/roberto/Documents/OpenClawAgents/facai/trading_loop.py', 'interval': 600},
+            'caishen': {'script': BASE_DIR / "manager/caishen_manager.py", 'interval': 300},
+            'beifeng': {'script': BASE_DIR / "beifeng/beifeng.py", 'interval': 300},
+            'dongfeng': {'script': BASE_DIR / "dongfeng/dongfeng_v2.py", 'interval': 600},
+            'hongzhong': {'script': BASE_DIR / "logs/quick_scan.py", 'interval': 300},
+            'facai': {'script': BASE_DIR / "facai/trading_loop.py", 'interval': 600},
         }
         
         self.last_run = {name: 0 for name in self.agents}
@@ -83,7 +83,7 @@ class ProcessManager:
         # 检查必要进程
         import sqlite3
         
-        conn = sqlite3.connect('/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db')
+        conn = sqlite3.connect(BASE_DIR / "beifeng/data/stocks_real.db")
         cursor = conn.cursor()
         cursor.execute("SELECT COUNT(*) FROM minute WHERE timestamp LIKE '2026-03-27%'")
         minute_count = cursor.fetchone()[0]

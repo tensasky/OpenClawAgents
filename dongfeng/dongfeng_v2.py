@@ -2,7 +2,7 @@
 """东风多维初筛模型"""
 
 import sys
-sys.path.insert(0, '/Users/roberto/Documents/OpenClawAgents/logs')
+sys.path.insert(0, BASE_DIR / "logs")
 from redis_cache import cache
 
 import sqlite3
@@ -10,7 +10,7 @@ import numpy as np
 import urllib.request
 import json
 
-STOCKS_DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+STOCKS_DB = BASE_DIR / "beifeng/data/stocks_real.db"
 
 class DongFengV2:
     def __init__(self):

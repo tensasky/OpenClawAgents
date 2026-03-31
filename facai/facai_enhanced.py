@@ -7,8 +7,8 @@ import time
 import urllib.request
 from datetime import datetime, timedelta
 
-SIGNALS_DB = "/Users/roberto/Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
-STOCKS_DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+SIGNALS_DB = BASE_DIR / "hongzhong/data/signals_v3.db"
+STOCKS_DB = BASE_DIR / "beifeng/data/stocks_real.db"
 
 class EnhancedFacai:
     def __init__(self):

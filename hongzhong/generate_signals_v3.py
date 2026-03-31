@@ -7,6 +7,7 @@
 import sqlite3
 import json
 import smtplib
+import os
 from utils.notify import send_email
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -20,17 +21,42 @@ from agent_logger import get_logger
 log = get_logger("红中V3")
 
 # 数据库路径
-BEIFENG_DB = Path.home() / "Documents/OpenClawAgents/beifeng/data/stocks_real.db"
-HONGZHONG_DB = Path.home() / "Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
+BASE_DIR = Path.home() / "Documents/OpenClawAgents"
+BEIFENG_DB = BASE_DIR / "beifeng/data/stocks_real.db"
+HONGZHONG_DB = BASE_DIR / "hongzhong/data/signals_v3.db"
 
-# 邮件配置
-EMAIL_CONFIG = {
-    "sender": "3823810468@qq.com",
-    "password": "tmwhuqnthrpbcgec",
-    "smtp_server": "smtp.qq.com",
-    "smtp_port": 587,
-    "receivers": ["3823810468@qq.com", "tensasky@gmail.com", "tensasky2003@gmail.com"]
-}
+# 邮件配置 - 从config文件加载，fallback到环境变量
+CONFIG_PATH = Path(__file__).parent.parent / "config" / "email_config.py"
+if CONFIG_PATH.exists():
+    try:
+        from config.email_config import EMAIL_CONFIG as _email_config
+        # 环境变量覆盖配置文件
+        _email_config["sender"] = os.environ.get("EMAIL_SENDER", _email_config.get("sender", ""))
+        _email_config["password"] = os.environ.get("EMAIL_PASSWORD", _email_config.get("password", ""))
+        _email_config["receivers"] = os.environ.get("EMAIL_RECEIVERS", ",".join(_email_config.get("receivers", []))).split(",")
+        EMAIL_CONFIG = _email_config
+    except ImportError:
+        EMAIL_CONFIG = {
+            "sender": os.environ.get("EMAIL_SENDER", "3823810468@qq.com"),
+            "password": os.environ.get("EMAIL_PASSWORD", ""),
+            "smtp_server": "smtp.qq.com",
+            "smtp_port": 587,
+            "receivers": os.environ.get("EMAIL_RECEIVERS", "3823810468@qq.com,tensasky@gmail.com,tensasky2003@gmail.com").split(",")
+        }
+else:
+    EMAIL_CONFIG = {
+        "sender": os.environ.get("EMAIL_SENDER", "3823810468@qq.com"),
+        "password": os.environ.get("EMAIL_PASSWORD", ""),
+        "smtp_server": "smtp.qq.com",
+        "smtp_port": 587,
+        "receivers": os.environ.get("EMAIL_RECEIVERS", "3823810468@qq.com,tensasky@gmail.com,tensasky2003@gmail.com").split(",")
+    }
+
+# 敏感信息脱敏日志
+if EMAIL_CONFIG.get("password"):
+    log.info("邮件配置已加载 (密码已脱敏)")
+else:
+    log.warning("警告: 邮件密码未配置")
 
 # 南风策略配置
 STRATEGY_CONFIG = {
@@ -503,7 +529,7 @@ class HongzhongSignalV3:
         cursor.execute('''
             SELECT stock_code 
             FROM daily 
-            WHERE timestamp = "2026-03-17"
+            WHERE timestamp = ?
             ORDER BY (close - open) / open DESC
             LIMIT ?
         ''', (limit,))

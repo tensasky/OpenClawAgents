@@ -8,7 +8,7 @@ import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime
 
-DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+DB = BASE_DIR / "beifeng/data/stocks_real.db"
 
 def get_realtime_data(code):
     """从腾讯API获取实时数据"""

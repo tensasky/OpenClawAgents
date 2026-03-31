@@ -4,10 +4,10 @@
 from datetime import datetime
 import sqlite3
 import sys
-sys.path.insert(0, '/Users/roberto/Documents/OpenClawAgents/logs')
+sys.path.insert(0, BASE_DIR / "logs")
 
-STOCKS_DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
-SIGNALS_DB = "/Users/roberto/Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
+STOCKS_DB = BASE_DIR / "beifeng/data/stocks_real.db"
+SIGNALS_DB = BASE_DIR / "hongzhong/data/signals_v3.db"
 
 class CaishenManager:
     def __init__(self):

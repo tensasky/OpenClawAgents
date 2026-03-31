@@ -5,8 +5,8 @@ import sqlite3
 import os
 from datetime import datetime
 
-STOCKS_DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
-SIGNALS_DB = "/Users/roberto/Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
+STOCKS_DB = BASE_DIR / "beifeng/data/stocks_real.db"
+SIGNALS_DB = BASE_DIR / "hongzhong/data/signals_v3.db"
 
 def get_db_size(db_path):
     """获取数据库大小"""

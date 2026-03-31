@@ -6,9 +6,9 @@ import numpy as np
 import subprocess
 from datetime import datetime, timedelta
 
-STOCKS_DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
-SIGNALS_DB = "/Users/roberto/Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
-STRATEGY_DB = "/Users/roberto/Documents/OpenClawAgents/strategy/strategy.db"
+STOCKS_DB = BASE_DIR / "beifeng/data/stocks_real.db"
+SIGNALS_DB = BASE_DIR / "hongzhong/data/signals_v3.db"
+STRATEGY_DB = BASE_DIR / "strategy/strategy.db"
 
 class BaibanV3:
     def __init__(self):
@@ -47,7 +47,7 @@ class BaibanV3:
         # 调用维护脚本
         result = subprocess.run([
             'python3', 
-            '/Users/roberto/Documents/OpenClawAgents/baiban/db_maintenance.py'
+            BASE_DIR / "baiban/db_maintenance.py"
         ], capture_output=True, text=True, timeout=120)
         
         print(result.stdout)

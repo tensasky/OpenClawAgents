@@ -6,7 +6,7 @@ import schedule
 import sys
 from datetime import datetime
 
-sys.path.insert(0, '/Users/roberto/Documents/OpenClawAgents/logs')
+sys.path.insert(0, BASE_DIR / "logs")
 
 class ProcessManagerV2:
     def __init__(self):

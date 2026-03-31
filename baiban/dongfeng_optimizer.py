@@ -5,12 +5,12 @@ import sqlite3
 import json
 from datetime import datetime, timedelta
 
-SIGNALS_DB = "/Users/roberto/Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
-STRATEGY_DB = "/Users/roberto/Documents/OpenClawAgents/strategy/strategy.db"
+SIGNALS_DB = BASE_DIR / "hongzhong/data/signals_v3.db"
+STRATEGY_DB = BASE_DIR / "strategy/strategy.db"
 
 class DongFengOptimizer:
     def __init__(self):
-        self.config_path = "/Users/roberto/Documents/OpenClawAgents/dongfeng/config.json"
+        self.config_path = BASE_DIR / "dongfeng/config.json"
     
     def load_config(self):
         with open(self.config_path, 'r') as f:

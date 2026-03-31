@@ -5,12 +5,12 @@ import sqlite3
 import csv
 from datetime import datetime, timedelta
 
-SIGNALS_DB = "/Users/roberto/Documents/OpenClawAgents/hongzhong/data/signals_v3.db"
-STOCKS_DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+SIGNALS_DB = BASE_DIR / "hongzhong/data/signals_v3.db"
+STOCKS_DB = BASE_DIR / "beifeng/data/stocks_real.db"
 
 class Reconciliation:
     def __init__(self):
-        self.report_path = "/Users/roberto/Documents/OpenClawAgents/facai/daily_report.csv"
+        self.report_path = BASE_DIR / "facai/daily_report.csv"
     
     def generate_report(self):
         """生成对账单"""

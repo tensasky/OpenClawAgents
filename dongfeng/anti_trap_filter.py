@@ -2,7 +2,7 @@
 """东风反陷阱过滤器"""
 
 import sys
-sys.path.insert(0, '/Users/roberto/Documents/OpenClawAgents/logs')
+sys.path.insert(0, BASE_DIR / "logs")
 from redis_cache import cache
 
 class AntiTrapFilter:

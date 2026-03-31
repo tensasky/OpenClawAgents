@@ -8,7 +8,7 @@ import urllib.request
 from datetime import datetime
 from collections import deque
 
-STOCKS_DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+STOCKS_DB = BASE_DIR / "beifeng/data/stocks_real.db"
 
 class RedisCache:
     """Redis风格缓存 - 内存缓存 + 实时持久化"""

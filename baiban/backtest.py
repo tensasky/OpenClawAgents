@@ -5,7 +5,7 @@ import sqlite3
 import numpy as np
 from datetime import datetime, timedelta
 
-STOCKS_DB = "/Users/roberto/Documents/OpenClawAgents/beifeng/data/stocks_real.db"
+STOCKS_DB = BASE_DIR / "beifeng/data/stocks_real.db"
 
 class Backtest:
     def __init__(self):

@@ -209,6 +209,12 @@ class UnifiedNotifier:
 # 全局实例
 notifier = UnifiedNotifier()
 
+
+def notify_report(source, message):
+    """发送报告通知 - 兼容旧接口"""
+    notifier.send(Priority.P2, source, message)
+
+
 if __name__ == "__main__":
     # 测试
     print("=== 测试通知系统 ===")

@@ -1,5 +1,0 @@
-# 三Agent每日汇报定时任务
-# 每晚8点执行汇报
-
-# 每日20:00汇报三Agent工作状态
-0 20 * * * /usr/bin/python3 /Users/roberto/Documents/OpenClawAgents/daily_report.py >> /tmp/daily_report.log 2>&1
