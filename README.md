@@ -84,6 +84,18 @@ python3 scripts/caishen_monitor_v52.py
 
 ---
 
+## 环境要求
+
+- Python 3.8+
+- macOS / Linux / Windows
+- 网络访问 (A股数据源)
+
+## 安装依赖
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Git
 
 ```bash
