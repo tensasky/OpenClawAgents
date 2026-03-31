@@ -17,9 +17,9 @@ from enum import Enum
 
 # 配置
 DISCORD_WEBHOOKS = {
-    'P0': 'https://discord.com/api/webhooks/1480218571211673605/xxx',  # #alerts-p0
-    'P1': 'https://discord.com/api/webhooks/1480218571211673605/xxx',  # #signals-p1
-    'P2': 'https://discord.com/api/webhooks/1480218571211673605/xxx',  # #daily-reports
+    'P0': 'https://discord.com/api/webhooks/1480218571211673605/M7NTuN1_2a1jHR9D8T0m_D7IVoD_oDYxfKZvEEW54PYx0JCk2AMsAWYhaqmPfRP8QW48',  # #alerts-p0
+    'P1': 'https://discord.com/api/webhooks/1480218571211673605/M7NTuN1_2a1jHR9D8T0m_D7IVoD_oDYxfKZvEEW54PYx0JCk2AMsAWYhaqmPfRP8QW48',  # #signals-p1
+    'P2': 'https://discord.com/api/webhooks/1480218571211673605/M7NTuN1_2a1jHR9D8T0m_D7IVoD_oDYxfKZvEEW54PYx0JCk2AMsAWYhaqmPfRP8QW48',  # #daily-reports
 }
 
 EMAIL_TO = ['tensasky2003@gmail.com']
